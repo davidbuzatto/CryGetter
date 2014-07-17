@@ -8,7 +8,12 @@ package crygetter.utils;
 
 import crygetter.model.CryToxin;
 import crygetter.ncbi.prot.GBSet;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,6 +26,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -42,6 +50,8 @@ import org.xml.sax.XMLReader;
  * @author David Buzatto
  */
 public class Utils {
+    
+    private static final int BUFFER = 2048;
     
     /**
      * Gets data using HTTP POST method.
@@ -84,8 +94,8 @@ public class Utils {
     }
     
     /**
-     * Parse BtNomenclature cry toxin list and generates a CryToxin list
-     * with just the entries that have NCBI data.
+     * Parse BtNomenclature cry toxin list and generates a CryToxin list.
+     * 
      * @return A list containing all CryToxin valid data.
      * @throws IOException 
      */
@@ -132,10 +142,13 @@ public class Utils {
                 
                 while ( m.find() ) {
                     ct.ncbiProtein = m.group();
-                    ctList.add( ct );
                     break;
                 }
                 
+            }
+            
+            if ( ct.ncbiProtein != null ) {
+                ctList.add( ct );
             }
 
         }
@@ -145,18 +158,19 @@ public class Utils {
     }
     
     /**
-     * Extracts NCBI protein data from a valid CryToxin list.
+     * Extracts NCBI protein data from a CryToxin list and stores the data in 
+     * a xml file under the "results" folder.
      * 
+     * @param ctList CryToxin list.
      * @param howMany How many proteins to extract?
      * @throws IOException
      */
-    public static void extractNCBIProteinData( int howMany ) 
+    public static void extractNCBIProteinData( List<CryToxin> ctList, int howMany ) 
             throws IOException {
         
         int count = 0;
         Date d = new Date();
         
-        List<CryToxin> ctList = Utils.getCryToxinList();
         String filePath = String.format( "results/sequenceData-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
                 d, d, d, d, d, d, howMany <= ctList.size() && howMany > 0 ? howMany : ctList.size() );
             
@@ -190,16 +204,17 @@ public class Utils {
     }
     
     /**
-     * Reads a valid xml containing NCBI protein data and returns a GBSet.
+     * Reads a file with valid xml containing NCBI protein data and returns
+     * a GBSet.
      * 
-     * @param filePath Path to the file contaning the data.
+     * @param file The file to be read.
      * @return A GBSet containing all the data from the valid CryToxin list
      * @throws IOException
      * @throws JAXBException
      * @throws ParserConfigurationException
      * @throws SAXException 
      */
-    public static GBSet getGBSet( String filePath ) 
+    public static GBSet getGBSet( File file ) 
             throws IOException, JAXBException, 
             ParserConfigurationException, SAXException {
         
@@ -207,11 +222,137 @@ public class Utils {
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setFeature( XMLConstants.FEATURE_SECURE_PROCESSING, false );
         XMLReader xmlReader = spf.newSAXParser().getXMLReader();
-        InputSource inputSource = new InputSource( new FileReader( filePath ) );
+        InputSource inputSource = new InputSource( new FileReader( file ) );
         SAXSource source = new SAXSource( xmlReader, inputSource );
 
         Unmarshaller unmarshaller = jc.createUnmarshaller();
         return ( GBSet ) unmarshaller.unmarshal( source );
+        
+    }
+    
+    
+    /**
+     * Zips a set of files in one file.
+     * 
+     * @param destination File to contain the zipped files.
+     * @param files Files to be zipped.
+     * @throws IOException 
+     */
+    public static void zip( File destination, File... files ) 
+            throws IOException {
+      
+        BufferedInputStream origin = null;
+        FileOutputStream dest = new FileOutputStream( destination );
+        
+        try ( ZipOutputStream out = new ZipOutputStream( new BufferedOutputStream( dest ) ) ) {
+            
+            byte data[] = new byte[BUFFER];
+            
+            for ( int i = 0; i < files.length; i++ ) {
+                
+                FileInputStream fi = new FileInputStream(files[i]);
+                origin = new BufferedInputStream( fi, BUFFER );
+                ZipEntry entry = new ZipEntry( files[i].getName() );
+                out.putNextEntry(entry);
+                int count;
+                
+                while ( ( count = origin.read( data, 0, BUFFER ) ) != -1 ) {
+                    out.write(data, 0, count);
+                }
+                
+                origin.close();
+                
+            }
+            
+        }
+        
+    }
+    
+    /**
+     * Unzips a file and return a list of the unziped files.
+     * 
+     * @param target File to be unzipped.
+     * @return A lista with the files that where unzipped.
+     * @throws IOException 
+     */
+    public static List<File> unzip( File target ) throws IOException {
+        
+        List<File> unzippedFiles = new ArrayList<>();
+        BufferedOutputStream dest = null;
+        FileInputStream fis = new  FileInputStream( target );
+        ZipEntry entry = null;
+        
+        try ( ZipInputStream zis = new ZipInputStream( new BufferedInputStream( fis ) ) ) {
+        
+            while ( ( entry = zis.getNextEntry() ) != null ) {
+                
+                int count;
+                byte data[] = new byte[BUFFER];
+                
+                // write the files to the disk
+                File unf = new File( target.getParentFile().getAbsolutePath() + "/" + entry.getName() );
+                unzippedFiles.add( unf );
+                
+                FileOutputStream fos = new FileOutputStream( unf );
+                dest = new BufferedOutputStream( fos, BUFFER );
+                
+                while ( ( count = zis.read( data, 0, BUFFER ) ) != -1 ) {
+                    dest.write(data, 0, count);
+                }
+                
+                dest.flush();
+                dest.close();
+                
+            }
+            
+        }
+        
+        return unzippedFiles;
+        
+    }
+    
+    /**
+     * Format a protein sequence in 6 columns per line, ith 10 aa each column.
+     * 
+     * @param seq Sequence to be formated.
+     * @return Formated sequence.
+     */
+    public static String formatProtein( String seq ) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        int count = 0;
+        boolean first = true;
+        List<String> lineList = new ArrayList<>();
+        
+        for ( char c : seq.toCharArray() ) {
+            
+            if ( count % 60 == 0 && !first ) {
+                lineList.add( sb.toString().trim() );
+                sb = new StringBuilder();
+            }
+            
+            first = false;
+            
+            if ( count % 10 == 0 ) {                
+                sb.append( " " );
+            }
+            
+            sb.append( c );
+            
+            count++;
+            
+        }
+        
+        lineList.add( sb.toString().trim() );
+        
+        sb = new StringBuilder();
+        
+        for ( String s : lineList ) {
+            sb.append( s ).append( "\n" );
+        }
+        
+        return sb.toString();
         
     }
     

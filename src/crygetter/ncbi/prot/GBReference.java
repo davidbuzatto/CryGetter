@@ -267,5 +267,20 @@ public class GBReference {
     public void setGBReferenceRemark(String value) {
         this.gbReferenceRemark = value;
     }
-
+    
+    @Override
+    public String toString() {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        if ( gbReferenceAuthors != null ) {
+            for ( GBAuthor a : gbReferenceAuthors.getGBAuthor() ) {
+                sb.append( a.getvalue() ).append( "; " );
+            }
+        }
+        
+        return sb.toString();
+        
+    }
+    
 }
