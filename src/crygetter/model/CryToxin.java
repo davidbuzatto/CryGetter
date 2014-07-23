@@ -6,6 +6,9 @@
 
 package crygetter.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -46,6 +49,27 @@ public class CryToxin {
     
     @Element( required = false )
     public String ncbiURL2;
+    
+    transient public String proteinSequence;
+    transient public String proteinSequenceInterval;
+    transient public String proteinSequenceName;
+    transient public List<CryToxinDomain> domains = new ArrayList<>();;
+    
+    public CryToxinDomain getDomain( int domainNumber ) {
+        return domains.get( domainNumber - 1 );
+    }
+    
+    public String getDomainInterval( int domainNumber ) {
+        CryToxinDomain domain = domains.get( domainNumber - 1 );
+        SequenceInterval interval = domain.interval;
+        return interval.start + ".." + interval.end;
+    }
+    
+    public String getDomainSequence( int domainNumber ) {
+        CryToxinDomain domain = domains.get( domainNumber - 1 );
+        SequenceInterval interval = domain.interval;
+        return proteinSequence.substring( interval.start - 1, interval.end );
+    }
 
     public boolean hasNCBIData() {
         return ncbiProtein != null;
@@ -57,6 +81,28 @@ public class CryToxin {
                 ncbiNucleotide + ", authors=" + authors + ", year=" + 
                 year + ", sourceStrain=" + sourceStrain + ", comment=" + 
                 comment + ", ncbiURL=" + ncbiURL + ", ncbiURL2=" + ncbiURL2 + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode( this.name );
+        return hash;
+    }
+
+    @Override
+    public boolean equals( Object obj ) {
+        if ( obj == null ) {
+            return false;
+        }
+        if ( getClass() != obj.getClass() ) {
+            return false;
+        }
+        final CryToxin other = (CryToxin) obj;
+        if ( !Objects.equals( this.name, other.name ) ) {
+            return false;
+        }
+        return true;
     }
     
     @Override

@@ -8,6 +8,7 @@ package crygetter.utils;
 
 import crygetter.model.CryToxin;
 import crygetter.ncbi.prot.GBSet;
+import java.awt.Component;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
@@ -29,6 +30,9 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -312,10 +316,10 @@ public class Utils {
     }
     
     /**
-     * Format a protein sequence in 6 columns per line, ith 10 aa each column.
+     * Format a protein proteinSequence in 6 columns per line, ith 10 aa each column.
      * 
      * @param seq Sequence to be formated.
-     * @return Formated sequence.
+     * @return Formated proteinSequence.
      */
     public static String formatProtein( String seq ) {
         
@@ -353,6 +357,30 @@ public class Utils {
         }
         
         return sb.toString();
+        
+    }
+    
+    public static void showExceptionMessage( Component parent, Throwable t ) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append( "Ocorreu um erro inesperado na execução da tarefa requisitada.\n" );
+        sb.append( "Os dados do erro podem ser vistos abaixo:\n\n" );
+        
+        sb.append( t.getLocalizedMessage() );
+        sb.append( t.toString() ).append( "\n" );
+        sb.append( "Stack Trace:\n" );
+        
+        for ( StackTraceElement e : t.getStackTrace() ) {
+            sb.append( e.toString() ).append( "\n" );
+        }
+        
+        JTextArea tArea = new JTextArea( 20, 50 );
+        tArea.setText( sb.toString() );
+        JScrollPane sp = new JScrollPane( tArea );
+        
+        JOptionPane.showMessageDialog( parent, sp,
+                "ERRO", JOptionPane.ERROR_MESSAGE );
         
     }
     
