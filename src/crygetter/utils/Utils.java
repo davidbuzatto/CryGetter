@@ -8,6 +8,7 @@ package crygetter.utils;
 
 import crygetter.model.CryToxin;
 import crygetter.ncbi.prot.GBSet;
+import java.awt.Color;
 import java.awt.Component;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -33,6 +34,11 @@ import java.util.zip.ZipOutputStream;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -316,7 +322,8 @@ public class Utils {
     }
     
     /**
-     * Format a protein proteinSequence in 6 columns per line, ith 10 aa each column.
+     * Format a protein sequence in 6 columns per line, with 10 aa for each column.
+     * 
      * 
      * @param seq Sequence to be formated.
      * @return Formated proteinSequence.
@@ -356,10 +363,84 @@ public class Utils {
             sb.append( s ).append( "\n" );
         }
         
-        return sb.toString();
+        return sb.toString().substring( 0, sb.length() - 1 );
         
     }
     
+    /**
+     * Format a protein sequence in 6 columns per line, with 10 aa for each column.
+     * Considering a previous quantity of processed chars.
+     * 
+     * @param seq Sequence to be formated.
+     * @param jump How many chars to jump.
+     * @return Formated proteinSequence.
+     */
+    public static String formatProtein( String seq, int jump ) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        int count = jump;
+        boolean first = true;
+        List<String> lineList = new ArrayList<>();
+        
+        for ( char c : seq.toCharArray() ) {
+            
+            if ( count % 60 == 0 && !first ) {
+                lineList.add( sb.toString().trim() );
+                sb = new StringBuilder();
+            }
+            
+            first = false;
+            
+            if ( count % 10 == 0 ) {                
+                sb.append( " " );
+            }
+            
+            sb.append( c );
+            
+            count++;
+            
+        }
+        
+        lineList.add( sb.toString().trim() );
+        
+        sb = new StringBuilder();
+        
+        for ( String s : lineList ) {
+            sb.append( s ).append( "\n" );
+        }
+        
+        return sb.toString().substring( 0, sb.length() - 1 ).trim();
+        
+    }
+    
+    /**
+     * Count how many occurrences of a char appears in a string.
+     * 
+     * @param string String to be searched
+     * @param searchFor Character to be searched
+     * @return Amount of chars that where found
+     */
+    public static int countChar( String string, char searchFor ) {
+        
+        int count = 0;
+        
+        for ( char c : string.toCharArray() ) {
+            if ( c == searchFor ) {
+                count++;
+            }
+        }
+        
+        return count;
+        
+    }
+    
+    /**
+     * Shows a message box with exception details.
+     * 
+     * @param parent Parent component of the message bos.
+     * @param t Throwable with the exception details.
+     */
     public static void showExceptionMessage( Component parent, Throwable t ) {
         
         StringBuilder sb = new StringBuilder();
@@ -381,6 +462,50 @@ public class Utils {
         
         JOptionPane.showMessageDialog( parent, sp,
                 "ERRO", JOptionPane.ERROR_MESSAGE );
+        
+    }
+    
+    /**
+     * Append some text in one JTextPane, using colors.
+     * 
+     * @param textPane Text pane to be appended.
+     * @param text Text to be appended.
+     * @param foregroundColor Color of the foreground of the text.
+     * @param backgroundColor Color of the background of the text.
+     */
+    public static void appendToPane( JTextPane textPane, String text, Color foregroundColor, Color backgroundColor ) {
+        
+        StyleContext sc = StyleContext.getDefaultStyleContext();
+        
+        AttributeSet aset = sc.addAttribute( SimpleAttributeSet.EMPTY, StyleConstants.Foreground, foregroundColor );
+        aset = sc.addAttribute( aset, StyleConstants.Background, backgroundColor );
+        //aset = sc.addAttribute( aset, StyleConstants.FontFamily, "Lucida Console" );
+        //aset = sc.addAttribute( aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED );
+
+        int len = textPane.getDocument().getLength();
+        textPane.setCaretPosition( len );
+        textPane.setCharacterAttributes( aset, false );
+        textPane.replaceSelection( text );
+        
+    }
+    
+    /**
+     * Set the text pane text.
+     * 
+     * @param textPane Text pane to be appended.
+     * @param text Text to be appended.
+     * @param foregroundColor Color of the foreground of the text.
+     * @param backgroundColor Color of the background of the text.
+     */
+    public static void setTextToPane( JTextPane textPane, String text, Color foregroundColor, Color backgroundColor ) {
+        
+        StyleContext sc = StyleContext.getDefaultStyleContext();
+        
+        AttributeSet aset = sc.addAttribute( SimpleAttributeSet.EMPTY, StyleConstants.Foreground, foregroundColor );
+        aset = sc.addAttribute( aset, StyleConstants.Background, backgroundColor );
+        textPane.setCharacterAttributes( aset, false );
+        
+        textPane.setText( text );
         
     }
     

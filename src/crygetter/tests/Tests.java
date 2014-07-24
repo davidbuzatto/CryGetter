@@ -6,9 +6,6 @@
 
 package crygetter.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A simple test class to do experiences.
  * 

@@ -18,6 +18,7 @@ import crygetter.ncbi.prot.GBReference;
 import crygetter.ncbi.prot.GBSeq;
 import crygetter.ncbi.prot.GBSet;
 import crygetter.utils.Utils;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
@@ -66,6 +67,15 @@ public class MainWindow extends javax.swing.JFrame {
     
     private CryToxin selectedCt;
     private GBSeq selectedSeq;
+    
+    /*private Color cD1 = Color.CYAN;
+    private Color cD2 = Color.YELLOW;
+    private Color cD3 = Color.MAGENTA;*/
+    
+    // n-terminus -> blue
+    private Color cD1 = new Color( 172, 204, 234 );
+    private Color cD2 = new Color( 175, 234, 170 );
+    private Color cD3 = new Color( 247, 195, 159 );
             
     /**
      * Creates new form JanelaPrincipal
@@ -171,11 +181,14 @@ public class MainWindow extends javax.swing.JFrame {
         abasSequenciasNCBI = new javax.swing.JTabbedPane();
         painelSequenciaCompleta = new javax.swing.JPanel();
         spSeqComp = new javax.swing.JScrollPane();
-        areaSeqComp = new javax.swing.JTextArea();
+        areaSeqComp = new javax.swing.JTextPane();
         lblIntSeqComp = new javax.swing.JLabel();
         lblNomeSeqComp = new javax.swing.JLabel();
         fieldIntSeqComp = new javax.swing.JTextField();
         fieldNomeSeqComp = new javax.swing.JTextField();
+        checkD1 = new javax.swing.JCheckBox();
+        checkD2 = new javax.swing.JCheckBox();
+        checkD3 = new javax.swing.JCheckBox();
         painelD1 = new javax.swing.JPanel();
         spD1 = new javax.swing.JScrollPane();
         areaD1 = new javax.swing.JTextArea();
@@ -217,9 +230,11 @@ public class MainWindow extends javax.swing.JFrame {
         fieldQuantExtrBruta = new javax.swing.JTextField();
         fieldQuantExtrProc = new javax.swing.JTextField();
         btnSobreProc = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
+        setResizable(false);
 
         btnExtrairProteinas.setText("Extrair");
         btnExtrairProteinas.addActionListener(new java.awt.event.ActionListener() {
@@ -666,14 +681,33 @@ public class MainWindow extends javax.swing.JFrame {
 
         abasDetalhesNCBI.addTab("Referências", painelReferenciasNCBI);
 
-        areaSeqComp.setColumns(20);
         areaSeqComp.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        areaSeqComp.setRows(5);
         spSeqComp.setViewportView(areaSeqComp);
 
         lblIntSeqComp.setText("Intervalo:");
 
         lblNomeSeqComp.setText("Nome:");
+
+        checkD1.setText("Domínio 1");
+        checkD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkD1ActionPerformed(evt);
+            }
+        });
+
+        checkD2.setText("Domínio 2");
+        checkD2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkD2ActionPerformed(evt);
+            }
+        });
+
+        checkD3.setText("Domínio 3");
+        checkD3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkD3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelSequenciaCompletaLayout = new javax.swing.GroupLayout(painelSequenciaCompleta);
         painelSequenciaCompleta.setLayout(painelSequenciaCompletaLayout);
@@ -684,29 +718,38 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(spSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblIntSeqComp)
-                    .addComponent(lblNomeSeqComp))
+                    .addComponent(lblNomeSeqComp)
+                    .addComponent(lblIntSeqComp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldIntSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(fieldNomeSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkD1)
+                    .addComponent(checkD2)
+                    .addComponent(checkD3))
+                .addGap(51, 51, 51))
         );
         painelSequenciaCompletaLayout.setVerticalGroup(
             painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSequenciaCompletaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spSeqComp, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addGroup(painelSequenciaCompletaLayout.createSequentialGroup()
                         .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldIntSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIntSeqComp))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(8, 8, 8)
                         .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNomeSeqComp)
                             .addComponent(fieldNomeSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(checkD1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkD2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkD3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(spSeqComp, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1038,32 +1081,40 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(btnSobreProc)))
         );
 
+        jButton1.setText("Alinhamentos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExtrairProteinas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCarregarProteinas))
-                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCarregarProteinas)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnExtrairProteinas)
-                    .addComponent(btnCarregarProteinas)
-                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExtrairProteinas)
+                            .addComponent(btnCarregarProteinas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1187,6 +1238,10 @@ public class MainWindow extends javax.swing.JFrame {
         if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
             
             try {
+                
+                selectedCt = null;
+                selectedSeq = null;
+                updateDetails();
                 
                 // processing
                 List<File> unzippedFiles = Utils.unzip( jfc.getSelectedFile() );
@@ -1357,35 +1412,43 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void listaProteinasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaProteinasValueChanged
 
-        CryToxin selectedNow = (CryToxin) listaProteinas.getSelectedValue();
-        
-        if ( !selectedNow.equals( evt ) ) {
-            selectedCt = (CryToxin) listaProteinas.getSelectedValue();
-            updateDetails();
+        if ( listaProteinas != null ) {
+            
+            CryToxin selectedNow = (CryToxin) listaProteinas.getSelectedValue();
+
+            if ( selectedNow != null && !selectedNow.equals( evt ) ) {
+                selectedCt = (CryToxin) listaProteinas.getSelectedValue();
+                updateDetails();
+            }
+            
         }
         
     }//GEN-LAST:event_listaProteinasValueChanged
 
     private void listaRefValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaRefValueChanged
         
-        GBReference ref = (GBReference) listaRef.getSelectedValue();
-        
-        if ( ref != null ) {
+        if ( listaRef != null ) {
             
-            StringBuilder sbAut = new StringBuilder();
-        
-            if ( ref.getGBReferenceAuthors() != null ) {
-                for ( GBAuthor a : ref.getGBReferenceAuthors().getGBAuthor() ) {
-                    sbAut.append( a.getvalue() ).append( "; " );
+            GBReference ref = (GBReference) listaRef.getSelectedValue();
+
+            if ( ref != null ) {
+
+                StringBuilder sbAut = new StringBuilder();
+
+                if ( ref.getGBReferenceAuthors() != null ) {
+                    for ( GBAuthor a : ref.getGBReferenceAuthors().getGBAuthor() ) {
+                        sbAut.append( a.getvalue() ).append( "; " );
+                    }
                 }
-            }
-            
-            fieldAutRef.setText( sbAut.toString() );
-            fieldTitRef.setText( ref.getGBReferenceTitle() );
-            fieldJournalRef.setText( ref.getGBReferenceJournal() );
-            
-            if ( ref.getGBReferencePubmed() != null ) {
-                linkURLPubmedRef.setText( ref.getGBReferencePubmed() );
+
+                fieldAutRef.setText( sbAut.toString() );
+                fieldTitRef.setText( ref.getGBReferenceTitle() );
+                fieldJournalRef.setText( ref.getGBReferenceJournal() );
+
+                if ( ref.getGBReferencePubmed() != null ) {
+                    linkURLPubmedRef.setText( ref.getGBReferencePubmed() );
+                }
+
             }
             
         }
@@ -1439,6 +1502,140 @@ public class MainWindow extends javax.swing.JFrame {
         openDomainXRefLink( linkXrefD3 );
     }//GEN-LAST:event_linkXrefD3MouseClicked
 
+    private void checkD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkD1ActionPerformed
+        fillCompleteSequenceTextPane();
+    }//GEN-LAST:event_checkD1ActionPerformed
+
+    private void checkD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkD2ActionPerformed
+        fillCompleteSequenceTextPane();
+    }//GEN-LAST:event_checkD2ActionPerformed
+
+    private void checkD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkD3ActionPerformed
+        fillCompleteSequenceTextPane();
+    }//GEN-LAST:event_checkD3ActionPerformed
+
+    private void fillCompleteSequenceTextPane() {
+        
+        if ( selectedSeq.getGBSeqSequence() != null ) {
+            
+            areaSeqComp.setText( "" );
+            Utils.appendToPane( areaSeqComp, "", Color.BLACK, Color.WHITE );
+            
+            String sequence = selectedCt.proteinSequence;
+            
+            CryToxinDomain d1 = selectedCt.getDomain( 1 );
+            CryToxinDomain d2 = selectedCt.getDomain( 2 );
+            CryToxinDomain d3 = selectedCt.getDomain( 3 );
+            
+            SequenceInterval prev = new SequenceInterval();
+            prev.start = 1;
+            prev.end = d1.interval.start - 1;
+            
+            SequenceInterval d12 = new SequenceInterval();
+            d12.start = d1.interval.end + 1;
+            d12.end = d2.interval.start - 1;
+            
+            SequenceInterval d23 = new SequenceInterval();
+            d23.start = d2.interval.end + 1;
+            d23.end = d3.interval.start - 1;
+            
+            SequenceInterval end = new SequenceInterval();
+            end.start = d3.interval.end + 1;
+            end.end = sequence.length();
+            
+            String content = "";
+            int jump = 0;
+            int lastNewLineIndex = 0;
+            int lastLineLength = 0;
+            String spaceInsert = "";
+            String lineInsert = "";
+            
+            Utils.appendToPane( areaSeqComp, Utils.formatProtein( sequence.substring( prev.start - 1, prev.end ) ), Color.BLACK, Color.WHITE );
+            
+            
+            if ( d1.interval.start <= d1.interval.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                if ( checkD1.isSelected() ) {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, cD1 );
+                } else {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                }
+            }
+            
+            
+            if ( d12.start <= d12.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d12.start - 1, d12.end ), jump ), Color.BLACK, Color.WHITE );
+            }
+            
+            if ( d2.interval.start <= d2.interval.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                if ( checkD2.isSelected() ) {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, cD2 );
+                } else {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                }
+            }
+            
+            if ( d23.start <= d23.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d23.start - 1, d23.end ), jump ), Color.BLACK, Color.WHITE );
+            }
+            
+            if ( d3.interval.start <= d3.interval.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();                
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                if ( checkD3.isSelected() ) {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, cD3 );
+                } else {
+                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                }
+            }
+            
+            if ( end.start <= end.end ) {
+                content = areaSeqComp.getText();
+                jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
+                lastNewLineIndex = content.lastIndexOf( '\n' );
+                lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
+                spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
+                lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
+
+                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( end.start - 1, end.end ), jump ), Color.BLACK, Color.WHITE );
+            }
+            
+        }
+        
+    }
+    
     private void openDomainXRefLink( JLabel xrefLink ) {
         
         String text = xrefLink.getText();
@@ -1455,8 +1652,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
         }
-        
-        //
         
     }
     
@@ -1537,6 +1732,10 @@ public class MainWindow extends javax.swing.JFrame {
             fieldJournalRef.setText( "" );
             linkURLPubmedRef.setText( " " );
             
+            /*checkD1.setSelected( false );
+            checkD2.setSelected( false );
+            checkD3.setSelected( false );*/
+            
             fillSequenceData();
             
         } else {
@@ -1575,13 +1774,28 @@ public class MainWindow extends javax.swing.JFrame {
             
             
             areaSeqComp.setText( "" );
+            Utils.appendToPane( areaSeqComp, "", Color.BLACK, Color.WHITE );
             fieldIntSeqComp.setText( "" );
+            fieldNomeSeqComp.setText( "" );
             areaD1.setText( "" );
             fieldIntD1.setText( "" );
+            fieldNomeD1.setText( "" );
+            fieldComD1.setText( "" );
+            linkXrefD1.setText( "" );
             areaD2.setText( "" );
             fieldIntD2.setText( "" );
+            fieldNomeD2.setText( "" );
+            fieldComD2.setText( "" );
+            linkXrefD2.setText( "" );
             areaD3.setText( "" );
             fieldIntD3.setText( "" );
+            fieldNomeD3.setText( "" );
+            fieldComD3.setText( "" );
+            linkXrefD3.setText( "" );
+            
+            checkD1.setSelected( false );
+            checkD2.setSelected( false );
+            checkD3.setSelected( false );
             
         }
         
@@ -1593,7 +1807,8 @@ public class MainWindow extends javax.swing.JFrame {
             
             String sequence = selectedCt.proteinSequence;
             
-            areaSeqComp.setText( Utils.formatProtein( sequence ) );
+            //areaSeqComp.setText( Utils.formatProtein( sequence ) );
+            Utils.setTextToPane( areaSeqComp, Utils.formatProtein( sequence ), Color.BLACK, Color.WHITE );
             fieldIntSeqComp.setText( selectedCt.proteinSequenceInterval );
             fieldNomeSeqComp.setText( selectedCt.proteinSequenceName );
             
@@ -1614,6 +1829,10 @@ public class MainWindow extends javax.swing.JFrame {
             fieldNomeD3.setText( selectedCt.getDomain( 3 ).name );
             fieldComD3.setText( selectedCt.getDomain( 3 ).note );
             linkXrefD3.setText( selectedCt.getDomain( 3 ).xref );
+            
+            if ( checkD1.isSelected() || checkD2.isSelected() || checkD3.isSelected() ) {
+                fillCompleteSequenceTextPane();
+            }
             
         }
         
@@ -1663,10 +1882,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea areaD1;
     private javax.swing.JTextArea areaD2;
     private javax.swing.JTextArea areaD3;
-    private javax.swing.JTextArea areaSeqComp;
+    private javax.swing.JTextPane areaSeqComp;
     private javax.swing.JButton btnCarregarProteinas;
     private javax.swing.JButton btnExtrairProteinas;
     private javax.swing.JButton btnSobreProc;
+    private javax.swing.JCheckBox checkD1;
+    private javax.swing.JCheckBox checkD2;
+    private javax.swing.JCheckBox checkD3;
     private javax.swing.JTextField fieldAccNo;
     private javax.swing.JTextField fieldAcessPri;
     private javax.swing.JTextField fieldAno;
@@ -1705,6 +1927,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField fieldTitRef;
     private javax.swing.JTextField fieldTopo;
     private javax.swing.JTextField fieldVersaoAcess;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelDataExtr;
     private javax.swing.JLabel labelQuantExtrBruta;
     private javax.swing.JLabel labelQuantExtrProc;
