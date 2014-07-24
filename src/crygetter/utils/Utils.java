@@ -181,7 +181,7 @@ public class Utils {
         int count = 0;
         Date d = new Date();
         
-        String filePath = String.format( "results/sequenceData-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
+        String filePath = String.format( "temp/sequenceData-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
                 d, d, d, d, d, d, howMany <= ctList.size() && howMany > 0 ? howMany : ctList.size() );
             
         StringBuilder sbIds = new StringBuilder();
@@ -506,6 +506,32 @@ public class Utils {
         textPane.setCharacterAttributes( aset, false );
         
         textPane.setText( text );
+        
+    }
+    
+    /**
+     * Formats raw fasta data into the format with columns.
+     * 
+     * @param header Text of the header (after >)
+     * @param rawData Data to be formated.
+     * @param columns Number of columns
+     */
+    public static String formatAsFasta( String header, String rawData, int columns) {
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append( ">" ).append( header ).append( "\n" );
+        
+        int count = 1;
+        
+        for ( char c : rawData.toCharArray() ) {
+            sb.append( c );
+            if ( count % columns == 0 ) {
+                sb.append( "\n" );
+            }
+            count++;
+        }
+        
+        return sb.toString();
         
     }
     

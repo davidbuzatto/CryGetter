@@ -17,10 +17,15 @@ import crygetter.ncbi.prot.GBQualifier;
 import crygetter.ncbi.prot.GBReference;
 import crygetter.ncbi.prot.GBSeq;
 import crygetter.ncbi.prot.GBSet;
+import crygetter.utils.StreamGobbler;
 import crygetter.utils.Utils;
+import iubio.readseq.BioseqFormats;
+import iubio.readseq.BioseqWriterIface;
+import iubio.readseq.Readseq;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -38,6 +43,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.simpleframework.xml.Serializer;
@@ -103,6 +109,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnExtrairProteinas = new javax.swing.JButton();
         btnCarregarProteinas = new javax.swing.JButton();
+        btnAlinhamento = new javax.swing.JButton();
         painelProteinas = new javax.swing.JPanel();
         scrollProteinas = new javax.swing.JScrollPane();
         listaProteinas = new javax.swing.JList();
@@ -230,7 +237,6 @@ public class MainWindow extends javax.swing.JFrame {
         fieldQuantExtrBruta = new javax.swing.JTextField();
         fieldQuantExtrProc = new javax.swing.JTextField();
         btnSobreProc = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
@@ -247,6 +253,13 @@ public class MainWindow extends javax.swing.JFrame {
         btnCarregarProteinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCarregarProteinasActionPerformed(evt);
+            }
+        });
+
+        btnAlinhamento.setText("Alinhamentos");
+        btnAlinhamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlinhamentoActionPerformed(evt);
             }
         });
 
@@ -1081,8 +1094,6 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(btnSobreProc)))
         );
 
-        jButton1.setText("Alinhamentos");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1096,7 +1107,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(btnCarregarProteinas)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1114,7 +1125,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(btnExtrairProteinas)
                             .addComponent(btnCarregarProteinas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnAlinhamento)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1135,8 +1146,8 @@ public class MainWindow extends javax.swing.JFrame {
             // getting data from BtNomenclature
             ctList = Utils.getCryToxinList();
             
-            String cryDataFilePath = "results/cryData";
-            String sequenceDataFilePath = "results/sequenceData";
+            String cryDataFilePath = "temp/cryData";
+            String sequenceDataFilePath = "temp/sequenceData";
                         
             String dataFileSufix = String.format( "-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
                     d, d, d, d, d, d, ctList.size() );
@@ -1514,6 +1525,60 @@ public class MainWindow extends javax.swing.JFrame {
         fillCompleteSequenceTextPane();
     }//GEN-LAST:event_checkD3ActionPerformed
 
+    private void btnAlinhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlinhamentoActionPerformed
+        
+        try {
+            
+            FileWriter fwCry = new FileWriter( "temp/cry.fasta" );
+            
+            for ( int i = 0; i < 40; i++ ) {
+                CryToxin ct = (CryToxin) proteinListModel.get( i );
+                fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
+                fwCry.write( "\n" );
+            }
+            
+            fwCry.close();
+            
+            Runtime rt = Runtime.getRuntime();
+            Process proc = rt.exec( "clustalo/clustalo.exe -i temp/cry.fasta --infmt=fasta --outfile=temp/foo.aln --outfmt=clustal --force -v --resno" );
+            
+            StreamGobbler errorGobbler = new StreamGobbler( proc.getErrorStream(), "ERROR" );
+            StreamGobbler outputGobbler = new StreamGobbler( proc.getInputStream(), "OUTPUT" );
+
+            // start
+            errorGobbler.start();
+            outputGobbler.start();
+
+            // any error???
+            int exitVal = proc.waitFor();
+            System.out.println( "ExitValue: " + exitVal );
+            
+            int outid = BioseqFormats.formatFromName( "fasta" );
+            BioseqWriterIface seqwriter = BioseqFormats.newWriter( outid );
+            
+            FileWriter fwFasta = new FileWriter( "temp/foo.fasta" );
+            seqwriter.setOutput( fwFasta );
+            //seqwriter.setOutput( System.out );
+            seqwriter.writeHeader();
+
+            FileReader fr = new FileReader( "temp/foo.aln" );
+            Readseq rd = new Readseq();
+            String seqname = rd.setInputObject( fr );
+            System.out.println( "Reading from: " + seqname );
+
+            if ( rd.isKnownFormat() && rd.readInit() ) {
+                rd.readTo( seqwriter );
+            }
+
+            seqwriter.writeTrailer();
+            fwFasta.close();
+            
+        } catch ( IOException | InterruptedException exc ) {
+            Utils.showExceptionMessage( areaD1, exc );
+        }
+        
+    }//GEN-LAST:event_btnAlinhamentoActionPerformed
+
     private void fillCompleteSequenceTextPane() {
         
         if ( selectedSeq.getGBSeqSequence() != null ) {
@@ -1883,6 +1948,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea areaD2;
     private javax.swing.JTextArea areaD3;
     private javax.swing.JTextPane areaSeqComp;
+    private javax.swing.JButton btnAlinhamento;
     private javax.swing.JButton btnCarregarProteinas;
     private javax.swing.JButton btnExtrairProteinas;
     private javax.swing.JButton btnSobreProc;
@@ -1927,7 +1993,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField fieldTitRef;
     private javax.swing.JTextField fieldTopo;
     private javax.swing.JTextField fieldVersaoAcess;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelDataExtr;
     private javax.swing.JLabel labelQuantExtrBruta;
     private javax.swing.JLabel labelQuantExtrProc;
