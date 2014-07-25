@@ -8,6 +8,9 @@ package crygetter.utils;
 
 import crygetter.model.CryToxin;
 import crygetter.ncbi.prot.GBSet;
+import iubio.readseq.BioseqFormats;
+import iubio.readseq.BioseqWriterIface;
+import iubio.readseq.Readseq;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.BufferedInputStream;
@@ -532,6 +535,80 @@ public class Utils {
         }
         
         return sb.toString();
+        
+    }
+    
+    /**
+     * Converts a file written in clustal format to another format
+     * 
+     * @param readFromFile File with data formatted in clustal format
+     * @param outFormatName Format to convert to
+     * @param fileName File that will be generated
+     * @throws IOException 
+     */
+    public static void convertBiologicalDataFile( String readFromFile, String outFormatName, String fileName ) 
+            throws IOException {
+        
+        int outid = BioseqFormats.formatFromName( outFormatName );
+        BioseqWriterIface seqWriter = BioseqFormats.newWriter( outid );
+
+        try ( FileWriter fw = new FileWriter( "temp/" + fileName ) ) {
+            
+            seqWriter.setOutput( fw );
+            seqWriter.writeHeader();
+            
+            try ( FileReader fr = new FileReader( "temp/" + readFromFile ) ) {
+                
+                Readseq rd = new Readseq();
+                rd.setInputObject( fr );
+                
+                if ( rd.isKnownFormat() && rd.readInit() ) {
+                    rd.readTo( seqWriter );
+                }
+                
+                seqWriter.writeTrailer();
+                
+            }
+            
+        }
+        
+    }
+    
+    public static void runClustalW( String readFrom, String fileNameBase ) 
+            throws IOException, InterruptedException {
+            
+        Runtime rt = Runtime.getRuntime();
+        Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileNameBase + ".aln" );
+
+        StreamGobbler errorGobbler = new StreamGobbler( proc.getErrorStream(), "ERROR" );
+        StreamGobbler outputGobbler = new StreamGobbler( proc.getInputStream(), "OUTPUT" );
+
+        // start
+        errorGobbler.start();
+        outputGobbler.start();
+
+        // any error???
+        int exitVal = proc.waitFor();
+        System.out.println( "ExitValue: " + exitVal );
+        
+    }
+    
+    public static void runClustalO( String readFrom, String fileNameBase ) 
+            throws IOException, InterruptedException {
+            
+        Runtime rt = Runtime.getRuntime();
+        Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileNameBase + ".aln --outfmt=clustal --force -v" );
+
+        StreamGobbler errorGobbler = new StreamGobbler( proc.getErrorStream(), "ERROR" );
+        StreamGobbler outputGobbler = new StreamGobbler( proc.getInputStream(), "OUTPUT" );
+
+        // start
+        errorGobbler.start();
+        outputGobbler.start();
+
+        // any error???
+        int exitVal = proc.waitFor();
+        System.out.println( "ExitValue: " + exitVal );
         
     }
     

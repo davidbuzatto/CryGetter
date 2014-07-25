@@ -1528,50 +1528,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void btnAlinhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlinhamentoActionPerformed
         
         try {
+                 
+            String fileNameBase = "saida";
             
-            FileWriter fwCry = new FileWriter( "temp/cry.fasta" );
-            
-            for ( int i = 0; i < 40; i++ ) {
-                CryToxin ct = (CryToxin) proteinListModel.get( i );
-                fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
-                fwCry.write( "\n" );
+            try ( FileWriter fwCry = new FileWriter( "temp/cry.fasta" ) ) {
+                
+                for ( int i = 0; i < 40; i++ ) {
+                    CryToxin ct = (CryToxin) proteinListModel.get( i );
+                    fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
+                    fwCry.write( "\n" );
+                }
+                
             }
             
-            fwCry.close();
+            Utils.runClustalO( "cry.fasta", "saidaClustalO" );
+            Utils.runClustalW( "cry.fasta", "saidaClustalW" );
             
-            Runtime rt = Runtime.getRuntime();
-            Process proc = rt.exec( "clustalo/clustalo.exe -i temp/cry.fasta --infmt=fasta --outfile=temp/foo.aln --outfmt=clustal --force -v --resno" );
-            
-            StreamGobbler errorGobbler = new StreamGobbler( proc.getErrorStream(), "ERROR" );
-            StreamGobbler outputGobbler = new StreamGobbler( proc.getInputStream(), "OUTPUT" );
-
-            // start
-            errorGobbler.start();
-            outputGobbler.start();
-
-            // any error???
-            int exitVal = proc.waitFor();
-            System.out.println( "ExitValue: " + exitVal );
-            
-            int outid = BioseqFormats.formatFromName( "fasta" );
-            BioseqWriterIface seqwriter = BioseqFormats.newWriter( outid );
-            
-            FileWriter fwFasta = new FileWriter( "temp/foo.fasta" );
-            seqwriter.setOutput( fwFasta );
-            //seqwriter.setOutput( System.out );
-            seqwriter.writeHeader();
-
-            FileReader fr = new FileReader( "temp/foo.aln" );
-            Readseq rd = new Readseq();
-            String seqname = rd.setInputObject( fr );
-            System.out.println( "Reading from: " + seqname );
-
-            if ( rd.isKnownFormat() && rd.readInit() ) {
-                rd.readTo( seqwriter );
-            }
-
-            seqwriter.writeTrailer();
-            fwFasta.close();
+            /*Utils.convertBiologicalDataFile( "saidaClustalO.aln", "fasta", "saidaClustalO.fasta" );
+            Utils.convertBiologicalDataFile( "saidaClustalW.aln", "fasta", "saidaClustalW.fasta" );*/
             
         } catch ( IOException | InterruptedException exc ) {
             Utils.showExceptionMessage( areaD1, exc );
