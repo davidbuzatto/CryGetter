@@ -17,15 +17,10 @@ import crygetter.ncbi.prot.GBQualifier;
 import crygetter.ncbi.prot.GBReference;
 import crygetter.ncbi.prot.GBSeq;
 import crygetter.ncbi.prot.GBSet;
-import crygetter.utils.StreamGobbler;
 import crygetter.utils.Utils;
-import iubio.readseq.BioseqFormats;
-import iubio.readseq.BioseqWriterIface;
-import iubio.readseq.Readseq;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -43,7 +38,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.simpleframework.xml.Serializer;
@@ -94,6 +88,7 @@ public class MainWindow extends javax.swing.JFrame {
         referencesListModel = new DefaultListModel<>();
         
         listaProteinas.setModel( proteinListModel );
+        listaProteinas.setCellRenderer( new CryToxinListCellRenderer() );
         listaRef.setModel( referencesListModel );
         
     }
@@ -112,7 +107,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnAlinhamento = new javax.swing.JButton();
         painelProteinas = new javax.swing.JPanel();
         scrollProteinas = new javax.swing.JScrollPane();
-        listaProteinas = new javax.swing.JList();
+        listaProteinas = new javax.swing.JList<CryToxin>();
         painelDetalhes = new javax.swing.JPanel();
         abasDetalhes = new javax.swing.JTabbedPane();
         painelDadosBt = new javax.swing.JPanel();
@@ -1534,7 +1529,7 @@ public class MainWindow extends javax.swing.JFrame {
             try ( FileWriter fwCry = new FileWriter( "temp/cry.fasta" ) ) {
                 
                 for ( int i = 0; i < 40; i++ ) {
-                    CryToxin ct = (CryToxin) proteinListModel.get( i );
+                    CryToxin ct = proteinListModel.get( i );
                     fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
                     fwCry.write( "\n" );
                 }
@@ -2017,7 +2012,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel linkXrefD1;
     private javax.swing.JLabel linkXrefD2;
     private javax.swing.JLabel linkXrefD3;
-    private javax.swing.JList listaProteinas;
+    private javax.swing.JList<CryToxin> listaProteinas;
     private javax.swing.JList listaRef;
     private javax.swing.JPanel painelD1;
     private javax.swing.JPanel painelD2;

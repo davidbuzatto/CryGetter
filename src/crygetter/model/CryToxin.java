@@ -6,6 +6,7 @@
 
 package crygetter.model;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,10 +51,12 @@ public class CryToxin {
     @Element( required = false )
     public String ncbiURL2;
     
-    transient public String proteinSequence;
-    transient public String proteinSequenceInterval;
-    transient public String proteinSequenceName;
-    transient public List<CryToxinDomain> domains = new ArrayList<>();;
+    public transient String proteinSequence;
+    public transient String proteinSequenceInterval;
+    public transient String proteinSequenceName;
+    public transient List<CryToxinDomain> domains = new ArrayList<>();
+    
+    public transient Color classColor = Color.WHITE;
     
     public CryToxinDomain getDomain( int domainNumber ) {
         return domains.get( domainNumber - 1 );
