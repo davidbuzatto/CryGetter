@@ -29,9 +29,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
@@ -76,6 +78,9 @@ public class MainWindow extends javax.swing.JFrame {
     private Color cD1 = new Color( 172, 204, 234 );
     private Color cD2 = new Color( 175, 234, 170 );
     private Color cD3 = new Color( 247, 195, 159 );
+    
+    // protein list
+    private Color baseProteinColor = new Color( 172, 187, 234 );
             
     /**
      * Creates new form JanelaPrincipal
@@ -90,6 +95,14 @@ public class MainWindow extends javax.swing.JFrame {
         listaProteinas.setModel( proteinListModel );
         listaProteinas.setCellRenderer( new CryToxinListCellRenderer() );
         listaRef.setModel( referencesListModel );
+        
+        checkD1.setBackground( cD1 );
+        checkD1.setOpaque( true );
+        checkD2.setBackground(cD2 );
+        checkD2.setOpaque( true );
+        checkD3.setBackground(cD3 );
+        checkD3.setOpaque( true );
+        
         
     }
 
@@ -251,7 +264,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        btnAlinhamento.setText("Alinhamentos");
+        btnAlinhamento.setText("Alinhamento");
         btnAlinhamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlinhamentoActionPerformed(evt);
@@ -696,6 +709,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         lblNomeSeqComp.setText("Nome:");
 
+        checkD1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         checkD1.setText("Domínio 1");
         checkD1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -703,6 +717,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        checkD2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         checkD2.setText("Domínio 2");
         checkD2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -710,6 +725,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        checkD3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         checkD3.setText("Domínio 3");
         checkD3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1107,7 +1123,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1128,7 +1144,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1146, 624));
+        setSize(new java.awt.Dimension(1120, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1388,6 +1404,41 @@ public class MainWindow extends javax.swing.JFrame {
                     gbSeqList.add( e.getValue() );
                 }
                 
+                // colors
+                // getting all classes
+                Set<String> cryPrefixSet = new LinkedHashSet<>();
+                
+                for ( CryToxin ct : ctList ) {
+                    
+                    Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
+                    Matcher mm = pp.matcher( ct.name );
+                    mm.matches();
+                    
+                    cryPrefixSet.add( "Cry" + mm.group( 1 ) );
+                    
+                }
+                
+                float jump = (float) ( 255.0 / 255.0 / cryPrefixSet.size() );
+                float acum = 0;
+                
+                Map<String, Color> colorMap = new HashMap<>();
+                float[] baseHSB = Color.RGBtoHSB( baseProteinColor.getRed(), baseProteinColor.getGreen(), baseProteinColor.getBlue(), null );
+                
+                for ( String prefix : cryPrefixSet ) {
+                    colorMap.put( prefix, new Color( Color.HSBtoRGB( baseHSB[0] - acum, baseHSB[1], baseHSB[2] ) ) );
+                    acum += jump;
+                }
+                
+                for ( CryToxin ct : ctList ) {
+                    
+                    Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
+                    Matcher mm = pp.matcher( ct.name );
+                    mm.matches();
+                    
+                    ct.classColor = colorMap.get( "Cry" + mm.group( 1 ) );
+                    
+                }
+                
                 updateGUI();
                 updateProteinList();
                 
@@ -1522,35 +1573,23 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnAlinhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlinhamentoActionPerformed
         
-        try {
-                 
-            String fileNameBase = "saida";
+        if ( ctList != null ) {
             
-            try ( FileWriter fwCry = new FileWriter( "temp/cry.fasta" ) ) {
-                
-                for ( int i = 0; i < 40; i++ ) {
-                    CryToxin ct = proteinListModel.get( i );
-                    fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
-                    fwCry.write( "\n" );
-                }
-                
-            }
+            AlignDialog ad = new AlignDialog( this, true, ctList );
+            ad.setVisible( true );
             
-            Utils.runClustalO( "cry.fasta", "saidaClustalO" );
-            Utils.runClustalW( "cry.fasta", "saidaClustalW" );
+        } else {
             
-            /*Utils.convertBiologicalDataFile( "saidaClustalO.aln", "fasta", "saidaClustalO.fasta" );
-            Utils.convertBiologicalDataFile( "saidaClustalW.aln", "fasta", "saidaClustalW.fasta" );*/
+            JOptionPane.showMessageDialog( this, "Carregue primeiro um arquivo de extração!", 
+                    "Aviso", JOptionPane.WARNING_MESSAGE );
             
-        } catch ( IOException | InterruptedException exc ) {
-            Utils.showExceptionMessage( areaD1, exc );
         }
         
     }//GEN-LAST:event_btnAlinhamentoActionPerformed
 
     private void fillCompleteSequenceTextPane() {
         
-        if ( selectedSeq.getGBSeqSequence() != null ) {
+        if ( selectedSeq != null && selectedSeq.getGBSeqSequence() != null ) {
             
             areaSeqComp.setText( "" );
             Utils.appendToPane( areaSeqComp, "", Color.BLACK, Color.WHITE );

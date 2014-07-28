@@ -38,6 +38,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.SwingUtilities;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -65,6 +66,10 @@ import org.xml.sax.XMLReader;
 public class Utils {
     
     private static final int BUFFER = 2048;
+    private static final Color outOK = new Color( 22, 142, 170 );
+    private static final Color outError = Color.RED;
+    private static final Color codeOK = new Color( 32, 160, 47 );
+    private static final Color codeError = Color.RED;
     
     /**
      * Gets data using HTTP POST method.
@@ -574,6 +579,14 @@ public class Utils {
         
     }
     
+    /**
+     * Runs ClustalW from a file and write in another the results.
+     * 
+     * @param readFrom File to read.
+     * @param fileNameBase File to write.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
     public static void runClustalW( String readFrom, String fileNameBase ) 
             throws IOException, InterruptedException {
             
@@ -589,10 +602,18 @@ public class Utils {
 
         // any error???
         int exitVal = proc.waitFor();
-        System.out.println( "ExitValue: " + exitVal );
+        System.out.println( "Exit Value: " + exitVal );
         
     }
     
+    /**
+     * Runs ClustalO from a file and write in another the results.
+     * 
+     * @param readFrom File to read.
+     * @param fileNameBase File to write.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
     public static void runClustalO( String readFrom, String fileNameBase ) 
             throws IOException, InterruptedException {
             
@@ -608,7 +629,115 @@ public class Utils {
 
         // any error???
         int exitVal = proc.waitFor();
-        System.out.println( "ExitValue: " + exitVal );
+        System.out.println( "Exit Value: " + exitVal );
+        
+    }
+    
+    /**
+     * Runs ClustalW from a file and write in another the results, loggin the output
+     * in a JTextArea.
+     * 
+     * @param readFrom File to read.
+     * @param fileName File to write.
+     * * @param textArea JTextPane to log the output.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public static void runClustalWUI( final String readFrom, final String fileName, final JTextPane textArea ) 
+            throws IOException, InterruptedException {
+        
+        new Thread( new Runnable() {
+
+            @Override
+            public void run() {
+                
+                try {
+                    
+                    Runtime rt = Runtime.getRuntime();
+                    Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileName );
+
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "ClustalW - ERRO", textArea, outError, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "ClustalW - SAÍDA", textArea, outOK, Color.WHITE );
+
+                    // start
+                    errorGobbler.start();
+                    outputGobbler.start();
+
+                    // any error???
+                    int exitVal = proc.waitFor();
+                    if ( exitVal == 0 ) {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                    } else {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                    }
+                    
+                    
+                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                            new File( "temp/" + fileName ),
+                            new File( "temp/" + readFrom ),
+                            new File( "temp/" + readFrom.replace( ".fasta", ".dnd" ) )));
+                
+                } catch ( IOException | InterruptedException exc ) {
+                    exc.printStackTrace();
+                }
+            }
+            
+        }).start();
+        
+    }
+    
+    /**
+     * Runs Clustal Omega from a file and write in another the results, loggin the output
+     * in a JTextArea.
+     * 
+     * @param readFrom File to read.
+     * @param fileName File to write.
+     * @param textArea JTextPane to log the output.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public static void runClustalOUI( final String readFrom, final String fileName, final JTextPane textArea ) 
+            throws IOException, InterruptedException {
+        
+        new Thread( new Runnable() {
+
+            @Override
+            public void run() {
+                
+                try {
+                    
+                    Runtime rt = Runtime.getRuntime();
+                    Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileName + " --outfmt=clustal --force -v" );
+
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "Clustal Ômega - ERRO", textArea, outError, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "Clustal Ômega - SAÍDA", textArea, outOK, Color.WHITE );
+
+                    // start
+                    errorGobbler.start();
+                    outputGobbler.start();
+
+                    // any error???
+                    int exitVal = proc.waitFor();
+                    if ( exitVal == 0 ) {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                    } else {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                    }
+                    
+                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                            new File( "temp/" + fileName ),
+                            new File( "temp/" + readFrom )));
+                
+                } catch ( IOException | InterruptedException exc ) {
+                    exc.printStackTrace();
+                }
+            }
+            
+        }).start();
         
     }
     

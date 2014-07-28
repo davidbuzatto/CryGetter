@@ -56,7 +56,9 @@ public class CryToxin {
     public transient String proteinSequenceName;
     public transient List<CryToxinDomain> domains = new ArrayList<>();
     
+    //public transient Color classColor = new Color( 172, 204, 234 );
     public transient Color classColor = Color.WHITE;
+    public transient String proteinClass = "";
     
     public CryToxinDomain getDomain( int domainNumber ) {
         return domains.get( domainNumber - 1 );
