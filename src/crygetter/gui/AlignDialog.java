@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,7 +32,7 @@ public class AlignDialog extends javax.swing.JDialog {
         initComponents();
         
         proteinTableModel = new CryToxinTableModel(
-                new String[]{ "Proteína", "Classe", "Alinhar" }, 0 );
+                new String[]{ "Proteína", "Ordem(ns)", "Alinhar" }, 0 );
         
         for ( CryToxin ct : ctList ) {
             proteinTableModel.addRow( new Object[]{ ct, ct.proteinClass, false } );
@@ -40,7 +41,6 @@ public class AlignDialog extends javax.swing.JDialog {
         tabelaProteinas.setModel( proteinTableModel );
         tabelaProteinas.getColumnModel().getColumn( 0 ).setCellRenderer( new CryToxinTableCellRender() );
         tabelaProteinas.getColumnModel().getColumn( 1 ).setCellRenderer( new CryToxinTableCellRender() );
-        //jTable1.getColumnModel().getColumn( 2 ).setWidth( 80 );
         
     }
 
@@ -53,25 +53,25 @@ public class AlignDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGrpClustal = new javax.swing.ButtonGroup();
-        btnGrpAlinhamento = new javax.swing.ButtonGroup();
+        btnGrpAlgoritmoAlinhamento = new javax.swing.ButtonGroup();
+        btnGrpTipoAlinhamento = new javax.swing.ButtonGroup();
         painel = new javax.swing.JPanel();
         spProteinas = new javax.swing.JScrollPane();
         tabelaProteinas = new javax.swing.JTable();
         btnSelecionarTodas = new javax.swing.JButton();
         btnLimparSelecao = new javax.swing.JButton();
-        painelSeleções = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        painelSelecoes = new javax.swing.JPanel();
+        btnCOL = new javax.swing.JButton();
+        btnLEP = new javax.swing.JButton();
+        btnDIP = new javax.swing.JButton();
+        btnHEM = new javax.swing.JButton();
+        btnHYM = new javax.swing.JButton();
+        btnISO = new javax.swing.JButton();
+        btnNEU = new javax.swing.JButton();
+        btnORT = new javax.swing.JButton();
+        btnBLA = new javax.swing.JButton();
+        btnTHY = new javax.swing.JButton();
+        btnTRI = new javax.swing.JButton();
         painelAlinhamento = new javax.swing.JPanel();
         radioProtInteira = new javax.swing.JRadioButton();
         radioPorDominio = new javax.swing.JRadioButton();
@@ -79,10 +79,13 @@ public class AlignDialog extends javax.swing.JDialog {
         checkD2 = new javax.swing.JCheckBox();
         checkD3 = new javax.swing.JCheckBox();
         checkFront = new javax.swing.JCheckBox();
+        painelAlgoritmos = new javax.swing.JPanel();
         radioClustalO = new javax.swing.JRadioButton();
         radioClustalW = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
         btnConf = new javax.swing.JButton();
         btnAlinhar = new javax.swing.JButton();
+        lblAguarde = new javax.swing.JLabel();
         painelSaida = new javax.swing.JPanel();
         spSaida = new javax.swing.JScrollPane();
         areaSaida = new javax.swing.JTextPane();
@@ -119,82 +122,82 @@ public class AlignDialog extends javax.swing.JDialog {
             }
         });
 
-        painelSeleções.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleção por Ordem"));
+        painelSelecoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleção por Ordem"));
 
-        jButton1.setText("COL");
+        btnCOL.setText("COL");
 
-        jButton2.setText("LEP");
+        btnLEP.setText("LEP");
 
-        jButton3.setText("DIP");
+        btnDIP.setText("DIP");
 
-        jButton4.setText("HEM");
+        btnHEM.setText("HEM");
 
-        jButton5.setText("HYM");
+        btnHYM.setText("HYM");
 
-        jButton6.setText("ISO");
+        btnISO.setText("ISO");
 
-        jButton7.setText("NEU");
+        btnNEU.setText("NEU");
 
-        jButton8.setText("ORT");
+        btnORT.setText("ORT");
 
-        jButton9.setText("BLA");
+        btnBLA.setText("BLA");
 
-        jButton10.setText("THY");
+        btnTHY.setText("THY");
 
-        jButton11.setText("TRI");
+        btnTRI.setText("TRI");
 
-        javax.swing.GroupLayout painelSeleçõesLayout = new javax.swing.GroupLayout(painelSeleções);
-        painelSeleções.setLayout(painelSeleçõesLayout);
-        painelSeleçõesLayout.setHorizontalGroup(
-            painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSeleçõesLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelSelecoesLayout = new javax.swing.GroupLayout(painelSelecoes);
+        painelSelecoes.setLayout(painelSelecoesLayout);
+        painelSelecoesLayout.setHorizontalGroup(
+            painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSelecoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5)
-                    .addComponent(jButton9))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnCOL)
+                    .addComponent(btnHYM)
+                    .addComponent(btnBLA))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton2)
-                    .addComponent(jButton6)
-                    .addComponent(jButton10))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnLEP)
+                    .addComponent(btnISO)
+                    .addComponent(btnTHY))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7)
-                    .addComponent(jButton11))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnDIP)
+                    .addComponent(btnNEU)
+                    .addComponent(btnTRI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton4)
-                    .addComponent(jButton8))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnHEM)
+                    .addComponent(btnORT))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelSeleçõesLayout.setVerticalGroup(
-            painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSeleçõesLayout.createSequentialGroup()
+        painelSelecoesLayout.setVerticalGroup(
+            painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSelecoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCOL)
+                    .addComponent(btnLEP)
+                    .addComponent(btnDIP)
+                    .addComponent(btnHEM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHYM)
+                    .addComponent(btnISO)
+                    .addComponent(btnNEU)
+                    .addComponent(btnORT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSeleçõesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11))
+                .addGroup(painelSelecoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBLA)
+                    .addComponent(btnTHY)
+                    .addComponent(btnTRI))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         painelAlinhamento.setBorder(javax.swing.BorderFactory.createTitledBorder("O que alinhar?"));
 
-        btnGrpAlinhamento.add(radioProtInteira);
+        btnGrpTipoAlinhamento.add(radioProtInteira);
         radioProtInteira.setSelected(true);
         radioProtInteira.setText("Proteína Completa");
         radioProtInteira.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +206,7 @@ public class AlignDialog extends javax.swing.JDialog {
             }
         });
 
-        btnGrpAlinhamento.add(radioPorDominio);
+        btnGrpTipoAlinhamento.add(radioPorDominio);
         radioPorDominio.setText("Por Domínios");
         radioPorDominio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,14 +264,51 @@ public class AlignDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnGrpClustal.add(radioClustalO);
+        painelAlgoritmos.setBorder(javax.swing.BorderFactory.createTitledBorder("Algoritmos de Alinhamento Múltiplo (MSA)"));
+
+        btnGrpAlgoritmoAlinhamento.add(radioClustalO);
         radioClustalO.setSelected(true);
         radioClustalO.setText("Clustal Ômega");
 
-        btnGrpClustal.add(radioClustalW);
+        btnGrpAlgoritmoAlinhamento.add(radioClustalW);
         radioClustalW.setText("ClustalW");
 
+        btnGrpAlgoritmoAlinhamento.add(jRadioButton1);
+        jRadioButton1.setText("MUSCLE");
+
         btnConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/wrench.png"))); // NOI18N
+        btnConf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAlgoritmosLayout = new javax.swing.GroupLayout(painelAlgoritmos);
+        painelAlgoritmos.setLayout(painelAlgoritmosLayout);
+        painelAlgoritmosLayout.setHorizontalGroup(
+            painelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAlgoritmosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radioClustalO)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioClustalW)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConf)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelAlgoritmosLayout.setVerticalGroup(
+            painelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAlgoritmosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnConf)
+                    .addComponent(radioClustalO)
+                    .addComponent(radioClustalW)
+                    .addComponent(jRadioButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         btnAlinhar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/accept.png"))); // NOI18N
         btnAlinhar.setText("Alinhar");
@@ -277,6 +317,10 @@ public class AlignDialog extends javax.swing.JDialog {
                 btnAlinharActionPerformed(evt);
             }
         });
+
+        lblAguarde.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAguarde.setForeground(new java.awt.Color(0, 102, 255));
+        lblAguarde.setText(" ");
 
         javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
         painel.setLayout(painelLayout);
@@ -291,15 +335,13 @@ public class AlignDialog extends javax.swing.JDialog {
                         .addComponent(btnSelecionarTodas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimparSelecao))
-                    .addComponent(btnAlinhar)
-                    .addComponent(painelSeleções, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(painelLayout.createSequentialGroup()
-                        .addComponent(radioClustalO)
+                        .addComponent(btnAlinhar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioClustalW)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConf))
-                    .addComponent(painelAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblAguarde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelSelecoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelLayout.setVerticalGroup(
@@ -312,21 +354,20 @@ public class AlignDialog extends javax.swing.JDialog {
                             .addComponent(btnSelecionarTodas)
                             .addComponent(btnLimparSelecao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelSeleções, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(painelSelecoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelAlinhamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(radioClustalO)
-                            .addComponent(radioClustalW)
-                            .addComponent(btnConf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlinhar))
-                    .addComponent(spProteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(painelAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAlinhar)
+                            .addComponent(lblAguarde)))
+                    .addComponent(spProteinas))
                 .addContainerGap())
         );
 
-        painelSaida.setBorder(javax.swing.BorderFactory.createTitledBorder("Saída dos Processos de Alinhamento"));
+        painelSaida.setBorder(javax.swing.BorderFactory.createTitledBorder("Saída dos Processos dos Algoritmos de Alinhamento Múltiplo"));
 
         areaSaida.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         spSaida.setViewportView(areaSaida);
@@ -344,7 +385,7 @@ public class AlignDialog extends javax.swing.JDialog {
             painelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSaidaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                .addComponent(spSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -357,7 +398,7 @@ public class AlignDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(painelSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +410,7 @@ public class AlignDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(816, 705));
+        setSize(new java.awt.Dimension(854, 788));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -403,81 +444,83 @@ public class AlignDialog extends javax.swing.JDialog {
             
             areaSaida.setText( "" );
             Utils.appendToPane( areaSaida, "", Color.BLACK, Color.WHITE );
-            
+
             CryToxinTableModel tm = (CryToxinTableModel) tabelaProteinas.getModel();
 
             try ( FileWriter fwCry = new FileWriter( "temp/cry.fasta" ) ) {
 
                 for ( int i = 0; i < tm.getRowCount(); i++ ) {
                     if ( (Boolean) tm.getValueAt( i, 2 ) ) {
-                        
+
                         CryToxin ct = (CryToxin) tm.getValueAt( i, 0 );
-                        
+
                         if ( radioProtInteira.isSelected() ) {
                             fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
                         } else {
-                            
+
                             StringBuilder sb = new StringBuilder();
-                            
+
                             if ( checkFront.isSelected() ) {
-                                
+
                                 if ( checkD1.isSelected() ) {
                                     sb.append( ct.getDomainSequence( 1 ) );
                                 }
-                                
+
                                 if ( checkD2.isSelected() ) {
                                     sb.append( ct.getDomainSequence( 2 ) );
                                 }
-                                
+
                                 if ( checkD3.isSelected() ) {
                                     sb.append( ct.getDomainSequence( 3 ) );
                                 }
-                                
+
                             } else {
-                                
+
                                 int start = -1;
                                 int end = -1;
-                                
+
                                 if ( checkD1.isSelected() ) {
                                     start = ct.getDomain( 1 ).interval.start;
                                     end = ct.getDomain( 1 ).interval.end;
                                 }
-                                
+
                                 if ( checkD2.isSelected() ) {
                                     if ( start == -1 ) {
                                         start = ct.getDomain( 2 ).interval.start;
                                     }
                                     end = ct.getDomain( 2 ).interval.end;
                                 }
-                                
+
                                 if ( checkD3.isSelected() ) {
                                     if ( start == -1 ) {
                                         start = ct.getDomain( 3 ).interval.start;
                                     }
                                     end = ct.getDomain( 3 ).interval.end;
                                 }
-                                
+
                                 sb.append( ct.proteinSequence.substring( start - 1, end ) );
-                                
+
                             }
-                            
+
                             fwCry.write( Utils.formatAsFasta( ct.name, sb.toString(), 60 ) );
-                            
+
                         }
-                        
+
                         fwCry.write( "\n" );
-                        
+
                     }
                 }
 
             }
 
             if ( radioClustalO.isSelected() ) {
-                Utils.runClustalOUI( "cry.fasta", "saidaClustalO.aln", areaSaida );
+                Utils.runClustalOUI( "cry.fasta", "saidaClustalO.aln", areaSaida, btnAlinhar, lblAguarde );
+            } else if ( radioClustalW.isSelected() ) {
+                Utils.runClustalWUI( "cry.fasta", "saidaClustalW.aln", areaSaida, btnAlinhar, lblAguarde );
             } else {
-                Utils.runClustalWUI( "cry.fasta", "saidaClustalW.aln", areaSaida );
+                Utils.runMUSCLEUI( "cry.fasta", "saidaMUSCLE.aln", areaSaida, btnAlinhar, lblAguarde );
             }
-            
+
             //Utils.convertBiologicalDataFile( "saidaClustalO.aln", "fasta", "saidaClustalO.fasta" );
             //Utils.convertBiologicalDataFile( "saidaClustalW.aln", "fasta", "saidaClustalW.fasta" );
 
@@ -505,33 +548,63 @@ public class AlignDialog extends javax.swing.JDialog {
         
     }//GEN-LAST:event_radioPorDominioActionPerformed
 
+    private void btnConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfActionPerformed
+        
+        AlignAlgorithmsConfigDialog ad = new AlignAlgorithmsConfigDialog( this, true );
+        ad.setVisible( true );
+        
+    }//GEN-LAST:event_btnConfActionPerformed
+
+    /**
+     * Task to perform sequence alignment (provides thread safety in Swing)
+     */
+    private class DoAlignmentTask implements Runnable {
+        
+        JDialog dialog;
+
+        public DoAlignmentTask( JDialog dialog ) {
+            this.dialog = dialog;
+        }
+        
+        @Override
+        public void run() {
+            
+            
+            
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane areaSaida;
     private javax.swing.JButton btnAlinhar;
+    private javax.swing.JButton btnBLA;
+    private javax.swing.JButton btnCOL;
     private javax.swing.JButton btnConf;
-    private javax.swing.ButtonGroup btnGrpAlinhamento;
-    private javax.swing.ButtonGroup btnGrpClustal;
+    private javax.swing.JButton btnDIP;
+    private javax.swing.ButtonGroup btnGrpAlgoritmoAlinhamento;
+    private javax.swing.ButtonGroup btnGrpTipoAlinhamento;
+    private javax.swing.JButton btnHEM;
+    private javax.swing.JButton btnHYM;
+    private javax.swing.JButton btnISO;
+    private javax.swing.JButton btnLEP;
     private javax.swing.JButton btnLimparSelecao;
+    private javax.swing.JButton btnNEU;
+    private javax.swing.JButton btnORT;
     private javax.swing.JButton btnSelecionarTodas;
+    private javax.swing.JButton btnTHY;
+    private javax.swing.JButton btnTRI;
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
     private javax.swing.JCheckBox checkFront;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JLabel lblAguarde;
     private javax.swing.JPanel painel;
+    private javax.swing.JPanel painelAlgoritmos;
     private javax.swing.JPanel painelAlinhamento;
     private javax.swing.JPanel painelSaida;
-    private javax.swing.JPanel painelSeleções;
+    private javax.swing.JPanel painelSelecoes;
     private javax.swing.JRadioButton radioClustalO;
     private javax.swing.JRadioButton radioClustalW;
     private javax.swing.JRadioButton radioPorDominio;

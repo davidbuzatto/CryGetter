@@ -30,14 +30,18 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="painelProteinas" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="btnExtrairProteinas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCarregarProteinas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="painelProteinas" max="32767" attributes="0"/>
-                  <Component id="btnAlinhamento" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAlinhamento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblAguarde" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -64,7 +68,10 @@
                           <Component id="btnCarregarProteinas" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAlinhamento" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAlinhamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAguarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="painelConf" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -111,6 +118,17 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlinhamentoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAguarde">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
+      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="painelProteinas">
       <Properties>
@@ -233,26 +251,17 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fieldNome" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Component id="fieldAccNo" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spCom" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
-                                      <Component id="fieldAno" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Component id="fieldCepa" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Component id="linkURLPrin" alignment="0" min="-2" pref="603" max="-2" attributes="0"/>
-                                      <Component id="fieldIdProt" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Component id="fieldIdNuc" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Component id="fieldAut" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="159" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="fieldNome" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldAccNo" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="spCom" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
+                              <Component id="fieldAno" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldCepa" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="linkURLPrin" alignment="0" min="-2" pref="603" max="-2" attributes="0"/>
+                              <Component id="fieldIdProt" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldIdNuc" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldAut" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

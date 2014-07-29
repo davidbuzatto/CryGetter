@@ -34,6 +34,8 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -639,11 +641,13 @@ public class Utils {
      * 
      * @param readFrom File to read.
      * @param fileName File to write.
-     * * @param textArea JTextPane to log the output.
+     * @param textArea JTextPane to log the output.
+     * @param btnAlign Button that starts alignment process.
+     * @param lblWait Label to show status.
      * @throws IOException
      * @throws InterruptedException 
      */
-    public static void runClustalWUI( final String readFrom, final String fileName, final JTextPane textArea ) 
+    public static void runClustalWUI( final String readFrom, final String fileName, final JTextPane textArea, final JButton btnAlign, final JLabel lblWait ) 
             throws IOException, InterruptedException {
         
         new Thread( new Runnable() {
@@ -652,6 +656,9 @@ public class Utils {
             public void run() {
                 
                 try {
+                    
+                    btnAlign.setEnabled( false );
+                    lblWait.setText( "Aguarde, processando alinhamento..." );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileName + " -SEQNOS=ON" );
@@ -680,6 +687,9 @@ public class Utils {
                 
                 } catch ( IOException | InterruptedException exc ) {
                     exc.printStackTrace();
+                } finally {
+                    btnAlign.setEnabled( true );
+                    lblWait.setText( " " );
                 }
             }
             
@@ -694,10 +704,12 @@ public class Utils {
      * @param readFrom File to read.
      * @param fileName File to write.
      * @param textArea JTextPane to log the output.
+     * @param btnAlign Button that starts alignment process.
+     * @param lblWait Label to show status.
      * @throws IOException
      * @throws InterruptedException 
      */
-    public static void runClustalOUI( final String readFrom, final String fileName, final JTextPane textArea ) 
+    public static void runClustalOUI( final String readFrom, final String fileName, final JTextPane textArea, final JButton btnAlign, final JLabel lblWait ) 
             throws IOException, InterruptedException {
         
         new Thread( new Runnable() {
@@ -706,6 +718,9 @@ public class Utils {
             public void run() {
                 
                 try {
+                    
+                    btnAlign.setEnabled( false );
+                    lblWait.setText( "Aguarde, processando alinhamento..." );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileName + " --outfmt=clustal --force -v --resno" );
@@ -733,6 +748,71 @@ public class Utils {
                 
                 } catch ( IOException | InterruptedException exc ) {
                     exc.printStackTrace();
+                } finally {
+                    btnAlign.setEnabled( true );
+                    lblWait.setText( " " );
+                }
+            }
+            
+        }).start();
+        
+    }
+    
+    /**
+     * Runs MUSCLE from a file and write in another the results, loggin the output
+     * in a JTextArea.
+     * 
+     * @param readFrom File to read.
+     * @param fileName File to write.
+     * @param textArea JTextPane to log the output.
+     * @param btnAlign Button that starts alignment process.
+     * @param lblWait Label to show status.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public static void runMUSCLEUI( final String readFrom, final String fileName, final JTextPane textArea, final JButton btnAlign, final JLabel lblWait ) 
+            throws IOException, InterruptedException {
+        
+        new Thread( new Runnable() {
+
+            @Override
+            public void run() {
+                
+                try {
+                    
+                    btnAlign.setEnabled( false );
+                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    
+                    Runtime rt = Runtime.getRuntime();
+                    Process proc = rt.exec( "muscle/muscle3.8.31_i86win32.exe -in temp/" + readFrom + " -clw -out temp/" + fileName );
+
+                    // muscle output directed to stderr
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "MUSCLE - SAÍDA", textArea, outOK, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "MUSCLE - SAÍDA", textArea, outOK, Color.WHITE );
+
+                    // start
+                    errorGobbler.start();
+                    outputGobbler.start();
+
+                    // any error???
+                    int exitVal = proc.waitFor();
+                    if ( exitVal == 0 ) {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                    } else {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                    }
+                    
+                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                            new File( "temp/" + fileName ),
+                            new File( "temp/" + readFrom ) ));
+                
+                } catch ( IOException | InterruptedException exc ) {
+                    exc.printStackTrace();
+                } finally {
+                    btnAlign.setEnabled( true );
+                    lblWait.setText( " " );
                 }
             }
             

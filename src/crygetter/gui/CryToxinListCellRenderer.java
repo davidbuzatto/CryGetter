@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
+import javax.swing.border.LineBorder;
 
 /**
  * A customized list cell renderer to show cry proteins classes.
@@ -30,6 +31,7 @@ public class CryToxinListCellRenderer extends JLabel implements ListCellRenderer
             setForeground( list.getForeground() );
         }
         
+        setBorder( new LineBorder( value.classColor.darker() ) );
         setText( value.toString() );
         setEnabled( list.isEnabled() );
         setFont( list.getFont() );

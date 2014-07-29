@@ -39,9 +39,9 @@ import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.colorchooser.AbstractColorChooserPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.simpleframework.xml.Serializer;
@@ -120,6 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnExtrairProteinas = new javax.swing.JButton();
         btnCarregarProteinas = new javax.swing.JButton();
         btnAlinhamento = new javax.swing.JButton();
+        lblAguarde = new javax.swing.JLabel();
         painelProteinas = new javax.swing.JPanel();
         scrollProteinas = new javax.swing.JScrollPane();
         listaProteinas = new javax.swing.JList<CryToxin>();
@@ -278,6 +279,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        lblAguarde.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAguarde.setForeground(new java.awt.Color(0, 102, 255));
+        lblAguarde.setText(" ");
+
         painelProteinas.setBorder(javax.swing.BorderFactory.createTitledBorder("Proteínas"));
 
         listaProteinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -359,21 +364,16 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(lblCom)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDadosBtLayout.createSequentialGroup()
-                        .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(painelDadosBtLayout.createSequentialGroup()
-                        .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spCom, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(linkURLPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(159, Short.MAX_VALUE))))
+                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spCom, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(linkURLPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelDadosBtLayout.setVerticalGroup(
             painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1149,13 +1149,16 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExtrairProteinas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCarregarProteinas)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAlinhamento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAguarde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1176,7 +1179,9 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(btnExtrairProteinas)
                             .addComponent(btnCarregarProteinas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlinhamento))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAlinhamento)
+                            .addComponent(lblAguarde)))
                     .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1190,97 +1195,7 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExtrairProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtrairProteinasActionPerformed
-        
-        try {
-            
-            Date d = new Date();
-            
-            // getting data from BtNomenclature
-            ctList = Utils.getCryToxinList();
-            
-            String cryDataFilePath = "temp/cryData";
-            String sequenceDataFilePath = "temp/sequenceData";
-                        
-            String dataFileSufix = String.format( "-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
-                    d, d, d, d, d, d, ctList.size() );
-            
-            cryDataFilePath += dataFileSufix;
-            sequenceDataFilePath += dataFileSufix;
-            
-            File cryDataFile = new File( cryDataFilePath );
-            File sequenceDataFile = new File( sequenceDataFilePath );
-            
-            // serializing cry data from BtNomenclature
-            CryToxinSet ctSet = new CryToxinSet();
-            ctSet.cryToxins = ctList;
-            
-            Serializer ser = new Persister();
-            ser.write( ctSet, cryDataFile );
-            
-            
-            
-            // getting and serializing data from NCBI
-            StringBuilder sbIds = new StringBuilder();
-
-            for ( CryToxin ct : ctList ) {    
-                sbIds.append( ct.ncbiProtein ).append( "," );
-            }
-
-            String ids = sbIds.toString();
-
-            String completeData = Utils.getDataFromRequestViaPost( 
-                    "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
-                    "tool=crygetter&email=davidbuzatto@ifsp.edu.br&db=protein&retmode=xml&id=" + ids.substring( 0, ids.length() - 1 ) );
-
-            try ( FileWriter fw = new FileWriter( sequenceDataFile ) ) {
-                fw.write( completeData );
-            }
-            
-            
-            
-            
-            // saving the files with zip
-            JFileChooser jfc = new JFileChooser();
-            FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
-                    "CryGetter Extraction (*.cgext)", "cgext" );
-
-            for ( FileFilter f : jfc.getChoosableFileFilters() ) {
-                jfc.removeChoosableFileFilter( f );
-            }
-
-            jfc.setFileFilter( fnef );
-            jfc.setDialogTitle( "Salvar Dados Extraídos" );
-            jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
-            jfc.setMultiSelectionEnabled( false );
-
-            if ( jfc.showSaveDialog( this ) == JFileChooser.APPROVE_OPTION ) {
-                
-                File f = jfc.getSelectedFile();
-                
-                if ( f.getName().lastIndexOf( ".cgext" ) == -1 ) {
-                    f = new File( f.getAbsolutePath() + ".cgext" );
-                }
-                
-                if ( !f.exists() || 
-                        ( f.exists() && JOptionPane.showConfirmDialog( 
-                          this, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
-                          JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
-                    
-                    Utils.zip( f, cryDataFile, sequenceDataFile );
-                    
-                }
-                
-            }
-            
-            // deleting generated files
-            cryDataFile.delete();
-            sequenceDataFile.delete();
-            
-            
-        } catch ( Exception exc ) {
-            Utils.showExceptionMessage( this, exc );
-        }
-        
+        new Thread( new ExtractionTask( ( this ) ) ).start();
     }//GEN-LAST:event_btnExtrairProteinasActionPerformed
 
     private void btnCarregarProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarProteinasActionPerformed
@@ -1299,160 +1214,7 @@ public class MainWindow extends javax.swing.JFrame {
         jfc.setMultiSelectionEnabled( false );
         
         if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
-            
-            try {
-                
-                selectedCt = null;
-                selectedSeq = null;
-                updateDetails();
-                
-                // processing
-                List<File> unzippedFiles = Utils.unzip( jfc.getSelectedFile() );
-                String name = "";
-                GBSet gb = null;
-                List<CryToxin> ctl = null;
-                
-                ctList = new ArrayList<>();
-                gbSeqList = new ArrayList<>();
-                correspondenceTable = new LinkedHashMap<>();
-                
-                // processing unzipped files and loading
-                // raw data
-                for ( File f : unzippedFiles ) {
-                    
-                    name = f.getName();
-                    
-                    if ( name.startsWith( "sequenceData" ) ) {
-                        gb = Utils.getGBSet( f );
-                    } else if ( name.startsWith( "cryData" ) ) {
-                        Serializer serializer = new Persister();
-                        CryToxinSet ctSet = serializer.read( CryToxinSet.class, f );
-                        ctl = ctSet.cryToxins;
-                    }
-                    
-                    f.delete();
-                    
-                }
-                
-                // extrating date and time data from file name
-                Pattern p = Pattern.compile( "(\\d{4})-(\\d{2})-(\\d{2})-[(](\\d{2})-(\\d{2})-(\\d{2})[)]-size=(\\d+)[.]xml" );
-                
-                name = name.replace( "cryData-", "" ).replace( "sequenceData-", "" );
-                Matcher m = p.matcher( name );
-                
-                if ( m.matches() ) {
-                    year = m.group(1);
-                    month = m.group(2);
-                    day = m.group(3);
-                    hour = m.group(4);
-                    minute = m.group(5);
-                    second = m.group(6);
-                    size = m.group(7);
-                }
-                
-                // removing duplicates
-                // the duplicate test used is the equality between acession numbers
-                // from cry toxin list and primary acession from NCBI data.
-                // accept only proteins with the correct nomenclature (Cry\d+\w{2}\d+)
-                Map<String, String> noDuplicatesMap = new HashMap<>();
-                
-                for ( CryToxin ct : ctl ) {
-                    
-                    for ( GBSeq seq : gb.getGBSeq() ) {
-                        if ( ct.accessionNo.equals( seq.getGBSeqPrimaryAccession() ) ) {
-                            if ( !noDuplicatesMap.containsKey( ct.accessionNo ) &&
-                                    ct.name.matches( "Cry\\d+[A-Z][a-z]\\d*" ) ) {
-                                correspondenceTable.put( ct, seq );
-                            }
-                        }
-                    }
-                    
-                }
-                
-                // processing domains and removing proteins that does not have 3 domains
-                List<CryToxin> toxinsToRemove = new ArrayList<>();
-                
-                for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
-                    
-                    int cDom = 0;
-                    CryToxin ct = e.getKey();
-                    
-                    for ( GBFeature feat : e.getValue().getGBSeqFeatureTable().getGBFeature() ) {
-                        
-                        if ( feat.getGBFeatureKey().equalsIgnoreCase( "protein" ) ) {
-                            
-                            ct.proteinSequenceInterval = feat.getGBFeatureLocation();
-                            
-                            for ( GBQualifier q : feat.getGBFeatureQuals().getGBQualifier() ) {
-                                if ( q.getGBQualifierName().equalsIgnoreCase( "name" ) ) {
-                                    ct.proteinSequenceName = q.getGBQualifierValue();
-                                }
-                            }
-                            
-                        } else if ( feat.getGBFeatureKey().equalsIgnoreCase( "region" ) ) {
-                            
-                            if ( cDom < 3 ) {  // guarantee
-                                
-                                String[] pInt = feat.getGBFeatureLocation().split( "[.][.]" );
-                                CryToxinDomain domain = new CryToxinDomain();
-                                SequenceInterval seqInt = new SequenceInterval();
-                                domain.interval = seqInt;
-                                
-                                for ( GBQualifier q : feat.getGBFeatureQuals().getGBQualifier() ) {
-                                    if ( q.getGBQualifierName().equalsIgnoreCase( "region_name" ) ) {
-                                        domain.name = q.getGBQualifierValue();
-                                    } else if ( q.getGBQualifierName().equalsIgnoreCase( "note" ) ) {
-                                        domain.note = q.getGBQualifierValue();
-                                    } else if ( q.getGBQualifierName().equalsIgnoreCase( "db_xref" ) ) {
-                                        domain.xref = q.getGBQualifierValue();
-                                    } 
-                                }
-                                
-                                try {
-                                    
-                                    seqInt.start = Integer.parseInt( pInt[0] );
-                                    seqInt.end = Integer.parseInt( pInt[1] );
-                                    
-                                    ct.domains.add( domain );
-                                    cDom++;
-                                    
-                                } catch ( NumberFormatException exc ) {
-                                    // malformed domain
-                                }
-
-                            }
-
-                        }
-
-                    }
-                    
-                    if ( cDom != 3 ) {
-                        toxinsToRemove.add( ct );
-                    }
-                    
-                }
-                
-                // removind toxins with domain count different from 3
-                for ( CryToxin ct : toxinsToRemove ) {
-                    correspondenceTable.remove( ct );
-                }
-                
-                // populating the lists of cry toxins and gbseqs
-                // and setting the proteinSequence from gbseq to cry toxin
-                for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
-                    e.getKey().proteinSequence = e.getValue().getGBSeqSequence().toUpperCase();
-                    ctList.add( e.getKey() );
-                    gbSeqList.add( e.getValue() );
-                }
-                
-                updateProteinColors();
-                updateGUI();
-                updateProteinList();
-                
-            } catch ( Exception exc ) {
-                Utils.showExceptionMessage( this, exc );
-            }
-            
+            new Thread( new LoadTask( this, jfc.getSelectedFile()) ).start();
         }
         
     }//GEN-LAST:event_btnCarregarProteinasActionPerformed
@@ -1601,8 +1363,10 @@ public class MainWindow extends javax.swing.JFrame {
         
         if ( c != null ) {
             baseProteinColor = c;
-            updateProteinColors();
-            listaProteinas.updateUI();
+            if ( ctList != null ) {
+                updateProteinColors();
+                listaProteinas.updateUI();
+            }
         }
         
     }//GEN-LAST:event_btnCorActionPerformed
@@ -1970,6 +1734,307 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     /**
+     * Task to perform extraction (provides thread safety in Swing)
+     */
+    private class ExtractionTask implements Runnable {
+        
+        JFrame frame;
+        
+        ExtractionTask( JFrame frame ) {
+            this.frame = frame;
+        }
+        
+        @Override
+        public void run() {
+
+            try {
+                
+                btnExtrairProteinas.setEnabled( false );
+                btnCarregarProteinas.setEnabled( false );
+                btnAlinhamento.setEnabled( false );
+                lblAguarde.setText( "Aguarde..." );
+                
+                Date d = new Date();
+
+                // getting data from BtNomenclature
+                ctList = Utils.getCryToxinList();
+
+                String cryDataFilePath = "temp/cryData";
+                String sequenceDataFilePath = "temp/sequenceData";
+
+                String dataFileSufix = String.format( "-%tY-%tm-%td-(%tH-%tM-%tS)-size=%d.xml", 
+                        d, d, d, d, d, d, ctList.size() );
+
+                cryDataFilePath += dataFileSufix;
+                sequenceDataFilePath += dataFileSufix;
+
+                File cryDataFile = new File( cryDataFilePath );
+                File sequenceDataFile = new File( sequenceDataFilePath );
+
+                // serializing cry data from BtNomenclature
+                CryToxinSet ctSet = new CryToxinSet();
+                ctSet.cryToxins = ctList;
+
+                Serializer ser = new Persister();
+                ser.write( ctSet, cryDataFile );
+
+
+
+                // getting and serializing data from NCBI
+                StringBuilder sbIds = new StringBuilder();
+
+                for ( CryToxin ct : ctList ) {    
+                    sbIds.append( ct.ncbiProtein ).append( "," );
+                }
+
+                String ids = sbIds.toString();
+
+                String completeData = Utils.getDataFromRequestViaPost( 
+                        "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
+                        "tool=crygetter&email=davidbuzatto@ifsp.edu.br&db=protein&retmode=xml&id=" + ids.substring( 0, ids.length() - 1 ) );
+
+                try ( FileWriter fw = new FileWriter( sequenceDataFile ) ) {
+                    fw.write( completeData );
+                }
+
+
+
+
+                // saving the files with zip
+                JFileChooser jfc = new JFileChooser();
+                FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                        "CryGetter Extraction (*.cgext)", "cgext" );
+
+                for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+                    jfc.removeChoosableFileFilter( f );
+                }
+
+                jfc.setFileFilter( fnef );
+                jfc.setDialogTitle( "Salvar Dados Extraídos" );
+                jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+                jfc.setMultiSelectionEnabled( false );
+
+                if ( jfc.showSaveDialog( frame ) == JFileChooser.APPROVE_OPTION ) {
+
+                    File f = jfc.getSelectedFile();
+
+                    if ( f.getName().lastIndexOf( ".cgext" ) == -1 ) {
+                        f = new File( f.getAbsolutePath() + ".cgext" );
+                    }
+
+                    if ( !f.exists() || 
+                            ( f.exists() && JOptionPane.showConfirmDialog( 
+                              frame, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
+                              JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
+
+                        Utils.zip( f, cryDataFile, sequenceDataFile );
+
+                    }
+
+                }
+
+                // deleting generated files
+                cryDataFile.delete();
+                sequenceDataFile.delete();
+
+
+            } catch ( Exception exc ) {
+                Utils.showExceptionMessage( frame, exc );
+            } finally {
+                btnExtrairProteinas.setEnabled( true );
+                btnCarregarProteinas.setEnabled( true );
+                btnAlinhamento.setEnabled( true );
+                lblAguarde.setText( " " );
+            }
+
+        }
+        
+    }
+    
+    /**
+     * Task to perform package loading extraction (provides thread safety in Swing)
+     */
+    private class LoadTask implements Runnable {
+
+        JFrame frame;
+        File fileToOpen;
+        
+        LoadTask( JFrame frame, File fileToOpen ) {
+            this.frame = frame;
+            this.fileToOpen = fileToOpen;
+        }
+        
+        @Override
+        public void run() {
+            
+            try {
+                
+                btnExtrairProteinas.setEnabled( false );
+                btnCarregarProteinas.setEnabled( false );
+                btnAlinhamento.setEnabled( false );
+                lblAguarde.setText( "Aguarde..." );
+                
+                selectedCt = null;
+                selectedSeq = null;
+                updateDetails();
+                
+                // processing
+                List<File> unzippedFiles = Utils.unzip( fileToOpen );
+                String name = "";
+                GBSet gb = null;
+                List<CryToxin> ctl = null;
+                
+                ctList = new ArrayList<>();
+                gbSeqList = new ArrayList<>();
+                correspondenceTable = new LinkedHashMap<>();
+                
+                // processing unzipped files and loading
+                // raw data
+                for ( File f : unzippedFiles ) {
+                    
+                    name = f.getName();
+                    
+                    if ( name.startsWith( "sequenceData" ) ) {
+                        gb = Utils.getGBSet( f );
+                    } else if ( name.startsWith( "cryData" ) ) {
+                        Serializer serializer = new Persister();
+                        CryToxinSet ctSet = serializer.read( CryToxinSet.class, f );
+                        ctl = ctSet.cryToxins;
+                    }
+                    
+                    f.delete();
+                    
+                }
+                
+                // extrating date and time data from file name
+                Pattern p = Pattern.compile( "(\\d{4})-(\\d{2})-(\\d{2})-[(](\\d{2})-(\\d{2})-(\\d{2})[)]-size=(\\d+)[.]xml" );
+                
+                name = name.replace( "cryData-", "" ).replace( "sequenceData-", "" );
+                Matcher m = p.matcher( name );
+                
+                if ( m.matches() ) {
+                    year = m.group(1);
+                    month = m.group(2);
+                    day = m.group(3);
+                    hour = m.group(4);
+                    minute = m.group(5);
+                    second = m.group(6);
+                    size = m.group(7);
+                }
+                
+                // removing duplicates
+                // the duplicate test used is the equality between acession numbers
+                // from cry toxin list and primary acession from NCBI data.
+                // accept only proteins with the correct nomenclature (Cry\d+\w{2}\d+)
+                Map<String, String> noDuplicatesMap = new HashMap<>();
+                
+                for ( CryToxin ct : ctl ) {
+                    
+                    for ( GBSeq seq : gb.getGBSeq() ) {
+                        if ( ct.accessionNo.equals( seq.getGBSeqPrimaryAccession() ) ) {
+                            if ( !noDuplicatesMap.containsKey( ct.accessionNo ) &&
+                                    ct.name.matches( "Cry\\d+[A-Z][a-z]\\d*" ) ) {
+                                correspondenceTable.put( ct, seq );
+                            }
+                        }
+                    }
+                    
+                }
+                
+                // processing domains and removing proteins that does not have 3 domains
+                List<CryToxin> toxinsToRemove = new ArrayList<>();
+                
+                for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
+                    
+                    int cDom = 0;
+                    CryToxin ct = e.getKey();
+                    
+                    for ( GBFeature feat : e.getValue().getGBSeqFeatureTable().getGBFeature() ) {
+                        
+                        if ( feat.getGBFeatureKey().equalsIgnoreCase( "protein" ) ) {
+                            
+                            ct.proteinSequenceInterval = feat.getGBFeatureLocation();
+                            
+                            for ( GBQualifier q : feat.getGBFeatureQuals().getGBQualifier() ) {
+                                if ( q.getGBQualifierName().equalsIgnoreCase( "name" ) ) {
+                                    ct.proteinSequenceName = q.getGBQualifierValue();
+                                }
+                            }
+                            
+                        } else if ( feat.getGBFeatureKey().equalsIgnoreCase( "region" ) ) {
+                            
+                            if ( cDom < 3 ) {  // guarantee
+                                
+                                String[] pInt = feat.getGBFeatureLocation().split( "[.][.]" );
+                                CryToxinDomain domain = new CryToxinDomain();
+                                SequenceInterval seqInt = new SequenceInterval();
+                                domain.interval = seqInt;
+                                
+                                for ( GBQualifier q : feat.getGBFeatureQuals().getGBQualifier() ) {
+                                    if ( q.getGBQualifierName().equalsIgnoreCase( "region_name" ) ) {
+                                        domain.name = q.getGBQualifierValue();
+                                    } else if ( q.getGBQualifierName().equalsIgnoreCase( "note" ) ) {
+                                        domain.note = q.getGBQualifierValue();
+                                    } else if ( q.getGBQualifierName().equalsIgnoreCase( "db_xref" ) ) {
+                                        domain.xref = q.getGBQualifierValue();
+                                    } 
+                                }
+                                
+                                try {
+                                    
+                                    seqInt.start = Integer.parseInt( pInt[0] );
+                                    seqInt.end = Integer.parseInt( pInt[1] );
+                                    
+                                    ct.domains.add( domain );
+                                    cDom++;
+                                    
+                                } catch ( NumberFormatException exc ) {
+                                    // malformed domain
+                                }
+
+                            }
+
+                        }
+
+                    }
+                    
+                    if ( cDom != 3 ) {
+                        toxinsToRemove.add( ct );
+                    }
+                    
+                }
+                
+                // removind toxins with domain count different from 3
+                for ( CryToxin ct : toxinsToRemove ) {
+                    correspondenceTable.remove( ct );
+                }
+                
+                // populating the lists of cry toxins and gbseqs
+                // and setting the proteinSequence from gbseq to cry toxin
+                for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
+                    e.getKey().proteinSequence = e.getValue().getGBSeqSequence().toUpperCase();
+                    ctList.add( e.getKey() );
+                    gbSeqList.add( e.getValue() );
+                }
+                
+                updateProteinColors();
+                updateGUI();
+                updateProteinList();
+                
+            } catch ( Exception exc ) {
+                Utils.showExceptionMessage( frame, exc );
+            } finally {
+                btnExtrairProteinas.setEnabled( true );
+                btnCarregarProteinas.setEnabled( true );
+                btnAlinhamento.setEnabled( true );
+                lblAguarde.setText( " " );
+            }
+            
+        }
+        
+    }
+    
+    /**
      * @param args the command line arguments
      */
     public static void main( String args[] ) {
@@ -2065,6 +2130,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel labelQuantExtrProc;
     private javax.swing.JLabel lblAccNo;
     private javax.swing.JLabel lblAcessPri;
+    private javax.swing.JLabel lblAguarde;
     private javax.swing.JLabel lblAno;
     private javax.swing.JLabel lblAut;
     private javax.swing.JLabel lblAutRef;
