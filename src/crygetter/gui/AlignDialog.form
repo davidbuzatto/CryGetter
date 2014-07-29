@@ -84,6 +84,8 @@
                           <Component id="radioClustalO" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="radioClustalW" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnConf" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="painelAlinhamento" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -104,11 +106,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="painelSeleções" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="painelAlinhamento" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="radioClustalO" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="radioClustalW" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="painelAlinhamento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="radioClustalO" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="radioClustalW" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnConf" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnAlinhar" min="-2" max="-2" attributes="0"/>
@@ -139,6 +142,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnSelecionarTodas">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/add.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Selecionar Todas"/>
           </Properties>
           <Events>
@@ -147,6 +153,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnLimparSelecao">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/delete.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Limpar Sele&#xe7;&#xe3;o"/>
           </Properties>
           <Events>
@@ -329,7 +338,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="checkFront" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -401,8 +410,18 @@
             <Property name="text" type="java.lang.String" value="ClustalW"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnConf">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/wrench.png"/>
+            </Property>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JButton" name="btnAlinhar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/accept.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alinhar"/>
           </Properties>
           <Events>
@@ -434,7 +453,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="spSaida" pref="165" max="32767" attributes="0"/>
+                  <Component id="spSaida" pref="157" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

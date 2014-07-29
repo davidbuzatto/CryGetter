@@ -1,0 +1,6 @@
+- Configurações dos Clustal; -> Janela própria com botão reset para valores default.
+- Seleção por ordem na janela de alinhamentos;
+- Threads na interface gráfica (extração e carga);
+- Build com cópia das pastas necessárias;
+- Testes com mega.
+- Armazenamento de configurações.

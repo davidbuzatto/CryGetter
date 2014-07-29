@@ -654,7 +654,7 @@ public class Utils {
                 try {
                     
                     Runtime rt = Runtime.getRuntime();
-                    Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileName );
+                    Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileName + " -SEQNOS=ON" );
 
                     StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "ClustalW - ERRO", textArea, outError, Color.WHITE );
                     StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "ClustalW - SAÍDA", textArea, outOK, Color.WHITE );
@@ -672,7 +672,6 @@ public class Utils {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
                                 "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
                     }
-                    
                     
                     SwingUtilities.invokeLater( new SaveAlignmentFile( 
                             new File( "temp/" + fileName ),
@@ -709,7 +708,7 @@ public class Utils {
                 try {
                     
                     Runtime rt = Runtime.getRuntime();
-                    Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileName + " --outfmt=clustal --force -v" );
+                    Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileName + " --outfmt=clustal --force -v --resno" );
 
                     StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "Clustal Ômega - ERRO", textArea, outError, Color.WHITE );
                     StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "Clustal Ômega - SAÍDA", textArea, outOK, Color.WHITE );

@@ -37,9 +37,11 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.simpleframework.xml.Serializer;
@@ -245,11 +247,14 @@ public class MainWindow extends javax.swing.JFrame {
         fieldQuantExtrBruta = new javax.swing.JTextField();
         fieldQuantExtrProc = new javax.swing.JTextField();
         btnSobreProc = new javax.swing.JButton();
+        painelConf = new javax.swing.JPanel();
+        btnCor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
         setResizable(false);
 
+        btnExtrairProteinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/world_link.png"))); // NOI18N
         btnExtrairProteinas.setText("Extrair");
         btnExtrairProteinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +262,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnCarregarProteinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/folder.png"))); // NOI18N
         btnCarregarProteinas.setText("Carregar");
         btnCarregarProteinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +270,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnAlinhamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
         btnAlinhamento.setText("Alinhamento");
         btnAlinhamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,16 +359,21 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(lblCom)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spCom, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(linkURLPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                    .addGroup(painelDadosBtLayout.createSequentialGroup()
+                        .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelDadosBtLayout.createSequentialGroup()
+                        .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spCom, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(linkURLPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(159, Short.MAX_VALUE))))
         );
         painelDadosBtLayout.setVerticalGroup(
             painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +415,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(painelDadosBtLayout.createSequentialGroup()
                         .addComponent(lblCom)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spCom, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                    .addComponent(spCom, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
         );
 
@@ -588,7 +600,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(painelPrincipalNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelPrincip01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(painelPrincip02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         abasDetalhesNCBI.addTab("Principal", painelPrincipalNCBI);
@@ -697,7 +709,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(painelReferenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(painelListaRef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painelDetalhesRef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         abasDetalhesNCBI.addTab("Referências", painelReferenciasNCBI);
@@ -773,7 +785,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkD3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spSeqComp, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addComponent(spSeqComp, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -844,7 +856,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(lblXrefD1)
                             .addComponent(linkXrefD1))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spD1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addComponent(spD1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -919,7 +931,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(lblXrefD2)
                             .addComponent(linkXrefD2))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spD2, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addComponent(spD2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -994,7 +1006,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(lblXrefD3)
                             .addComponent(linkXrefD3))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spD3, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addComponent(spD3, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1063,7 +1075,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         labelQuantExtrProc.setText("Quantidade Proc.:");
 
-        btnSobreProc.setText("?");
+        btnSobreProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
         btnSobreProc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSobreProcActionPerformed(evt);
@@ -1089,7 +1101,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(fieldQuantExtrProc, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSobreProc)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelDadosExtrLayout.setVerticalGroup(
             painelDadosExtrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1103,6 +1115,31 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(labelQuantExtrProc)
                     .addComponent(fieldQuantExtrProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSobreProc)))
+        );
+
+        painelConf.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações"));
+
+        btnCor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/color_wheel.png"))); // NOI18N
+        btnCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelConfLayout = new javax.swing.GroupLayout(painelConf);
+        painelConf.setLayout(painelConfLayout);
+        painelConfLayout.setHorizontalGroup(
+            painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelConfLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelConfLayout.setVerticalGroup(
+            painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCor))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1120,23 +1157,27 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnExtrairProteinas)
                             .addComponent(btnCarregarProteinas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlinhamento)))
+                        .addComponent(btnAlinhamento))
+                    .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1144,7 +1185,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1120, 624));
+        setSize(new java.awt.Dimension(1160, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1404,41 +1445,7 @@ public class MainWindow extends javax.swing.JFrame {
                     gbSeqList.add( e.getValue() );
                 }
                 
-                // colors
-                // getting all classes
-                Set<String> cryPrefixSet = new LinkedHashSet<>();
-                
-                for ( CryToxin ct : ctList ) {
-                    
-                    Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
-                    Matcher mm = pp.matcher( ct.name );
-                    mm.matches();
-                    
-                    cryPrefixSet.add( "Cry" + mm.group( 1 ) );
-                    
-                }
-                
-                float jump = (float) ( 255.0 / 255.0 / cryPrefixSet.size() );
-                float acum = 0;
-                
-                Map<String, Color> colorMap = new HashMap<>();
-                float[] baseHSB = Color.RGBtoHSB( baseProteinColor.getRed(), baseProteinColor.getGreen(), baseProteinColor.getBlue(), null );
-                
-                for ( String prefix : cryPrefixSet ) {
-                    colorMap.put( prefix, new Color( Color.HSBtoRGB( baseHSB[0] - acum, baseHSB[1], baseHSB[2] ) ) );
-                    acum += jump;
-                }
-                
-                for ( CryToxin ct : ctList ) {
-                    
-                    Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
-                    Matcher mm = pp.matcher( ct.name );
-                    mm.matches();
-                    
-                    ct.classColor = colorMap.get( "Cry" + mm.group( 1 ) );
-                    
-                }
-                
+                updateProteinColors();
                 updateGUI();
                 updateProteinList();
                 
@@ -1587,6 +1594,57 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAlinhamentoActionPerformed
 
+    private void btnCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorActionPerformed
+        
+        JColorChooser jcc = new JColorChooser();
+        Color c = JColorChooser.showDialog( this, "Cor Base", baseProteinColor );
+        
+        if ( c != null ) {
+            baseProteinColor = c;
+            updateProteinColors();
+            listaProteinas.updateUI();
+        }
+        
+    }//GEN-LAST:event_btnCorActionPerformed
+
+    private void updateProteinColors() {
+        
+        // colors
+        // getting all classes
+        Set<String> cryPrefixSet = new LinkedHashSet<>();
+
+        for ( CryToxin ct : ctList ) {
+
+            Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
+            Matcher mm = pp.matcher( ct.name );
+            mm.matches();
+
+            cryPrefixSet.add( "Cry" + mm.group( 1 ) );
+
+        }
+
+        float jump = (float) ( 1.0 / cryPrefixSet.size() );
+        float acum = 0;
+
+        Map<String, Color> colorMap = new HashMap<>();
+        float[] baseHSB = Color.RGBtoHSB( baseProteinColor.getRed(), baseProteinColor.getGreen(), baseProteinColor.getBlue(), null );
+
+        for ( String prefix : cryPrefixSet ) {
+            colorMap.put( prefix, new Color( Color.HSBtoRGB( baseHSB[0] - acum, baseHSB[1], baseHSB[2] ) ) );
+            acum += jump;
+        }
+
+        for ( CryToxin ct : ctList ) {
+
+            Pattern pp = Pattern.compile( "Cry(\\d+)[A-Z][A-z]\\d*" );
+            Matcher mm = pp.matcher( ct.name );
+            mm.matches();
+
+            ct.classColor = colorMap.get( "Cry" + mm.group( 1 ) );
+
+        }
+        
+    }
     private void fillCompleteSequenceTextPane() {
         
         if ( selectedSeq != null && selectedSeq.getGBSeqSequence() != null ) {
@@ -1958,6 +2016,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane areaSeqComp;
     private javax.swing.JButton btnAlinhamento;
     private javax.swing.JButton btnCarregarProteinas;
+    private javax.swing.JButton btnCor;
     private javax.swing.JButton btnExtrairProteinas;
     private javax.swing.JButton btnSobreProc;
     private javax.swing.JCheckBox checkD1;
@@ -2053,6 +2112,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel linkXrefD3;
     private javax.swing.JList<CryToxin> listaProteinas;
     private javax.swing.JList listaRef;
+    private javax.swing.JPanel painelConf;
     private javax.swing.JPanel painelD1;
     private javax.swing.JPanel painelD2;
     private javax.swing.JPanel painelD3;

@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -82,6 +81,7 @@ public class AlignDialog extends javax.swing.JDialog {
         checkFront = new javax.swing.JCheckBox();
         radioClustalO = new javax.swing.JRadioButton();
         radioClustalW = new javax.swing.JRadioButton();
+        btnConf = new javax.swing.JButton();
         btnAlinhar = new javax.swing.JButton();
         painelSaida = new javax.swing.JPanel();
         spSaida = new javax.swing.JScrollPane();
@@ -103,6 +103,7 @@ public class AlignDialog extends javax.swing.JDialog {
         ));
         spProteinas.setViewportView(tabelaProteinas);
 
+        btnSelecionarTodas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/add.png"))); // NOI18N
         btnSelecionarTodas.setText("Selecionar Todas");
         btnSelecionarTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +111,7 @@ public class AlignDialog extends javax.swing.JDialog {
             }
         });
 
+        btnLimparSelecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/delete.png"))); // NOI18N
         btnLimparSelecao.setText("Limpar Seleção");
         btnLimparSelecao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +258,7 @@ public class AlignDialog extends javax.swing.JDialog {
                     .addComponent(radioProtInteira))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkFront)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnGrpClustal.add(radioClustalO);
@@ -266,6 +268,9 @@ public class AlignDialog extends javax.swing.JDialog {
         btnGrpClustal.add(radioClustalW);
         radioClustalW.setText("ClustalW");
 
+        btnConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/wrench.png"))); // NOI18N
+
+        btnAlinhar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/accept.png"))); // NOI18N
         btnAlinhar.setText("Alinhar");
         btnAlinhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +296,9 @@ public class AlignDialog extends javax.swing.JDialog {
                     .addGroup(painelLayout.createSequentialGroup()
                         .addComponent(radioClustalO)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioClustalW))
+                        .addComponent(radioClustalW)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConf))
                     .addComponent(painelAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -307,11 +314,12 @@ public class AlignDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelSeleções, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelAlinhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(painelAlinhamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(radioClustalO)
-                            .addComponent(radioClustalW))
+                            .addComponent(radioClustalW)
+                            .addComponent(btnConf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlinhar))
                     .addComponent(spProteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -336,7 +344,7 @@ public class AlignDialog extends javax.swing.JDialog {
             painelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSaidaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addComponent(spSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -500,6 +508,7 @@ public class AlignDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane areaSaida;
     private javax.swing.JButton btnAlinhar;
+    private javax.swing.JButton btnConf;
     private javax.swing.ButtonGroup btnGrpAlinhamento;
     private javax.swing.ButtonGroup btnGrpClustal;
     private javax.swing.JButton btnLimparSelecao;
