@@ -359,9 +359,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(lblIdProt, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblAccNo, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addGroup(painelDadosBtLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(lblCom)))
+                    .addComponent(lblCom, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,7 +371,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         painelDadosBtLayout.setVerticalGroup(
             painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

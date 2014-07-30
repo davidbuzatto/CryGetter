@@ -82,7 +82,7 @@ public class AlignDialog extends javax.swing.JDialog {
         painelAlgoritmos = new javax.swing.JPanel();
         radioClustalO = new javax.swing.JRadioButton();
         radioClustalW = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        radioMUSCLE = new javax.swing.JRadioButton();
         btnConf = new javax.swing.JButton();
         btnAlinhar = new javax.swing.JButton();
         lblAguarde = new javax.swing.JLabel();
@@ -273,8 +273,8 @@ public class AlignDialog extends javax.swing.JDialog {
         btnGrpAlgoritmoAlinhamento.add(radioClustalW);
         radioClustalW.setText("ClustalW");
 
-        btnGrpAlgoritmoAlinhamento.add(jRadioButton1);
-        jRadioButton1.setText("MUSCLE");
+        btnGrpAlgoritmoAlinhamento.add(radioMUSCLE);
+        radioMUSCLE.setText("MUSCLE");
 
         btnConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/wrench.png"))); // NOI18N
         btnConf.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +293,7 @@ public class AlignDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radioClustalW)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(radioMUSCLE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConf)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -306,7 +306,7 @@ public class AlignDialog extends javax.swing.JDialog {
                     .addComponent(btnConf)
                     .addComponent(radioClustalO)
                     .addComponent(radioClustalW)
-                    .addComponent(jRadioButton1))
+                    .addComponent(radioMUSCLE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -598,7 +598,6 @@ public class AlignDialog extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
     private javax.swing.JCheckBox checkFront;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lblAguarde;
     private javax.swing.JPanel painel;
     private javax.swing.JPanel painelAlgoritmos;
@@ -607,6 +606,7 @@ public class AlignDialog extends javax.swing.JDialog {
     private javax.swing.JPanel painelSelecoes;
     private javax.swing.JRadioButton radioClustalO;
     private javax.swing.JRadioButton radioClustalW;
+    private javax.swing.JRadioButton radioMUSCLE;
     private javax.swing.JRadioButton radioPorDominio;
     private javax.swing.JRadioButton radioProtInteira;
     private javax.swing.JScrollPane spProteinas;

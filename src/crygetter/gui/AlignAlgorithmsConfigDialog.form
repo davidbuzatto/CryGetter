@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>
@@ -11,7 +11,7 @@
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,56,0,0,4,-114"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,74,0,0,5,81"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -33,21 +33,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="painelBaixo" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelConfCO" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelConfCW" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelConfM" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="161" max="32767" attributes="0"/>
+              <EmptySpace pref="176" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,23 +52,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanel2" max="32767" attributes="0"/>
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Component id="jPanel7" max="32767" attributes="0"/>
+                  <Component id="painelConfCW" max="32767" attributes="0"/>
+                  <Component id="painelConfCO" max="32767" attributes="0"/>
+                  <Component id="painelConfM" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <Component id="painelBaixo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="painelConfCO">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Clustal &#xd4;mega"/>
@@ -90,37 +86,37 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCOCombIter" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCOMaxGuide" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCOHMM" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCOOrder" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCOOutputF" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboCOCombIter" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboCOMaxGuide" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboCOHMM" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboCOOutputF" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboCOOrder" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="checkCODealign" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkCOGuide" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkCOCLustering" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCOPadrao" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCOAjuda" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -131,91 +127,98 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCODealign" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCOGuide" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCOCLustering" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCOCombIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboCOCombIter" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCOMaxGuide" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboCOMaxGuide" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCOHMM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboCOHMM" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCOOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboCOOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCOOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboCOOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnCOAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCOPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="checkCODealign">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dealign Input Sequences"/>
+            <Property name="toolTipText" type="java.lang.String" value="Remove any existing alignment (gaps) from input sequences. Default value is: no [false]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="checkCOGuide">
           <Properties>
-            <Property name="text" type="java.lang.String" value="MBED-Like Clustering Guide-Tree"/>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="mBed-Like Clustering Guide-tree"/>
+            <Property name="toolTipText" type="java.lang.String" value="This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+        <Component class="javax.swing.JCheckBox" name="checkCOCLustering">
           <Properties>
-            <Property name="text" type="java.lang.String" value="MBED-Like Clustering Iteration"/>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="mBed-Like Clustering Iteration"/>
+            <Property name="toolTipText" type="java.lang.String" value="Use mBed-like clustering during subsequent iterations. Default value is: yes [true]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblCOCombIter">
           <Properties>
             <Property name="text" type="java.lang.String" value="Number of Combined Iterations:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="0"/>
-                <StringItem index="1" value="1"/>
-                <StringItem index="2" value="2"/>
-                <StringItem index="3" value="3"/>
-                <StringItem index="4" value="4"/>
-                <StringItem index="5" value="5"/>
-              </StringArray>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblCOMaxGuide">
           <Properties>
             <Property name="text" type="java.lang.String" value="Max Guide Tree Iterations:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblCOHMM">
           <Properties>
             <Property name="text" type="java.lang.String" value="Max HMM Iterations:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblCOOrder">
           <Properties>
             <Property name="text" type="java.lang.String" value="Order:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JLabel" name="lblCOOutputF">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Output Format:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboCOCombIter">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
-                <StringItem index="0" value="0"/>
+                <StringItem index="0" value="default(0)"/>
                 <StringItem index="1" value="1"/>
                 <StringItem index="2" value="2"/>
                 <StringItem index="3" value="3"/>
@@ -223,23 +226,42 @@
                 <StringItem index="5" value="5"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Number of (combined guide-tree/HMM) iterations. Default value is: default(0) [0]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="comboCOMaxGuide">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="0"/>
-                <StringItem index="1" value="1"/>
-                <StringItem index="2" value="2"/>
-                <StringItem index="3" value="3"/>
-                <StringItem index="4" value="4"/>
-                <StringItem index="5" value="5"/>
+              <StringArray count="7">
+                <StringItem index="0" value="default"/>
+                <StringItem index="1" value="0"/>
+                <StringItem index="2" value="1"/>
+                <StringItem index="3" value="2"/>
+                <StringItem index="4" value="3"/>
+                <StringItem index="5" value="4"/>
+                <StringItem index="6" value="5"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Having set the number of combined iterations, this parameter can be changed to limit the number of guide tree iterations within the combined iterations. Default value is: default [-1]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox4">
+        <Component class="javax.swing.JComboBox" name="comboCOHMM">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="7">
+                <StringItem index="0" value="default"/>
+                <StringItem index="1" value="0"/>
+                <StringItem index="2" value="1"/>
+                <StringItem index="3" value="2"/>
+                <StringItem index="4" value="3"/>
+                <StringItem index="5" value="4"/>
+                <StringItem index="6" value="5"/>
+              </StringArray>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Having set the number of combined iterations, this parameter can be changed to limit the number of HMM iterations within the combined iterations. Default value is: default [-1]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboCOOrder">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
@@ -247,12 +269,52 @@
                 <StringItem index="1" value="Input"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="The order in which the sequences appear in the final alignment. Default value is: aligned"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboCOOutputF">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="Clustal without numbers"/>
+                <StringItem index="1" value="Clustal with numbers"/>
+                <StringItem index="2" value="Pearson/FASTA"/>
+                <StringItem index="3" value="MSF"/>
+                <StringItem index="4" value="PHYLIP"/>
+                <StringItem index="5" value="SELEX"/>
+                <StringItem index="6" value="STOCKHOLM"/>
+                <StringItem index="7" value="VIENNA"/>
+              </StringArray>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: Clustal w/o numbers [clustal]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCOPadrao">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCOAjuda">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOAjudaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="painelConfCW">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="ClustalW"/>
@@ -265,9 +327,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="painelCWPW" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel6" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="painelCWM" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnCWPadrao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnCWAjuda" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -276,18 +346,31 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Component id="jPanel6" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="painelCWPW" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="painelCWM" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnCWAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCWPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="painelCWPW">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder title="Pairwise Alignment"/>
@@ -301,15 +384,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanel5" max="32767" attributes="0"/>
+                          <Component id="painelCWPWFast" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWType" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="radioCWSlow" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="radioCWFast" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPanel4" alignment="1" max="32767" attributes="0"/>
+                          <Component id="painelCWPWSlow" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -320,26 +403,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioCWSlow" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioCWFast" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelCWPWSlow" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="painelCWPWFast" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="lblCWType">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Type:"/>
+                <Property name="toolTipText" type="java.lang.String" value="The alignment method used to perform the pairwise alignments used to generate the guide tree. Default value is: slow"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+            <Component class="javax.swing.JRadioButton" name="radioCWSlow">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -348,7 +432,7 @@
                 <Property name="text" type="java.lang.String" value="Slow"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+            <Component class="javax.swing.JRadioButton" name="radioCWFast">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -356,8 +440,11 @@
                 <Property name="text" type="java.lang.String" value="Fast"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="jPanel4">
+            <Container class="javax.swing.JPanel" name="painelCWPWSlow">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Slow Pairwise Options"/>
@@ -371,15 +458,15 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWProtW" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWSGapOpen" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWGapExt" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox5" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox6" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox7" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWProteW" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWGapOpen" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWGapExt" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -390,18 +477,18 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWProtW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWProteW" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWSGapOpen" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWGapOpen" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWGapExt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWGapExt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -409,22 +496,22 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="lblCWPWProtW">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Protein Weight Matrix:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="lblCWPWSGapOpen">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gap Open:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="lblCWPWGapExt">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gap Extension:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox5">
+                <Component class="javax.swing.JComboBox" name="comboCWPWProteW">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -434,9 +521,11 @@
                         <StringItem index="3" value="ID"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment protein sequence comparison matrix series used to score alignment. Default value is: Gonnet [gonnet]"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox6">
+                <Component class="javax.swing.JComboBox" name="comboCWPWGapOpen">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="7">
@@ -449,9 +538,11 @@
                         <StringItem index="6" value="1"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="3"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment score for the first residue in a gap. Default value is: 10"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox7">
+                <Component class="javax.swing.JComboBox" name="comboCWPWGapExt">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="8">
@@ -465,12 +556,17 @@
                         <StringItem index="7" value="10.0"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="1"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment score for each additional residue in a gap. Default value is: 0.1"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel5">
+            <Container class="javax.swing.JPanel" name="painelCWPWFast">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Fast Pairwise Options"/>
@@ -484,19 +580,19 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWKTUP" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWWinLen" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWScoreT" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWTopDiags" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWPairG" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox9" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox10" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox11" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox12" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWKTUP" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWWinLen" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWScoreT" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWTopDiags" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWPairG" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -507,28 +603,28 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWKTUP" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWKTUP" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWWinLen" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWWinLen" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWScoreT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWScoreT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWTopDiags" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWTopDiags" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCWPWPairG" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboCWPWPairG" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -536,32 +632,32 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="lblCWPWKTUP">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="KTUP (Word Size):"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="lblCWPWWinLen">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Window Length:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="lblCWPWScoreT">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Score Type:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="lblCWPWTopDiags">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Topdiag:"/>
+                    <Property name="text" type="java.lang.String" value="Top Diags:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="lblCWPWPairG">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pairgap:"/>
+                    <Property name="text" type="java.lang.String" value="Pair Gap:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox8">
+                <Component class="javax.swing.JComboBox" name="comboCWPWKTUP">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="5">
@@ -572,9 +668,10 @@
                         <StringItem index="4" value="5"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment word size used to find matches between the sequences. Decrease for sensitivity; increase for speed. Default value is: 1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox9">
+                <Component class="javax.swing.JComboBox" name="comboCWPWWinLen">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="11">
@@ -591,9 +688,11 @@
                         <StringItem index="10" value="0"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="5"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment window size for joining word matches. Decrease for speed; increase for sensitivity. Default value is: 5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox10">
+                <Component class="javax.swing.JComboBox" name="comboCWPWScoreT">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -601,9 +700,10 @@
                         <StringItem index="1" value="absolut"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment score type to output. Default value is: percent"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox11">
+                <Component class="javax.swing.JComboBox" name="comboCWPWTopDiags">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="10">
@@ -619,9 +719,11 @@
                         <StringItem index="9" value="1"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="5"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment number of match regions are used to create the pairwise alignment. Decrease for speed; increase for sensitivity. Default value is: 5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox12">
+                <Component class="javax.swing.JComboBox" name="comboCWPWPairG">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="11">
@@ -638,14 +740,19 @@
                         <StringItem index="10" value="500"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment gap penalty for each gap created. Default value is: 3"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel6">
+        <Container class="javax.swing.JPanel" name="painelCWM">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder title="Multiple Sequence Aligment"/>
@@ -656,29 +763,31 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel15" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel18" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblCWMOutputF" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMProtW" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGapOpen" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGapExt" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGatDist" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMIter" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMNumIter" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMClust" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMOrder" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkCWMNoEndGaps" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBox13" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox14" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox15" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox16" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox17" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox18" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox19" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox20" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMProtW" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapOpen" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapExt" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapDist" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMIter" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMNumIter" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMClust" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMOrder" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMOutputF" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -689,45 +798,50 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMProtW" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMProtW" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGapOpen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapOpen" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGapExt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapExt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMGatDist" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMGapDist" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkCWMNoEndGaps" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMIter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMNumIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMNumIter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCWMClust" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMClust" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCWMOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCWMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCWMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -735,52 +849,59 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel14">
+            <Component class="javax.swing.JLabel" name="lblCWMProtW">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Protein Weight Matrix:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel15">
+            <Component class="javax.swing.JLabel" name="lblCWMGapOpen">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gap Open:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
+            <Component class="javax.swing.JLabel" name="lblCWMGapExt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gap Extension:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
+            <Component class="javax.swing.JLabel" name="lblCWMGatDist">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gap Distances:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+            <Component class="javax.swing.JCheckBox" name="checkCWMNoEndGaps">
               <Properties>
                 <Property name="text" type="java.lang.String" value="No End Gaps"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment disable the gap seperation penalty when scoring gaps the the ends of the alignment. Default value is: no [false]"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel18">
+            <Component class="javax.swing.JLabel" name="lblCWMIter">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Iteration:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel19">
+            <Component class="javax.swing.JLabel" name="lblCWMNumIter">
               <Properties>
-                <Property name="text" type="java.lang.String" value="N. Iterations:"/>
+                <Property name="text" type="java.lang.String" value="Num. Iterations:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel20">
+            <Component class="javax.swing.JLabel" name="lblCWMClust">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clustering:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel21">
+            <Component class="javax.swing.JLabel" name="lblCWMOrder">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Order:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox13">
+            <Component class="javax.swing.JLabel" name="lblCWMOutputF">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Output Format:"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comboCWMProtW">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -790,9 +911,11 @@
                     <StringItem index="3" value="ID"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="2"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment protein sequence comparison matrix series used to score the alignment. Default value is: Gonnet [gonnet]"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox14">
+            <Component class="javax.swing.JComboBox" name="comboCWMGapOpen">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="7">
@@ -805,9 +928,11 @@
                     <StringItem index="6" value="1"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="3"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for the first residue in a gap. Default value is: 10"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox15">
+            <Component class="javax.swing.JComboBox" name="comboCWMGapExt">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="8">
@@ -821,9 +946,11 @@
                     <StringItem index="7" value="10.0"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for each additional residue in a gap. Default value is: 0.20"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox16">
+            <Component class="javax.swing.JComboBox" name="comboCWMGapDist">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="10">
@@ -839,9 +966,11 @@
                     <StringItem index="9" value="1"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="5"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment gaps that are closer together than this distance are penalised. Default value is: 5"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox17">
+            <Component class="javax.swing.JComboBox" name="comboCWMIter">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -850,9 +979,10 @@
                     <StringItem index="2" value="Aligment"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment improvement iteration type. Default value is: none"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox18">
+            <Component class="javax.swing.JComboBox" name="comboCWMNumIter">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="10">
@@ -868,9 +998,10 @@
                     <StringItem index="9" value="10"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Maximum number of iterations to perform. Default value is: 1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox19">
+            <Component class="javax.swing.JComboBox" name="comboCWMClust">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -878,9 +1009,10 @@
                     <StringItem index="1" value="UPGMA"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Clustering type. Default value is: NJ"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox20">
+            <Component class="javax.swing.JComboBox" name="comboCWMOrder">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -888,14 +1020,55 @@
                     <StringItem index="1" value="Input"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="The order in which the sequences appear in the final alignment. Default value is: aligned"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comboCWMOutputF">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="Clustal without numbers"/>
+                    <StringItem index="1" value="Clustal with numbers"/>
+                    <StringItem index="2" value="GCG MSF"/>
+                    <StringItem index="3" value="Pearson/FASTA"/>
+                    <StringItem index="4" value="PHYLIP"/>
+                    <StringItem index="5" value="NEXUS"/>
+                    <StringItem index="6" value="NBRF/PIR"/>
+                    <StringItem index="7" value="GDE"/>
+                  </StringArray>
+                </Property>
+                <Property name="selectedIndex" type="int" value="1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: Clustal w/ numbers [aln1]"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="btnCWPadrao">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCWAjuda">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWAjudaActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel7">
+    <Container class="javax.swing.JPanel" name="painelConfM">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="MUSCLE"/>
@@ -906,11 +1079,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnMPadrao" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnMAjuda" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblMOutputF" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMOutputTree" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jComboBox21" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="comboMOutputTree" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboMOutputF" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -920,21 +1106,37 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox21" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMOutputTree" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboMOutputTree" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnMAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel22">
+        <Component class="javax.swing.JLabel" name="lblMOutputTree">
           <Properties>
             <Property name="text" type="java.lang.String" value="Output Tree:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox21">
+        <Component class="javax.swing.JLabel" name="lblMOutputF">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Output Format:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboMOutputTree">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -943,25 +1145,91 @@
                 <StringItem index="2" value="From second iteration"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="The guide tree to output. Default value is: none"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboMOutputF">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="7">
+                <StringItem index="0" value="Pearson/FASTA"/>
+                <StringItem index="1" value="ClustalW"/>
+                <StringItem index="2" value="ClustalW (strict)"/>
+                <StringItem index="3" value="HTML"/>
+                <StringItem index="4" value="GCG MSF"/>
+                <StringItem index="5" value="Phylip interleaved"/>
+                <StringItem index="6" value="Phylip sequential"/>
+              </StringArray>
+            </Property>
+            <Property name="selectedIndex" type="int" value="1"/>
+            <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: ClustalW [clw]"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnMPadrao">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnMAjuda">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMAjudaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/crygetter/gui/icons/delete.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/crygetter/gui/icons/accept.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="OK"/>
-      </Properties>
-    </Component>
+    <Container class="javax.swing.JPanel" name="painelBaixo">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnOK" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnOK">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/accept.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="OK"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCancelar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/delete.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

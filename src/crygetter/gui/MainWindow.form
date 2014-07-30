@@ -234,7 +234,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblURLPrin" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCepa" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAut" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -244,10 +244,7 @@
                                   <Component id="lblAccNo" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNome" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="lblCom" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblCom" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -261,7 +258,7 @@
                               <Component id="fieldIdNuc" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="fieldAut" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="159" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
