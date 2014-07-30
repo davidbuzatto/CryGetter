@@ -105,8 +105,8 @@
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="checkCODealign" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="checkCOGuide" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="checkCOCLustering" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkCOClusteringGuide" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkCOClusteringIteration" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -129,9 +129,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="checkCODealign" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="checkCOGuide" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCOClusteringGuide" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="checkCOCLustering" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkCOClusteringIteration" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblCOCombIter" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,14 +174,14 @@
             <Property name="toolTipText" type="java.lang.String" value="Remove any existing alignment (gaps) from input sequences. Default value is: no [false]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="checkCOGuide">
+        <Component class="javax.swing.JCheckBox" name="checkCOClusteringGuide">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="mBed-Like Clustering Guide-tree"/>
             <Property name="toolTipText" type="java.lang.String" value="This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="checkCOCLustering">
+        <Component class="javax.swing.JCheckBox" name="checkCOClusteringIteration">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="mBed-Like Clustering Iteration"/>
@@ -296,6 +296,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOPadraoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCOAjuda">
           <Properties>
@@ -947,7 +950,7 @@
                   </StringArray>
                 </Property>
                 <Property name="selectedIndex" type="int" value="1"/>
-                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for each additional residue in a gap. Default value is: 0.20"/>
+                <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for each additional residue in a gap. Default value is: 0.2"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboCWMGapDist">
@@ -1050,6 +1053,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWPadraoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCWAjuda">
           <Properties>
@@ -1172,6 +1178,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMPadraoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMAjuda">
           <Properties>
@@ -1217,6 +1226,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOKActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>

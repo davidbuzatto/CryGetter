@@ -35,12 +35,15 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -680,7 +683,7 @@ public class Utils {
                                 "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
-                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                    SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
                             new File( "temp/" + fileName ),
                             new File( "temp/" + readFrom ),
                             new File( "temp/" + readFrom.replace( ".fasta", ".dnd" ) )));
@@ -742,7 +745,7 @@ public class Utils {
                                 "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
-                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                    SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
                             new File( "temp/" + fileName ),
                             new File( "temp/" + readFrom )));
                 
@@ -804,7 +807,7 @@ public class Utils {
                                 "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
-                    SwingUtilities.invokeLater( new SaveAlignmentFile( 
+                    SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
                             new File( "temp/" + fileName ),
                             new File( "temp/" + readFrom ) ));
                 
@@ -818,6 +821,65 @@ public class Utils {
             
         }).start();
         
+    }
+    
+    /**
+     * A runnable to save alignment file and remove temporary files.
+     */
+    private static class SaveAlignmentFileTask implements Runnable {
+
+        File fileToMove;
+        File[] filesToDelete;
+
+        SaveAlignmentFileTask( File fileToMove, File... filesToDelete ) {
+            this.fileToMove = fileToMove;
+            this.filesToDelete = filesToDelete;
+        }
+
+        @Override
+        public void run() {
+
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                    "Arquivo de Alinhamento Clustal (*.aln)", "aln" );
+
+            for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+                jfc.removeChoosableFileFilter( f );
+            }
+
+            jfc.setFileFilter( fnef );
+            jfc.setDialogTitle( "Salvar Alinhamento" );
+            jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+            jfc.setMultiSelectionEnabled( false );
+
+            if ( jfc.showSaveDialog( null ) == JFileChooser.APPROVE_OPTION ) {
+
+                File f = jfc.getSelectedFile();
+
+                if ( f.getName().lastIndexOf( ".aln" ) == -1 ) {
+                    f = new File( f.getAbsolutePath() + ".aln" );
+                }
+
+                if ( !f.exists() || 
+                        ( f.exists() && JOptionPane.showConfirmDialog( 
+                          null, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
+                          JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
+
+                    f.delete();
+                    fileToMove.renameTo( f );
+
+                }
+
+            } else {
+                fileToMove.delete();
+            }
+
+            for ( File fd : filesToDelete ) {
+                fd.delete();
+            }
+
+        }
+
     }
     
 }

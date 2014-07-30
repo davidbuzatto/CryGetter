@@ -21,6 +21,9 @@ import crygetter.utils.Utils;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -33,7 +36,10 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
@@ -83,6 +89,10 @@ public class MainWindow extends javax.swing.JFrame {
     
     // protein list
     private Color baseProteinColor = new Color( 172, 187, 234 );
+    
+    // application configurations
+    private Properties configs;
+    private Properties defaultConfigs;
             
     /**
      * Creates new form JanelaPrincipal
@@ -105,6 +115,7 @@ public class MainWindow extends javax.swing.JFrame {
         checkD3.setBackground(cD3 );
         checkD3.setOpaque( true );
         
+        prepareConfiguration();
         
     }
 
@@ -1342,7 +1353,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         if ( ctList != null ) {
             
-            AlignDialog ad = new AlignDialog( this, true, ctList );
+            AlignDialog ad = new AlignDialog( this, true, ctList, defaultConfigs, configs );
             ad.setVisible( true );
             
         } else {
@@ -1360,7 +1371,17 @@ public class MainWindow extends javax.swing.JFrame {
         Color c = JColorChooser.showDialog( this, "Cor Base", baseProteinColor );
         
         if ( c != null ) {
+            
             baseProteinColor = c;
+            configs.setProperty( "bpc", String.valueOf( baseProteinColor.getRGB() ) );
+            
+            try {
+                configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+            } catch ( IOException ex ) {
+                Utils.showExceptionMessage( this, ex );
+                System.exit( 1 );
+            }
+            
             if ( ctList != null ) {
                 updateProteinColors();
                 listaProteinas.updateUI();
@@ -1369,6 +1390,77 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCorActionPerformed
 
+    private void prepareConfiguration() {
+        
+        configs = new Properties();
+        defaultConfigs = new Properties();
+        
+        // creating default configs
+        defaultConfigs.setProperty( "bpc", "-5504790" );
+
+        defaultConfigs.setProperty( "coDIS", "false" );
+        defaultConfigs.setProperty( "coMbedCGT", "true" );
+        defaultConfigs.setProperty( "coMbedCI", "true" );
+        defaultConfigs.setProperty( "coNCI", "0" );
+        defaultConfigs.setProperty( "coMGTI", "0" );
+        defaultConfigs.setProperty( "coMHMMI", "0" );
+        defaultConfigs.setProperty( "coO", "0" );
+        defaultConfigs.setProperty( "coOF", "0" );
+
+        defaultConfigs.setProperty( "cwPWT", "slow" );
+        defaultConfigs.setProperty( "cwPWSPWM", "2" );
+        defaultConfigs.setProperty( "cwPWSGO", "3" );
+        defaultConfigs.setProperty( "cwPWSGE", "1" );
+
+        defaultConfigs.setProperty( "cwPWFKTUP", "0" );
+        defaultConfigs.setProperty( "cwPWFWL", "5" );
+        defaultConfigs.setProperty( "cwPWFST", "0" );
+        defaultConfigs.setProperty( "cwPWFTD", "5" );
+        defaultConfigs.setProperty( "cwPWFPG", "2" );
+
+        defaultConfigs.setProperty( "cwMPWM", "2" );
+        defaultConfigs.setProperty( "cwMGO", "3" );
+        defaultConfigs.setProperty( "cwMGE", "1" );
+        defaultConfigs.setProperty( "cwMGD", "5" );
+        defaultConfigs.setProperty( "cwMNEG", "false" );
+        defaultConfigs.setProperty( "cwMI", "0" );
+        defaultConfigs.setProperty( "cwMNI", "0" );
+        defaultConfigs.setProperty( "cwMC", "0" );
+        defaultConfigs.setProperty( "cwMO", "0" );
+        defaultConfigs.setProperty( "cwMOF", "1" );
+        
+        defaultConfigs.setProperty( "mMOT", "0" );
+        defaultConfigs.setProperty( "mMOF", "1" );
+        
+        try {
+            
+            configs.load( new FileInputStream( "conf/conf.properties" ) );
+            
+            baseProteinColor = new Color( Integer.parseInt( configs.getProperty( "bpc" ) ) );
+            
+        } catch ( IOException exc ) {
+            
+            // properties not found... creating
+            if ( exc instanceof FileNotFoundException ) {
+                
+                // loading default configuration into configs
+                for ( String s : defaultConfigs.stringPropertyNames() ) {
+                    configs.setProperty( s, defaultConfigs.getProperty( s ) );
+                }
+                
+                try {
+                    configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+                } catch ( IOException ex ) {
+                    Utils.showExceptionMessage( this, ex );
+                    System.exit( 1 );
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     private void updateProteinColors() {
         
         // colors

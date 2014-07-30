@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,14 +23,19 @@ import javax.swing.table.DefaultTableModel;
 public class AlignDialog extends javax.swing.JDialog {
 
     private DefaultTableModel proteinTableModel;
+    private Properties defaultConfigs;
+    private Properties configs;
     
     /**
      * Creates new form AlignDialog
      */
-    public AlignDialog( java.awt.Frame parent, boolean modal, List<CryToxin> ctList ) {
+    public AlignDialog( java.awt.Frame parent, boolean modal, List<CryToxin> ctList, Properties defaultConfigs, Properties configs ) {
         
         super( parent, modal );
         initComponents();
+        
+        this.defaultConfigs = defaultConfigs;
+        this.configs = configs;
         
         proteinTableModel = new CryToxinTableModel(
                 new String[]{ "Proteína", "Ordem(ns)", "Alinhar" }, 0 );
@@ -550,7 +556,7 @@ public class AlignDialog extends javax.swing.JDialog {
 
     private void btnConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfActionPerformed
         
-        AlignAlgorithmsConfigDialog ad = new AlignAlgorithmsConfigDialog( this, true );
+        AlignAlgorithmsConfigDialog ad = new AlignAlgorithmsConfigDialog( this, true, defaultConfigs, configs );
         ad.setVisible( true );
         
     }//GEN-LAST:event_btnConfActionPerformed

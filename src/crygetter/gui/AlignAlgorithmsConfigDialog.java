@@ -8,9 +8,11 @@ package crygetter.gui;
 
 import crygetter.utils.Utils;
 import java.awt.Desktop;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Properties;
 import javax.swing.JDialog;
 
 /**
@@ -19,12 +21,60 @@ import javax.swing.JDialog;
  */
 public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
+    private Properties defaultConfigs;
+    private Properties configs;
+    
     /**
      * Creates new form ClustalConfigDialog
      */
-    public AlignAlgorithmsConfigDialog( JDialog parent, boolean modal ) {
+    public AlignAlgorithmsConfigDialog( JDialog parent, boolean modal, Properties defaultConfigs, Properties configs ) {
+        
         super( parent, modal );
         initComponents();
+        
+        this.defaultConfigs = defaultConfigs;
+        this.configs = configs;
+        
+        checkCODealign.setSelected( Boolean.valueOf( configs.getProperty( "coDIS" ) ) );
+        checkCOClusteringGuide.setSelected( Boolean.valueOf( configs.getProperty( "coMbedCGT" ) ) );
+        checkCOClusteringIteration.setSelected( Boolean.valueOf( configs.getProperty( "coMbedCI" ) ) );
+        
+        comboCOCombIter.setSelectedIndex( Integer.parseInt( configs.getProperty( "coNCI" ) ) );
+        comboCOMaxGuide.setSelectedIndex( Integer.parseInt( configs.getProperty( "coMGTI" ) ) );
+        comboCOHMM.setSelectedIndex( Integer.parseInt( configs.getProperty( "coMHMMI" ) ) );
+        comboCOOrder.setSelectedIndex( Integer.parseInt( configs.getProperty( "coO" ) ) );
+        comboCOOutputF.setSelectedIndex( Integer.parseInt( configs.getProperty( "coOF" ) ) );
+        
+        if ( configs.getProperty( "cwPWT" ).equals( "slow" ) ) {
+            radioCWSlow.setSelected( true );
+        } else {
+            radioCWFast.setSelected( true );
+        }
+        
+        comboCWPWProteW.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWSPWM" ) ) );
+        comboCWPWGapOpen.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWSGO" ) ) );
+        comboCWPWGapExt.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWSGE" ) ) );
+
+        comboCWPWKTUP.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWFKTUP" ) ) );
+        comboCWPWWinLen.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWFWL" ) ) );
+        comboCWPWScoreT.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWFST" ) ) );
+        comboCWPWTopDiags.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWFTD" ) ) );
+        comboCWPWPairG.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwPWFPG" ) ) );
+
+        comboCWMProtW.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMPWM" ) ) );
+        comboCWMGapOpen.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMGO" ) ) );
+        comboCWMGapExt.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMGE" ) ) );
+        comboCWMGapDist.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMGD" ) ) );
+        checkCWMNoEndGaps.setSelected( Boolean.valueOf( configs.getProperty( "cwMNEG" ) ) );
+        comboCWMIter.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMI" ) ) );
+        comboCWMNumIter.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMNI" ) ) );
+        comboCWMClust.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMC" ) ) );
+        comboCWMOrder.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMO" ) ) );
+        comboCWMOutputF.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMOF" ) ) );
+        
+        comboMOutputTree.setSelectedIndex( Integer.parseInt( configs.getProperty( "mMOT" ) ) );
+        comboMOutputF.setSelectedIndex( Integer.parseInt( configs.getProperty( "mMOF" ) ) );
+        
     }
 
     /**
@@ -39,8 +89,8 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         painelConfCO = new javax.swing.JPanel();
         checkCODealign = new javax.swing.JCheckBox();
-        checkCOGuide = new javax.swing.JCheckBox();
-        checkCOCLustering = new javax.swing.JCheckBox();
+        checkCOClusteringGuide = new javax.swing.JCheckBox();
+        checkCOClusteringIteration = new javax.swing.JCheckBox();
         lblCOCombIter = new javax.swing.JLabel();
         lblCOMaxGuide = new javax.swing.JLabel();
         lblCOHMM = new javax.swing.JLabel();
@@ -119,13 +169,13 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         checkCODealign.setText("Dealign Input Sequences");
         checkCODealign.setToolTipText("Remove any existing alignment (gaps) from input sequences. Default value is: no [false]");
 
-        checkCOGuide.setSelected(true);
-        checkCOGuide.setText("mBed-Like Clustering Guide-tree");
-        checkCOGuide.setToolTipText("This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]");
+        checkCOClusteringGuide.setSelected(true);
+        checkCOClusteringGuide.setText("mBed-Like Clustering Guide-tree");
+        checkCOClusteringGuide.setToolTipText("This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]");
 
-        checkCOCLustering.setSelected(true);
-        checkCOCLustering.setText("mBed-Like Clustering Iteration");
-        checkCOCLustering.setToolTipText("Use mBed-like clustering during subsequent iterations. Default value is: yes [true]");
+        checkCOClusteringIteration.setSelected(true);
+        checkCOClusteringIteration.setText("mBed-Like Clustering Iteration");
+        checkCOClusteringIteration.setToolTipText("Use mBed-like clustering during subsequent iterations. Default value is: yes [true]");
 
         lblCOCombIter.setText("Number of Combined Iterations:");
 
@@ -155,6 +205,11 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
         btnCOPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
         btnCOPadrao.setText("Padrão");
+        btnCOPadrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCOPadraoActionPerformed(evt);
+            }
+        });
 
         btnCOAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
         btnCOAjuda.setText("Ajuda EMBL-EBI");
@@ -191,8 +246,8 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                                 .addGap(10, 10, 10)
                                 .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(checkCODealign)
-                                    .addComponent(checkCOGuide)
-                                    .addComponent(checkCOCLustering))))
+                                    .addComponent(checkCOClusteringGuide)
+                                    .addComponent(checkCOClusteringIteration))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfCOLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -207,9 +262,9 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(checkCODealign)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkCOGuide)
+                .addComponent(checkCOClusteringGuide)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkCOCLustering)
+                .addComponent(checkCOClusteringIteration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOCombIter)
@@ -454,7 +509,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
         comboCWMGapExt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.05", "0.2", "0.5", "1.0", "2.5", "5.0", "7.5", "10.0" }));
         comboCWMGapExt.setSelectedIndex(1);
-        comboCWMGapExt.setToolTipText("Multiple alignment penalty for each additional residue in a gap. Default value is: 0.20");
+        comboCWMGapExt.setToolTipText("Multiple alignment penalty for each additional residue in a gap. Default value is: 0.2");
 
         comboCWMGapDist.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
         comboCWMGapDist.setSelectedIndex(5);
@@ -552,6 +607,11 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
         btnCWPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
         btnCWPadrao.setText("Padrão");
+        btnCWPadrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCWPadraoActionPerformed(evt);
+            }
+        });
 
         btnCWAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
         btnCWAjuda.setText("Ajuda EMBL-EBI");
@@ -612,6 +672,11 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
         btnMPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
         btnMPadrao.setText("Padrão");
+        btnMPadrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMPadraoActionPerformed(evt);
+            }
+        });
 
         btnMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
         btnMAjuda.setText("Ajuda EMBL-EBI");
@@ -662,6 +727,11 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
         btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/accept.png"))); // NOI18N
         btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOKActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/delete.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -762,47 +832,109 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main( String args[] ) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for ( javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels() ) {
-                if ( "Nimbus".equals( info.getName() ) ) {
-                    javax.swing.UIManager.setLookAndFeel( info.getClassName() );
-                    break;
-                }
-            }
-        } catch ( ClassNotFoundException ex ) {
-            java.util.logging.Logger.getLogger( AlignAlgorithmsConfigDialog.class.getName() ).log( java.util.logging.Level.SEVERE, null, ex );
-        } catch ( InstantiationException ex ) {
-            java.util.logging.Logger.getLogger( AlignAlgorithmsConfigDialog.class.getName() ).log( java.util.logging.Level.SEVERE, null, ex );
-        } catch ( IllegalAccessException ex ) {
-            java.util.logging.Logger.getLogger( AlignAlgorithmsConfigDialog.class.getName() ).log( java.util.logging.Level.SEVERE, null, ex );
-        } catch ( javax.swing.UnsupportedLookAndFeelException ex ) {
-            java.util.logging.Logger.getLogger( AlignAlgorithmsConfigDialog.class.getName() ).log( java.util.logging.Level.SEVERE, null, ex );
-        }
-        //</editor-fold>
+    private void btnCOPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOPadraoActionPerformed
+        
+        checkCODealign.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "coDIS" ) ) );
+        checkCOClusteringGuide.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "coMbedCGT" ) ) );
+        checkCOClusteringIteration.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "coMbedCI" ) ) );
+        
+        comboCOCombIter.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coNCI" ) ) );
+        comboCOMaxGuide.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coMGTI" ) ) );
+        comboCOHMM.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coMHMMI" ) ) );
+        comboCOOrder.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coO" ) ) );
+        comboCOOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coOF" ) ) );
+        
+    }//GEN-LAST:event_btnCOPadraoActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater( new Runnable() {
-            public void run() {
-                AlignAlgorithmsConfigDialog dialog = new AlignAlgorithmsConfigDialog( new javax.swing.JDialog(), true );
-                dialog.addWindowListener( new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing( java.awt.event.WindowEvent e ) {
-                        System.exit( 0 );
-                    }
-                } );
-                dialog.setVisible( true );
-            }
-        } );
-    }
+    private void btnCWPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCWPadraoActionPerformed
+        
+        if ( defaultConfigs.getProperty( "cwPWT" ).equals( "slow" ) ) {
+            radioCWSlow.setSelected( true );
+        } else {
+            radioCWFast.setSelected( true );
+        }
+        
+        comboCWPWProteW.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWSPWM" ) ) );
+        comboCWPWGapOpen.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWSGO" ) ) );
+        comboCWPWGapExt.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWSGE" ) ) );
+
+        comboCWPWKTUP.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWFKTUP" ) ) );
+        comboCWPWWinLen.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWFWL" ) ) );
+        comboCWPWScoreT.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWFST" ) ) );
+        comboCWPWTopDiags.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWFTD" ) ) );
+        comboCWPWPairG.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwPWFPG" ) ) );
+
+        comboCWMProtW.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMPWM" ) ) );
+        comboCWMGapOpen.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMGO" ) ) );
+        comboCWMGapExt.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMGE" ) ) );
+        comboCWMGapDist.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMGD" ) ) );
+        checkCWMNoEndGaps.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "cwMNEG" ) ) );
+        comboCWMIter.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMI" ) ) );
+        comboCWMNumIter.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMNI" ) ) );
+        comboCWMClust.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMC" ) ) );
+        comboCWMOrder.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMO" ) ) );
+        comboCWMOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMOF" ) ) );
+        
+    }//GEN-LAST:event_btnCWPadraoActionPerformed
+
+    private void btnMPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMPadraoActionPerformed
+        
+        comboMOutputTree.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "mMOT" ) ) );
+        comboMOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "mMOF" ) ) );
+        
+    }//GEN-LAST:event_btnMPadraoActionPerformed
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        
+        configs.setProperty( "coDIS", String.valueOf( checkCODealign.isSelected() ) );
+        configs.setProperty( "coMbedCGT", String.valueOf( checkCOClusteringGuide.isSelected() ) );
+        configs.setProperty( "coMbedCI", String.valueOf( checkCOClusteringIteration.isSelected() ) );
+        
+        configs.setProperty( "coNCI", String.valueOf( comboCOCombIter.getSelectedIndex() ) );
+        configs.setProperty( "coMGTI", String.valueOf( comboCOMaxGuide.getSelectedIndex() ) );
+        configs.setProperty( "coMHMMI", String.valueOf( comboCOHMM.getSelectedIndex() ) );
+        configs.setProperty( "coO", String.valueOf( comboCOOrder.getSelectedIndex() ) );
+        configs.setProperty( "coOF", String.valueOf( comboCOOutputF.getSelectedIndex() ) );
+        
+        if ( radioCWSlow.isSelected() ) {
+            configs.setProperty( "cwPWT", "slow" );
+        } else {
+            configs.setProperty( "cwPWT", "fast" );
+        }
+        
+        configs.setProperty( "cwPWSPWM", String.valueOf( comboCWPWProteW.getSelectedIndex() ) );
+        configs.setProperty( "cwPWSGO", String.valueOf( comboCWPWGapOpen.getSelectedIndex() ) );
+        configs.setProperty( "cwPWSGE", String.valueOf( comboCWPWGapExt.getSelectedIndex() ) );
+
+        configs.setProperty( "cwPWFKTUP", String.valueOf( comboCWPWKTUP.getSelectedIndex() ) );
+        configs.setProperty( "cwPWFWL", String.valueOf( comboCWPWWinLen.getSelectedIndex() ) );
+        configs.setProperty( "cwPWFST", String.valueOf( comboCWPWScoreT.getSelectedIndex() ) );
+        configs.setProperty( "cwPWFTD", String.valueOf( comboCWPWTopDiags.getSelectedIndex() ) );
+        configs.setProperty( "cwPWFPG", String.valueOf( comboCWPWPairG.getSelectedIndex() ) );
+
+        configs.setProperty( "cwMPWM", String.valueOf( comboCWMProtW.getSelectedIndex() ) );
+        configs.setProperty( "cwMGO", String.valueOf( comboCWMGapOpen.getSelectedIndex() ) );
+        configs.setProperty( "cwMGE", String.valueOf( comboCWMGapExt.getSelectedIndex() ) );
+        configs.setProperty( "cwMGD", String.valueOf( comboCWMGapDist.getSelectedIndex() ) );
+        configs.setProperty( "cwMNEG", String.valueOf( checkCWMNoEndGaps.isSelected() ) );
+        configs.setProperty( "cwMI", String.valueOf( comboCWMIter.getSelectedIndex() ) );
+        configs.setProperty( "cwMNI", String.valueOf( comboCWMNumIter.getSelectedIndex() ) );
+        configs.setProperty( "cwMC", String.valueOf( comboCWMClust.getSelectedIndex() ) );
+        configs.setProperty( "cwMO", String.valueOf( comboCWMOrder.getSelectedIndex() ) );
+        configs.setProperty( "cwMOF", String.valueOf( comboCWMOutputF.getSelectedIndex() ) );
+        
+        configs.setProperty( "mMOT", String.valueOf( comboMOutputTree.getSelectedIndex() ) );
+        configs.setProperty( "mMOF", String.valueOf( comboMOutputF.getSelectedIndex() ) );
+        
+        try {
+            configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+            dispose();
+        } catch ( IOException ex ) {
+            Utils.showExceptionMessage( this, ex );
+            System.exit( 1 );
+        }
+        
+    }//GEN-LAST:event_btnOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCOAjuda;
@@ -814,9 +946,9 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnMPadrao;
     private javax.swing.JButton btnOK;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox checkCOCLustering;
+    private javax.swing.JCheckBox checkCOClusteringGuide;
+    private javax.swing.JCheckBox checkCOClusteringIteration;
     private javax.swing.JCheckBox checkCODealign;
-    private javax.swing.JCheckBox checkCOGuide;
     private javax.swing.JCheckBox checkCWMNoEndGaps;
     private javax.swing.JComboBox comboCOCombIter;
     private javax.swing.JComboBox comboCOHMM;
