@@ -38,8 +38,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
@@ -1373,7 +1371,9 @@ public class MainWindow extends javax.swing.JFrame {
         if ( c != null ) {
             
             baseProteinColor = c;
-            configs.setProperty( "bpc", String.valueOf( baseProteinColor.getRGB() ) );
+            configs.setProperty( "bpcR", String.valueOf( baseProteinColor.getRed() ) );
+            configs.setProperty( "bpcG", String.valueOf( baseProteinColor.getGreen()) );
+            configs.setProperty( "bpcB", String.valueOf( baseProteinColor.getBlue() ) );
             
             try {
                 configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
@@ -1396,7 +1396,9 @@ public class MainWindow extends javax.swing.JFrame {
         defaultConfigs = new Properties();
         
         // creating default configs
-        defaultConfigs.setProperty( "bpc", "-5504790" );
+        defaultConfigs.setProperty( "bpcR", String.valueOf( baseProteinColor.getRed() ) );
+        defaultConfigs.setProperty( "bpcG", String.valueOf( baseProteinColor.getGreen()) );
+        defaultConfigs.setProperty( "bpcB", String.valueOf( baseProteinColor.getBlue() ) );
 
         defaultConfigs.setProperty( "coDIS", "false" );
         defaultConfigs.setProperty( "coMbedCGT", "true" );
@@ -1436,7 +1438,10 @@ public class MainWindow extends javax.swing.JFrame {
             
             configs.load( new FileInputStream( "conf/conf.properties" ) );
             
-            baseProteinColor = new Color( Integer.parseInt( configs.getProperty( "bpc" ) ) );
+            baseProteinColor = new Color( 
+                    Integer.parseInt( configs.getProperty( "bpcR" ) ),
+                    Integer.parseInt( configs.getProperty( "bpcG" ) ),
+                    Integer.parseInt( configs.getProperty( "bpcB" ) ));
             
         } catch ( IOException exc ) {
             
