@@ -1431,7 +1431,7 @@ public class MainWindow extends javax.swing.JFrame {
         defaultConfigs.setProperty( "cwMO", "0" );
         defaultConfigs.setProperty( "cwMOF", "1" );
         
-        defaultConfigs.setProperty( "mMOT", "0" );
+        defaultConfigs.setProperty( "mMFD", "false" );
         defaultConfigs.setProperty( "mMOF", "1" );
         
         try {

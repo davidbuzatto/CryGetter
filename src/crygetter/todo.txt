@@ -1,4 +1,3 @@
-- Configurações dos Clustal; -> Janela própria com botão reset para valores default.
+- Melhorar configurações dos algoritmos de alinhamento (caixas de texto, validação, armazenamento de configurações).
 - Seleção por ordem na janela de alinhamentos;
 - Testes com mega.
-- Armazenamento de configurações.

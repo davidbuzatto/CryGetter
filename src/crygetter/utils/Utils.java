@@ -17,6 +17,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -824,6 +825,95 @@ public class Utils {
     }
     
     /**
+     * Runs a generic command related to multiplie alignment sequence (MSA), 
+     * logging output to a JTextPane.
+     * 
+     * @param readFrom File name to read from (complete path)
+     * @param fileName File name (without extension) to write.
+     * @param fileExtension Extension of the file (represents the format generated)
+     * @param fileDescription Description of the file (used to save in a JFileChooser)
+     * @param command Comando que será executado.
+     * @param errorPrefix Error prefix for output (stderr)
+     * @param outPrefix Standard prefix for output (stdout)
+     * @param outOKColor Color to use for standard output
+     * @param outErrorColor Color to use for error output
+     * @param codeOKColor Color to use for no error code
+     * @param codeErrorColor Color to use for error code
+     * @param textArea JTextPane to log the process output
+     * @param btnAlign Button used to start the alignment process
+     * @param lblWait Label to show the progress
+     * @param filesToDelete Files that need to be deleted after the process execution.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public static void runAlignmentProgram( 
+            final String readFrom,
+            final String fileName,
+            final String fileExtension,
+            final String fileDescription,
+            final String command, 
+            final String outPrefix, 
+            final String errorPrefix, 
+            final Color outOKColor,
+            final Color outErrorColor, 
+            final Color codeOKColor,
+            final Color codeErrorColor, 
+            final JTextPane textArea,
+            final JButton btnAlign,
+            final JLabel lblWait,
+            final File... filesToDelete ) 
+            throws IOException, InterruptedException {
+        
+        new Thread( new Runnable() {
+
+            @Override
+            public void run() {
+                
+                try {
+                    
+                    btnAlign.setEnabled( false );
+                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    
+                    SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Comando: " + command + "\n\n", Color.BLACK, Color.WHITE ) );
+                    
+                    Runtime rt = Runtime.getRuntime();
+                    Process proc = rt.exec( command );
+
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), outPrefix, textArea, outOKColor, Color.WHITE );
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), errorPrefix, textArea, outErrorColor, Color.WHITE );
+
+                    errorGobbler.start();
+                    outputGobbler.start();
+
+                    int exitVal = proc.waitFor();
+                    if ( exitVal == 0 ) {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "\nValor de Saída: " + exitVal + " - Processo Finalizado com Sucesso!", codeOKColor, Color.WHITE ) );
+                    } else {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "\nValor de Saída: " + exitVal + " - Processo Finalizado com Erro!", codeErrorColor, Color.WHITE ) );
+                    }
+                    
+                    SwingUtilities.invokeLater( new SaveGeneralAlignmentFileTask( 
+                            fileName,
+                            fileExtension,
+                            fileDescription,
+                            filesToDelete ) );
+                
+                } catch ( IOException | InterruptedException exc ) {
+                    exc.printStackTrace();
+                } finally {
+                    btnAlign.setEnabled( true );
+                    lblWait.setText( " " );
+                }
+            }
+            
+        }).start();
+        
+    }
+    
+    /**
      * A runnable to save alignment file and remove temporary files.
      */
     private static class SaveAlignmentFileTask implements Runnable {
@@ -858,6 +948,69 @@ public class Utils {
 
                 if ( f.getName().lastIndexOf( ".aln" ) == -1 ) {
                     f = new File( f.getAbsolutePath() + ".aln" );
+                }
+
+                if ( !f.exists() || 
+                        ( f.exists() && JOptionPane.showConfirmDialog( 
+                          null, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
+                          JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
+
+                    f.delete();
+                    fileToMove.renameTo( f );
+
+                }
+
+            } else {
+                fileToMove.delete();
+            }
+
+            for ( File fd : filesToDelete ) {
+                fd.delete();
+            }
+
+        }
+
+    }
+    
+    /**
+     * A runnable to save alignment file and remove temporary files.
+     */
+    private static class SaveGeneralAlignmentFileTask implements Runnable {
+
+        File fileToMove;
+        File[] filesToDelete;
+        String fileDescription;
+        String fileExtension;
+
+        SaveGeneralAlignmentFileTask( String fileBaseName, String fileExtension, String fileDescription, File... filesToDelete ) {
+            this.fileToMove = new File( fileBaseName + "." + fileExtension );
+            this.filesToDelete = filesToDelete;
+            this.fileDescription = fileDescription;
+            this.fileExtension = fileExtension;
+        }
+
+        @Override
+        public void run() {
+
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                    String.format( "%s (*.%s)", fileDescription, fileExtension ), fileExtension );
+
+            for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+                jfc.removeChoosableFileFilter( f );
+            }
+
+            jfc.setFileFilter( fnef );
+            jfc.setDialogTitle( "Salvar Alinhamento" );
+            jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+            jfc.setMultiSelectionEnabled( false );
+
+            if ( jfc.showSaveDialog( null ) == JFileChooser.APPROVE_OPTION ) {
+
+                File f = jfc.getSelectedFile();
+
+                if ( f.getName().lastIndexOf( "." + fileExtension ) == -1 ) {
+                    f = new File( f.getAbsolutePath() + "." + fileExtension );
                 }
 
                 if ( !f.exists() || 

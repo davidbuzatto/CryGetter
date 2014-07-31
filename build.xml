@@ -73,14 +73,14 @@
     
     <target name="-post-jar">
         
-        <echo>Copiando dependências...</echo>
+        <echo>Copiando dependências e preparando ambiente...</echo>
         
         <copydir src="clustal" dest="${dist.dir}/clustal" />
         <copydir src="muscle" dest="${dist.dir}/muscle" />
         <mkdir dir="${dist.dir}/temp"/>
         <mkdir dir="${dist.dir}/conf"/>
         
-        <echo>Fim da cópia.</echo>
+        <echo>Fim da cópia e da preparação.</echo>
         
     </target>
     

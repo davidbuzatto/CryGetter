@@ -9,6 +9,7 @@ package crygetter.gui;
 import crygetter.model.CryToxin;
 import crygetter.utils.Utils;
 import java.awt.Color;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -384,7 +385,7 @@ public class AlignDialog extends javax.swing.JDialog {
             painelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSaidaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spSaida)
+                .addComponent(spSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         painelSaidaLayout.setVerticalGroup(
@@ -519,16 +520,657 @@ public class AlignDialog extends javax.swing.JDialog {
 
             }
 
+            String readFrom = "temp/cry.fasta";
+            String fileNameBase = "temp/alignment";
+            String fileExtension = "";
+            String fileDescription = "";
+            String command = "";
+            String params = "";
+            
             if ( radioClustalO.isSelected() ) {
-                Utils.runClustalOUI( "cry.fasta", "saidaClustalO.aln", areaSaida, btnAlinhar, lblAguarde );
+                
+                // true/false
+                if ( Boolean.valueOf( configs.getProperty( "coDIS" ) ) ) {
+                    params += "--dealign ";
+                }
+                
+                if ( !Boolean.valueOf( configs.getProperty( "coMbedCGT" ) ) ) {
+                    params += "--full ";
+                }
+                
+                if ( !Boolean.valueOf( configs.getProperty( "coMbedCI" ) ) ) {
+                    params += "--full-iter  ";
+                }
+                
+                // indices default(0), 1, 2, 3, 4, 5
+                switch ( configs.getProperty( "coNCI" ) ) {
+                    case "0":
+                        params += "--iter=0 ";
+                        break;
+                    case "1":
+                        params += "--iter=1 ";
+                        break;
+                    case "2":
+                        params += "--iter=2 ";
+                        break;
+                    case "3":
+                        params += "--iter=3 ";
+                        break;
+                    case "4":
+                        params += "--iter=4 ";
+                        break;
+                    case "5":
+                        params += "--iter=5 ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "coMGTI" ) ) {
+                    // -1 values are discarted, since then denote to not use this parameter
+                    /*case "0":
+                        break;*/
+                    case "1":
+                        params += "--max-guidetree-iterations=0 ";
+                        break;
+                    case "2":
+                        params += "--max-guidetree-iterations=1 ";
+                        break;
+                    case "3":
+                        params += "--max-guidetree-iterations=2 ";
+                        break;
+                    case "4":
+                        params += "--max-guidetree-iterations=3 ";
+                        break;
+                    case "5":
+                        params += "--max-guidetree-iterations=4 ";
+                        break;
+                    case "6":
+                        params += "--max-guidetree-iterations=5 ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "coMHMMI" ) ) {
+                    // same as above
+                    /*case "0":
+                        break;*/
+                    case "1":
+                        params += "--max-hmm-iterations=0 ";
+                        break;
+                    case "2":
+                        params += "--max-hmm-iterations=1 ";
+                        break;
+                    case "3":
+                        params += "--max-hmm-iterations=2 ";
+                        break;
+                    case "4":
+                        params += "--max-hmm-iterations=3 ";
+                        break;
+                    case "5":
+                        params += "--max-hmm-iterations=4 ";
+                        break;
+                    case "6":
+                        params += "--max-hmm-iterations=5 ";
+                        break;
+                }
+                                
+                switch ( configs.getProperty( "coO" ) ) {
+                    case "0":
+                        params += "--output-order=tree-order ";
+                        break;
+                    case "1":
+                        params += "--output-order=input-order ";
+                        break;
+                }
+                        
+                switch ( configs.getProperty( "coOF" ) ) {
+                    case "0":
+                        params += "--outfmt=clustal ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal";
+                        break;
+                    case "1":
+                        params += "--outfmt=clustal --resno ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal Numerado";
+                        break;
+                    case "2":
+                        params += "--outfmt=fasta ";
+                        fileExtension = "fasta";
+                        fileDescription = "Arquivo de Alinhamento FASTA";
+                        break;
+                    case "3":
+                        params += "--outfmt=msf ";
+                        fileExtension = "msf";
+                        fileDescription = "Arquivo de Alinhamento MSF";
+                        break;
+                    case "4":
+                        params += "--outfmt=phylip ";
+                        fileExtension = "phy";
+                        fileDescription = "Arquivo de Alinhamento PHYLIP";
+                        break;
+                    case "5":
+                        params += "--outfmt=selex ";
+                        fileExtension = "selex";
+                        fileDescription = "Arquivo de Alinhamento SELEX";
+                        break;
+                    case "6":
+                        params += "--outfmt=stockholm ";
+                        fileExtension = "pfam";
+                        fileDescription = "Arquivo de Alinhamento STOCKHOLM";
+                        break;
+                    case "7":
+                        params += "--outfmt=vienna ";
+                        fileExtension = "vie";
+                        fileDescription = "Arquivo de Alinhamento VIENNA";
+                        break;
+                }
+                
+                command = "clustal/clustalo.exe --infmt=fasta -i " + readFrom + " -o " + fileNameBase + "." + fileExtension + " -t Protein --force -v " + params;
+                
+                Utils.runAlignmentProgram( 
+                        readFrom, 
+                        fileNameBase, 
+                        fileExtension,
+                        fileDescription,
+                        command, 
+                        "Clustal Ômega - SAÍDA", 
+                        "Clustal Ômega - ERRO", 
+                        new Color( 22, 142, 170 ), Color.RED,
+                        new Color( 32, 160, 47 ), Color.RED,
+                        areaSaida, btnAlinhar, lblAguarde,
+                        new File( readFrom ) );
+                
             } else if ( radioClustalW.isSelected() ) {
-                Utils.runClustalWUI( "cry.fasta", "saidaClustalW.aln", areaSaida, btnAlinhar, lblAguarde );
-            } else {
-                Utils.runMUSCLEUI( "cry.fasta", "saidaMUSCLE.aln", areaSaida, btnAlinhar, lblAguarde );
-            }
+                
+                // slow PW
+                if ( configs.getProperty( "cwPWT" ).equals( "slow" ) ) {
+                    
+                    switch ( configs.getProperty( "cwPWSPWM" ) ) {
+                        case "0":
+                            params += "-PWMATRIX=BLOSUM ";
+                            break;
+                        case "1":
+                            params += "-PWMATRIX=PAM ";
+                            break;
+                        case "2":
+                            params += "-PWMATRIX=GONNET ";
+                            break;
+                        case "3":
+                            params += "-PWMATRIX=ID ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWSGO" ) ) {
+                        case "0":
+                            params += "-PWGAPOPEN=100 ";
+                            break;
+                        case "1":
+                            params += "-PWGAPOPEN=50 ";
+                            break;
+                        case "2":
+                            params += "-PWGAPOPEN=25 ";
+                            break;
+                        case "3":
+                            params += "-PWGAPOPEN=10 ";
+                            break;
+                        case "4":
+                            params += "-PWGAPOPEN=5 ";
+                            break;
+                        case "5":
+                            params += "-PWGAPOPEN=2 ";
+                            break;
+                        case "6":
+                            params += "-PWGAPOPEN=1 ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWSGE" ) ) {
+                        case "0":
+                            params += "-PWGAPEXT=0.05 ";
+                            break;
+                        case "1":
+                            params += "-PWGAPEXT=0.1 ";
+                            break;
+                        case "2":
+                            params += "-PWGAPEXT=0.5 ";
+                            break;
+                        case "3":
+                            params += "-PWGAPEXT=1.0 ";
+                            break;
+                        case "4":
+                            params += "-PWGAPEXT=2.5 ";
+                            break;
+                        case "5":
+                            params += "-PWGAPEXT=5.0 ";
+                            break;
+                        case "6":
+                            params += "-PWGAPEXT=7.5 ";
+                            break;
+                        case "7":
+                            params += "-PWGAPEXT=10.0 ";
+                            break;
+                    }
+                       
+                } else { // fast PW
+                    
+                    /*-KTUPLE=n    :word size
+                    -WINDOW=n    :window around best diags.
+                    -SCORE       :PERCENT or ABSOLUTE
+                    -TOPDIAGS=n  :number of best diags.
+                    -PAIRGAP=n   :gap penalty
+                    */
+                    
+                    switch ( configs.getProperty( "cwPWFKTUP" ) ) {
+                        case "0":
+                            params += "-KTUPLE=1 ";
+                            break;
+                        case "1":
+                            params += "-KTUPLE=2 ";
+                            break;
+                        case "2":
+                            params += "-KTUPLE=3 ";
+                            break;
+                        case "3":
+                            params += "-KTUPLE=4 ";
+                            break;
+                        case "4":
+                            params += "-KTUPLE=5 ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWFWL" ) ) {
+                        case "0":
+                            params += "-WINDOW=10 ";
+                            break;
+                        case "1":
+                            params += "-WINDOW=9 ";
+                            break;
+                        case "2":
+                            params += "-WINDOW=8 ";
+                            break;
+                        case "3":
+                            params += "-WINDOW=7 ";
+                            break;
+                        case "4":
+                            params += "-WINDOW=6 ";
+                            break;
+                        case "5":
+                            params += "-WINDOW=5 ";
+                            break;
+                        case "6":
+                            params += "-WINDOW=4 ";
+                            break;
+                        case "7":
+                            params += "-WINDOW=3 ";
+                            break;
+                        case "8":
+                            params += "-WINDOW=2 ";
+                            break;
+                        case "9":
+                            params += "-WINDOW=1 ";
+                            break;
+                        case "10":
+                            params += "-WINDOW=0 ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWFST" ) ) {
+                        case "0":
+                            params += "-SCORE=PERCENT ";
+                            break;
+                        case "1":
+                            params += "-SCORE=ABSOLUT ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWFTD" ) ) {
+                        case "0":
+                            params += "-TOPDIAGS=10 ";
+                            break;
+                        case "1":
+                            params += "-TOPDIAGS=9 ";
+                            break;
+                        case "2":
+                            params += "-TOPDIAGS=8 ";
+                            break;
+                        case "3":
+                            params += "-TOPDIAGS=7 ";
+                            break;
+                        case "4":
+                            params += "-TOPDIAGS=6 ";
+                            break;
+                        case "5":
+                            params += "-TOPDIAGS=5 ";
+                            break;
+                        case "6":
+                            params += "-TOPDIAGS=4 ";
+                            break;
+                        case "7":
+                            params += "-TOPDIAGS=3 ";
+                            break;
+                        case "8":
+                            params += "-TOPDIAGS=2 ";
+                            break;
+                        case "9":
+                            params += "-TOPDIAGS=1 ";
+                            break;
+                    }
+                    
+                    switch ( configs.getProperty( "cwPWFPG" ) ) {
+                        case "0":
+                            params += "-PAIRGAP=1 ";
+                            break;
+                        case "1":
+                            params += "-PAIRGAP=2 ";
+                            break;
+                        case "2":
+                            params += "-PAIRGAP=3 ";
+                            break;
+                        case "3":
+                            params += "-PAIRGAP=4 ";
+                            break;
+                        case "4":
+                            params += "-PAIRGAP=5 ";
+                            break;
+                        case "5":
+                            params += "-PAIRGAP=10 ";
+                            break;
+                        case "6":
+                            params += "-PAIRGAP=25 ";
+                            break;
+                        case "7":
+                            params += "-PAIRGAP=50 ";
+                            break;
+                        case "8":
+                            params += "-PAIRGAP=100 ";
+                            break;
+                        case "9":
+                            params += "-PAIRGAP=250 ";
+                            break;
+                        case "10":
+                            params += "-PAIRGAP=500 ";
+                            break;
+                    }
+                    
+                }
+                
 
-            //Utils.convertBiologicalDataFile( "saidaClustalO.aln", "fasta", "saidaClustalO.fasta" );
-            //Utils.convertBiologicalDataFile( "saidaClustalW.aln", "fasta", "saidaClustalW.fasta" );
+                // multi alignment
+                switch ( configs.getProperty( "cwMPWM" ) ) {
+                    case "0":
+                        params += "-MATRIX=BLOSUM ";
+                        break;
+                    case "1":
+                        params += "-MATRIX=PAM ";
+                        break;
+                    case "2":
+                        params += "-MATRIX=GONNET ";
+                        break;
+                    case "3":
+                        params += "-MATRIX=ID ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMGO" ) ) {
+                    case "0":
+                        params += "-GAPOPEN=100 ";
+                        break;
+                    case "1":
+                        params += "-GAPOPEN=50 ";
+                        break;
+                    case "2":
+                        params += "-GAPOPEN=25 ";
+                        break;
+                    case "3":
+                        params += "-GAPOPEN=10 ";
+                        break;
+                    case "4":
+                        params += "-GAPOPEN=5 ";
+                        break;
+                    case "5":
+                        params += "-GAPOPEN=2 ";
+                        break;
+                    case "6":
+                        params += "-GAPOPEN=1 ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMGE" ) ) {
+                    case "0":
+                        params += "-GAPEXT=0.05 ";
+                        break;
+                    case "1":
+                        params += "-GAPEXT=0.2 ";
+                        break;
+                    case "2":
+                        params += "-GAPEXT=0.5 ";
+                        break;
+                    case "3":
+                        params += "-GAPEXT=1.0 ";
+                        break;
+                    case "4":
+                        params += "-GAPEXT=2.5 ";
+                        break;
+                    case "5":
+                        params += "-GAPEXT=5.0 ";
+                        break;
+                    case "6":
+                        params += "-GAPEXT=7.5 ";
+                        break;
+                    case "7":
+                        params += "-GAPEXT=10.0 ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMGD" ) ) {
+                    case "0":
+                        params += "-GAPDIST=10 ";
+                        break;
+                    case "1":
+                        params += "-GAPDIST=9 ";
+                        break;
+                    case "2":
+                        params += "-GAPDIST=8 ";
+                        break;
+                    case "3":
+                        params += "-GAPDIST=7 ";
+                        break;
+                    case "4":
+                        params += "-GAPDIST=6 ";
+                        break;
+                    case "5":
+                        params += "-GAPDIST=5 ";
+                        break;
+                    case "6":
+                        params += "-GAPDIST=4 ";
+                        break;
+                    case "7":
+                        params += "-GAPDIST=3 ";
+                        break;
+                    case "8":
+                        params += "-GAPDIST=2 ";
+                        break;
+                    case "9":
+                        params += "-GAPDIST=1 ";
+                        break;
+                }
+                                
+                if ( Boolean.valueOf( configs.getProperty( "cwMNEG" ) ) ) {
+                    params += "-ENDGAPS ";
+                }
+                
+                switch ( configs.getProperty( "cwMI" ) ) {
+                    case "0":
+                        params += "-ITERATION=NONE ";
+                        break;
+                    case "1":
+                        params += "-ITERATION=TREE ";
+                        break;
+                    case "2":
+                        params += "-ITERATION=ALIGNMENT ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMNI" ) ) {
+                    case "0":
+                        params += "-NUMITER=1 ";
+                        break;
+                    case "1":
+                        params += "-NUMITER=2 ";
+                        break;
+                    case "2":
+                        params += "-NUMITER=3 ";
+                        break;
+                    case "3":
+                        params += "-NUMITER=4 ";
+                        break;
+                    case "4":
+                        params += "-NUMITER=5 ";
+                        break;
+                    case "5":
+                        params += "-NUMITER=6 ";
+                        break;
+                    case "6":
+                        params += "-NUMITER=7 ";
+                        break;
+                    case "7":
+                        params += "-NUMITER=8 ";
+                        break;
+                    case "8":
+                        params += "-NUMITER=9 ";
+                        break;
+                    case "9":
+                        params += "-NUMITER=10 ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMC" ) ) {
+                    case "0":
+                        params += "-CLUSTERING=NJ ";
+                        break;
+                    case "1":
+                        params += "-CLUSTERING=UPGMA ";
+                        break;
+                }
+                                
+                switch ( configs.getProperty( "cwMO" ) ) {
+                    case "0":
+                        params += "-OUTORDER=ALIGNED ";
+                        break;
+                    case "1":
+                        params += "-OUTORDER=INPUT ";
+                        break;
+                }
+                
+                switch ( configs.getProperty( "cwMOF" ) ) {
+                    case "0":
+                        params += "-OUTPUT=CLUSTAL ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal";
+                        break;
+                    case "1":
+                        params += "-OUTPUT=CLUSTAL -SEQNOS=ON ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal Numerado";
+                        break;
+                    case "2":
+                        params += "-OUTPUT=GCG ";
+                        fileExtension = "msf";
+                        fileDescription = "Arquivo de Alinhamento MSF";
+                        break;
+                    case "3":
+                        params += "-OUTPUT=FASTA ";
+                        fileExtension = "fasta";
+                        fileDescription = "Arquivo de Alinhamento FASTA";
+                        break;
+                    case "4":
+                        params += "-OUTPUT=PHYLIP ";
+                        fileExtension = "phy";
+                        fileDescription = "Arquivo de Alinhamento PHYLIP";
+                        break;
+                    case "5":
+                        params += "-OUTPUT=NEXUS ";
+                        fileExtension = "nexus";
+                        fileDescription = "Arquivo de Alinhamento NEXUS";
+                        break;
+                    case "6":
+                        params += "-OUTPUT=PIR ";
+                        fileExtension = "pir";
+                        fileDescription = "Arquivo de Alinhamento NBRF/PIR";
+                        break;
+                    case "7":
+                        params += "-OUTPUT=GDE -CASE=UPPER ";
+                        fileExtension = "gde";
+                        fileDescription = "Arquivo de Alinhamento GDE";
+                        break;
+                }
+                
+                command = "clustal/clustalw2.exe -INFILE=" + readFrom + " -OUTFILE=" + fileNameBase + "." + fileExtension + " -ALIGN -TREE -TYPE=PROTEIN " + params;
+                
+                Utils.runAlignmentProgram( 
+                        readFrom, 
+                        fileNameBase, 
+                        fileExtension,
+                        fileDescription,
+                        command, 
+                        "ClustalW - SAÍDA", 
+                        "ClustalW - ERRO", 
+                        new Color( 22, 142, 170 ), Color.RED,
+                        new Color( 32, 160, 47 ), Color.RED,
+                        areaSaida, btnAlinhar, lblAguarde,
+                        new File( readFrom ),
+                        new File( readFrom.replace( ".fasta", ".dnd" ) ) );
+                
+            } else {
+                
+                if ( Boolean.valueOf( configs.getProperty( "mMFD" ) ) ) {
+                    params += "-diags ";
+                }
+                
+                switch ( configs.getProperty( "mMOF" ) ) {
+                    case "0":
+                        // there is not parameter for fasta format output,
+                        // this is the default behavior
+                        fileExtension = "fasta";
+                        fileDescription = "Arquivo de Alinhamento FASTA";
+                        break;
+                    case "1":
+                        params += "-clw ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal";
+                        break;
+                    case "2":
+                        params += "-clwstrict ";
+                        fileExtension = "aln";
+                        fileDescription = "Arquivo de Alinhamento Clustal Estrito";
+                        break;
+                    case "3":
+                        params += "-html ";
+                        fileExtension = "html";
+                        fileDescription = "Arquivo de Alinhamento em HTML";
+                        break;
+                    case "4":
+                        params += "-msf ";
+                        fileExtension = "msf";
+                        fileDescription = "Arquivo de Alinhamento MSF";
+                        break;
+                }
+                
+                command = "muscle/muscle3.8.31_i86win32.exe -in " + readFrom + " -out " + fileNameBase + "." + fileExtension + " " + params;
+                
+                Utils.runAlignmentProgram( 
+                        readFrom, 
+                        fileNameBase, 
+                        fileExtension,
+                        fileDescription,
+                        command, 
+                        "MUSCLE - SAÍDA", 
+                        "MUSCLE - SAÍDA", 
+                        new Color( 22, 142, 170 ), new Color( 22, 142, 170 ),
+                        new Color( 32, 160, 47 ), Color.RED,
+                        areaSaida, btnAlinhar, lblAguarde,
+                        new File( readFrom ) );
+                
+            }
 
         } catch ( IOException | InterruptedException exc ) {
             Utils.showExceptionMessage( this, exc );
@@ -560,26 +1202,6 @@ public class AlignDialog extends javax.swing.JDialog {
         ad.setVisible( true );
         
     }//GEN-LAST:event_btnConfActionPerformed
-
-    /**
-     * Task to perform sequence alignment (provides thread safety in Swing)
-     */
-    private class DoAlignmentTask implements Runnable {
-        
-        JDialog dialog;
-
-        public DoAlignmentTask( JDialog dialog ) {
-            this.dialog = dialog;
-        }
-        
-        @Override
-        public void run() {
-            
-            
-            
-        }
-        
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane areaSaida;

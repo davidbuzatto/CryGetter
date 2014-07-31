@@ -177,7 +177,7 @@
         <Component class="javax.swing.JCheckBox" name="checkCOClusteringGuide">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="mBed-Like Clustering Guide-tree"/>
+            <Property name="text" type="java.lang.String" value="mBed-Like Clustering Guide-Tree"/>
             <Property name="toolTipText" type="java.lang.String" value="This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]"/>
           </Properties>
         </Component>
@@ -218,7 +218,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
-                <StringItem index="0" value="default(0)"/>
+                <StringItem index="0" value="default (0)"/>
                 <StringItem index="1" value="1"/>
                 <StringItem index="2" value="2"/>
                 <StringItem index="3" value="3"/>
@@ -279,7 +279,7 @@
                 <StringItem index="0" value="Clustal without numbers"/>
                 <StringItem index="1" value="Clustal with numbers"/>
                 <StringItem index="2" value="Pearson/FASTA"/>
-                <StringItem index="3" value="MSF"/>
+                <StringItem index="3" value="GCG MSF"/>
                 <StringItem index="4" value="PHYLIP"/>
                 <StringItem index="5" value="SELEX"/>
                 <StringItem index="6" value="STOCKHOLM"/>
@@ -524,7 +524,6 @@
                         <StringItem index="3" value="ID"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment protein sequence comparison matrix series used to score alignment. Default value is: Gonnet [gonnet]"/>
                   </Properties>
                 </Component>
@@ -541,7 +540,6 @@
                         <StringItem index="6" value="1"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="3"/>
                     <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment score for the first residue in a gap. Default value is: 10"/>
                   </Properties>
                 </Component>
@@ -559,7 +557,6 @@
                         <StringItem index="7" value="10.0"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="1"/>
                     <Property name="toolTipText" type="java.lang.String" value="Slow pairwise alignment score for each additional residue in a gap. Default value is: 0.1"/>
                   </Properties>
                 </Component>
@@ -691,7 +688,6 @@
                         <StringItem index="10" value="0"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="5"/>
                     <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment window size for joining word matches. Decrease for speed; increase for sensitivity. Default value is: 5"/>
                   </Properties>
                 </Component>
@@ -722,7 +718,6 @@
                         <StringItem index="9" value="1"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="5"/>
                     <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment number of match regions are used to create the pairwise alignment. Decrease for speed; increase for sensitivity. Default value is: 5"/>
                   </Properties>
                 </Component>
@@ -743,7 +738,6 @@
                         <StringItem index="10" value="500"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="toolTipText" type="java.lang.String" value="Fast pairwise alignment gap penalty for each gap created. Default value is: 3"/>
                   </Properties>
                 </Component>
@@ -914,7 +908,6 @@
                     <StringItem index="3" value="ID"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="2"/>
                 <Property name="toolTipText" type="java.lang.String" value="Multiple alignment protein sequence comparison matrix series used to score the alignment. Default value is: Gonnet [gonnet]"/>
               </Properties>
             </Component>
@@ -931,7 +924,6 @@
                     <StringItem index="6" value="1"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="3"/>
                 <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for the first residue in a gap. Default value is: 10"/>
               </Properties>
             </Component>
@@ -949,7 +941,6 @@
                     <StringItem index="7" value="10.0"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="1"/>
                 <Property name="toolTipText" type="java.lang.String" value="Multiple alignment penalty for each additional residue in a gap. Default value is: 0.2"/>
               </Properties>
             </Component>
@@ -969,7 +960,6 @@
                     <StringItem index="9" value="1"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="5"/>
                 <Property name="toolTipText" type="java.lang.String" value="Multiple alignment gaps that are closer together than this distance are penalised. Default value is: 5"/>
               </Properties>
             </Component>
@@ -1040,7 +1030,6 @@
                     <StringItem index="7" value="GDE"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="1"/>
                 <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: Clustal w/ numbers [aln1]"/>
               </Properties>
             </Component>
@@ -1094,14 +1083,13 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblMOutputF" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblMOutputTree" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="comboMOutputTree" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboMOutputF" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkMFindD" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblMOutputF" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="comboMOutputF" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -1110,17 +1098,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblMOutputTree" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboMOutputTree" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Component id="checkMFindD" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="comboMOutputF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="305" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnMAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnMPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1131,9 +1116,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblMOutputTree">
+        <Component class="javax.swing.JCheckBox" name="checkMFindD">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Output Tree:"/>
+            <Property name="text" type="java.lang.String" value="Find Diagonals"/>
+            <Property name="toolTipText" type="java.lang.String" value="Find diagonals (faster for similar sequences).  Default value is: no [false]"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMOutputF">
@@ -1142,32 +1128,17 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboMOutputTree">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="None"/>
-                <StringItem index="1" value="From first iteration"/>
-                <StringItem index="2" value="From second iteration"/>
-              </StringArray>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value="The guide tree to output. Default value is: none"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JComboBox" name="comboMOutputF">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
+              <StringArray count="5">
                 <StringItem index="0" value="Pearson/FASTA"/>
                 <StringItem index="1" value="ClustalW"/>
                 <StringItem index="2" value="ClustalW (strict)"/>
                 <StringItem index="3" value="HTML"/>
-                <StringItem index="4" value="GCG MSF"/>
-                <StringItem index="5" value="Phylip interleaved"/>
-                <StringItem index="6" value="Phylip sequential"/>
+                <StringItem index="4" value="MSF"/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="1"/>
             <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: ClustalW [clw]"/>
           </Properties>
         </Component>

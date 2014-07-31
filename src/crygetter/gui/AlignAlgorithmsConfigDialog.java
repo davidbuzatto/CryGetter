@@ -72,7 +72,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMOrder.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMO" ) ) );
         comboCWMOutputF.setSelectedIndex( Integer.parseInt( configs.getProperty( "cwMOF" ) ) );
         
-        comboMOutputTree.setSelectedIndex( Integer.parseInt( configs.getProperty( "mMOT" ) ) );
+        checkMFindD.setSelected( Boolean.valueOf( configs.getProperty( "mMFD" ) ) );
         comboMOutputF.setSelectedIndex( Integer.parseInt( configs.getProperty( "mMOF" ) ) );
         
     }
@@ -149,9 +149,8 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         btnCWPadrao = new javax.swing.JButton();
         btnCWAjuda = new javax.swing.JButton();
         painelConfM = new javax.swing.JPanel();
-        lblMOutputTree = new javax.swing.JLabel();
+        checkMFindD = new javax.swing.JCheckBox();
         lblMOutputF = new javax.swing.JLabel();
-        comboMOutputTree = new javax.swing.JComboBox();
         comboMOutputF = new javax.swing.JComboBox();
         btnMPadrao = new javax.swing.JButton();
         btnMAjuda = new javax.swing.JButton();
@@ -170,7 +169,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         checkCODealign.setToolTipText("Remove any existing alignment (gaps) from input sequences. Default value is: no [false]");
 
         checkCOClusteringGuide.setSelected(true);
-        checkCOClusteringGuide.setText("mBed-Like Clustering Guide-tree");
+        checkCOClusteringGuide.setText("mBed-Like Clustering Guide-Tree");
         checkCOClusteringGuide.setToolTipText("This option uses a sample of the input sequences and then represents all sequences as vectors to these sequences, enabling much more rapid generation of the guide tree, especially when the number of sequences is large. Default value is: yes [true]");
 
         checkCOClusteringIteration.setSelected(true);
@@ -188,7 +187,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         lblCOOutputF.setText("Output Format:");
         lblCOOutputF.setToolTipText("");
 
-        comboCOCombIter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "default(0)", "1", "2", "3", "4", "5" }));
+        comboCOCombIter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "default (0)", "1", "2", "3", "4", "5" }));
         comboCOCombIter.setToolTipText("Number of (combined guide-tree/HMM) iterations. Default value is: default(0) [0]");
 
         comboCOMaxGuide.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "default", "0", "1", "2", "3", "4", "5" }));
@@ -200,7 +199,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCOOrder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aligned", "Input" }));
         comboCOOrder.setToolTipText("The order in which the sequences appear in the final alignment. Default value is: aligned");
 
-        comboCOOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clustal without numbers", "Clustal with numbers", "Pearson/FASTA", "MSF", "PHYLIP", "SELEX", "STOCKHOLM", "VIENNA" }));
+        comboCOOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clustal without numbers", "Clustal with numbers", "Pearson/FASTA", "GCG MSF", "PHYLIP", "SELEX", "STOCKHOLM", "VIENNA" }));
         comboCOOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: Clustal w/o numbers [clustal]");
 
         btnCOPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
@@ -318,15 +317,12 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         lblCWPWGapExt.setText("Gap Extension:");
 
         comboCWPWProteW.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BLOSUM", "PAM", "Gonnet", "ID" }));
-        comboCWPWProteW.setSelectedIndex(2);
         comboCWPWProteW.setToolTipText("Slow pairwise alignment protein sequence comparison matrix series used to score alignment. Default value is: Gonnet [gonnet]");
 
         comboCWPWGapOpen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100", "50", "25", "10", "5", "2", "1" }));
-        comboCWPWGapOpen.setSelectedIndex(3);
         comboCWPWGapOpen.setToolTipText("Slow pairwise alignment score for the first residue in a gap. Default value is: 10");
 
         comboCWPWGapExt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.05", "0.1", "0.5", "1.0", "2.5", "5.0", "7.5", "10.0" }));
-        comboCWPWGapExt.setSelectedIndex(1);
         comboCWPWGapExt.setToolTipText("Slow pairwise alignment score for each additional residue in a gap. Default value is: 0.1");
 
         javax.swing.GroupLayout painelCWPWSlowLayout = new javax.swing.GroupLayout(painelCWPWSlow);
@@ -381,18 +377,15 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWPWKTUP.setToolTipText("Fast pairwise alignment word size used to find matches between the sequences. Decrease for sensitivity; increase for speed. Default value is: 1");
 
         comboCWPWWinLen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" }));
-        comboCWPWWinLen.setSelectedIndex(5);
         comboCWPWWinLen.setToolTipText("Fast pairwise alignment window size for joining word matches. Decrease for speed; increase for sensitivity. Default value is: 5");
 
         comboCWPWScoreT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "percent", "absolut" }));
         comboCWPWScoreT.setToolTipText("Fast pairwise alignment score type to output. Default value is: percent");
 
         comboCWPWTopDiags.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
-        comboCWPWTopDiags.setSelectedIndex(5);
         comboCWPWTopDiags.setToolTipText("Fast pairwise alignment number of match regions are used to create the pairwise alignment. Decrease for speed; increase for sensitivity. Default value is: 5");
 
         comboCWPWPairG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "10", "25", "50", "100", "250", "500" }));
-        comboCWPWPairG.setSelectedIndex(2);
         comboCWPWPairG.setToolTipText("Fast pairwise alignment gap penalty for each gap created. Default value is: 3");
 
         javax.swing.GroupLayout painelCWPWFastLayout = new javax.swing.GroupLayout(painelCWPWFast);
@@ -500,19 +493,15 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         lblCWMOutputF.setToolTipText("");
 
         comboCWMProtW.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BLOSUM", "PAM", "Gonnet", "ID" }));
-        comboCWMProtW.setSelectedIndex(2);
         comboCWMProtW.setToolTipText("Multiple alignment protein sequence comparison matrix series used to score the alignment. Default value is: Gonnet [gonnet]");
 
         comboCWMGapOpen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100", "50", "25", "10", "5", "2", "1" }));
-        comboCWMGapOpen.setSelectedIndex(3);
         comboCWMGapOpen.setToolTipText("Multiple alignment penalty for the first residue in a gap. Default value is: 10");
 
         comboCWMGapExt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.05", "0.2", "0.5", "1.0", "2.5", "5.0", "7.5", "10.0" }));
-        comboCWMGapExt.setSelectedIndex(1);
         comboCWMGapExt.setToolTipText("Multiple alignment penalty for each additional residue in a gap. Default value is: 0.2");
 
         comboCWMGapDist.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
-        comboCWMGapDist.setSelectedIndex(5);
         comboCWMGapDist.setToolTipText("Multiple alignment gaps that are closer together than this distance are penalised. Default value is: 5");
 
         comboCWMIter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Tree", "Aligment" }));
@@ -528,7 +517,6 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMOrder.setToolTipText("The order in which the sequences appear in the final alignment. Default value is: aligned");
 
         comboCWMOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clustal without numbers", "Clustal with numbers", "GCG MSF", "Pearson/FASTA", "PHYLIP", "NEXUS", "NBRF/PIR", "GDE" }));
-        comboCWMOutputF.setSelectedIndex(1);
         comboCWMOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: Clustal w/ numbers [aln1]");
 
         javax.swing.GroupLayout painelCWMLayout = new javax.swing.GroupLayout(painelCWM);
@@ -658,16 +646,13 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         painelConfM.setBackground(new java.awt.Color(204, 255, 204));
         painelConfM.setBorder(javax.swing.BorderFactory.createTitledBorder("MUSCLE"));
 
-        lblMOutputTree.setText("Output Tree:");
+        checkMFindD.setText("Find Diagonals");
+        checkMFindD.setToolTipText("Find diagonals (faster for similar sequences).  Default value is: no [false]");
 
         lblMOutputF.setText("Output Format:");
         lblMOutputF.setToolTipText("");
 
-        comboMOutputTree.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "From first iteration", "From second iteration" }));
-        comboMOutputTree.setToolTipText("The guide tree to output. Default value is: none");
-
-        comboMOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pearson/FASTA", "ClustalW", "ClustalW (strict)", "HTML", "GCG MSF", "Phylip interleaved", "Phylip sequential" }));
-        comboMOutputF.setSelectedIndex(1);
+        comboMOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pearson/FASTA", "ClustalW", "ClustalW (strict)", "HTML", "MSF" }));
         comboMOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: ClustalW [clw]");
 
         btnMPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
@@ -698,27 +683,24 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(painelConfMLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMOutputF)
-                    .addComponent(lblMOutputTree))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboMOutputTree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkMFindD)
+                    .addGroup(painelConfMLayout.createSequentialGroup()
+                        .addComponent(lblMOutputF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelConfMLayout.setVerticalGroup(
             painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelConfMLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMOutputTree)
-                    .addComponent(comboMOutputTree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(checkMFindD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMOutputF)
                     .addComponent(comboMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMAjuda)
                     .addComponent(btnMPadrao))
@@ -879,7 +861,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
 
     private void btnMPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMPadraoActionPerformed
         
-        comboMOutputTree.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "mMOT" ) ) );
+        checkMFindD.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "mMFD" ) ) );
         comboMOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "mMOF" ) ) );
         
     }//GEN-LAST:event_btnMPadraoActionPerformed
@@ -923,7 +905,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         configs.setProperty( "cwMO", String.valueOf( comboCWMOrder.getSelectedIndex() ) );
         configs.setProperty( "cwMOF", String.valueOf( comboCWMOutputF.getSelectedIndex() ) );
         
-        configs.setProperty( "mMOT", String.valueOf( comboMOutputTree.getSelectedIndex() ) );
+        configs.setProperty( "mMFD", String.valueOf( checkMFindD.isSelected() ) );
         configs.setProperty( "mMOF", String.valueOf( comboMOutputF.getSelectedIndex() ) );
         
         try {
@@ -950,6 +932,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkCOClusteringIteration;
     private javax.swing.JCheckBox checkCODealign;
     private javax.swing.JCheckBox checkCWMNoEndGaps;
+    private javax.swing.JCheckBox checkMFindD;
     private javax.swing.JComboBox comboCOCombIter;
     private javax.swing.JComboBox comboCOHMM;
     private javax.swing.JComboBox comboCOMaxGuide;
@@ -973,7 +956,6 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private javax.swing.JComboBox comboCWPWTopDiags;
     private javax.swing.JComboBox comboCWPWWinLen;
     private javax.swing.JComboBox comboMOutputF;
-    private javax.swing.JComboBox comboMOutputTree;
     private javax.swing.JLabel lblCOCombIter;
     private javax.swing.JLabel lblCOHMM;
     private javax.swing.JLabel lblCOMaxGuide;
@@ -998,7 +980,6 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblCWPWWinLen;
     private javax.swing.JLabel lblCWType;
     private javax.swing.JLabel lblMOutputF;
-    private javax.swing.JLabel lblMOutputTree;
     private javax.swing.JPanel painelBaixo;
     private javax.swing.JPanel painelCWM;
     private javax.swing.JPanel painelCWPW;

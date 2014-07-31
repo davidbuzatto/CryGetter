@@ -43,7 +43,9 @@ public class StreamGobblerUI extends Thread {
             
             while ( ( line = br.readLine() ) != null ) {
                 SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                        type + "> " + line + "\n", textColor, backgroundTextColor ) );
+                        type + "> ", textColor.darker(), backgroundTextColor ) );
+                SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                        line + "\n", textColor, backgroundTextColor ) );
             }
             
         } catch ( IOException ioe ) {
