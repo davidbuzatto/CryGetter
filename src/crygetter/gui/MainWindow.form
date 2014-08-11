@@ -30,24 +30,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="painelProteinas" max="32767" attributes="0"/>
+                  <Component id="panelProteins" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="btnExtrairProteinas" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExtract" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCarregarProteinas" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnAlinhamento" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAligment" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblAguarde" max="32767" attributes="0"/>
+                      <Component id="lblWait" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="painelDetalhes" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelDetails" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="painelDadosExtr" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelExtractionDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="painelConf" max="32767" attributes="0"/>
                   </Group>
@@ -61,24 +61,24 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="painelDadosExtr" max="32767" attributes="0"/>
+                  <Component id="panelExtractionDetails" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnExtrairProteinas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCarregarProteinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnExtract" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLoad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnAlinhamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAguarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAligment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblWait" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="painelConf" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="painelDetalhes" max="32767" attributes="0"/>
-                  <Component id="painelProteinas" max="32767" attributes="0"/>
+                  <Component id="panelDetails" max="32767" attributes="0"/>
+                  <Component id="panelProteins" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -86,40 +86,40 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnExtrairProteinas">
+    <Component class="javax.swing.JButton" name="btnExtract">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/crygetter/gui/icons/world_link.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Extrair"/>
+        <Property name="text" type="java.lang.String" value="Extract"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExtrairProteinasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExtractActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCarregarProteinas">
+    <Component class="javax.swing.JButton" name="btnLoad">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/crygetter/gui/icons/folder.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Carregar"/>
+        <Property name="text" type="java.lang.String" value="Load"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarProteinasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAlinhamento">
+    <Component class="javax.swing.JButton" name="btnAligment">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/crygetter/gui/icons/shape_align_center.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Alinhamento"/>
+        <Property name="text" type="java.lang.String" value="Alignment"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlinhamentoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAligmentActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblAguarde">
+    <Component class="javax.swing.JLabel" name="lblWait">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
@@ -130,11 +130,11 @@
         <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="painelProteinas">
+    <Container class="javax.swing.JPanel" name="panelProteins">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Prote&#xed;nas"/>
+            <TitledBorder title="Proteins"/>
           </Border>
         </Property>
       </Properties>
@@ -144,7 +144,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="scrollProteinas" pref="0" max="32767" attributes="0"/>
+                  <Component id="scrollProteins" pref="0" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -153,21 +153,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="scrollProteinas" max="32767" attributes="0"/>
+                  <Component id="scrollProteins" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="scrollProteinas">
+        <Container class="javax.swing.JScrollPane" name="scrollProteins">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="listaProteinas">
+            <Component class="javax.swing.JList" name="listProteins">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
@@ -175,7 +175,7 @@
                 <Property name="selectionMode" type="int" value="0"/>
               </Properties>
               <Events>
-                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listaProteinasValueChanged"/>
+                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listProteinsValueChanged"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;CryToxin&gt;"/>
@@ -185,11 +185,11 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="painelDetalhes">
+    <Container class="javax.swing.JPanel" name="panelDetails">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Detalhes"/>
+            <TitledBorder title="Details"/>
           </Border>
         </Property>
       </Properties>
@@ -199,7 +199,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="abasDetalhes" max="32767" attributes="0"/>
+                  <Component id="tabsDetails" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -208,18 +208,18 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="abasDetalhes" max="32767" attributes="0"/>
+                  <Component id="tabsDetails" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="abasDetalhes">
+        <Container class="javax.swing.JTabbedPane" name="tabsDetails">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="painelDadosBt">
+            <Container class="javax.swing.JPanel" name="panelBtData">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="BtNomeclature">
@@ -235,30 +235,30 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblURLPrin" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblCepa" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMainURL" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStrain" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAut" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAno" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblYear" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblIdNuc" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblIdProt" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAccNo" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNome" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblName" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="lblCom" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fieldNome" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldName" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="fieldAccNo" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="spCom" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
-                              <Component id="fieldAno" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                              <Component id="fieldCepa" min="-2" pref="171" max="-2" attributes="0"/>
-                              <Component id="linkURLPrin" alignment="0" min="-2" pref="603" max="-2" attributes="0"/>
+                              <Component id="fieldYear" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="fieldStrain" min="-2" pref="171" max="-2" attributes="0"/>
+                              <Component id="linkMainURL" alignment="0" min="-2" pref="603" max="-2" attributes="0"/>
                               <Component id="fieldIdProt" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="fieldIdNuc" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="fieldAut" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="159" max="32767" attributes="0"/>
+                          <EmptySpace pref="169" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -267,8 +267,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fieldName" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -292,18 +292,18 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fieldYear" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblCepa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldCepa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStrain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fieldStrain" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblURLPrin" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="linkURLPrin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMainURL" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="linkMainURL" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -319,52 +319,52 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblNome">
+                <Component class="javax.swing.JLabel" name="lblName">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                    <Property name="text" type="java.lang.String" value="Name:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAccNo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="N&#xfa;mero de Acesso:"/>
+                    <Property name="text" type="java.lang.String" value="Accession Number:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblIdProt">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Id. Prote&#xed;na NCBI:"/>
+                    <Property name="text" type="java.lang.String" value="NCBI Protein Id:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblIdNuc">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Id. Nucleot&#xed;deos NCBI:"/>
+                    <Property name="text" type="java.lang.String" value="NCBI Nucleotides Id:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAut">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Autores:"/>
+                    <Property name="text" type="java.lang.String" value="Authors:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblAno">
+                <Component class="javax.swing.JLabel" name="lblYear">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ano:"/>
+                    <Property name="text" type="java.lang.String" value="Year:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblCepa">
+                <Component class="javax.swing.JLabel" name="lblStrain">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cepa de Origem:"/>
+                    <Property name="text" type="java.lang.String" value="Source Strain:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblURLPrin">
+                <Component class="javax.swing.JLabel" name="lblMainURL">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="URL Principal:"/>
+                    <Property name="text" type="java.lang.String" value="Main URL:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCom">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Coment&#xe1;rios:"/>
+                    <Property name="text" type="java.lang.String" value="Comments:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldNome">
+                <Component class="javax.swing.JTextField" name="fieldName">
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldAccNo">
                 </Component>
@@ -374,11 +374,11 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldAut">
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldAno">
+                <Component class="javax.swing.JTextField" name="fieldYear">
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldCepa">
+                <Component class="javax.swing.JTextField" name="fieldStrain">
                 </Component>
-                <Component class="javax.swing.JLabel" name="linkURLPrin">
+                <Component class="javax.swing.JLabel" name="linkMainURL">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="0" red="0" type="rgb"/>
@@ -389,7 +389,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="linkURLPrinMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="linkMainURLMouseClicked"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="spCom">
@@ -423,7 +423,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="abasDetalhesNCBI" pref="867" max="32767" attributes="0"/>
+                          <Component id="tabsNCBIDetails" pref="867" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -432,22 +432,22 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="abasDetalhesNCBI" max="32767" attributes="0"/>
+                          <Component id="tabsNCBIDetails" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JTabbedPane" name="abasDetalhesNCBI">
+                <Container class="javax.swing.JTabbedPane" name="tabsNCBIDetails">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="painelPrincipalNCBI">
+                    <Container class="javax.swing.JPanel" name="panelMainNCBI">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Principal">
-                            <Property name="tabTitle" type="java.lang.String" value="Principal"/>
+                          <JTabbedPaneConstraints tabName="Main">
+                            <Property name="tabTitle" type="java.lang.String" value="Main"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -457,9 +457,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelPrincip01" max="32767" attributes="0"/>
+                                  <Component id="panelMain01" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelPrincip02" min="-2" max="-2" attributes="0"/>
+                                  <Component id="panelMain02" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -469,8 +469,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="painelPrincip01" min="-2" max="-2" attributes="0"/>
-                                      <Component id="painelPrincip02" min="-2" max="-2" attributes="0"/>
+                                      <Component id="panelMain01" min="-2" max="-2" attributes="0"/>
+                                      <Component id="panelMain02" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="90" max="32767" attributes="0"/>
                               </Group>
@@ -478,7 +478,7 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="painelPrincip01">
+                        <Container class="javax.swing.JPanel" name="panelMain01">
 
                           <Layout>
                             <DimensionLayout dim="0">
@@ -486,28 +486,28 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblLocus" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblComp" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTipo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLength" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblType" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblTopo" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblDivi" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCri" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCre" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblDef" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblAcessPri" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblVersaoAcess" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPriAccess" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAccessVersion" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="fieldLocus" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                                           <Component id="fieldDivi" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                                          <Component id="fieldCri" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="fieldCre" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                                           <Component id="fieldDef" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="fieldAcessPri" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="fieldVersaoAcess" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="fieldPriAccess" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="fieldAccessVersion" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="fieldTipo" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                                              <Component id="fieldType" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                                               <Component id="fieldTopo" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="fieldComp" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <Component id="fieldLength" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -522,13 +522,13 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblComp" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldComp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLength" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldLength" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldType" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -542,8 +542,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblCri" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldCri" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldCre" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -552,13 +552,13 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblAcessPri" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldAcessPri" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPriAccess" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldPriAccess" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblVersaoAcess" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldVersaoAcess" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAccessVersion" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldAccessVersion" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -570,95 +570,95 @@
                                 <Property name="text" type="java.lang.String" value="Locus:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblComp">
+                            <Component class="javax.swing.JLabel" name="lblLength">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Comprimento:"/>
+                                <Property name="text" type="java.lang.String" value="Length:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblTipo">
+                            <Component class="javax.swing.JLabel" name="lblType">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Tipo de Mol&#xe9;cula:"/>
+                                <Property name="text" type="java.lang.String" value="Molecule Type:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblTopo">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Topologia:"/>
+                                <Property name="text" type="java.lang.String" value="Topology:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblDivi">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Divis&#xe3;o:"/>
+                                <Property name="text" type="java.lang.String" value="Division:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblCri">
+                            <Component class="javax.swing.JLabel" name="lblCre">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Cria&#xe7;&#xe3;o:"/>
+                                <Property name="text" type="java.lang.String" value="Creation Date:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblDef">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Defini&#xe7;&#xe3;o:"/>
+                                <Property name="text" type="java.lang.String" value="Definition:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblAcessPri">
+                            <Component class="javax.swing.JLabel" name="lblPriAccess">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Acesso Prim&#xe1;rio:"/>
+                                <Property name="text" type="java.lang.String" value="Primary Access:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblVersaoAcess">
+                            <Component class="javax.swing.JLabel" name="lblAccessVersion">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Vers&#xe3;o do Acesso:"/>
+                                <Property name="text" type="java.lang.String" value="Acess Version:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldLocus">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldComp">
+                            <Component class="javax.swing.JTextField" name="fieldLength">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldTipo">
+                            <Component class="javax.swing.JTextField" name="fieldType">
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldTopo">
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldDivi">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldCri">
+                            <Component class="javax.swing.JTextField" name="fieldCre">
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldDef">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldAcessPri">
+                            <Component class="javax.swing.JTextField" name="fieldPriAccess">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldVersaoAcess">
+                            <Component class="javax.swing.JTextField" name="fieldAccessVersion">
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="painelPrincip02">
+                        <Container class="javax.swing.JPanel" name="panelMain02">
 
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblComent" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFonte" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblComment" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSource" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblOrg" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblTaxo" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblBDF" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPChaves" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSDB" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblKey" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="spComent" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
-                                                  <Component id="fieldFonte" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                                  <Component id="spComment" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
+                                                  <Component id="fieldSource" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                                   <Component id="fieldOrg" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="fieldBDF" alignment="0" min="-2" pref="458" max="-2" attributes="0"/>
+                                                  <Component id="fieldSDB" alignment="0" min="-2" pref="458" max="-2" attributes="0"/>
                                                   <Component id="fieldTaxo" alignment="0" min="-2" pref="458" max="-2" attributes="0"/>
-                                                  <Component id="fieldPChaves" alignment="0" min="-2" pref="458" max="-2" attributes="0"/>
+                                                  <Component id="fieldKey" alignment="0" min="-2" pref="458" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
@@ -670,8 +670,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="fieldFonte" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFonte" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldSource" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSource" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -685,75 +685,75 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblBDF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldBDF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSDB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldSDB" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblPChaves" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldPChaves" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblKey" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fieldKey" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="lblComent" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblComment" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="spComent" pref="145" max="32767" attributes="0"/>
+                                          <Component id="spComment" pref="145" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="lblFonte">
+                            <Component class="javax.swing.JLabel" name="lblSource">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Fonte:"/>
+                                <Property name="text" type="java.lang.String" value="Source:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblOrg">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Organismo:"/>
+                                <Property name="text" type="java.lang.String" value="Organism:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblTaxo">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Taxonomia:"/>
+                                <Property name="text" type="java.lang.String" value="Taxonomy:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblBDF">
+                            <Component class="javax.swing.JLabel" name="lblSDB">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Banco de Dados Fonte:"/>
+                                <Property name="text" type="java.lang.String" value="Source Database:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblPChaves">
+                            <Component class="javax.swing.JLabel" name="lblKey">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Palavras-chave:"/>
+                                <Property name="text" type="java.lang.String" value="Keywords:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblComent">
+                            <Component class="javax.swing.JLabel" name="lblComment">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Coment&#xe1;rios:"/>
+                                <Property name="text" type="java.lang.String" value="Comments:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldFonte">
+                            <Component class="javax.swing.JTextField" name="fieldSource">
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldOrg">
                             </Component>
                             <Component class="javax.swing.JTextField" name="fieldTaxo">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldBDF">
+                            <Component class="javax.swing.JTextField" name="fieldSDB">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="fieldPChaves">
+                            <Component class="javax.swing.JTextField" name="fieldKey">
                             </Component>
-                            <Container class="javax.swing.JScrollPane" name="spComent">
+                            <Container class="javax.swing.JScrollPane" name="spComment">
                               <AuxValues>
                                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                               </AuxValues>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="areaComent">
+                                <Component class="javax.swing.JTextArea" name="areaComment">
                                   <Properties>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="lineWrap" type="boolean" value="true"/>
@@ -766,11 +766,11 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="painelReferenciasNCBI">
+                    <Container class="javax.swing.JPanel" name="panelNCBIRef">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Refer&#xea;ncias">
-                            <Property name="tabTitle" type="java.lang.String" value="Refer&#xea;ncias"/>
+                          <JTabbedPaneConstraints tabName="References">
+                            <Property name="tabTitle" type="java.lang.String" value="References"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -780,9 +780,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelListaRef" min="-2" max="-2" attributes="0"/>
+                                  <Component id="panelRefList" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelDetalhesRef" min="-2" max="-2" attributes="0"/>
+                                  <Component id="panelRefDetails" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="160" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -792,8 +792,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="painelListaRef" max="32767" attributes="0"/>
-                                      <Component id="painelDetalhesRef" max="32767" attributes="0"/>
+                                      <Component id="panelRefList" max="32767" attributes="0"/>
+                                      <Component id="panelRefDetails" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="203" max="32767" attributes="0"/>
                               </Group>
@@ -801,11 +801,11 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="painelListaRef">
+                        <Container class="javax.swing.JPanel" name="panelRefList">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder title="Lista"/>
+                                <TitledBorder title="Reference List"/>
                               </Border>
                             </Property>
                           </Properties>
@@ -815,7 +815,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="spListaRef" pref="244" max="32767" attributes="0"/>
+                                      <Component id="spRefList" pref="244" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -823,21 +823,21 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="spListaRef" min="-2" max="-2" attributes="0"/>
+                                      <Component id="spRefList" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Container class="javax.swing.JScrollPane" name="spListaRef">
+                            <Container class="javax.swing.JScrollPane" name="spRefList">
                               <AuxValues>
                                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                               </AuxValues>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JList" name="listaRef">
+                                <Component class="javax.swing.JList" name="listRef">
                                   <Properties>
                                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                                       <StringArray count="0"/>
@@ -845,18 +845,18 @@
                                     <Property name="selectionMode" type="int" value="0"/>
                                   </Properties>
                                   <Events>
-                                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listaRefValueChanged"/>
+                                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listRefValueChanged"/>
                                   </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="painelDetalhesRef">
+                        <Container class="javax.swing.JPanel" name="panelRefDetails">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder title="Detlahes"/>
+                                <TitledBorder title="Details"/>
                               </Border>
                             </Property>
                           </Properties>
@@ -914,12 +914,12 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="lblAutRef">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Autores:"/>
+                                <Property name="text" type="java.lang.String" value="Authors:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblTitRef">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="T&#xed;tulo:"/>
+                                <Property name="text" type="java.lang.String" value="Title:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblJournalRef">
@@ -956,11 +956,11 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="painelSequenciasNCBI">
+                    <Container class="javax.swing.JPanel" name="panelNCBISeq">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Sequ&#xea;ncia">
-                            <Property name="tabTitle" type="java.lang.String" value="Sequ&#xea;ncia"/>
+                          <JTabbedPaneConstraints tabName="Sequence">
+                            <Property name="tabTitle" type="java.lang.String" value="Sequence"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -970,7 +970,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="abasSequenciasNCBI" max="32767" attributes="0"/>
+                                  <Component id="tabsNCBISequences" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -979,22 +979,22 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="abasSequenciasNCBI" max="32767" attributes="0"/>
+                                  <Component id="tabsNCBISequences" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Container class="javax.swing.JTabbedPane" name="abasSequenciasNCBI">
+                        <Container class="javax.swing.JTabbedPane" name="tabsNCBISequences">
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                           <SubComponents>
-                            <Container class="javax.swing.JPanel" name="painelSequenciaCompleta">
+                            <Container class="javax.swing.JPanel" name="panelCompleteSequence">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                                  <JTabbedPaneConstraints tabName="Prote&#xed;na Completa">
-                                    <Property name="tabTitle" type="java.lang.String" value="Prote&#xed;na Completa"/>
+                                  <JTabbedPaneConstraints tabName="Complete Protein">
+                                    <Property name="tabTitle" type="java.lang.String" value="Complete Protein"/>
                                   </JTabbedPaneConstraints>
                                 </Constraint>
                               </Constraints>
@@ -1004,16 +1004,16 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="spSeqComp" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Component id="spCompSeq" min="-2" pref="575" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblNomeSeqComp" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblIntSeqComp" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblNameCompSeq" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblIntCompSeq" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="fieldIntSeqComp" min="-2" pref="145" max="-2" attributes="0"/>
-                                              <Component id="fieldNomeSeqComp" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldIntCompSeq" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldNameCompSeq" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="checkD1" min="-2" max="-2" attributes="0"/>
                                               <Component id="checkD2" min="-2" max="-2" attributes="0"/>
                                               <Component id="checkD3" min="-2" max="-2" attributes="0"/>
@@ -1029,13 +1029,13 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="fieldIntSeqComp" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblIntSeqComp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fieldIntCompSeq" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblIntCompSeq" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="lblNomeSeqComp" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="fieldNomeSeqComp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblNameCompSeq" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fieldNameCompSeq" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="checkD1" min="-2" max="-2" attributes="0"/>
@@ -1045,7 +1045,7 @@
                                                   <Component id="checkD3" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="spSeqComp" pref="304" max="32767" attributes="0"/>
+                                              <Component id="spCompSeq" pref="304" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -1053,14 +1053,14 @@
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Container class="javax.swing.JScrollPane" name="spSeqComp">
+                                <Container class="javax.swing.JScrollPane" name="spCompSeq">
                                   <AuxValues>
                                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                                   </AuxValues>
 
                                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                                   <SubComponents>
-                                    <Component class="javax.swing.JTextPane" name="areaSeqComp">
+                                    <Component class="javax.swing.JTextPane" name="areaCompSeq">
                                       <Properties>
                                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                           <Font name="Courier New" size="13" style="0"/>
@@ -1069,26 +1069,26 @@
                                     </Component>
                                   </SubComponents>
                                 </Container>
-                                <Component class="javax.swing.JLabel" name="lblIntSeqComp">
+                                <Component class="javax.swing.JLabel" name="lblIntCompSeq">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Intervalo:"/>
+                                    <Property name="text" type="java.lang.String" value="Interval:"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="lblNomeSeqComp">
+                                <Component class="javax.swing.JLabel" name="lblNameCompSeq">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                                    <Property name="text" type="java.lang.String" value="Name:"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="fieldIntSeqComp">
+                                <Component class="javax.swing.JTextField" name="fieldIntCompSeq">
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="fieldNomeSeqComp">
+                                <Component class="javax.swing.JTextField" name="fieldNameCompSeq">
                                 </Component>
                                 <Component class="javax.swing.JCheckBox" name="checkD1">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="11" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Dom&#xed;nio 1"/>
+                                    <Property name="text" type="java.lang.String" value="Domain 1"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkD1ActionPerformed"/>
@@ -1099,7 +1099,7 @@
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="11" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Dom&#xed;nio 2"/>
+                                    <Property name="text" type="java.lang.String" value="Domain 2"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkD2ActionPerformed"/>
@@ -1110,7 +1110,7 @@
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="11" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Dom&#xed;nio 3"/>
+                                    <Property name="text" type="java.lang.String" value="Domain 3"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkD3ActionPerformed"/>
@@ -1118,11 +1118,11 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Container class="javax.swing.JPanel" name="painelD1">
+                            <Container class="javax.swing.JPanel" name="panelD1">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                                  <JTabbedPaneConstraints tabName="Dom&#xed;nio 1">
-                                    <Property name="tabTitle" type="java.lang.String" value="Dom&#xed;nio 1"/>
+                                  <JTabbedPaneConstraints tabName="Domain 1">
+                                    <Property name="tabTitle" type="java.lang.String" value="Domain 1"/>
                                   </JTabbedPaneConstraints>
                                 </Constraint>
                               </Constraints>
@@ -1136,18 +1136,18 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="lblIntD1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblNamoD1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblNameD1" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblComD1" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblXrefD1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="fieldIntD1" min="-2" pref="145" max="-2" attributes="0"/>
-                                              <Component id="fieldNomeD1" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldNameD1" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="fieldComD1" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="linkXrefD1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                                          <EmptySpace pref="48" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1163,8 +1163,8 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="lblNamoD1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="fieldNomeD1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblNameD1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fieldNameD1" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1206,17 +1206,17 @@
                                 </Container>
                                 <Component class="javax.swing.JLabel" name="lblIntD1">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Intervalo:"/>
+                                    <Property name="text" type="java.lang.String" value="Interval:"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="lblNamoD1">
+                                <Component class="javax.swing.JLabel" name="lblNameD1">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                                    <Property name="text" type="java.lang.String" value="Name:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblComD1">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Coment&#xe1;rio:"/>
+                                    <Property name="text" type="java.lang.String" value="Comment:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblXrefD1">
@@ -1226,7 +1226,7 @@
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldIntD1">
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="fieldNomeD1">
+                                <Component class="javax.swing.JTextField" name="fieldNameD1">
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldComD1">
                                 </Component>
@@ -1246,11 +1246,11 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Container class="javax.swing.JPanel" name="painelD2">
+                            <Container class="javax.swing.JPanel" name="panelD2">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                                  <JTabbedPaneConstraints tabName="Dom&#xed;nio 2">
-                                    <Property name="tabTitle" type="java.lang.String" value="Dom&#xed;nio 2"/>
+                                  <JTabbedPaneConstraints tabName="Domain 2">
+                                    <Property name="tabTitle" type="java.lang.String" value="Domain 2"/>
                                   </JTabbedPaneConstraints>
                                 </Constraint>
                               </Constraints>
@@ -1262,27 +1262,20 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="spD2" min="-2" pref="575" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="lblIntD2" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="fieldIntD2" min="-2" pref="145" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="lblNomeD2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblComD2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblXrefD2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="fieldNomeD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                      <Component id="fieldComD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                      <Component id="linkXrefD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblIntD2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblNameD2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblComD2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblXrefD2" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="fieldIntD2" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldNameD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldComD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="linkXrefD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="48" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1298,8 +1291,8 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="lblNomeD2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="fieldNomeD2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblNameD2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fieldNameD2" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1341,17 +1334,17 @@
                                 </Container>
                                 <Component class="javax.swing.JLabel" name="lblIntD2">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Intervalo:"/>
+                                    <Property name="text" type="java.lang.String" value="Interval:"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="lblNomeD2">
+                                <Component class="javax.swing.JLabel" name="lblNameD2">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                                    <Property name="text" type="java.lang.String" value="Name:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblComD2">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Coment&#xe1;rio:"/>
+                                    <Property name="text" type="java.lang.String" value="Comment:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblXrefD2">
@@ -1361,7 +1354,7 @@
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldIntD2">
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="fieldNomeD2">
+                                <Component class="javax.swing.JTextField" name="fieldNameD2">
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldComD2">
                                 </Component>
@@ -1381,11 +1374,11 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Container class="javax.swing.JPanel" name="painelD3">
+                            <Container class="javax.swing.JPanel" name="panelD3">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                                  <JTabbedPaneConstraints tabName="Dom&#xed;nio 3">
-                                    <Property name="tabTitle" type="java.lang.String" value="Dom&#xed;nio 3"/>
+                                  <JTabbedPaneConstraints tabName="Domain 3">
+                                    <Property name="tabTitle" type="java.lang.String" value="Domain 3"/>
                                   </JTabbedPaneConstraints>
                                 </Constraint>
                               </Constraints>
@@ -1397,27 +1390,20 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="spD3" min="-2" pref="575" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="lblIntD3" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="fieldIntD3" min="-2" pref="145" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="ldlNomeD3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblComD3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblXrefD3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="fieldNomeD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                      <Component id="fieldComD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                      <Component id="linkXrefD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblIntD3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ldlNameD3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblComD3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblXrefD3" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="fieldIntD3" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldNameD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="fieldComD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                              <Component id="linkXrefD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="48" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1433,8 +1419,8 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="ldlNomeD3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="fieldNomeD3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="ldlNameD3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fieldNameD3" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1476,17 +1462,17 @@
                                 </Container>
                                 <Component class="javax.swing.JLabel" name="lblIntD3">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Intervalo:"/>
+                                    <Property name="text" type="java.lang.String" value="Interval:"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="ldlNomeD3">
+                                <Component class="javax.swing.JLabel" name="ldlNameD3">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                                    <Property name="text" type="java.lang.String" value="Name:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblComD3">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="Coment&#xe1;rio:"/>
+                                    <Property name="text" type="java.lang.String" value="Comment:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="lblXrefD3">
@@ -1496,7 +1482,7 @@
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldIntD3">
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="fieldNomeD3">
+                                <Component class="javax.swing.JTextField" name="fieldNameD3">
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldComD3">
                                 </Component>
@@ -1528,11 +1514,11 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="painelDadosExtr">
+    <Container class="javax.swing.JPanel" name="panelExtractionDetails">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Dados da Extra&#xe7;&#xe3;o"/>
+            <TitledBorder title="Extraction Details"/>
           </Border>
         </Property>
       </Properties>
@@ -1542,19 +1528,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labelDataExtr" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelDateExtr" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fieldDataExtr" min="-2" pref="169" max="-2" attributes="0"/>
+                  <Component id="fieldDateExtr" min="-2" pref="169" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labelQuantExtrBruta" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelGrossAmount" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fieldQuantExtrBruta" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="fieldGrossAmount" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labelQuantExtrProc" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelProcessAmount" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fieldQuantExtrProc" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="fieldProcessAmount" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnSobreProc" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAboutProc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1564,48 +1550,48 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelDataExtr" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldDataExtr" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelQuantExtrBruta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldQuantExtrBruta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelQuantExtrProc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldQuantExtrProc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnSobreProc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDateExtr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldDateExtr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelGrossAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldGrossAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelProcessAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldProcessAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAboutProc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelDataExtr">
+        <Component class="javax.swing.JLabel" name="labelDateExtr">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data:"/>
+            <Property name="text" type="java.lang.String" value="Date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelQuantExtrBruta">
+        <Component class="javax.swing.JLabel" name="labelGrossAmount">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Quantidade Bruta:"/>
+            <Property name="text" type="java.lang.String" value="Gross Amount:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelQuantExtrProc">
+        <Component class="javax.swing.JLabel" name="labelProcessAmount">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Quantidade Proc.:"/>
+            <Property name="text" type="java.lang.String" value="Processed Amount:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldDataExtr">
+        <Component class="javax.swing.JTextField" name="fieldDateExtr">
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldQuantExtrBruta">
+        <Component class="javax.swing.JTextField" name="fieldGrossAmount">
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldQuantExtrProc">
+        <Component class="javax.swing.JTextField" name="fieldProcessAmount">
         </Component>
-        <Component class="javax.swing.JButton" name="btnSobreProc">
+        <Component class="javax.swing.JButton" name="btnAboutProc">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSobreProcActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAboutProcActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -1614,7 +1600,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Configura&#xe7;&#xf5;es"/>
+            <TitledBorder title="Configurations"/>
           </Border>
         </Property>
       </Properties>
@@ -1624,7 +1610,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCor" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnColor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1633,20 +1619,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="btnCor" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnColor" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnCor">
+        <Component class="javax.swing.JButton" name="btnColor">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/color_wheel.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnColorActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

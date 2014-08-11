@@ -102,9 +102,9 @@ public class MainWindow extends javax.swing.JFrame {
         proteinListModel = new DefaultListModel<>();
         referencesListModel = new DefaultListModel<>();
         
-        listaProteinas.setModel( proteinListModel );
-        listaProteinas.setCellRenderer( new CryToxinListCellRenderer() );
-        listaRef.setModel( referencesListModel );
+        listProteins.setModel( proteinListModel );
+        listProteins.setCellRenderer( new CryToxinListCellRenderer() );
+        listRef.setModel( referencesListModel );
         
         checkD1.setBackground( cD1 );
         checkD1.setOpaque( true );
@@ -126,76 +126,76 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExtrairProteinas = new javax.swing.JButton();
-        btnCarregarProteinas = new javax.swing.JButton();
-        btnAlinhamento = new javax.swing.JButton();
-        lblAguarde = new javax.swing.JLabel();
-        painelProteinas = new javax.swing.JPanel();
-        scrollProteinas = new javax.swing.JScrollPane();
-        listaProteinas = new javax.swing.JList<CryToxin>();
-        painelDetalhes = new javax.swing.JPanel();
-        abasDetalhes = new javax.swing.JTabbedPane();
-        painelDadosBt = new javax.swing.JPanel();
-        lblNome = new javax.swing.JLabel();
+        btnExtract = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
+        btnAligment = new javax.swing.JButton();
+        lblWait = new javax.swing.JLabel();
+        panelProteins = new javax.swing.JPanel();
+        scrollProteins = new javax.swing.JScrollPane();
+        listProteins = new javax.swing.JList<CryToxin>();
+        panelDetails = new javax.swing.JPanel();
+        tabsDetails = new javax.swing.JTabbedPane();
+        panelBtData = new javax.swing.JPanel();
+        lblName = new javax.swing.JLabel();
         lblAccNo = new javax.swing.JLabel();
         lblIdProt = new javax.swing.JLabel();
         lblIdNuc = new javax.swing.JLabel();
         lblAut = new javax.swing.JLabel();
-        lblAno = new javax.swing.JLabel();
-        lblCepa = new javax.swing.JLabel();
-        lblURLPrin = new javax.swing.JLabel();
+        lblYear = new javax.swing.JLabel();
+        lblStrain = new javax.swing.JLabel();
+        lblMainURL = new javax.swing.JLabel();
         lblCom = new javax.swing.JLabel();
-        fieldNome = new javax.swing.JTextField();
+        fieldName = new javax.swing.JTextField();
         fieldAccNo = new javax.swing.JTextField();
         fieldIdProt = new javax.swing.JTextField();
         fieldIdNuc = new javax.swing.JTextField();
         fieldAut = new javax.swing.JTextField();
-        fieldAno = new javax.swing.JTextField();
-        fieldCepa = new javax.swing.JTextField();
-        linkURLPrin = new javax.swing.JLabel();
+        fieldYear = new javax.swing.JTextField();
+        fieldStrain = new javax.swing.JTextField();
+        linkMainURL = new javax.swing.JLabel();
         spCom = new javax.swing.JScrollPane();
         areaCom = new javax.swing.JTextArea();
         painelNCBI = new javax.swing.JPanel();
-        abasDetalhesNCBI = new javax.swing.JTabbedPane();
-        painelPrincipalNCBI = new javax.swing.JPanel();
-        painelPrincip01 = new javax.swing.JPanel();
+        tabsNCBIDetails = new javax.swing.JTabbedPane();
+        panelMainNCBI = new javax.swing.JPanel();
+        panelMain01 = new javax.swing.JPanel();
         lblLocus = new javax.swing.JLabel();
-        lblComp = new javax.swing.JLabel();
-        lblTipo = new javax.swing.JLabel();
+        lblLength = new javax.swing.JLabel();
+        lblType = new javax.swing.JLabel();
         lblTopo = new javax.swing.JLabel();
         lblDivi = new javax.swing.JLabel();
-        lblCri = new javax.swing.JLabel();
+        lblCre = new javax.swing.JLabel();
         lblDef = new javax.swing.JLabel();
-        lblAcessPri = new javax.swing.JLabel();
-        lblVersaoAcess = new javax.swing.JLabel();
+        lblPriAccess = new javax.swing.JLabel();
+        lblAccessVersion = new javax.swing.JLabel();
         fieldLocus = new javax.swing.JTextField();
-        fieldComp = new javax.swing.JTextField();
-        fieldTipo = new javax.swing.JTextField();
+        fieldLength = new javax.swing.JTextField();
+        fieldType = new javax.swing.JTextField();
         fieldTopo = new javax.swing.JTextField();
         fieldDivi = new javax.swing.JTextField();
-        fieldCri = new javax.swing.JTextField();
+        fieldCre = new javax.swing.JTextField();
         fieldDef = new javax.swing.JTextField();
-        fieldAcessPri = new javax.swing.JTextField();
-        fieldVersaoAcess = new javax.swing.JTextField();
-        painelPrincip02 = new javax.swing.JPanel();
-        lblFonte = new javax.swing.JLabel();
+        fieldPriAccess = new javax.swing.JTextField();
+        fieldAccessVersion = new javax.swing.JTextField();
+        panelMain02 = new javax.swing.JPanel();
+        lblSource = new javax.swing.JLabel();
         lblOrg = new javax.swing.JLabel();
         lblTaxo = new javax.swing.JLabel();
-        lblBDF = new javax.swing.JLabel();
-        lblPChaves = new javax.swing.JLabel();
-        lblComent = new javax.swing.JLabel();
-        fieldFonte = new javax.swing.JTextField();
+        lblSDB = new javax.swing.JLabel();
+        lblKey = new javax.swing.JLabel();
+        lblComment = new javax.swing.JLabel();
+        fieldSource = new javax.swing.JTextField();
         fieldOrg = new javax.swing.JTextField();
         fieldTaxo = new javax.swing.JTextField();
-        fieldBDF = new javax.swing.JTextField();
-        fieldPChaves = new javax.swing.JTextField();
-        spComent = new javax.swing.JScrollPane();
-        areaComent = new javax.swing.JTextArea();
-        painelReferenciasNCBI = new javax.swing.JPanel();
-        painelListaRef = new javax.swing.JPanel();
-        spListaRef = new javax.swing.JScrollPane();
-        listaRef = new javax.swing.JList();
-        painelDetalhesRef = new javax.swing.JPanel();
+        fieldSDB = new javax.swing.JTextField();
+        fieldKey = new javax.swing.JTextField();
+        spComment = new javax.swing.JScrollPane();
+        areaComment = new javax.swing.JTextArea();
+        panelNCBIRef = new javax.swing.JPanel();
+        panelRefList = new javax.swing.JPanel();
+        spRefList = new javax.swing.JScrollPane();
+        listRef = new javax.swing.JList();
+        panelRefDetails = new javax.swing.JPanel();
         lblAutRef = new javax.swing.JLabel();
         lblTitRef = new javax.swing.JLabel();
         lblJournalRef = new javax.swing.JLabel();
@@ -204,147 +204,147 @@ public class MainWindow extends javax.swing.JFrame {
         fieldTitRef = new javax.swing.JTextField();
         fieldJournalRef = new javax.swing.JTextField();
         linkURLPubmedRef = new javax.swing.JLabel();
-        painelSequenciasNCBI = new javax.swing.JPanel();
-        abasSequenciasNCBI = new javax.swing.JTabbedPane();
-        painelSequenciaCompleta = new javax.swing.JPanel();
-        spSeqComp = new javax.swing.JScrollPane();
-        areaSeqComp = new javax.swing.JTextPane();
-        lblIntSeqComp = new javax.swing.JLabel();
-        lblNomeSeqComp = new javax.swing.JLabel();
-        fieldIntSeqComp = new javax.swing.JTextField();
-        fieldNomeSeqComp = new javax.swing.JTextField();
+        panelNCBISeq = new javax.swing.JPanel();
+        tabsNCBISequences = new javax.swing.JTabbedPane();
+        panelCompleteSequence = new javax.swing.JPanel();
+        spCompSeq = new javax.swing.JScrollPane();
+        areaCompSeq = new javax.swing.JTextPane();
+        lblIntCompSeq = new javax.swing.JLabel();
+        lblNameCompSeq = new javax.swing.JLabel();
+        fieldIntCompSeq = new javax.swing.JTextField();
+        fieldNameCompSeq = new javax.swing.JTextField();
         checkD1 = new javax.swing.JCheckBox();
         checkD2 = new javax.swing.JCheckBox();
         checkD3 = new javax.swing.JCheckBox();
-        painelD1 = new javax.swing.JPanel();
+        panelD1 = new javax.swing.JPanel();
         spD1 = new javax.swing.JScrollPane();
         areaD1 = new javax.swing.JTextArea();
         lblIntD1 = new javax.swing.JLabel();
-        lblNamoD1 = new javax.swing.JLabel();
+        lblNameD1 = new javax.swing.JLabel();
         lblComD1 = new javax.swing.JLabel();
         lblXrefD1 = new javax.swing.JLabel();
         fieldIntD1 = new javax.swing.JTextField();
-        fieldNomeD1 = new javax.swing.JTextField();
+        fieldNameD1 = new javax.swing.JTextField();
         fieldComD1 = new javax.swing.JTextField();
         linkXrefD1 = new javax.swing.JLabel();
-        painelD2 = new javax.swing.JPanel();
+        panelD2 = new javax.swing.JPanel();
         spD2 = new javax.swing.JScrollPane();
         areaD2 = new javax.swing.JTextArea();
         lblIntD2 = new javax.swing.JLabel();
-        lblNomeD2 = new javax.swing.JLabel();
+        lblNameD2 = new javax.swing.JLabel();
         lblComD2 = new javax.swing.JLabel();
         lblXrefD2 = new javax.swing.JLabel();
         fieldIntD2 = new javax.swing.JTextField();
-        fieldNomeD2 = new javax.swing.JTextField();
+        fieldNameD2 = new javax.swing.JTextField();
         fieldComD2 = new javax.swing.JTextField();
         linkXrefD2 = new javax.swing.JLabel();
-        painelD3 = new javax.swing.JPanel();
+        panelD3 = new javax.swing.JPanel();
         spD3 = new javax.swing.JScrollPane();
         areaD3 = new javax.swing.JTextArea();
         lblIntD3 = new javax.swing.JLabel();
-        ldlNomeD3 = new javax.swing.JLabel();
+        ldlNameD3 = new javax.swing.JLabel();
         lblComD3 = new javax.swing.JLabel();
         lblXrefD3 = new javax.swing.JLabel();
         fieldIntD3 = new javax.swing.JTextField();
-        fieldNomeD3 = new javax.swing.JTextField();
+        fieldNameD3 = new javax.swing.JTextField();
         fieldComD3 = new javax.swing.JTextField();
         linkXrefD3 = new javax.swing.JLabel();
-        painelDadosExtr = new javax.swing.JPanel();
-        labelDataExtr = new javax.swing.JLabel();
-        labelQuantExtrBruta = new javax.swing.JLabel();
-        labelQuantExtrProc = new javax.swing.JLabel();
-        fieldDataExtr = new javax.swing.JTextField();
-        fieldQuantExtrBruta = new javax.swing.JTextField();
-        fieldQuantExtrProc = new javax.swing.JTextField();
-        btnSobreProc = new javax.swing.JButton();
+        panelExtractionDetails = new javax.swing.JPanel();
+        labelDateExtr = new javax.swing.JLabel();
+        labelGrossAmount = new javax.swing.JLabel();
+        labelProcessAmount = new javax.swing.JLabel();
+        fieldDateExtr = new javax.swing.JTextField();
+        fieldGrossAmount = new javax.swing.JTextField();
+        fieldProcessAmount = new javax.swing.JTextField();
+        btnAboutProc = new javax.swing.JButton();
         painelConf = new javax.swing.JPanel();
-        btnCor = new javax.swing.JButton();
+        btnColor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
         setResizable(false);
 
-        btnExtrairProteinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/world_link.png"))); // NOI18N
-        btnExtrairProteinas.setText("Extrair");
-        btnExtrairProteinas.addActionListener(new java.awt.event.ActionListener() {
+        btnExtract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/world_link.png"))); // NOI18N
+        btnExtract.setText("Extract");
+        btnExtract.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExtrairProteinasActionPerformed(evt);
+                btnExtractActionPerformed(evt);
             }
         });
 
-        btnCarregarProteinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/folder.png"))); // NOI18N
-        btnCarregarProteinas.setText("Carregar");
-        btnCarregarProteinas.addActionListener(new java.awt.event.ActionListener() {
+        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/folder.png"))); // NOI18N
+        btnLoad.setText("Load");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarregarProteinasActionPerformed(evt);
+                btnLoadActionPerformed(evt);
             }
         });
 
-        btnAlinhamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
-        btnAlinhamento.setText("Alinhamento");
-        btnAlinhamento.addActionListener(new java.awt.event.ActionListener() {
+        btnAligment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
+        btnAligment.setText("Alignment");
+        btnAligment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlinhamentoActionPerformed(evt);
+                btnAligmentActionPerformed(evt);
             }
         });
 
-        lblAguarde.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblAguarde.setForeground(new java.awt.Color(0, 102, 255));
-        lblAguarde.setText(" ");
+        lblWait.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblWait.setForeground(new java.awt.Color(0, 102, 255));
+        lblWait.setText(" ");
 
-        painelProteinas.setBorder(javax.swing.BorderFactory.createTitledBorder("Proteínas"));
+        panelProteins.setBorder(javax.swing.BorderFactory.createTitledBorder("Proteins"));
 
-        listaProteinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listaProteinas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        listProteins.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listProteins.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaProteinasValueChanged(evt);
+                listProteinsValueChanged(evt);
             }
         });
-        scrollProteinas.setViewportView(listaProteinas);
+        scrollProteins.setViewportView(listProteins);
 
-        javax.swing.GroupLayout painelProteinasLayout = new javax.swing.GroupLayout(painelProteinas);
-        painelProteinas.setLayout(painelProteinasLayout);
-        painelProteinasLayout.setHorizontalGroup(
-            painelProteinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelProteinasLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelProteinsLayout = new javax.swing.GroupLayout(panelProteins);
+        panelProteins.setLayout(panelProteinsLayout);
+        panelProteinsLayout.setHorizontalGroup(
+            panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProteinsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollProteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(scrollProteins, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        painelProteinasLayout.setVerticalGroup(
-            painelProteinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelProteinasLayout.createSequentialGroup()
+        panelProteinsLayout.setVerticalGroup(
+            panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProteinsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollProteinas)
+                .addComponent(scrollProteins)
                 .addContainerGap())
         );
 
-        painelDetalhes.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes"));
+        panelDetails.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
-        lblNome.setText("Nome:");
+        lblName.setText("Name:");
 
-        lblAccNo.setText("Número de Acesso:");
+        lblAccNo.setText("Accession Number:");
 
-        lblIdProt.setText("Id. Proteína NCBI:");
+        lblIdProt.setText("NCBI Protein Id:");
 
-        lblIdNuc.setText("Id. Nucleotídeos NCBI:");
+        lblIdNuc.setText("NCBI Nucleotides Id:");
 
-        lblAut.setText("Autores:");
+        lblAut.setText("Authors:");
 
-        lblAno.setText("Ano:");
+        lblYear.setText("Year:");
 
-        lblCepa.setText("Cepa de Origem:");
+        lblStrain.setText("Source Strain:");
 
-        lblURLPrin.setText("URL Principal:");
+        lblMainURL.setText("Main URL:");
 
-        lblCom.setText("Comentários:");
+        lblCom.setText("Comments:");
 
-        linkURLPrin.setForeground(new java.awt.Color(0, 0, 255));
-        linkURLPrin.setText(" ");
-        linkURLPrin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        linkURLPrin.addMouseListener(new java.awt.event.MouseAdapter() {
+        linkMainURL.setForeground(new java.awt.Color(0, 0, 255));
+        linkMainURL.setText(" ");
+        linkMainURL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        linkMainURL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                linkURLPrinMouseClicked(evt);
+                linkMainURLMouseClicked(evt);
             }
         });
 
@@ -352,297 +352,297 @@ public class MainWindow extends javax.swing.JFrame {
         areaCom.setRows(5);
         spCom.setViewportView(areaCom);
 
-        javax.swing.GroupLayout painelDadosBtLayout = new javax.swing.GroupLayout(painelDadosBt);
-        painelDadosBt.setLayout(painelDadosBtLayout);
-        painelDadosBtLayout.setHorizontalGroup(
-            painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDadosBtLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelBtDataLayout = new javax.swing.GroupLayout(panelBtData);
+        panelBtData.setLayout(panelBtDataLayout);
+        panelBtDataLayout.setHorizontalGroup(
+            panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBtDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblURLPrin, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblCepa, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblMainURL, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblStrain, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblAut, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblAno, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblYear, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblIdNuc, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblIdProt, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lblAccNo, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(lblCom, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spCom, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(linkURLPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldYear, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldStrain, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(linkMainURL, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
-        painelDadosBtLayout.setVerticalGroup(
-            painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDadosBtLayout.createSequentialGroup()
+        panelBtDataLayout.setVerticalGroup(
+            panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBtDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccNo)
                     .addComponent(fieldAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdProt)
                     .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdNuc)
                     .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAut)
                     .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAno)
-                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblYear)
+                    .addComponent(fieldYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCepa)
-                    .addComponent(fieldCepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStrain)
+                    .addComponent(fieldStrain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblURLPrin)
-                    .addComponent(linkURLPrin))
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMainURL)
+                    .addComponent(linkMainURL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDadosBtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDadosBtLayout.createSequentialGroup()
+                .addGroup(panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBtDataLayout.createSequentialGroup()
                         .addComponent(lblCom)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(spCom, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
         );
 
-        abasDetalhes.addTab("BtNomeclature", painelDadosBt);
+        tabsDetails.addTab("BtNomeclature", panelBtData);
 
         lblLocus.setText("Locus:");
 
-        lblComp.setText("Comprimento:");
+        lblLength.setText("Length:");
 
-        lblTipo.setText("Tipo de Molécula:");
+        lblType.setText("Molecule Type:");
 
-        lblTopo.setText("Topologia:");
+        lblTopo.setText("Topology:");
 
-        lblDivi.setText("Divisão:");
+        lblDivi.setText("Division:");
 
-        lblCri.setText("Criação:");
+        lblCre.setText("Creation Date:");
 
-        lblDef.setText("Definição:");
+        lblDef.setText("Definition:");
 
-        lblAcessPri.setText("Acesso Primário:");
+        lblPriAccess.setText("Primary Access:");
 
-        lblVersaoAcess.setText("Versão do Acesso:");
+        lblAccessVersion.setText("Acess Version:");
 
-        javax.swing.GroupLayout painelPrincip01Layout = new javax.swing.GroupLayout(painelPrincip01);
-        painelPrincip01.setLayout(painelPrincip01Layout);
-        painelPrincip01Layout.setHorizontalGroup(
-            painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincip01Layout.createSequentialGroup()
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelMain01Layout = new javax.swing.GroupLayout(panelMain01);
+        panelMain01.setLayout(panelMain01Layout);
+        panelMain01Layout.setHorizontalGroup(
+            panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMain01Layout.createSequentialGroup()
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLocus, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblComp, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTipo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblLength, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblType, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTopo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDivi, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCri, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCre, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDef, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAcessPri, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblVersaoAcess, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(lblPriAccess, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAccessVersion, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldLocus, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldDivi, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldCri, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldCre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldDef, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAcessPri, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldVersaoAcess, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(fieldTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldPriAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAccessVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(fieldType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(fieldTopo, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(fieldComp, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelPrincip01Layout.setVerticalGroup(
-            painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincip01Layout.createSequentialGroup()
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        panelMain01Layout.setVerticalGroup(
+            panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMain01Layout.createSequentialGroup()
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLocus)
                     .addComponent(fieldLocus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblComp)
-                    .addComponent(fieldComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLength)
+                    .addComponent(fieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTipo)
-                    .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblType)
+                    .addComponent(fieldType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTopo)
                     .addComponent(fieldTopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDivi)
                     .addComponent(fieldDivi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCri)
-                    .addComponent(fieldCri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCre)
+                    .addComponent(fieldCre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDef)
                     .addComponent(fieldDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAcessPri)
-                    .addComponent(fieldAcessPri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPriAccess)
+                    .addComponent(fieldPriAccess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVersaoAcess)
-                    .addComponent(fieldVersaoAcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelMain01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAccessVersion)
+                    .addComponent(fieldAccessVersion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        lblFonte.setText("Fonte:");
+        lblSource.setText("Source:");
 
-        lblOrg.setText("Organismo:");
+        lblOrg.setText("Organism:");
 
-        lblTaxo.setText("Taxonomia:");
+        lblTaxo.setText("Taxonomy:");
 
-        lblBDF.setText("Banco de Dados Fonte:");
+        lblSDB.setText("Source Database:");
 
-        lblPChaves.setText("Palavras-chave:");
+        lblKey.setText("Keywords:");
 
-        lblComent.setText("Comentários:");
+        lblComment.setText("Comments:");
 
-        areaComent.setColumns(20);
-        areaComent.setLineWrap(true);
-        areaComent.setRows(5);
-        spComent.setViewportView(areaComent);
+        areaComment.setColumns(20);
+        areaComment.setLineWrap(true);
+        areaComment.setRows(5);
+        spComment.setViewportView(areaComment);
 
-        javax.swing.GroupLayout painelPrincip02Layout = new javax.swing.GroupLayout(painelPrincip02);
-        painelPrincip02.setLayout(painelPrincip02Layout);
-        painelPrincip02Layout.setHorizontalGroup(
-            painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincip02Layout.createSequentialGroup()
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblComent)
-                    .addComponent(lblFonte)
+        javax.swing.GroupLayout panelMain02Layout = new javax.swing.GroupLayout(panelMain02);
+        panelMain02.setLayout(panelMain02Layout);
+        panelMain02Layout.setHorizontalGroup(
+            panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMain02Layout.createSequentialGroup()
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblComment)
+                    .addComponent(lblSource)
                     .addComponent(lblOrg)
                     .addComponent(lblTaxo)
-                    .addComponent(lblBDF)
-                    .addComponent(lblPChaves))
+                    .addComponent(lblSDB)
+                    .addComponent(lblKey))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelPrincip02Layout.createSequentialGroup()
-                        .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(spComent, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldFonte, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMain02Layout.createSequentialGroup()
+                        .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spComment, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldSource, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(painelPrincip02Layout.createSequentialGroup()
-                        .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fieldBDF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelMain02Layout.createSequentialGroup()
+                        .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fieldSDB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldTaxo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldPChaves, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldKey, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
-        painelPrincip02Layout.setVerticalGroup(
-            painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincip02Layout.createSequentialGroup()
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldFonte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFonte))
+        panelMain02Layout.setVerticalGroup(
+            panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMain02Layout.createSequentialGroup()
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSource))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrg)
                     .addComponent(fieldOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTaxo)
                     .addComponent(fieldTaxo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBDF)
-                    .addComponent(fieldBDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSDB)
+                    .addComponent(fieldSDB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPChaves)
-                    .addComponent(fieldPChaves, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKey)
+                    .addComponent(fieldKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincip02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelPrincip02Layout.createSequentialGroup()
-                        .addComponent(lblComent)
+                .addGroup(panelMain02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMain02Layout.createSequentialGroup()
+                        .addComponent(lblComment)
                         .addContainerGap())
-                    .addComponent(spComent, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+                    .addComponent(spComment, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout painelPrincipalNCBILayout = new javax.swing.GroupLayout(painelPrincipalNCBI);
-        painelPrincipalNCBI.setLayout(painelPrincipalNCBILayout);
-        painelPrincipalNCBILayout.setHorizontalGroup(
-            painelPrincipalNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalNCBILayout.createSequentialGroup()
+        javax.swing.GroupLayout panelMainNCBILayout = new javax.swing.GroupLayout(panelMainNCBI);
+        panelMainNCBI.setLayout(panelMainNCBILayout);
+        panelMainNCBILayout.setHorizontalGroup(
+            panelMainNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMainNCBILayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPrincip01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelMain01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelPrincip02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelMain02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89))
         );
-        painelPrincipalNCBILayout.setVerticalGroup(
-            painelPrincipalNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalNCBILayout.createSequentialGroup()
+        panelMainNCBILayout.setVerticalGroup(
+            panelMainNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMainNCBILayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelPrincipalNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelPrincip01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(painelPrincip02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMainNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelMain01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelMain02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
-        abasDetalhesNCBI.addTab("Principal", painelPrincipalNCBI);
+        tabsNCBIDetails.addTab("Main", panelMainNCBI);
 
-        painelListaRef.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista"));
+        panelRefList.setBorder(javax.swing.BorderFactory.createTitledBorder("Reference List"));
 
-        listaRef.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listaRef.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        listRef.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listRef.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaRefValueChanged(evt);
+                listRefValueChanged(evt);
             }
         });
-        spListaRef.setViewportView(listaRef);
+        spRefList.setViewportView(listRef);
 
-        javax.swing.GroupLayout painelListaRefLayout = new javax.swing.GroupLayout(painelListaRef);
-        painelListaRef.setLayout(painelListaRefLayout);
-        painelListaRefLayout.setHorizontalGroup(
-            painelListaRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelListaRefLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelRefListLayout = new javax.swing.GroupLayout(panelRefList);
+        panelRefList.setLayout(panelRefListLayout);
+        panelRefListLayout.setHorizontalGroup(
+            panelRefListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRefListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spListaRef, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addComponent(spRefList, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        painelListaRefLayout.setVerticalGroup(
-            painelListaRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelListaRefLayout.createSequentialGroup()
-                .addComponent(spListaRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelRefListLayout.setVerticalGroup(
+            panelRefListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRefListLayout.createSequentialGroup()
+                .addComponent(spRefList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        painelDetalhesRef.setBorder(javax.swing.BorderFactory.createTitledBorder("Detlahes"));
+        panelRefDetails.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
-        lblAutRef.setText("Autores:");
+        lblAutRef.setText("Authors:");
 
-        lblTitRef.setText("Título:");
+        lblTitRef.setText("Title:");
 
         lblJournalRef.setText("Journal:");
 
@@ -657,79 +657,79 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout painelDetalhesRefLayout = new javax.swing.GroupLayout(painelDetalhesRef);
-        painelDetalhesRef.setLayout(painelDetalhesRefLayout);
-        painelDetalhesRefLayout.setHorizontalGroup(
-            painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDetalhesRefLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelRefDetailsLayout = new javax.swing.GroupLayout(panelRefDetails);
+        panelRefDetails.setLayout(panelRefDetailsLayout);
+        panelRefDetailsLayout.setHorizontalGroup(
+            panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRefDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAutRef, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTitRef, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblJournalRef, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblURLPubmedRef, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldAutRef, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldTitRef, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldJournalRef, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkURLPubmedRef, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelDetalhesRefLayout.setVerticalGroup(
-            painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDetalhesRefLayout.createSequentialGroup()
+        panelRefDetailsLayout.setVerticalGroup(
+            panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRefDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutRef)
                     .addComponent(fieldAutRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitRef)
                     .addComponent(fieldTitRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblJournalRef)
                     .addComponent(fieldJournalRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelDetalhesRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRefDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblURLPubmedRef)
                     .addComponent(linkURLPubmedRef))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout painelReferenciasNCBILayout = new javax.swing.GroupLayout(painelReferenciasNCBI);
-        painelReferenciasNCBI.setLayout(painelReferenciasNCBILayout);
-        painelReferenciasNCBILayout.setHorizontalGroup(
-            painelReferenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelReferenciasNCBILayout.createSequentialGroup()
+        javax.swing.GroupLayout panelNCBIRefLayout = new javax.swing.GroupLayout(panelNCBIRef);
+        panelNCBIRef.setLayout(panelNCBIRefLayout);
+        panelNCBIRefLayout.setHorizontalGroup(
+            panelNCBIRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNCBIRefLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelListaRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelRefList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelDetalhesRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelRefDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(160, Short.MAX_VALUE))
         );
-        painelReferenciasNCBILayout.setVerticalGroup(
-            painelReferenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelReferenciasNCBILayout.createSequentialGroup()
+        panelNCBIRefLayout.setVerticalGroup(
+            panelNCBIRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNCBIRefLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelReferenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelListaRef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelDetalhesRef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelNCBIRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRefList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRefDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
 
-        abasDetalhesNCBI.addTab("Referências", painelReferenciasNCBI);
+        tabsNCBIDetails.addTab("References", panelNCBIRef);
 
-        areaSeqComp.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        spSeqComp.setViewportView(areaSeqComp);
+        areaCompSeq.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        spCompSeq.setViewportView(areaCompSeq);
 
-        lblIntSeqComp.setText("Intervalo:");
+        lblIntCompSeq.setText("Interval:");
 
-        lblNomeSeqComp.setText("Nome:");
+        lblNameCompSeq.setText("Name:");
 
         checkD1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        checkD1.setText("Domínio 1");
+        checkD1.setText("Domain 1");
         checkD1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkD1ActionPerformed(evt);
@@ -737,7 +737,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         checkD2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        checkD2.setText("Domínio 2");
+        checkD2.setText("Domain 2");
         checkD2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkD2ActionPerformed(evt);
@@ -745,46 +745,46 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         checkD3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        checkD3.setText("Domínio 3");
+        checkD3.setText("Domain 3");
         checkD3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkD3ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelSequenciaCompletaLayout = new javax.swing.GroupLayout(painelSequenciaCompleta);
-        painelSequenciaCompleta.setLayout(painelSequenciaCompletaLayout);
-        painelSequenciaCompletaLayout.setHorizontalGroup(
-            painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSequenciaCompletaLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelCompleteSequenceLayout = new javax.swing.GroupLayout(panelCompleteSequence);
+        panelCompleteSequence.setLayout(panelCompleteSequenceLayout);
+        panelCompleteSequenceLayout.setHorizontalGroup(
+            panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCompleteSequenceLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNomeSeqComp)
-                    .addComponent(lblIntSeqComp))
+                .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNameCompSeq)
+                    .addComponent(lblIntCompSeq))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldIntSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldIntCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNameCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkD1)
                     .addComponent(checkD2)
                     .addComponent(checkD3))
                 .addGap(51, 51, 51))
         );
-        painelSequenciaCompletaLayout.setVerticalGroup(
-            painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSequenciaCompletaLayout.createSequentialGroup()
+        panelCompleteSequenceLayout.setVerticalGroup(
+            panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCompleteSequenceLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelSequenciaCompletaLayout.createSequentialGroup()
-                        .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldIntSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIntSeqComp))
+                .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCompleteSequenceLayout.createSequentialGroup()
+                        .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldIntCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIntCompSeq))
                         .addGap(8, 8, 8)
-                        .addGroup(painelSequenciaCompletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNomeSeqComp)
-                            .addComponent(fieldNomeSeqComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNameCompSeq)
+                            .addComponent(fieldNameCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(checkD1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -792,22 +792,22 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkD3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spSeqComp, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
+                    .addComponent(spCompSeq, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        abasSequenciasNCBI.addTab("Proteína Completa", painelSequenciaCompleta);
+        tabsNCBISequences.addTab("Complete Protein", panelCompleteSequence);
 
         areaD1.setColumns(20);
         areaD1.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         areaD1.setRows(5);
         spD1.setViewportView(areaD1);
 
-        lblIntD1.setText("Intervalo:");
+        lblIntD1.setText("Interval:");
 
-        lblNamoD1.setText("Nome:");
+        lblNameD1.setText("Name:");
 
-        lblComD1.setText("Comentário:");
+        lblComD1.setText("Comment:");
 
         lblXrefD1.setText("X-Ref:");
 
@@ -820,46 +820,46 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout painelD1Layout = new javax.swing.GroupLayout(painelD1);
-        painelD1.setLayout(painelD1Layout);
-        painelD1Layout.setHorizontalGroup(
-            painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelD1Layout = new javax.swing.GroupLayout(panelD1);
+        panelD1.setLayout(panelD1Layout);
+        panelD1Layout.setHorizontalGroup(
+            panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(spD1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblIntD1)
-                    .addComponent(lblNamoD1)
+                    .addComponent(lblNameD1)
                     .addComponent(lblComD1)
                     .addComponent(lblXrefD1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldIntD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNameD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
-        painelD1Layout.setVerticalGroup(
-            painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD1Layout.createSequentialGroup()
+        panelD1Layout.setVerticalGroup(
+            panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelD1Layout.createSequentialGroup()
-                        .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelD1Layout.createSequentialGroup()
+                        .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldIntD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIntD1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNamoD1)
-                            .addComponent(fieldNomeD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNameD1)
+                            .addComponent(fieldNameD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblComD1)
                             .addComponent(fieldComD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblXrefD1)
                             .addComponent(linkXrefD1))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -867,18 +867,18 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        abasSequenciasNCBI.addTab("Domínio 1", painelD1);
+        tabsNCBISequences.addTab("Domain 1", panelD1);
 
         areaD2.setColumns(20);
         areaD2.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         areaD2.setRows(5);
         spD2.setViewportView(areaD2);
 
-        lblIntD2.setText("Intervalo:");
+        lblIntD2.setText("Interval:");
 
-        lblNomeD2.setText("Nome:");
+        lblNameD2.setText("Name:");
 
-        lblComD2.setText("Comentário:");
+        lblComD2.setText("Comment:");
 
         lblXrefD2.setText("X-Ref:");
 
@@ -891,50 +891,46 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout painelD2Layout = new javax.swing.GroupLayout(painelD2);
-        painelD2.setLayout(painelD2Layout);
-        painelD2Layout.setHorizontalGroup(
-            painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelD2Layout = new javax.swing.GroupLayout(panelD2);
+        panelD2.setLayout(panelD2Layout);
+        panelD2Layout.setHorizontalGroup(
+            panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(spD2, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelD2Layout.createSequentialGroup()
-                        .addComponent(lblIntD2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldIntD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelD2Layout.createSequentialGroup()
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNomeD2)
-                            .addComponent(lblComD2)
-                            .addComponent(lblXrefD2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldNomeD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldComD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(linkXrefD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIntD2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNameD2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblComD2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblXrefD2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldIntD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNameD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldComD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(linkXrefD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
-        painelD2Layout.setVerticalGroup(
-            painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD2Layout.createSequentialGroup()
+        panelD2Layout.setVerticalGroup(
+            panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelD2Layout.createSequentialGroup()
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelD2Layout.createSequentialGroup()
+                        .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldIntD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIntD2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNomeD2)
-                            .addComponent(fieldNomeD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNameD2)
+                            .addComponent(fieldNameD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblComD2)
                             .addComponent(fieldComD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblXrefD2)
                             .addComponent(linkXrefD2))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -942,18 +938,18 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        abasSequenciasNCBI.addTab("Domínio 2", painelD2);
+        tabsNCBISequences.addTab("Domain 2", panelD2);
 
         areaD3.setColumns(20);
         areaD3.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         areaD3.setRows(5);
         spD3.setViewportView(areaD3);
 
-        lblIntD3.setText("Intervalo:");
+        lblIntD3.setText("Interval:");
 
-        ldlNomeD3.setText("Nome:");
+        ldlNameD3.setText("Name:");
 
-        lblComD3.setText("Comentário:");
+        lblComD3.setText("Comment:");
 
         lblXrefD3.setText("X-Ref:");
 
@@ -966,50 +962,46 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout painelD3Layout = new javax.swing.GroupLayout(painelD3);
-        painelD3.setLayout(painelD3Layout);
-        painelD3Layout.setHorizontalGroup(
-            painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelD3Layout = new javax.swing.GroupLayout(panelD3);
+        panelD3.setLayout(panelD3Layout);
+        panelD3Layout.setHorizontalGroup(
+            panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(spD3, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelD3Layout.createSequentialGroup()
-                        .addComponent(lblIntD3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldIntD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelD3Layout.createSequentialGroup()
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ldlNomeD3)
-                            .addComponent(lblComD3)
-                            .addComponent(lblXrefD3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldNomeD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldComD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(linkXrefD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIntD3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ldlNameD3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblComD3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblXrefD3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldIntD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNameD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldComD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(linkXrefD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
-        painelD3Layout.setVerticalGroup(
-            painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelD3Layout.createSequentialGroup()
+        panelD3Layout.setVerticalGroup(
+            panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelD3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelD3Layout.createSequentialGroup()
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelD3Layout.createSequentialGroup()
+                        .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldIntD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIntD3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ldlNomeD3)
-                            .addComponent(fieldNomeD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ldlNameD3)
+                            .addComponent(fieldNameD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblComD3)
                             .addComponent(fieldComD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblXrefD3)
                             .addComponent(linkXrefD3))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -1017,26 +1009,26 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        abasSequenciasNCBI.addTab("Domínio 3", painelD3);
+        tabsNCBISequences.addTab("Domain 3", panelD3);
 
-        javax.swing.GroupLayout painelSequenciasNCBILayout = new javax.swing.GroupLayout(painelSequenciasNCBI);
-        painelSequenciasNCBI.setLayout(painelSequenciasNCBILayout);
-        painelSequenciasNCBILayout.setHorizontalGroup(
-            painelSequenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSequenciasNCBILayout.createSequentialGroup()
+        javax.swing.GroupLayout panelNCBISeqLayout = new javax.swing.GroupLayout(panelNCBISeq);
+        panelNCBISeq.setLayout(panelNCBISeqLayout);
+        panelNCBISeqLayout.setHorizontalGroup(
+            panelNCBISeqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNCBISeqLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasSequenciasNCBI)
+                .addComponent(tabsNCBISequences)
                 .addContainerGap())
         );
-        painelSequenciasNCBILayout.setVerticalGroup(
-            painelSequenciasNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSequenciasNCBILayout.createSequentialGroup()
+        panelNCBISeqLayout.setVerticalGroup(
+            panelNCBISeqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNCBISeqLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasSequenciasNCBI)
+                .addComponent(tabsNCBISequences)
                 .addContainerGap())
         );
 
-        abasDetalhesNCBI.addTab("Sequência", painelSequenciasNCBI);
+        tabsNCBIDetails.addTab("Sequence", panelNCBISeq);
 
         javax.swing.GroupLayout painelNCBILayout = new javax.swing.GroupLayout(painelNCBI);
         painelNCBI.setLayout(painelNCBILayout);
@@ -1044,92 +1036,92 @@ public class MainWindow extends javax.swing.JFrame {
             painelNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelNCBILayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasDetalhesNCBI, javax.swing.GroupLayout.PREFERRED_SIZE, 867, Short.MAX_VALUE)
+                .addComponent(tabsNCBIDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 867, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelNCBILayout.setVerticalGroup(
             painelNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelNCBILayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasDetalhesNCBI)
+                .addComponent(tabsNCBIDetails)
                 .addContainerGap())
         );
 
-        abasDetalhes.addTab("NCBI", painelNCBI);
+        tabsDetails.addTab("NCBI", painelNCBI);
 
-        javax.swing.GroupLayout painelDetalhesLayout = new javax.swing.GroupLayout(painelDetalhes);
-        painelDetalhes.setLayout(painelDetalhesLayout);
-        painelDetalhesLayout.setHorizontalGroup(
-            painelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDetalhesLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelDetailsLayout = new javax.swing.GroupLayout(panelDetails);
+        panelDetails.setLayout(panelDetailsLayout);
+        panelDetailsLayout.setHorizontalGroup(
+            panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasDetalhes)
+                .addComponent(tabsDetails)
                 .addContainerGap())
         );
-        painelDetalhesLayout.setVerticalGroup(
-            painelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDetalhesLayout.createSequentialGroup()
+        panelDetailsLayout.setVerticalGroup(
+            panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abasDetalhes)
+                .addComponent(tabsDetails)
                 .addContainerGap())
         );
 
-        painelDadosExtr.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da Extração"));
+        panelExtractionDetails.setBorder(javax.swing.BorderFactory.createTitledBorder("Extraction Details"));
 
-        labelDataExtr.setText("Data:");
+        labelDateExtr.setText("Date:");
 
-        labelQuantExtrBruta.setText("Quantidade Bruta:");
+        labelGrossAmount.setText("Gross Amount:");
 
-        labelQuantExtrProc.setText("Quantidade Proc.:");
+        labelProcessAmount.setText("Processed Amount:");
 
-        btnSobreProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
-        btnSobreProc.addActionListener(new java.awt.event.ActionListener() {
+        btnAboutProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
+        btnAboutProc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSobreProcActionPerformed(evt);
+                btnAboutProcActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelDadosExtrLayout = new javax.swing.GroupLayout(painelDadosExtr);
-        painelDadosExtr.setLayout(painelDadosExtrLayout);
-        painelDadosExtrLayout.setHorizontalGroup(
-            painelDadosExtrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDadosExtrLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelExtractionDetailsLayout = new javax.swing.GroupLayout(panelExtractionDetails);
+        panelExtractionDetails.setLayout(panelExtractionDetailsLayout);
+        panelExtractionDetailsLayout.setHorizontalGroup(
+            panelExtractionDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExtractionDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelDataExtr)
+                .addComponent(labelDateExtr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldDataExtr, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldDateExtr, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelQuantExtrBruta)
+                .addComponent(labelGrossAmount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldQuantExtrBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldGrossAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelQuantExtrProc)
+                .addComponent(labelProcessAmount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldQuantExtrProc, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldProcessAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSobreProc)
+                .addComponent(btnAboutProc)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelDadosExtrLayout.setVerticalGroup(
-            painelDadosExtrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDadosExtrLayout.createSequentialGroup()
+        panelExtractionDetailsLayout.setVerticalGroup(
+            panelExtractionDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExtractionDetailsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelDadosExtrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDataExtr)
-                    .addComponent(fieldDataExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelQuantExtrBruta)
-                    .addComponent(fieldQuantExtrBruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelQuantExtrProc)
-                    .addComponent(fieldQuantExtrProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSobreProc)))
+                .addGroup(panelExtractionDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDateExtr)
+                    .addComponent(fieldDateExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelGrossAmount)
+                    .addComponent(fieldGrossAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelProcessAmount)
+                    .addComponent(fieldProcessAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAboutProc)))
         );
 
-        painelConf.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações"));
+        painelConf.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurations"));
 
-        btnCor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/color_wheel.png"))); // NOI18N
-        btnCor.addActionListener(new java.awt.event.ActionListener() {
+        btnColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/color_wheel.png"))); // NOI18N
+        btnColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCorActionPerformed(evt);
+                btnColorActionPerformed(evt);
             }
         });
 
@@ -1139,14 +1131,14 @@ public class MainWindow extends javax.swing.JFrame {
             painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelConfLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCor)
+                .addComponent(btnColor)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelConfLayout.setVerticalGroup(
             painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCor))
+                .addComponent(btnColor))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1156,21 +1148,21 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnExtrairProteinas)
+                        .addComponent(btnExtract)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCarregarProteinas)
+                        .addComponent(btnLoad)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlinhamento)
+                        .addComponent(btnAligment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAguarde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelDadosExtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelExtractionDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
@@ -1180,20 +1172,20 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelDadosExtr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelExtractionDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExtrairProteinas)
-                            .addComponent(btnCarregarProteinas))
+                            .addComponent(btnExtract)
+                            .addComponent(btnLoad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAlinhamento)
-                            .addComponent(lblAguarde)))
+                            .addComponent(btnAligment)
+                            .addComponent(lblWait)))
                     .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelProteinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1201,11 +1193,11 @@ public class MainWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExtrairProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtrairProteinasActionPerformed
+    private void btnExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtractActionPerformed
         new Thread( new ExtractionTask( ( this ) ) ).start();
-    }//GEN-LAST:event_btnExtrairProteinasActionPerformed
+    }//GEN-LAST:event_btnExtractActionPerformed
 
-    private void btnCarregarProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarProteinasActionPerformed
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
@@ -1216,7 +1208,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         jfc.setFileFilter( fnef );
-        jfc.setDialogTitle( "Carregar Dados Extraídos" );
+        jfc.setDialogTitle( "Load Extracted Data" );
         jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
         jfc.setMultiSelectionEnabled( false );
         
@@ -1224,9 +1216,9 @@ public class MainWindow extends javax.swing.JFrame {
             new Thread( new LoadTask( this, jfc.getSelectedFile()) ).start();
         }
         
-    }//GEN-LAST:event_btnCarregarProteinasActionPerformed
+    }//GEN-LAST:event_btnLoadActionPerformed
 
-    private void linkURLPrinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkURLPrinMouseClicked
+    private void linkMainURLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkMainURLMouseClicked
         
         if ( selectedCt != null ) {
             
@@ -1241,28 +1233,28 @@ public class MainWindow extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_linkURLPrinMouseClicked
+    }//GEN-LAST:event_linkMainURLMouseClicked
 
-    private void listaProteinasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaProteinasValueChanged
+    private void listProteinsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listProteinsValueChanged
 
-        if ( listaProteinas != null ) {
+        if ( listProteins != null ) {
             
-            CryToxin selectedNow = (CryToxin) listaProteinas.getSelectedValue();
+            CryToxin selectedNow = (CryToxin) listProteins.getSelectedValue();
 
             if ( selectedNow != null && !selectedNow.equals( evt ) ) {
-                selectedCt = (CryToxin) listaProteinas.getSelectedValue();
+                selectedCt = (CryToxin) listProteins.getSelectedValue();
                 updateDetails();
             }
             
         }
         
-    }//GEN-LAST:event_listaProteinasValueChanged
+    }//GEN-LAST:event_listProteinsValueChanged
 
-    private void listaRefValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaRefValueChanged
+    private void listRefValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listRefValueChanged
         
-        if ( listaRef != null ) {
+        if ( listRef != null ) {
             
-            GBReference ref = (GBReference) listaRef.getSelectedValue();
+            GBReference ref = (GBReference) listRef.getSelectedValue();
 
             if ( ref != null ) {
 
@@ -1286,7 +1278,7 @@ public class MainWindow extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_listaRefValueChanged
+    }//GEN-LAST:event_listRefValueChanged
 
     private void linkURLPubmedRefMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkURLPubmedRefMouseClicked
         
@@ -1305,23 +1297,24 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_linkURLPubmedRefMouseClicked
 
-    private void btnSobreProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreProcActionPerformed
+    private void btnAboutProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutProcActionPerformed
         
         JOptionPane.showMessageDialog( this, 
-                "As proteínas listadas foram processadas para que sejam apresentadas\n" +
-                "apenas as que tenham as seguintes características:\n\n\n" +
-                "- Identificação do BtNomenclature igual ao do NCBI, ou seja, o mesmo\n" +
-                "  número de acesso tanto no BtNomenclature quanto no NCBI;\n\n" +
-                "- Utilização da nomeclatura atual: Cry{1}{2}{3}{4}, onde\n" +
-                "    1: Um número inteiro obrigatório\n" +
-                "    2: Uma letra maiúscula obrigatória\n" +
-                "    3: Uma letra minúscula obrigatória\n" +
-                "    4: Um número inteiro não obrigatório\n\n" +
-                "- Possuir exatamente três domínios.",
-                "Detalhes do Processamento", 
+                "The listed proteins were processed to show only the ones with the\n" +
+                "following characteristics:\n\n" +
+                "- BtNomenclature identification is equals of NCBI identification, i.e.,\n" + 
+                "  they have the same accession number in BtNomenclature and NCBI;\n\n" +
+                "- Protein name has the current identification pattern:\n" +
+                "  Cry{1}{2}{3}{4}, where:\n" +
+                "      1: A required integer number;\n" +
+                "      2: A required uppercase letter;\n" +
+                "      3: A required lowercase letter;\n" +
+                "      4: An optional integer number.\n\n" +
+                "- The protein must have three domains.",
+                "Processing Details", 
                 JOptionPane.INFORMATION_MESSAGE );
         
-    }//GEN-LAST:event_btnSobreProcActionPerformed
+    }//GEN-LAST:event_btnAboutProcActionPerformed
 
     private void linkXrefD1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkXrefD1MouseClicked
         openDomainXRefLink( linkXrefD1 );
@@ -1347,7 +1340,7 @@ public class MainWindow extends javax.swing.JFrame {
         fillCompleteSequenceTextPane();
     }//GEN-LAST:event_checkD3ActionPerformed
 
-    private void btnAlinhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlinhamentoActionPerformed
+    private void btnAligmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAligmentActionPerformed
         
         if ( ctList != null ) {
             
@@ -1356,17 +1349,17 @@ public class MainWindow extends javax.swing.JFrame {
             
         } else {
             
-            JOptionPane.showMessageDialog( this, "Carregue primeiro um arquivo de extração!", 
-                    "Aviso", JOptionPane.WARNING_MESSAGE );
+            JOptionPane.showMessageDialog( this, "First you need to load an extraction file!", 
+                    "Warning", JOptionPane.WARNING_MESSAGE );
             
         }
         
-    }//GEN-LAST:event_btnAlinhamentoActionPerformed
+    }//GEN-LAST:event_btnAligmentActionPerformed
 
-    private void btnCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorActionPerformed
+    private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
         
         JColorChooser jcc = new JColorChooser();
-        Color c = JColorChooser.showDialog( this, "Cor Base", baseProteinColor );
+        Color c = JColorChooser.showDialog( this, "Base Color", baseProteinColor );
         
         if ( c != null ) {
             
@@ -1376,7 +1369,7 @@ public class MainWindow extends javax.swing.JFrame {
             configs.setProperty( "bpcB", String.valueOf( baseProteinColor.getBlue() ) );
             
             try {
-                configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+                configs.store( new FileOutputStream( "conf/conf.properties" ), "CryGetter Configuration File - Must not be changed!!!" );
             } catch ( IOException ex ) {
                 Utils.showExceptionMessage( this, ex );
                 System.exit( 1 );
@@ -1384,11 +1377,11 @@ public class MainWindow extends javax.swing.JFrame {
             
             if ( ctList != null ) {
                 updateProteinColors();
-                listaProteinas.updateUI();
+                listProteins.updateUI();
             }
         }
         
-    }//GEN-LAST:event_btnCorActionPerformed
+    }//GEN-LAST:event_btnColorActionPerformed
 
     private void prepareConfiguration() {
         
@@ -1454,7 +1447,7 @@ public class MainWindow extends javax.swing.JFrame {
                 }
                 
                 try {
-                    configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+                    configs.store( new FileOutputStream( "conf/conf.properties" ), "CryGetter Configuration File - Must not be changed!!!" );
                 } catch ( IOException ex ) {
                     Utils.showExceptionMessage( this, ex );
                     System.exit( 1 );
@@ -1508,8 +1501,8 @@ public class MainWindow extends javax.swing.JFrame {
         
         if ( selectedSeq != null && selectedSeq.getGBSeqSequence() != null ) {
             
-            areaSeqComp.setText( "" );
-            Utils.appendToPane( areaSeqComp, "", Color.BLACK, Color.WHITE );
+            areaCompSeq.setText( "" );
+            Utils.appendToPane( areaCompSeq, "", Color.BLACK, Color.WHITE );
             
             String sequence = selectedCt.proteinSequence;
             
@@ -1540,11 +1533,11 @@ public class MainWindow extends javax.swing.JFrame {
             String spaceInsert = "";
             String lineInsert = "";
             
-            Utils.appendToPane( areaSeqComp, Utils.formatProtein( sequence.substring( prev.start - 1, prev.end ) ), Color.BLACK, Color.WHITE );
+            Utils.appendToPane( areaCompSeq, Utils.formatProtein( sequence.substring( prev.start - 1, prev.end ) ), Color.BLACK, Color.WHITE );
             
             
             if ( d1.interval.start <= d1.interval.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
@@ -1552,26 +1545,26 @@ public class MainWindow extends javax.swing.JFrame {
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
                 if ( checkD1.isSelected() ) {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, cD1 );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, cD1 );
                 } else {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d1.interval.start - 1, d1.interval.end ), jump ), Color.BLACK, Color.WHITE );
                 }
             }
             
             
             if ( d12.start <= d12.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
                 spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
-                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d12.start - 1, d12.end ), jump ), Color.BLACK, Color.WHITE );
+                Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d12.start - 1, d12.end ), jump ), Color.BLACK, Color.WHITE );
             }
             
             if ( d2.interval.start <= d2.interval.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
@@ -1579,25 +1572,25 @@ public class MainWindow extends javax.swing.JFrame {
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
                 if ( checkD2.isSelected() ) {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, cD2 );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, cD2 );
                 } else {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d2.interval.start - 1, d2.interval.end ), jump ), Color.BLACK, Color.WHITE );
                 }
             }
             
             if ( d23.start <= d23.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
                 spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
-                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d23.start - 1, d23.end ), jump ), Color.BLACK, Color.WHITE );
+                Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d23.start - 1, d23.end ), jump ), Color.BLACK, Color.WHITE );
             }
             
             if ( d3.interval.start <= d3.interval.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();                
@@ -1605,21 +1598,21 @@ public class MainWindow extends javax.swing.JFrame {
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
                 if ( checkD3.isSelected() ) {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, cD3 );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, cD3 );
                 } else {
-                    Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, Color.WHITE );
+                    Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( d3.interval.start - 1, d3.interval.end ), jump ), Color.BLACK, Color.WHITE );
                 }
             }
             
             if ( end.start <= end.end ) {
-                content = areaSeqComp.getText();
+                content = areaCompSeq.getText();
                 jump = content.length() - Utils.countChar( content, ' ' ) - Utils.countChar( content, '\n' );
                 lastNewLineIndex = content.lastIndexOf( '\n' );
                 lastLineLength = content.substring( lastNewLineIndex + 1, content.length() ).trim().replaceAll( "[\n]|[ ]", "" ).length();
                 spaceInsert = lastLineLength % 10 == 0 && lastLineLength % 60 != 0 && lastLineLength != 0 ? " " : "";
                 lineInsert = lastLineLength % 60 == 0 && lastLineLength != 0 ? "\n" : "";
 
-                Utils.appendToPane( areaSeqComp, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( end.start - 1, end.end ), jump ), Color.BLACK, Color.WHITE );
+                Utils.appendToPane( areaCompSeq, spaceInsert + lineInsert + Utils.formatProtein( sequence.substring( end.start - 1, end.end ), jump ), Color.BLACK, Color.WHITE );
             }
             
         }
@@ -1648,9 +1641,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void updateGUI() {
         
         String data = day + "/" + month + "/" + year + " - " + hour + ":" + minute + ":" + second + "hs";
-        fieldDataExtr.setText( data );
-        fieldQuantExtrBruta.setText( size );
-        fieldQuantExtrProc.setText( String.valueOf( ctList.size() ) );
+        fieldDateExtr.setText( data );
+        fieldGrossAmount.setText( size );
+        fieldProcessAmount.setText( String.valueOf( ctList.size() ) );
         
     }
     
@@ -1670,31 +1663,31 @@ public class MainWindow extends javax.swing.JFrame {
             
             selectedSeq = correspondenceTable.get( selectedCt );
             
-            fieldNome.setText( selectedCt.name );
+            fieldName.setText( selectedCt.name );
             fieldAccNo.setText( selectedCt.accessionNo );
             fieldIdProt.setText( selectedCt.ncbiProtein );
             fieldIdNuc.setText( selectedCt.ncbiNucleotide );
             fieldAut.setText( selectedCt.authors );
-            fieldAno.setText( selectedCt.year );
-            fieldCepa.setText( selectedCt.sourceStrain );
-            linkURLPrin.setText( selectedCt.ncbiURL );
+            fieldYear.setText( selectedCt.year );
+            fieldStrain.setText( selectedCt.sourceStrain );
+            linkMainURL.setText( selectedCt.ncbiURL );
             areaCom.setText( selectedCt.comment );
             
             
             
             fieldLocus.setText( selectedSeq.getGBSeqLocus() );
-            fieldComp.setText( selectedSeq.getGBSeqLength() );
-            fieldTipo.setText( selectedSeq.getGBSeqMoltype() );
+            fieldLength.setText( selectedSeq.getGBSeqLength() );
+            fieldType.setText( selectedSeq.getGBSeqMoltype() );
             fieldTopo.setText( selectedSeq.getGBSeqTopology() );
             fieldDivi.setText( selectedSeq.getGBSeqDivision() );
-            fieldCri.setText( selectedSeq.getGBSeqCreateDate() );
+            fieldCre.setText( selectedSeq.getGBSeqCreateDate() );
             fieldDef.setText( selectedSeq.getGBSeqDefinition() );
-            fieldAcessPri.setText( selectedSeq.getGBSeqPrimaryAccession() );
-            fieldVersaoAcess.setText( selectedSeq.getGBSeqAccessionVersion() );
-            fieldFonte.setText( selectedSeq.getGBSeqSource() );
+            fieldPriAccess.setText( selectedSeq.getGBSeqPrimaryAccession() );
+            fieldAccessVersion.setText( selectedSeq.getGBSeqAccessionVersion() );
+            fieldSource.setText( selectedSeq.getGBSeqSource() );
             fieldOrg.setText( selectedSeq.getGBSeqOrganism() );
             fieldTaxo.setText( selectedSeq.getGBSeqTaxonomy() );
-            fieldBDF.setText( selectedSeq.getGBSeqSourceDb() );
+            fieldSDB.setText( selectedSeq.getGBSeqSourceDb() );
             
             StringBuilder sbk = new StringBuilder();
             if ( selectedSeq.getGBSeqKeywords() != null ) {
@@ -1703,8 +1696,8 @@ public class MainWindow extends javax.swing.JFrame {
                 }
             }
             
-            fieldPChaves.setText( sbk.toString() );
-            areaComent.setText( selectedSeq.getGBSeqComment() );
+            fieldKey.setText( sbk.toString() );
+            areaComment.setText( selectedSeq.getGBSeqComment() );
             
             
             
@@ -1722,39 +1715,35 @@ public class MainWindow extends javax.swing.JFrame {
             fieldJournalRef.setText( "" );
             linkURLPubmedRef.setText( " " );
             
-            /*checkD1.setSelected( false );
-            checkD2.setSelected( false );
-            checkD3.setSelected( false );*/
-            
             fillSequenceData();
             
         } else {
             
-            fieldNome.setText( "" );
+            fieldName.setText( "" );
             fieldAccNo.setText( "" );
             fieldIdProt.setText( "" );
             fieldIdNuc.setText( "" );
             fieldAut.setText( "" );
-            fieldAno.setText( "" );
-            fieldCepa.setText( "" );
-            linkURLPrin.setText( " " );
+            fieldYear.setText( "" );
+            fieldStrain.setText( "" );
+            linkMainURL.setText( " " );
             areaCom.setText( "" );
             
             fieldLocus.setText( "" );
-            fieldComp.setText( "" );
-            fieldTipo.setText( "" );
+            fieldLength.setText( "" );
+            fieldType.setText( "" );
             fieldTopo.setText( "" );
             fieldDivi.setText( "" );
-            fieldCri.setText( "" );
+            fieldCre.setText( "" );
             fieldDef.setText( "" );
-            fieldAcessPri.setText( "" );
-            fieldVersaoAcess.setText( "" );
-            fieldFonte.setText( "" );
+            fieldPriAccess.setText( "" );
+            fieldAccessVersion.setText( "" );
+            fieldSource.setText( "" );
             fieldOrg.setText( "" );
             fieldTaxo.setText( "" );
-            fieldBDF.setText( "" );
-            fieldPChaves.setText( "" );
-            areaComent.setText( "" );
+            fieldSDB.setText( "" );
+            fieldKey.setText( "" );
+            areaComment.setText( "" );
             
             referencesListModel.setSize( 0 );
             fieldAutRef.setText( "" );
@@ -1763,23 +1752,23 @@ public class MainWindow extends javax.swing.JFrame {
             linkURLPubmedRef.setText( " " );
             
             
-            areaSeqComp.setText( "" );
-            Utils.appendToPane( areaSeqComp, "", Color.BLACK, Color.WHITE );
-            fieldIntSeqComp.setText( "" );
-            fieldNomeSeqComp.setText( "" );
+            areaCompSeq.setText( "" );
+            Utils.appendToPane( areaCompSeq, "", Color.BLACK, Color.WHITE );
+            fieldIntCompSeq.setText( "" );
+            fieldNameCompSeq.setText( "" );
             areaD1.setText( "" );
             fieldIntD1.setText( "" );
-            fieldNomeD1.setText( "" );
+            fieldNameD1.setText( "" );
             fieldComD1.setText( "" );
             linkXrefD1.setText( "" );
             areaD2.setText( "" );
             fieldIntD2.setText( "" );
-            fieldNomeD2.setText( "" );
+            fieldNameD2.setText( "" );
             fieldComD2.setText( "" );
             linkXrefD2.setText( "" );
             areaD3.setText( "" );
             fieldIntD3.setText( "" );
-            fieldNomeD3.setText( "" );
+            fieldNameD3.setText( "" );
             fieldComD3.setText( "" );
             linkXrefD3.setText( "" );
             
@@ -1798,25 +1787,25 @@ public class MainWindow extends javax.swing.JFrame {
             String sequence = selectedCt.proteinSequence;
             
             //areaSeqComp.setText( Utils.formatProtein( sequence ) );
-            Utils.setTextToPane( areaSeqComp, Utils.formatProtein( sequence ), Color.BLACK, Color.WHITE );
-            fieldIntSeqComp.setText( selectedCt.proteinSequenceInterval );
-            fieldNomeSeqComp.setText( selectedCt.proteinSequenceName );
+            Utils.setTextToPane( areaCompSeq, Utils.formatProtein( sequence ), Color.BLACK, Color.WHITE );
+            fieldIntCompSeq.setText( selectedCt.proteinSequenceInterval );
+            fieldNameCompSeq.setText( selectedCt.proteinSequenceName );
             
             areaD1.setText( Utils.formatProtein( selectedCt.getDomainSequence( 1 ) ) );
             fieldIntD1.setText( selectedCt.getDomainInterval( 1 ) );
-            fieldNomeD1.setText( selectedCt.getDomain( 1 ).name );
+            fieldNameD1.setText( selectedCt.getDomain( 1 ).name );
             fieldComD1.setText( selectedCt.getDomain( 1 ).note );
             linkXrefD1.setText( selectedCt.getDomain( 1 ).xref );
             
             areaD2.setText( Utils.formatProtein( selectedCt.getDomainSequence( 2 ) ) );
             fieldIntD2.setText( selectedCt.getDomainInterval( 2 ) );
-            fieldNomeD2.setText( selectedCt.getDomain( 2 ).name );
+            fieldNameD2.setText( selectedCt.getDomain( 2 ).name );
             fieldComD2.setText( selectedCt.getDomain( 2 ).note );
             linkXrefD2.setText( selectedCt.getDomain( 2 ).xref );
             
             areaD3.setText( Utils.formatProtein( selectedCt.getDomainSequence( 3 ) ) );
             fieldIntD3.setText( selectedCt.getDomainInterval( 3 ) );
-            fieldNomeD3.setText( selectedCt.getDomain( 3 ).name );
+            fieldNameD3.setText( selectedCt.getDomain( 3 ).name );
             fieldComD3.setText( selectedCt.getDomain( 3 ).note );
             linkXrefD3.setText( selectedCt.getDomain( 3 ).xref );
             
@@ -1844,10 +1833,10 @@ public class MainWindow extends javax.swing.JFrame {
 
             try {
                 
-                btnExtrairProteinas.setEnabled( false );
-                btnCarregarProteinas.setEnabled( false );
-                btnAlinhamento.setEnabled( false );
-                lblAguarde.setText( "Aguarde..." );
+                btnExtract.setEnabled( false );
+                btnLoad.setEnabled( false );
+                btnAligment.setEnabled( false );
+                lblWait.setText( "Aguarde..." );
                 
                 Date d = new Date();
 
@@ -1905,7 +1894,7 @@ public class MainWindow extends javax.swing.JFrame {
                 }
 
                 jfc.setFileFilter( fnef );
-                jfc.setDialogTitle( "Salvar Dados Extraídos" );
+                jfc.setDialogTitle( "Save Extracted Data" );
                 jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
                 jfc.setMultiSelectionEnabled( false );
 
@@ -1919,7 +1908,7 @@ public class MainWindow extends javax.swing.JFrame {
 
                     if ( !f.exists() || 
                             ( f.exists() && JOptionPane.showConfirmDialog( 
-                              frame, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
+                              frame, "The file already exists. Do you want to overwrite it?", "Warning", 
                               JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
 
                         Utils.zip( f, cryDataFile, sequenceDataFile );
@@ -1936,10 +1925,10 @@ public class MainWindow extends javax.swing.JFrame {
             } catch ( Exception exc ) {
                 Utils.showExceptionMessage( frame, exc );
             } finally {
-                btnExtrairProteinas.setEnabled( true );
-                btnCarregarProteinas.setEnabled( true );
-                btnAlinhamento.setEnabled( true );
-                lblAguarde.setText( " " );
+                btnExtract.setEnabled( true );
+                btnLoad.setEnabled( true );
+                btnAligment.setEnabled( true );
+                lblWait.setText( " " );
             }
 
         }
@@ -1964,10 +1953,10 @@ public class MainWindow extends javax.swing.JFrame {
             
             try {
                 
-                btnExtrairProteinas.setEnabled( false );
-                btnCarregarProteinas.setEnabled( false );
-                btnAlinhamento.setEnabled( false );
-                lblAguarde.setText( "Aguarde..." );
+                btnExtract.setEnabled( false );
+                btnLoad.setEnabled( false );
+                btnAligment.setEnabled( false );
+                lblWait.setText( "Wait..." );
                 
                 selectedCt = null;
                 selectedSeq = null;
@@ -2119,10 +2108,10 @@ public class MainWindow extends javax.swing.JFrame {
             } catch ( Exception exc ) {
                 Utils.showExceptionMessage( frame, exc );
             } finally {
-                btnExtrairProteinas.setEnabled( true );
-                btnCarregarProteinas.setEnabled( true );
-                btnAlinhamento.setEnabled( true );
-                lblAguarde.setText( " " );
+                btnExtract.setEnabled( true );
+                btnLoad.setEnabled( true );
+                btnAligment.setEnabled( true );
+                lblWait.setText( " " );
             }
             
         }
@@ -2165,138 +2154,138 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane abasDetalhes;
-    private javax.swing.JTabbedPane abasDetalhesNCBI;
-    private javax.swing.JTabbedPane abasSequenciasNCBI;
     private javax.swing.JTextArea areaCom;
-    private javax.swing.JTextArea areaComent;
+    private javax.swing.JTextArea areaComment;
+    private javax.swing.JTextPane areaCompSeq;
     private javax.swing.JTextArea areaD1;
     private javax.swing.JTextArea areaD2;
     private javax.swing.JTextArea areaD3;
-    private javax.swing.JTextPane areaSeqComp;
-    private javax.swing.JButton btnAlinhamento;
-    private javax.swing.JButton btnCarregarProteinas;
-    private javax.swing.JButton btnCor;
-    private javax.swing.JButton btnExtrairProteinas;
-    private javax.swing.JButton btnSobreProc;
+    private javax.swing.JButton btnAboutProc;
+    private javax.swing.JButton btnAligment;
+    private javax.swing.JButton btnColor;
+    private javax.swing.JButton btnExtract;
+    private javax.swing.JButton btnLoad;
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
     private javax.swing.JTextField fieldAccNo;
-    private javax.swing.JTextField fieldAcessPri;
-    private javax.swing.JTextField fieldAno;
+    private javax.swing.JTextField fieldAccessVersion;
     private javax.swing.JTextField fieldAut;
     private javax.swing.JTextField fieldAutRef;
-    private javax.swing.JTextField fieldBDF;
-    private javax.swing.JTextField fieldCepa;
     private javax.swing.JTextField fieldComD1;
     private javax.swing.JTextField fieldComD2;
     private javax.swing.JTextField fieldComD3;
-    private javax.swing.JTextField fieldComp;
-    private javax.swing.JTextField fieldCri;
-    private javax.swing.JTextField fieldDataExtr;
+    private javax.swing.JTextField fieldCre;
+    private javax.swing.JTextField fieldDateExtr;
     private javax.swing.JTextField fieldDef;
     private javax.swing.JTextField fieldDivi;
-    private javax.swing.JTextField fieldFonte;
+    private javax.swing.JTextField fieldGrossAmount;
     private javax.swing.JTextField fieldIdNuc;
     private javax.swing.JTextField fieldIdProt;
+    private javax.swing.JTextField fieldIntCompSeq;
     private javax.swing.JTextField fieldIntD1;
     private javax.swing.JTextField fieldIntD2;
     private javax.swing.JTextField fieldIntD3;
-    private javax.swing.JTextField fieldIntSeqComp;
     private javax.swing.JTextField fieldJournalRef;
+    private javax.swing.JTextField fieldKey;
+    private javax.swing.JTextField fieldLength;
     private javax.swing.JTextField fieldLocus;
-    private javax.swing.JTextField fieldNome;
-    private javax.swing.JTextField fieldNomeD1;
-    private javax.swing.JTextField fieldNomeD2;
-    private javax.swing.JTextField fieldNomeD3;
-    private javax.swing.JTextField fieldNomeSeqComp;
+    private javax.swing.JTextField fieldName;
+    private javax.swing.JTextField fieldNameCompSeq;
+    private javax.swing.JTextField fieldNameD1;
+    private javax.swing.JTextField fieldNameD2;
+    private javax.swing.JTextField fieldNameD3;
     private javax.swing.JTextField fieldOrg;
-    private javax.swing.JTextField fieldPChaves;
-    private javax.swing.JTextField fieldQuantExtrBruta;
-    private javax.swing.JTextField fieldQuantExtrProc;
+    private javax.swing.JTextField fieldPriAccess;
+    private javax.swing.JTextField fieldProcessAmount;
+    private javax.swing.JTextField fieldSDB;
+    private javax.swing.JTextField fieldSource;
+    private javax.swing.JTextField fieldStrain;
     private javax.swing.JTextField fieldTaxo;
-    private javax.swing.JTextField fieldTipo;
     private javax.swing.JTextField fieldTitRef;
     private javax.swing.JTextField fieldTopo;
-    private javax.swing.JTextField fieldVersaoAcess;
-    private javax.swing.JLabel labelDataExtr;
-    private javax.swing.JLabel labelQuantExtrBruta;
-    private javax.swing.JLabel labelQuantExtrProc;
+    private javax.swing.JTextField fieldType;
+    private javax.swing.JTextField fieldYear;
+    private javax.swing.JLabel labelDateExtr;
+    private javax.swing.JLabel labelGrossAmount;
+    private javax.swing.JLabel labelProcessAmount;
     private javax.swing.JLabel lblAccNo;
-    private javax.swing.JLabel lblAcessPri;
-    private javax.swing.JLabel lblAguarde;
-    private javax.swing.JLabel lblAno;
+    private javax.swing.JLabel lblAccessVersion;
     private javax.swing.JLabel lblAut;
     private javax.swing.JLabel lblAutRef;
-    private javax.swing.JLabel lblBDF;
-    private javax.swing.JLabel lblCepa;
     private javax.swing.JLabel lblCom;
     private javax.swing.JLabel lblComD1;
     private javax.swing.JLabel lblComD2;
     private javax.swing.JLabel lblComD3;
-    private javax.swing.JLabel lblComent;
-    private javax.swing.JLabel lblComp;
-    private javax.swing.JLabel lblCri;
+    private javax.swing.JLabel lblComment;
+    private javax.swing.JLabel lblCre;
     private javax.swing.JLabel lblDef;
     private javax.swing.JLabel lblDivi;
-    private javax.swing.JLabel lblFonte;
     private javax.swing.JLabel lblIdNuc;
     private javax.swing.JLabel lblIdProt;
+    private javax.swing.JLabel lblIntCompSeq;
     private javax.swing.JLabel lblIntD1;
     private javax.swing.JLabel lblIntD2;
     private javax.swing.JLabel lblIntD3;
-    private javax.swing.JLabel lblIntSeqComp;
     private javax.swing.JLabel lblJournalRef;
+    private javax.swing.JLabel lblKey;
+    private javax.swing.JLabel lblLength;
     private javax.swing.JLabel lblLocus;
-    private javax.swing.JLabel lblNamoD1;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblNomeD2;
-    private javax.swing.JLabel lblNomeSeqComp;
+    private javax.swing.JLabel lblMainURL;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblNameCompSeq;
+    private javax.swing.JLabel lblNameD1;
+    private javax.swing.JLabel lblNameD2;
     private javax.swing.JLabel lblOrg;
-    private javax.swing.JLabel lblPChaves;
+    private javax.swing.JLabel lblPriAccess;
+    private javax.swing.JLabel lblSDB;
+    private javax.swing.JLabel lblSource;
+    private javax.swing.JLabel lblStrain;
     private javax.swing.JLabel lblTaxo;
-    private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblTitRef;
     private javax.swing.JLabel lblTopo;
-    private javax.swing.JLabel lblURLPrin;
+    private javax.swing.JLabel lblType;
     private javax.swing.JLabel lblURLPubmedRef;
-    private javax.swing.JLabel lblVersaoAcess;
+    private javax.swing.JLabel lblWait;
     private javax.swing.JLabel lblXrefD1;
     private javax.swing.JLabel lblXrefD2;
     private javax.swing.JLabel lblXrefD3;
-    private javax.swing.JLabel ldlNomeD3;
-    private javax.swing.JLabel linkURLPrin;
+    private javax.swing.JLabel lblYear;
+    private javax.swing.JLabel ldlNameD3;
+    private javax.swing.JLabel linkMainURL;
     private javax.swing.JLabel linkURLPubmedRef;
     private javax.swing.JLabel linkXrefD1;
     private javax.swing.JLabel linkXrefD2;
     private javax.swing.JLabel linkXrefD3;
-    private javax.swing.JList<CryToxin> listaProteinas;
-    private javax.swing.JList listaRef;
+    private javax.swing.JList<CryToxin> listProteins;
+    private javax.swing.JList listRef;
     private javax.swing.JPanel painelConf;
-    private javax.swing.JPanel painelD1;
-    private javax.swing.JPanel painelD2;
-    private javax.swing.JPanel painelD3;
-    private javax.swing.JPanel painelDadosBt;
-    private javax.swing.JPanel painelDadosExtr;
-    private javax.swing.JPanel painelDetalhes;
-    private javax.swing.JPanel painelDetalhesRef;
-    private javax.swing.JPanel painelListaRef;
     private javax.swing.JPanel painelNCBI;
-    private javax.swing.JPanel painelPrincip01;
-    private javax.swing.JPanel painelPrincip02;
-    private javax.swing.JPanel painelPrincipalNCBI;
-    private javax.swing.JPanel painelProteinas;
-    private javax.swing.JPanel painelReferenciasNCBI;
-    private javax.swing.JPanel painelSequenciaCompleta;
-    private javax.swing.JPanel painelSequenciasNCBI;
-    private javax.swing.JScrollPane scrollProteinas;
+    private javax.swing.JPanel panelBtData;
+    private javax.swing.JPanel panelCompleteSequence;
+    private javax.swing.JPanel panelD1;
+    private javax.swing.JPanel panelD2;
+    private javax.swing.JPanel panelD3;
+    private javax.swing.JPanel panelDetails;
+    private javax.swing.JPanel panelExtractionDetails;
+    private javax.swing.JPanel panelMain01;
+    private javax.swing.JPanel panelMain02;
+    private javax.swing.JPanel panelMainNCBI;
+    private javax.swing.JPanel panelNCBIRef;
+    private javax.swing.JPanel panelNCBISeq;
+    private javax.swing.JPanel panelProteins;
+    private javax.swing.JPanel panelRefDetails;
+    private javax.swing.JPanel panelRefList;
+    private javax.swing.JScrollPane scrollProteins;
     private javax.swing.JScrollPane spCom;
-    private javax.swing.JScrollPane spComent;
+    private javax.swing.JScrollPane spComment;
+    private javax.swing.JScrollPane spCompSeq;
     private javax.swing.JScrollPane spD1;
     private javax.swing.JScrollPane spD2;
     private javax.swing.JScrollPane spD3;
-    private javax.swing.JScrollPane spListaRef;
-    private javax.swing.JScrollPane spSeqComp;
+    private javax.swing.JScrollPane spRefList;
+    private javax.swing.JTabbedPane tabsDetails;
+    private javax.swing.JTabbedPane tabsNCBIDetails;
+    private javax.swing.JTabbedPane tabsNCBISequences;
     // End of variables declaration//GEN-END:variables
 }

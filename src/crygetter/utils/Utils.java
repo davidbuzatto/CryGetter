@@ -17,7 +17,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -459,8 +458,8 @@ public class Utils {
         
         StringBuilder sb = new StringBuilder();
         
-        sb.append( "Ocorreu um erro inesperado na execução da tarefa requisitada.\n" );
-        sb.append( "Os dados do erro podem ser vistos abaixo:\n\n" );
+        sb.append( "An unexpected error occured during the execution of the requested task.\n" );
+        sb.append( "The error data can be seen below:\n\n" );
         
         sb.append( t.getLocalizedMessage() );
         sb.append( t.toString() ).append( "\n" );
@@ -475,7 +474,7 @@ public class Utils {
         JScrollPane sp = new JScrollPane( tArea );
         
         JOptionPane.showMessageDialog( parent, sp,
-                "ERRO", JOptionPane.ERROR_MESSAGE );
+                "ERROR", JOptionPane.ERROR_MESSAGE );
         
     }
     
@@ -662,13 +661,13 @@ public class Utils {
                 try {
                     
                     btnAlign.setEnabled( false );
-                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    lblWait.setText( "Wait, processing the alignment..." );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( "clustal/clustalw2.exe -INFILE=temp/" + readFrom + " -ALIGN -TREE -TYPE=PROTEIN -OUTORDER=INPUT -OUTFILE=temp/" + fileName + " -SEQNOS=ON" );
 
-                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "ClustalW - ERRO", textArea, outError, Color.WHITE );
-                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "ClustalW - SAÍDA", textArea, outOK, Color.WHITE );
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "ClustalW - ERROR", textArea, outError, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "ClustalW - OUTPUT", textArea, outOK, Color.WHITE );
 
                     // start
                     errorGobbler.start();
@@ -678,10 +677,10 @@ public class Utils {
                     int exitVal = proc.waitFor();
                     if ( exitVal == 0 ) {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeOK, Color.WHITE ) );
                     } else {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
                     SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
@@ -724,13 +723,13 @@ public class Utils {
                 try {
                     
                     btnAlign.setEnabled( false );
-                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    lblWait.setText( "Wait, processing the alignment..." );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( "clustal/clustalo.exe -i temp/" + readFrom + " --infmt=fasta --outfile=temp/" + fileName + " --outfmt=clustal --force -v --resno" );
 
-                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "Clustal Ômega - ERRO", textArea, outError, Color.WHITE );
-                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "Clustal Ômega - SAÍDA", textArea, outOK, Color.WHITE );
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "Clustal Omega - ERROR", textArea, outError, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "Clustal Omega - OUTPUT", textArea, outOK, Color.WHITE );
 
                     // start
                     errorGobbler.start();
@@ -740,10 +739,10 @@ public class Utils {
                     int exitVal = proc.waitFor();
                     if ( exitVal == 0 ) {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeOK, Color.WHITE ) );
                     } else {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
                     SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
@@ -785,14 +784,14 @@ public class Utils {
                 try {
                     
                     btnAlign.setEnabled( false );
-                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    lblWait.setText( "Wait, processing the alignment..." );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( "muscle/muscle3.8.31_i86win32.exe -in temp/" + readFrom + " -clw -out temp/" + fileName );
 
                     // muscle output directed to stderr
-                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "MUSCLE - SAÍDA", textArea, outOK, Color.WHITE );
-                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "MUSCLE - SAÍDA", textArea, outOK, Color.WHITE );
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), "MUSCLE - OUTPUT", textArea, outOK, Color.WHITE );
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), "MUSCLE - OUTPUT", textArea, outOK, Color.WHITE );
 
                     // start
                     errorGobbler.start();
@@ -802,10 +801,10 @@ public class Utils {
                     int exitVal = proc.waitFor();
                     if ( exitVal == 0 ) {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeOK, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeOK, Color.WHITE ) );
                     } else {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Valor de Saída: " + exitVal, codeError, Color.WHITE ) );
+                                "Output Value: " + exitVal, codeError, Color.WHITE ) );
                     }
                     
                     SwingUtilities.invokeLater( new SaveAlignmentFileTask( 
@@ -872,10 +871,10 @@ public class Utils {
                 try {
                     
                     btnAlign.setEnabled( false );
-                    lblWait.setText( "Aguarde, processando alinhamento..." );
+                    lblWait.setText( "Wait, processing the alignment..." );
                     
                     SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "Comando: " + command + "\n\n", Color.BLACK, Color.WHITE ) );
+                                "Command: " + command + "\n\n", Color.BLACK, Color.WHITE ) );
                     
                     Runtime rt = Runtime.getRuntime();
                     Process proc = rt.exec( command );
@@ -889,10 +888,10 @@ public class Utils {
                     int exitVal = proc.waitFor();
                     if ( exitVal == 0 ) {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "\nValor de Saída: " + exitVal + " - Processo Finalizado com Sucesso!", codeOKColor, Color.WHITE ) );
+                                "\nOutput Value: " + exitVal + " - Process Finished Successfully!", codeOKColor, Color.WHITE ) );
                     } else {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
-                                "\nValor de Saída: " + exitVal + " - Processo Finalizado com Erro!", codeErrorColor, Color.WHITE ) );
+                                "\nOutput Value: " + exitVal + " - Process Finished With Error!", codeErrorColor, Color.WHITE ) );
                     }
                     
                     SwingUtilities.invokeLater( new SaveGeneralAlignmentFileTask( 
@@ -931,14 +930,14 @@ public class Utils {
 
             JFileChooser jfc = new JFileChooser();
             FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
-                    "Arquivo de Alinhamento Clustal (*.aln)", "aln" );
+                    "Clustal Alignment File (*.aln)", "aln" );
 
             for ( FileFilter f : jfc.getChoosableFileFilters() ) {
                 jfc.removeChoosableFileFilter( f );
             }
 
             jfc.setFileFilter( fnef );
-            jfc.setDialogTitle( "Salvar Alinhamento" );
+            jfc.setDialogTitle( "Save Alignment" );
             jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
             jfc.setMultiSelectionEnabled( false );
 
@@ -1015,7 +1014,7 @@ public class Utils {
 
                 if ( !f.exists() || 
                         ( f.exists() && JOptionPane.showConfirmDialog( 
-                          null, "O arquivo já existe. Deseja sobrescrevê-lo?", "Aviso", 
+                          null, "The file already exists. Do you want to overwrite it?", "Warning", 
                           JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
 
                     f.delete();

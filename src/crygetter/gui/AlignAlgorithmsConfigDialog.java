@@ -87,7 +87,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        painelConfCO = new javax.swing.JPanel();
+        panelConfCO = new javax.swing.JPanel();
         checkCODealign = new javax.swing.JCheckBox();
         checkCOClusteringGuide = new javax.swing.JCheckBox();
         checkCOClusteringIteration = new javax.swing.JCheckBox();
@@ -101,10 +101,10 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCOHMM = new javax.swing.JComboBox();
         comboCOOrder = new javax.swing.JComboBox();
         comboCOOutputF = new javax.swing.JComboBox();
-        btnCOPadrao = new javax.swing.JButton();
-        btnCOAjuda = new javax.swing.JButton();
-        painelConfCW = new javax.swing.JPanel();
-        painelCWPW = new javax.swing.JPanel();
+        btnCODefault = new javax.swing.JButton();
+        btnCOHelp = new javax.swing.JButton();
+        panelConfCW = new javax.swing.JPanel();
+        panelCWPW = new javax.swing.JPanel();
         lblCWType = new javax.swing.JLabel();
         radioCWSlow = new javax.swing.JRadioButton();
         radioCWFast = new javax.swing.JRadioButton();
@@ -126,7 +126,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWPWScoreT = new javax.swing.JComboBox();
         comboCWPWTopDiags = new javax.swing.JComboBox();
         comboCWPWPairG = new javax.swing.JComboBox();
-        painelCWM = new javax.swing.JPanel();
+        panelCWM = new javax.swing.JPanel();
         lblCWMProtW = new javax.swing.JLabel();
         lblCWMGapOpen = new javax.swing.JLabel();
         lblCWMGapExt = new javax.swing.JLabel();
@@ -146,24 +146,24 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMClust = new javax.swing.JComboBox();
         comboCWMOrder = new javax.swing.JComboBox();
         comboCWMOutputF = new javax.swing.JComboBox();
-        btnCWPadrao = new javax.swing.JButton();
-        btnCWAjuda = new javax.swing.JButton();
-        painelConfM = new javax.swing.JPanel();
+        btnCWDefault = new javax.swing.JButton();
+        btnCWHelp = new javax.swing.JButton();
+        panelConfM = new javax.swing.JPanel();
         checkMFindD = new javax.swing.JCheckBox();
         lblMOutputF = new javax.swing.JLabel();
         comboMOutputF = new javax.swing.JComboBox();
-        btnMPadrao = new javax.swing.JButton();
-        btnMAjuda = new javax.swing.JButton();
-        painelBaixo = new javax.swing.JPanel();
+        btnMDefault = new javax.swing.JButton();
+        btnMHelp = new javax.swing.JButton();
+        panelBottom = new javax.swing.JPanel();
         btnOK = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Configurações dos Algoritmos de Alinhamento Múltiplo");
+        setTitle("Multiple Sequence Aligment Algorithms Configuration");
         setResizable(false);
 
-        painelConfCO.setBackground(new java.awt.Color(153, 204, 255));
-        painelConfCO.setBorder(javax.swing.BorderFactory.createTitledBorder("Clustal Ômega"));
+        panelConfCO.setBackground(new java.awt.Color(153, 204, 255));
+        panelConfCO.setBorder(javax.swing.BorderFactory.createTitledBorder("Clustal Omega"));
 
         checkCODealign.setText("Dealign Input Sequences");
         checkCODealign.setToolTipText("Remove any existing alignment (gaps) from input sequences. Default value is: no [false]");
@@ -202,62 +202,62 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCOOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clustal without numbers", "Clustal with numbers", "Pearson/FASTA", "GCG MSF", "PHYLIP", "SELEX", "STOCKHOLM", "VIENNA" }));
         comboCOOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: Clustal w/o numbers [clustal]");
 
-        btnCOPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
-        btnCOPadrao.setText("Padrão");
-        btnCOPadrao.addActionListener(new java.awt.event.ActionListener() {
+        btnCODefault.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        btnCODefault.setText("Default");
+        btnCODefault.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCOPadraoActionPerformed(evt);
+                btnCODefaultActionPerformed(evt);
             }
         });
 
-        btnCOAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
-        btnCOAjuda.setText("Ajuda EMBL-EBI");
-        btnCOAjuda.addActionListener(new java.awt.event.ActionListener() {
+        btnCOHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
+        btnCOHelp.setText("Help EMBL-EBI");
+        btnCOHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCOAjudaActionPerformed(evt);
+                btnCOHelpActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelConfCOLayout = new javax.swing.GroupLayout(painelConfCO);
-        painelConfCO.setLayout(painelConfCOLayout);
-        painelConfCOLayout.setHorizontalGroup(
-            painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfCOLayout.createSequentialGroup()
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelConfCOLayout.createSequentialGroup()
-                        .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelConfCOLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelConfCOLayout = new javax.swing.GroupLayout(panelConfCO);
+        panelConfCO.setLayout(panelConfCOLayout);
+        panelConfCOLayout.setHorizontalGroup(
+            panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfCOLayout.createSequentialGroup()
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelConfCOLayout.createSequentialGroup()
+                        .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelConfCOLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCOCombIter, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCOMaxGuide, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCOHMM, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCOOrder, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCOOutputF, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboCOCombIter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(comboCOMaxGuide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(comboCOHMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(comboCOOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(comboCOOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(painelConfCOLayout.createSequentialGroup()
+                            .addGroup(panelConfCOLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(checkCODealign)
                                     .addComponent(checkCOClusteringGuide)
                                     .addComponent(checkCOClusteringIteration))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfCOLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfCOLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCOPadrao)
+                        .addComponent(btnCODefault)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCOAjuda)))
+                        .addComponent(btnCOHelp)))
                 .addContainerGap())
         );
-        painelConfCOLayout.setVerticalGroup(
-            painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfCOLayout.createSequentialGroup()
+        panelConfCOLayout.setVerticalGroup(
+            panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfCOLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(checkCODealign)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,37 +265,37 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkCOClusteringIteration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOCombIter)
                     .addComponent(comboCOCombIter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOMaxGuide)
                     .addComponent(comboCOMaxGuide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOHMM)
                     .addComponent(comboCOHMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOOrder)
                     .addComponent(comboCOOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCOOutputF)
                     .addComponent(comboCOOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCOAjuda)
-                    .addComponent(btnCOPadrao))
+                .addGroup(panelConfCOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCOHelp)
+                    .addComponent(btnCODefault))
                 .addContainerGap())
         );
 
-        painelConfCW.setBackground(new java.awt.Color(255, 204, 204));
-        painelConfCW.setBorder(javax.swing.BorderFactory.createTitledBorder("ClustalW"));
+        panelConfCW.setBackground(new java.awt.Color(255, 204, 204));
+        panelConfCW.setBorder(javax.swing.BorderFactory.createTitledBorder("ClustalW"));
 
-        painelCWPW.setBackground(new java.awt.Color(255, 204, 204));
-        painelCWPW.setBorder(javax.swing.BorderFactory.createTitledBorder("Pairwise Alignment"));
+        panelCWPW.setBackground(new java.awt.Color(255, 204, 204));
+        panelCWPW.setBorder(javax.swing.BorderFactory.createTitledBorder("Pairwise Alignment"));
 
         lblCWType.setText("Type:");
         lblCWType.setToolTipText("The alignment method used to perform the pairwise alignments used to generate the guide tree. Default value is: slow");
@@ -435,15 +435,15 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout painelCWPWLayout = new javax.swing.GroupLayout(painelCWPW);
-        painelCWPW.setLayout(painelCWPWLayout);
-        painelCWPWLayout.setHorizontalGroup(
-            painelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCWPWLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelCWPWLayout = new javax.swing.GroupLayout(panelCWPW);
+        panelCWPW.setLayout(panelCWPWLayout);
+        panelCWPWLayout.setHorizontalGroup(
+            panelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCWPWLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(panelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(painelCWPWFast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCWPWLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCWPWLayout.createSequentialGroup()
                         .addComponent(lblCWType)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(radioCWSlow)
@@ -452,11 +452,11 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                     .addComponent(painelCWPWSlow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelCWPWLayout.setVerticalGroup(
-            painelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCWPWLayout.createSequentialGroup()
+        panelCWPWLayout.setVerticalGroup(
+            panelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCWPWLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWPWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWType)
                     .addComponent(radioCWSlow)
                     .addComponent(radioCWFast))
@@ -467,8 +467,8 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        painelCWM.setBackground(new java.awt.Color(255, 204, 204));
-        painelCWM.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Aligment"));
+        panelCWM.setBackground(new java.awt.Color(255, 204, 204));
+        panelCWM.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Aligment"));
 
         lblCWMProtW.setText("Protein Weight Matrix:");
 
@@ -519,13 +519,13 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clustal without numbers", "Clustal with numbers", "GCG MSF", "Pearson/FASTA", "PHYLIP", "NEXUS", "NBRF/PIR", "GDE" }));
         comboCWMOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: Clustal w/ numbers [aln1]");
 
-        javax.swing.GroupLayout painelCWMLayout = new javax.swing.GroupLayout(painelCWM);
-        painelCWM.setLayout(painelCWMLayout);
-        painelCWMLayout.setHorizontalGroup(
-            painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCWMLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelCWMLayout = new javax.swing.GroupLayout(panelCWM);
+        panelCWM.setLayout(panelCWMLayout);
+        panelCWMLayout.setHorizontalGroup(
+            panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCWMLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCWMOutputF)
                     .addComponent(lblCWMProtW)
                     .addComponent(lblCWMGapOpen)
@@ -537,7 +537,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                     .addComponent(lblCWMOrder)
                     .addComponent(checkCWMNoEndGaps))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboCWMProtW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboCWMGapOpen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboCWMGapExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -549,102 +549,102 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
                     .addComponent(comboCWMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelCWMLayout.setVerticalGroup(
-            painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCWMLayout.createSequentialGroup()
+        panelCWMLayout.setVerticalGroup(
+            panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCWMLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMProtW)
                     .addComponent(comboCWMProtW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMGapOpen)
                     .addComponent(comboCWMGapOpen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMGapExt)
                     .addComponent(comboCWMGapExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMGatDist)
                     .addComponent(comboCWMGapDist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkCWMNoEndGaps)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMIter)
                     .addComponent(comboCWMIter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMNumIter)
                     .addComponent(comboCWMNumIter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMClust)
                     .addComponent(comboCWMClust, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMOrder)
                     .addComponent(comboCWMOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCWMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCWMOutputF)
                     .addComponent(comboCWMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCWPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
-        btnCWPadrao.setText("Padrão");
-        btnCWPadrao.addActionListener(new java.awt.event.ActionListener() {
+        btnCWDefault.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        btnCWDefault.setText("Default");
+        btnCWDefault.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCWPadraoActionPerformed(evt);
+                btnCWDefaultActionPerformed(evt);
             }
         });
 
-        btnCWAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
-        btnCWAjuda.setText("Ajuda EMBL-EBI");
-        btnCWAjuda.addActionListener(new java.awt.event.ActionListener() {
+        btnCWHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
+        btnCWHelp.setText("Help EMBL-EBI");
+        btnCWHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCWAjudaActionPerformed(evt);
+                btnCWHelpActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelConfCWLayout = new javax.swing.GroupLayout(painelConfCW);
-        painelConfCW.setLayout(painelConfCWLayout);
-        painelConfCWLayout.setHorizontalGroup(
-            painelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfCWLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelConfCWLayout = new javax.swing.GroupLayout(panelConfCW);
+        panelConfCW.setLayout(panelConfCWLayout);
+        panelConfCWLayout.setHorizontalGroup(
+            panelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfCWLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelCWPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCWPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelCWM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfCWLayout.createSequentialGroup()
+                .addGroup(panelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCWM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfCWLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCWPadrao)
+                        .addComponent(btnCWDefault)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCWAjuda)))
+                        .addComponent(btnCWHelp)))
                 .addContainerGap())
         );
-        painelConfCWLayout.setVerticalGroup(
-            painelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfCWLayout.createSequentialGroup()
+        panelConfCWLayout.setVerticalGroup(
+            panelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfCWLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelConfCWLayout.createSequentialGroup()
-                        .addComponent(painelCWPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelConfCWLayout.createSequentialGroup()
+                        .addComponent(panelCWPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(painelConfCWLayout.createSequentialGroup()
-                        .addComponent(painelCWM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelConfCWLayout.createSequentialGroup()
+                        .addComponent(panelCWM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCWAjuda)
-                            .addComponent(btnCWPadrao))))
+                        .addGroup(panelConfCWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCWHelp)
+                            .addComponent(btnCWDefault))))
                 .addContainerGap())
         );
 
-        painelConfM.setBackground(new java.awt.Color(204, 255, 204));
-        painelConfM.setBorder(javax.swing.BorderFactory.createTitledBorder("MUSCLE"));
+        panelConfM.setBackground(new java.awt.Color(204, 255, 204));
+        panelConfM.setBorder(javax.swing.BorderFactory.createTitledBorder("MUSCLE"));
 
         checkMFindD.setText("Find Diagonals");
         checkMFindD.setToolTipText("Find diagonals (faster for similar sequences).  Default value is: no [false]");
@@ -655,55 +655,55 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboMOutputF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pearson/FASTA", "ClustalW", "ClustalW (strict)", "HTML", "MSF" }));
         comboMOutputF.setToolTipText("Format for generated multiple sequence alignment. Default value is: ClustalW [clw]");
 
-        btnMPadrao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
-        btnMPadrao.setText("Padrão");
-        btnMPadrao.addActionListener(new java.awt.event.ActionListener() {
+        btnMDefault.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        btnMDefault.setText("Default");
+        btnMDefault.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMPadraoActionPerformed(evt);
+                btnMDefaultActionPerformed(evt);
             }
         });
 
-        btnMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
-        btnMAjuda.setText("Ajuda EMBL-EBI");
-        btnMAjuda.addActionListener(new java.awt.event.ActionListener() {
+        btnMHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
+        btnMHelp.setText("Help EMBL-EBI");
+        btnMHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMAjudaActionPerformed(evt);
+                btnMHelpActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelConfMLayout = new javax.swing.GroupLayout(painelConfM);
-        painelConfM.setLayout(painelConfMLayout);
-        painelConfMLayout.setHorizontalGroup(
-            painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfMLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelConfMLayout = new javax.swing.GroupLayout(panelConfM);
+        panelConfM.setLayout(panelConfMLayout);
+        panelConfMLayout.setHorizontalGroup(
+            panelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfMLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMPadrao)
+                .addComponent(btnMDefault)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMAjuda)
+                .addComponent(btnMHelp)
                 .addContainerGap())
-            .addGroup(painelConfMLayout.createSequentialGroup()
+            .addGroup(panelConfMLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkMFindD)
-                    .addGroup(painelConfMLayout.createSequentialGroup()
+                    .addGroup(panelConfMLayout.createSequentialGroup()
                         .addComponent(lblMOutputF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelConfMLayout.setVerticalGroup(
-            painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfMLayout.createSequentialGroup()
+        panelConfMLayout.setVerticalGroup(
+            panelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfMLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(checkMFindD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMOutputF)
                     .addComponent(comboMOutputF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
-                .addGroup(painelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMAjuda)
-                    .addComponent(btnMPadrao))
+                .addGroup(panelConfMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMHelp)
+                    .addComponent(btnMDefault))
                 .addContainerGap())
         );
 
@@ -716,27 +716,27 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/delete.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cancel");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelBaixoLayout = new javax.swing.GroupLayout(painelBaixo);
-        painelBaixo.setLayout(painelBaixoLayout);
-        painelBaixoLayout.setHorizontalGroup(
-            painelBaixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBaixoLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelBottomLayout = new javax.swing.GroupLayout(panelBottom);
+        panelBottom.setLayout(panelBottomLayout);
+        panelBottomLayout.setHorizontalGroup(
+            panelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBottomLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnOK)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
                 .addContainerGap())
         );
-        painelBaixoLayout.setVerticalGroup(
-            painelBaixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelBaixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        panelBottomLayout.setVerticalGroup(
+            panelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnOK)
                 .addComponent(btnCancelar))
         );
@@ -748,33 +748,33 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelBaixo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelConfCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelConfCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelConfCW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelConfCW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelConfM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                        .addComponent(panelConfM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelConfCW, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelConfCO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelConfM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelConfCW, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelConfCO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelConfM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelBaixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelBottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1361, 586));
+        setSize(new java.awt.Dimension(1354, 586));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCOAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOAjudaActionPerformed
+    private void btnCOHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOHelpActionPerformed
         
         if ( Desktop.isDesktopSupported() ) {
             try {             
@@ -784,9 +784,9 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
             }
         }
         
-    }//GEN-LAST:event_btnCOAjudaActionPerformed
+    }//GEN-LAST:event_btnCOHelpActionPerformed
 
-    private void btnCWAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCWAjudaActionPerformed
+    private void btnCWHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCWHelpActionPerformed
         
         if ( Desktop.isDesktopSupported() ) {
             try {             
@@ -796,9 +796,9 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
             }
         }
         
-    }//GEN-LAST:event_btnCWAjudaActionPerformed
+    }//GEN-LAST:event_btnCWHelpActionPerformed
 
-    private void btnMAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAjudaActionPerformed
+    private void btnMHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMHelpActionPerformed
         
         if ( Desktop.isDesktopSupported() ) {
             try {             
@@ -808,13 +808,13 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
             }
         }
         
-    }//GEN-LAST:event_btnMAjudaActionPerformed
+    }//GEN-LAST:event_btnMHelpActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnCOPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOPadraoActionPerformed
+    private void btnCODefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCODefaultActionPerformed
         
         checkCODealign.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "coDIS" ) ) );
         checkCOClusteringGuide.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "coMbedCGT" ) ) );
@@ -826,9 +826,9 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCOOrder.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coO" ) ) );
         comboCOOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "coOF" ) ) );
         
-    }//GEN-LAST:event_btnCOPadraoActionPerformed
+    }//GEN-LAST:event_btnCODefaultActionPerformed
 
-    private void btnCWPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCWPadraoActionPerformed
+    private void btnCWDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCWDefaultActionPerformed
         
         if ( defaultConfigs.getProperty( "cwPWT" ).equals( "slow" ) ) {
             radioCWSlow.setSelected( true );
@@ -857,14 +857,14 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMOrder.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMO" ) ) );
         comboCWMOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "cwMOF" ) ) );
         
-    }//GEN-LAST:event_btnCWPadraoActionPerformed
+    }//GEN-LAST:event_btnCWDefaultActionPerformed
 
-    private void btnMPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMPadraoActionPerformed
+    private void btnMDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMDefaultActionPerformed
         
         checkMFindD.setSelected( Boolean.valueOf( defaultConfigs.getProperty( "mMFD" ) ) );
         comboMOutputF.setSelectedIndex( Integer.parseInt( defaultConfigs.getProperty( "mMOF" ) ) );
         
-    }//GEN-LAST:event_btnMPadraoActionPerformed
+    }//GEN-LAST:event_btnMDefaultActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         
@@ -909,7 +909,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
         configs.setProperty( "mMOF", String.valueOf( comboMOutputF.getSelectedIndex() ) );
         
         try {
-            configs.store( new FileOutputStream( "conf/conf.properties" ), "Arquivo de Configuração do CryGetter - Não deve ser alterado manualmente!!!" );
+            configs.store( new FileOutputStream( "conf/conf.properties" ), "CryGetter Configuration File - Must not be changed!!!" );
             dispose();
         } catch ( IOException ex ) {
             Utils.showExceptionMessage( this, ex );
@@ -919,13 +919,13 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCOAjuda;
-    private javax.swing.JButton btnCOPadrao;
-    private javax.swing.JButton btnCWAjuda;
-    private javax.swing.JButton btnCWPadrao;
+    private javax.swing.JButton btnCODefault;
+    private javax.swing.JButton btnCOHelp;
+    private javax.swing.JButton btnCWDefault;
+    private javax.swing.JButton btnCWHelp;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnMAjuda;
-    private javax.swing.JButton btnMPadrao;
+    private javax.swing.JButton btnMDefault;
+    private javax.swing.JButton btnMHelp;
     private javax.swing.JButton btnOK;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox checkCOClusteringGuide;
@@ -980,14 +980,14 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblCWPWWinLen;
     private javax.swing.JLabel lblCWType;
     private javax.swing.JLabel lblMOutputF;
-    private javax.swing.JPanel painelBaixo;
-    private javax.swing.JPanel painelCWM;
-    private javax.swing.JPanel painelCWPW;
     private javax.swing.JPanel painelCWPWFast;
     private javax.swing.JPanel painelCWPWSlow;
-    private javax.swing.JPanel painelConfCO;
-    private javax.swing.JPanel painelConfCW;
-    private javax.swing.JPanel painelConfM;
+    private javax.swing.JPanel panelBottom;
+    private javax.swing.JPanel panelCWM;
+    private javax.swing.JPanel panelCWPW;
+    private javax.swing.JPanel panelConfCO;
+    private javax.swing.JPanel panelConfCW;
+    private javax.swing.JPanel panelConfM;
     private javax.swing.JRadioButton radioCWFast;
     private javax.swing.JRadioButton radioCWSlow;
     // End of variables declaration//GEN-END:variables

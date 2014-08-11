@@ -7,11 +7,11 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Configura&#xe7;&#xf5;es dos Algoritmos de Alinhamento M&#xfa;ltiplo"/>
+    <Property name="title" type="java.lang.String" value="Multiple Sequence Aligment Algorithms Configuration"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,74,0,0,5,81"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,74,0,0,5,74"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -34,16 +34,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="painelBaixo" max="32767" attributes="0"/>
+                  <Component id="panelBottom" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="painelConfCO" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelConfCO" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelConfCW" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelConfCW" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelConfM" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelConfM" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="176" max="32767" attributes="0"/>
+              <EmptySpace pref="177" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,26 +52,26 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="painelConfCW" max="32767" attributes="0"/>
-                  <Component id="painelConfCO" max="32767" attributes="0"/>
-                  <Component id="painelConfM" max="32767" attributes="0"/>
+                  <Component id="panelConfCW" max="32767" attributes="0"/>
+                  <Component id="panelConfCO" max="32767" attributes="0"/>
+                  <Component id="panelConfM" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="painelBaixo" min="-2" max="-2" attributes="0"/>
+              <Component id="panelBottom" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="painelConfCO">
+    <Container class="javax.swing.JPanel" name="panelConfCO">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Clustal &#xd4;mega"/>
+            <TitledBorder title="Clustal Omega"/>
           </Border>
         </Property>
       </Properties>
@@ -114,9 +114,9 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnCOPadrao" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCODefault" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCOAjuda" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCOHelp" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -159,8 +159,8 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCOAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCOPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCOHelp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCODefault" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -289,31 +289,31 @@
             <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: Clustal w/o numbers [clustal]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCOPadrao">
+        <Component class="javax.swing.JButton" name="btnCODefault">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Default"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOPadraoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCODefaultActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCOAjuda">
+        <Component class="javax.swing.JButton" name="btnCOHelp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+            <Property name="text" type="java.lang.String" value="Help EMBL-EBI"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOAjudaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOHelpActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="painelConfCW">
+    <Container class="javax.swing.JPanel" name="panelConfCW">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -330,15 +330,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="painelCWPW" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelCWPW" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="painelCWM" max="32767" attributes="0"/>
+                      <Component id="panelCWM" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnCWPadrao" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCWDefault" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCWAjuda" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCWHelp" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -351,15 +351,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="painelCWPW" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelCWPW" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="painelCWM" max="32767" attributes="0"/>
+                          <Component id="panelCWM" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnCWAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnCWPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCWHelp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCWDefault" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -369,7 +369,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="painelCWPW">
+        <Container class="javax.swing.JPanel" name="panelCWPW">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -745,7 +745,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="painelCWM">
+        <Container class="javax.swing.JPanel" name="panelCWM">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1035,31 +1035,31 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnCWPadrao">
+        <Component class="javax.swing.JButton" name="btnCWDefault">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Default"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWPadraoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWDefaultActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCWAjuda">
+        <Component class="javax.swing.JButton" name="btnCWHelp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+            <Property name="text" type="java.lang.String" value="Help EMBL-EBI"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWAjudaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCWHelpActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="painelConfM">
+    <Container class="javax.swing.JPanel" name="panelConfM">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -1076,9 +1076,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnMPadrao" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMDefault" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnMAjuda" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMHelp" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -1107,8 +1107,8 @@
                   </Group>
                   <EmptySpace pref="305" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnMAjuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMHelp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMDefault" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1142,31 +1142,31 @@
             <Property name="toolTipText" type="java.lang.String" value="Format for generated multiple sequence alignment. Default value is: ClustalW [clw]"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMPadrao">
+        <Component class="javax.swing.JButton" name="btnMDefault">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Default"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMPadraoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMDefaultActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMAjuda">
+        <Component class="javax.swing.JButton" name="btnMHelp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/help.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ajuda EMBL-EBI"/>
+            <Property name="text" type="java.lang.String" value="Help EMBL-EBI"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMAjudaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMHelpActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="painelBaixo">
+    <Container class="javax.swing.JPanel" name="panelBottom">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -1206,7 +1206,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/delete.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
