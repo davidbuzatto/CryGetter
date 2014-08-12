@@ -1,0 +1,84 @@
+/* 
+    Created on : Aug 12, 2014, 4:15:25 PM
+    Author     : David
+*/
+
+div[aaType=A-hf] {
+    background-color: #AD0052;
+}
+
+div[aaType=R-hf] {
+    background-color: #0000FF;
+}
+
+div[aaType=N-hf] {
+    background-color: #0C00F3;
+}
+
+div[aaType=D-hf] {
+    background-color: #0C00F3;
+}
+
+div[aaType=C-hf] {
+    background-color: #C2003D;
+}
+
+div[aaType=E-hf] {
+    background-color: #0C00F3;
+}
+
+div[aaType=Q-hf] {
+    background-color: #0C00F3;
+}
+
+div[aaType=G-hf] {
+    background-color: #6A0095;
+}
+
+div[aaType=H-hf] {
+    background-color: #1500EA;
+}
+
+div[aaType=I-hf] {
+    background-color: #FF0000;
+}
+
+div[aaType=L-hf] {
+    background-color: #EA0015;
+}
+
+div[aaType=K-hf] {
+    background-color: #0000FF;
+}
+
+div[aaType=M-hf] {
+    background-color: #B0004F;
+}
+
+div[aaType=F-hf] {
+    background-color: #CB0034;
+}
+
+div[aaType=P-hf] {
+    background-color: #4600B9;
+}
+
+div[aaType=S-hf] {
+    background-color: #5E00A1;
+}
+
+div[aaType=T-hf] {
+    background-color: #61009E;
+}
+
+div[aaType=W-hf] {
+    background-color: #5B00A4;
+}
+
+div[aaType=Y-hf] {
+    background-color: #4F00B0;
+}
+
+div[aaType=V-hf] {
+    background-color: #F60009;
+}

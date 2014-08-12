@@ -13,21 +13,27 @@ import iubio.readseq.BioseqWriterIface;
 import iubio.readseq.Readseq;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -889,16 +895,17 @@ public class Utils {
                     if ( exitVal == 0 ) {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
                                 "\nOutput Value: " + exitVal + " - Process Finished Successfully!", codeOKColor, Color.WHITE ) );
+                        
+                        SwingUtilities.invokeLater( new SaveGeneralAlignmentFileTask( 
+                                fileName,
+                                fileExtension,
+                                fileDescription,
+                                filesToDelete ) );
+                        
                     } else {
                         SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
                                 "\nOutput Value: " + exitVal + " - Process Finished With Error!", codeErrorColor, Color.WHITE ) );
                     }
-                    
-                    SwingUtilities.invokeLater( new SaveGeneralAlignmentFileTask( 
-                            fileName,
-                            fileExtension,
-                            fileDescription,
-                            filesToDelete ) );
                 
                 } catch ( IOException | InterruptedException exc ) {
                     exc.printStackTrace();
@@ -1019,7 +1026,32 @@ public class Utils {
 
                     f.delete();
                     fileToMove.renameTo( f );
-
+                    
+                    if ( fileExtension.equals( "aln" ) ) {
+                        
+                        try {
+                            
+                            generateAlignmentData( f, new File( "view/data.js" ), 60 );
+                            
+                            if ( JOptionPane.showConfirmDialog( null, "Do you want to see the alignment result?",
+                                    "View Alignment", JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) {
+                                
+                                if ( Desktop.isDesktopSupported() ) {
+                                    try {
+                                        Desktop.getDesktop().browse( new File( "view/view.html" ).toURI() );
+                                    } catch ( IOException exc ) {
+                                        Utils.showExceptionMessage( null, exc );
+                                    }
+                                }
+                                
+                            }
+                            
+                        } catch ( IOException exc ) {
+                            Utils.showExceptionMessage( null, exc );
+                        }
+                        
+                    }
+                    
                 }
 
             } else {
@@ -1032,6 +1064,165 @@ public class Utils {
 
         }
 
+    }
+    
+    /**
+     * Generates alignment data to be showed.
+     * 
+     * @param fileToRead Alignment file, in Clutal Format, to read.
+     * @param fileToWrite File to write the processed alignment data.
+     * @param lineLength Line length.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public static void generateAlignmentData( File fileToRead, File fileToWrite, int lineLength ) 
+            throws FileNotFoundException, IOException {
+        
+        String whitespace_chars =  ""       /* dummy empty string for homogeneity */
+                + "\\u0009" // CHARACTER TABULATION
+                + "\\u000A" // LINE FEED (LF)
+                + "\\u000B" // LINE TABULATION
+                + "\\u000C" // FORM FEED (FF)
+                + "\\u000D" // CARRIAGE RETURN (CR)
+                + "\\u0020" // SPACE
+                + "\\u0085" // NEXT LINE (NEL) 
+                + "\\u00A0" // NO-BREAK SPACE
+                + "\\u1680" // OGHAM SPACE MARK
+                + "\\u180E" // MONGOLIAN VOWEL SEPARATOR
+                + "\\u2000" // EN QUAD 
+                + "\\u2001" // EM QUAD 
+                + "\\u2002" // EN SPACE
+                + "\\u2003" // EM SPACE
+                + "\\u2004" // THREE-PER-EM SPACE
+                + "\\u2005" // FOUR-PER-EM SPACE
+                + "\\u2006" // SIX-PER-EM SPACE
+                + "\\u2007" // FIGURE SPACE
+                + "\\u2008" // PUNCTUATION SPACE
+                + "\\u2009" // THIN SPACE
+                + "\\u200A" // HAIR SPACE
+                + "\\u2028" // LINE SEPARATOR
+                + "\\u2029" // PARAGRAPH SEPARATOR
+                + "\\u202F" // NARROW NO-BREAK SPACE
+                + "\\u205F" // MEDIUM MATHEMATICAL SPACE
+                + "\\u3000" // IDEOGRAPHIC SPACE
+                ;   
+        
+        Scanner s = new Scanner( fileToRead );
+        Pattern p = Pattern.compile( "(\\w+)["+ whitespace_chars + "]+([\\w[-]]+)["+ whitespace_chars + "]*\\d*" );
+        Map<String, String> data = new LinkedHashMap<>();
+        data.put( "aln", "" );
+        
+        boolean start = false;
+        
+        while ( s.hasNextLine() ) {
+            
+            String line = s.nextLine().trim();
+            
+            if ( start == false && line.startsWith( "Cry" ) ) {
+                start = true;
+            }
+            
+            if ( start ) {
+                
+                if ( !line.equals( "" ) ) {
+                    
+                    Matcher m = p.matcher( line );
+                    
+                    if ( m.matches() ) {
+                        
+                        String cId = m.group( 1 );
+                        String aln = m.group( 2 );
+                        
+                        if ( data.containsKey( cId ) ) {
+                            data.replace( cId, data.get( cId ) + aln );
+                        } else {
+                            data.put( cId, aln );
+                        }
+                        
+                    } else {
+                        data.replace( "aln", data.get( "aln" ) + line );
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        int max = 0;
+        
+        for ( Map.Entry<String, String> e : data.entrySet() ) {
+            int t = e.getValue().length();
+            if ( t > max ) {
+                max = t;
+            }
+        }
+        
+        int tSeq = data.get( "aln" ).length();
+        int dif = max - tSeq;
+        
+        StringBuilder sb = new StringBuilder();
+        for ( int i = 0; i < dif; i++ ) {
+            sb.append( " " );
+        }
+        
+        data.replace( "aln", data.get( "aln" ) + sb.toString() );
+        
+        Map<String, List<String>> export = new LinkedHashMap<>();
+        
+        for ( Map.Entry<String, String> e : data.entrySet() ) {
+            
+            List<String> sequences = new ArrayList<>();
+            String id = e.getKey();
+            String seq = e.getValue();
+            
+            while ( seq.length() >= lineLength ) {
+                sequences.add( seq.substring( 0, lineLength ) );
+                seq = seq.substring( lineLength );
+            }
+            
+            if ( seq.length() > 0 ) {
+                sequences.add( seq );
+            }
+            
+            export.put( id, sequences );
+            
+        }
+        
+        boolean hasData = true;
+        
+        try ( FileWriter fw = new FileWriter( fileToWrite ) ) {
+            
+            fw.write( "var data = [" );
+            
+            while ( hasData ) {
+                
+                fw.write( "{sec:[" );
+                
+                for ( Map.Entry<String, List<String>> e : export.entrySet() ) {
+
+                    String id = e.getKey();
+                    List<String> seq = e.getValue();
+
+                    if ( seq.size() > 0 ) {
+                        
+                        fw.write( String.format( "{id:\"%s\",seq:\"%s\"},", id, seq.remove( 0 ) ) );
+
+                    } else {
+                        hasData = false;
+                        break;
+                    }
+
+                }
+                
+                fw.write( "{id:null,seq:null}]}," );
+
+            }
+            
+            fw.write( "{sec:null}];" );
+            
+        }
+        
     }
     
 }

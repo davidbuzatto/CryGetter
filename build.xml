@@ -77,6 +77,7 @@
         
         <copydir src="clustal" dest="${dist.dir}/clustal" />
         <copydir src="muscle" dest="${dist.dir}/muscle" />
+        <copydir src="view" dest="${dist.dir}/view" />
         <mkdir dir="${dist.dir}/temp"/>
         <mkdir dir="${dist.dir}/conf"/>
         

@@ -1,4 +1,3 @@
 - Melhorar configurações dos algoritmos de alinhamento (caixas de texto, validação, armazenamento de configurações).
 - Seleção por ordem na janela de alinhamentos;
-- Tela de apresentação gráfica de alinhamento - mostrar após salvar alinhamento do tipo Clustal.
 - Análise de pares - botão na tela de apresentação gráfica, escolhendo duas proteínas para verificar as diferenças.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+    Author: David Buzatto
+-->
+<html>
+    <head>
+        <title>CryGetter - Alignment View</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/style.css" />
+        <link type="text/css" rel="stylesheet" href="css/clustalx.css" />
+        <link type="text/css" rel="stylesheet" href="css/zappo.css" />
+        <link type="text/css" rel="stylesheet" href="css/taylor.css" />
+        <link type="text/css" rel="stylesheet" href="css/hydrophobicity.css" />
+        <link type="text/css" rel="stylesheet" href="css/hpropensity.css" />
+        <link type="text/css" rel="stylesheet" href="css/spropensity.css" />
+        <link type="text/css" rel="stylesheet" href="css/tpropensity.css" />
+        <link type="text/css" rel="stylesheet" href="css/bindex.css" />
+        <script type="application/javascript" src="jquery-1.11.1.min.js"></script>
+        <script type="application/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <div id="waitMsg">Please wait...</div>
+        <div id="controls">
+            <label>Color Scheme: </label>
+            <select id="colorScheme">
+                <option value="c">ClustalX</option>
+                <option value="z">Zappo</option>
+                <option value="t">Taylor</option>
+                <option value="hf">Hydrophobicity</option>
+                <option value="hp">Helix Propensity</option>
+                <option value="sp">Strand Propensity</option>
+                <option value="tp">Turn Propensity</option>
+                <option value="bi">Buried Index</option>
+            </select>
+        </div>
+        <div id="content"></div>
+    </body>
+</html>
