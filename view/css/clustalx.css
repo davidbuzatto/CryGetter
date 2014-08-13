@@ -3,82 +3,82 @@
     Author     : David
 */
 
-div[aaType=A-c] {
+span[aaType=A-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=R-c] {
+span[aaType=R-c] {
     background-color: #E6331A;
 }
 
-div[aaType=N-c] {
+span[aaType=N-c] {
     background-color: #1ACC1A;
 }
 
-div[aaType=D-c] {
+span[aaType=D-c] {
     background-color: #CC4DCC;
 }
 
-div[aaType=C-c] {
+span[aaType=C-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=E-c] {
+span[aaType=E-c] {
     background-color: #CC4DCC;
 }
 
-div[aaType=Q-c] {
+span[aaType=Q-c] {
     background-color: #1ACC1A;
 }
 
-div[aaType=G-c] {
+span[aaType=G-c] {
     background-color: #E6994D;
 }
 
-div[aaType=H-c] {
+span[aaType=H-c] {
     background-color: #1AB3B3;
 }
 
-div[aaType=I-c] {
+span[aaType=I-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=L-c] {
+span[aaType=L-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=K-c] {
+span[aaType=K-c] {
     background-color: #E6331A;
 }
 
-div[aaType=M-c] {
+span[aaType=M-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=F-c] {
+span[aaType=F-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=P-c] {
+span[aaType=P-c] {
     background-color: #CCCC00;
 }
 
-div[aaType=S-c] {
+span[aaType=S-c] {
     background-color: #1ACC1A;
 }
 
-div[aaType=T-c] {
+span[aaType=T-c] {
     background-color: #1ACC1A;
 }
 
-div[aaType=W-c] {
+span[aaType=W-c] {
     background-color: #80B3E6;
 }
 
-div[aaType=Y-c] {
+span[aaType=Y-c] {
     background-color: #1AB3B3;
 }
 
-div[aaType=V-c] {
+span[aaType=V-c] {
     background-color: #80B3E6;
 }

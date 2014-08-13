@@ -1108,15 +1108,17 @@ public class Utils {
                 ;   
         
         Scanner s = new Scanner( fileToRead );
-        Pattern p = Pattern.compile( "(\\w+)["+ whitespace_chars + "]+([\\w[-]]+)["+ whitespace_chars + "]*\\d*" );
+        Pattern p = Pattern.compile( "(\\w+)(["+ whitespace_chars + "]+)([\\w[-]]+)["+ whitespace_chars + "]*\\d*" );
         Map<String, String> data = new LinkedHashMap<>();
         data.put( "aln", "" );
         
         boolean start = false;
+        int maxId = 0;
+        int maxSpc = 0;
         
         while ( s.hasNextLine() ) {
             
-            String line = s.nextLine().trim();
+            String line = s.nextLine();
             
             if ( start == false && line.startsWith( "Cry" ) ) {
                 start = true;
@@ -1126,12 +1128,22 @@ public class Utils {
                 
                 if ( !line.equals( "" ) ) {
                     
-                    Matcher m = p.matcher( line );
+                    Matcher m = p.matcher( line.trim() );
                     
                     if ( m.matches() ) {
                         
                         String cId = m.group( 1 );
-                        String aln = m.group( 2 );
+                        String aln = m.group( 3 );
+                        int sizeId = cId.length();
+                        int sizeSpc = m.group( 2 ).length();
+                        
+                        if ( maxId < sizeId ) {
+                            maxId = sizeId;
+                        }
+                        
+                        if ( maxSpc < sizeSpc ) {
+                            maxSpc = sizeSpc;
+                        }
                         
                         if ( data.containsKey( cId ) ) {
                             data.replace( cId, data.get( cId ) + aln );
@@ -1140,7 +1152,7 @@ public class Utils {
                         }
                         
                     } else {
-                        data.replace( "aln", data.get( "aln" ) + line );
+                        data.replace( "aln", data.get( "aln" ) + line.substring( maxId + maxSpc ) );
                     }
                     
                 }

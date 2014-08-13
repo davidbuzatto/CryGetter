@@ -8,6 +8,22 @@ body {
     font-size: 14px;
 }
 
+#contentDiv {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+#contentTable { 
+    border-spacing: 0px;
+    border-width: 0px;
+    border-collapse: separate;
+}
+
+#contentTable td { 
+    padding: 0px;
+    border-width: 0px;
+}
+
 #waitMsg {
     font-size: 20px;
     font-weight: bold;
@@ -24,41 +40,36 @@ body {
     font-size: 14px;
 }
 
-.divId {
-    position: absolute;
-    width: 66px;
+.cryId {
     font-style: italic;
-    height: 14px;
 }
 
-.divAA {
-    position: absolute;
+.spanAA {
     text-align: center;
     font-weight: bold;
     width: 11px;
-    height: 14px;
+    float: left;
 }
 
-.divSeq {
-    position: absolute;
+.spanAlnSeq {
     text-align: center;
     font-weight: bold;
     width: 11px;
-    height: 14px;
+    float: left;
 }
 
-.divRu {
-    position: absolute;
+.spanRu {
     text-align: center;
     font-weight: bold;
     width: 11px;
-    height: 14px;
+    float: left;
 }
 
-.divLa {
-    position: absolute;
+.spanAAN {
+    text-align: center;
+    width: 11px;
+    float: left;
     text-align: left;
     font-size: 10px;
-    width: 100px;
-    height: 14px;
+    
 }

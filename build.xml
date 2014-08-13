@@ -75,11 +75,29 @@
         
         <echo>Copiando dependências e preparando ambiente...</echo>
         
-        <copydir src="clustal" dest="${dist.dir}/clustal" />
-        <copydir src="muscle" dest="${dist.dir}/muscle" />
-        <copydir src="view" dest="${dist.dir}/view" />
+        <copy todir="${dist.dir}/clustal">
+            <fileset dir="clustal"/>
+        </copy>
+        <copy todir="${dist.dir}/muscle">
+            <fileset dir="muscle"/>
+        </copy>
+        <copy todir="${dist.dir}/view">
+            <fileset dir="view" excludes="data.js, script.js"/>
+        </copy>
+        
         <mkdir dir="${dist.dir}/temp"/>
         <mkdir dir="${dist.dir}/conf"/>
+
+        <echo> Iniciando otimização do código JavaScript...</echo>
+        
+        <property name="closureCompiler" value="lib/GoogleClosureCompiler/compiler.jar"/>
+        
+        <java jar="${closureCompiler}"
+                args="--compilation_level SIMPLE_OPTIMIZATIONS
+                --js ${build.classes.dir}/script.js
+                --js_output_file ${dist.dir}/view/script.js"/>
+
+        <echo> Otimização do código JavaScript finalizada!</echo>
         
         <echo>Fim da cópia e da preparação.</echo>
         

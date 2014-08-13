@@ -12,7 +12,7 @@ $( function() {
         
         var sufix = $( "#colorScheme" ).val();
         
-        $( ".divAA" ).each( function( ind, ele ){
+        $( ".spanAA" ).each( function( ind, ele ){
             $( ele ).attr( "aaType", $( ele ).html() + "-" + sufix );
         });
         
@@ -20,12 +20,9 @@ $( function() {
     
     $.getScript( "data.js", function( d, ts, jqXHR ) {
         
-        var $content = $( "#content" );
-        var leftStart = 30;
-        var lineHeight = 14;
-        var idLength;
-        var j;
+        var $content = $( "#contentTable" );
         var count = 1;
+        var countSeq = [];
         
         for ( var i = 0; i < data.length; i++ ) {
             
@@ -37,7 +34,7 @@ $( function() {
                 var itemSize = sec.length;
                 var first = true;
                 
-                for ( j = 0; j < itemSize; j++ ) {
+                for ( var j = 0; j < itemSize; j++ ) {
                     
                     var item = sec[j];
                     
@@ -50,34 +47,44 @@ $( function() {
                             alnSeq = seq;
                         } else {
                             
-                            var $newDivId = $( "<div><div/>" );
-                            $newDivId.addClass( "divId" );
-                            $newDivId.html( id );
-                            $newDivId.css( "left", leftStart + "px" );
-                            $newDivId.css( "top", ( lineHeight * ( j + 2 ) + (itemSize + 3) * lineHeight * i ) + "px" );
-                            $content.append( $newDivId );
-                            
-                            idLength = Number( $newDivId.css( "width" ).replace( "px", "" ) );
-                            
                             if ( first ) {
+                                
+                                var $newRowHeaderAAN = $( "<tr></tr>" );
+                                $newRowHeaderAAN.append( "<td></td><td></td><td id='headerAAN-" + i + "-" + j + "'></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td></td>" );
+                                $content.append( $newRowHeaderAAN );
+                                
+                                var $newRowHeaderRu = $( "<tr></tr>" );
+                                $newRowHeaderRu.append( "<td></td><td></td><td id='headerRu-" + i + "-" + j + "'></td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td></td>" );
+                                $content.append( $newRowHeaderRu );
+                                
+                                var $headerAAN = $( "#headerAAN-" + i + "-" + j );
+                                var $headerRu = $( "#headerRu-" + i + "-" + j );
                                 
                                 for ( var k = 0; k < seq.length; k++ ) {
                                     
-                                    if ( (k+1) % 10 === 0 || k === 0 ) {
+                                    if ( (k+1) % 10 === 0 || k === 0 || k === seq.length - 1  ) {
                                         
-                                        var $newDivRu = $( "<div><div/>" );
-                                        $newDivRu.addClass( "divRu" );
-                                        $newDivRu.html( "|" );
-                                        $newDivRu.css( "left", ( leftStart + idLength + k * 11 + 5 ) + "px" );
-                                        $newDivRu.css( "top", ( lineHeight * 2 + (itemSize + 3) * lineHeight * i ) + "px" );
-                                        $content.append( $newDivRu );
+                                        var $newSpanAAN = $( "<span></span>" );
+                                        $newSpanAAN.addClass( "spanAAN" );
+                                        $newSpanAAN.html( count );
+                                        $headerAAN.append( $newSpanAAN );
                                         
-                                        var $newDivLa = $( "<div><div/>" );
-                                        $newDivLa.addClass( "divLa" );
-                                        $newDivLa.html( count );
-                                        $newDivLa.css( "left", ( leftStart + idLength + k * 11 + 5 ) + "px" );
-                                        $newDivLa.css( "top", ( lineHeight * 1 + (itemSize + 3) * lineHeight * i ) + "px" );
-                                        $content.append( $newDivLa );
+                                        var $newSpanRu = $( "<span></span>" );
+                                        $newSpanRu.addClass( "spanRu" );
+                                        $newSpanRu.html( "|" );
+                                        $headerRu.append( $newSpanRu );
+                                        
+                                    } else {
+                                        
+                                        var $newSpanAAN = $( "<span></span>" );
+                                        $newSpanAAN.addClass( "spanAAN" );
+                                        $newSpanAAN.html( "&nbsp;" );
+                                        $headerAAN.append( $newSpanAAN );
+                                        
+                                        var $newSpanRu = $( "<span></span>" );
+                                        $newSpanRu.addClass( "spanRu" );
+                                        $newSpanRu.html( "&nbsp;" );
+                                        $headerRu.append( $newSpanRu );
                                         
                                     }
                                     
@@ -89,17 +96,37 @@ $( function() {
                             
                             }
                             
+                            var $newRowId = $( "<tr></tr>" );
+                            var $newColumnId = $( "<td></td>" );
+                            $newColumnId.addClass( "cryId" );
+                            $newColumnId.html( id );
+                            $newRowId.append( $newColumnId );
+                            $newRowId.append( "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td id='seq-" + i + "-" + j + "'></td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td id='count-" + i + "-" + j + "'></td>" );
+                            $content.append( $newRowId );
+                            
+                            var $columnSeq = $( "#seq-" + i + "-" + j );
+                            var $columnSeqCount = $( "#count-" + i + "-" + j );
+                            
                             for ( var k = 0; k < seq.length; k++ ) {
                                 
-                                var $newDivAA = $( "<div><div/>" );
-                                $newDivAA.addClass( "divAA" );
-                                $newDivAA.html( seq[k] );
-                                $newDivAA.css( "left", ( leftStart + idLength + k * 11 + 5 ) + "px" );
-                                $newDivAA.css( "top", ( lineHeight * ( j + 2 ) + (itemSize + 3) * lineHeight * i ) + "px" );
-                                $newDivAA.attr( "aaType", seq[k] + "-c" );
-                                $content.append( $newDivAA );
+                                var $newSpanAA = $( "<span></span>" );
+                                $newSpanAA.addClass( "spanAA" );
+                                $newSpanAA.html( seq[k] );
+                                
+                                if ( seq[k] !== "-" ) {
+                                    if ( countSeq[id] ) {
+                                        countSeq[id] = countSeq[id] + 1;
+                                    } else {
+                                        countSeq[id] = 1;
+                                    }
+                                }
+                                
+                                $newSpanAA.attr( "aaType", seq[k] + "-c" );
+                                $columnSeq.append( $newSpanAA );
                                 
                             }
+                            
+                            $columnSeqCount.html( countSeq[id] );
                             
                         }
                         
@@ -107,17 +134,28 @@ $( function() {
                     
                 }
                 
+                var $newRowAlnSeq = $( "<tr></tr>" );
+                $newRowAlnSeq.append( "<td></td><td></td><td id='alnSeq-" + i + "-" + j + "'></td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td></td>" );
+                $content.append( $newRowAlnSeq );
+                
+                var $columnAlnSeq = $( "#alnSeq-" + i + "-" + j );
                 
                 for ( var k = 0; k < alnSeq.length; k++ ) {
 
-                    var $newDivSeq = $( "<div><div/>" );
-                    $newDivSeq.addClass( "divSeq" );
-                    $newDivSeq.html( alnSeq[k] );
-                    $newDivSeq.css( "left", ( leftStart + idLength + k * 11 + 5 ) + "px" );
-                    $newDivSeq.css( "top", ( lineHeight * (j+1) + (itemSize + 3) * lineHeight * i ) + "px" );
-                    $content.append( $newDivSeq );
+                    var $newSpanAlnSeq = $( "<span></span>" );
+                    $newSpanAlnSeq.addClass( "spanAlnSeq" );
+                    if ( alnSeq[k] === " " ) {
+                        $newSpanAlnSeq.html( "&nbsp;" );
+                    } else {
+                        $newSpanAlnSeq.html( alnSeq[k] );
+                    }
+                    $columnAlnSeq.append( $newSpanAlnSeq );
 
                 }
+                
+                var $newRowBlank = $( "<tr></tr>" );
+                $newRowBlank.append( "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td></td>" );
+                $content.append( $newRowBlank );
                 
             }
             
