@@ -156,7 +156,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/delete.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Clean Selection"/>
+            <Property name="text" type="java.lang.String" value="Clear Selection"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCleanSelectionActionPerformed"/>
@@ -176,32 +176,37 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="btnCOL" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNEU" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="btnCOL" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnNEU" alignment="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="btnLEP" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnORT" alignment="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="btnDIP" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnBLA" alignment="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="btnHEM" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTHY" alignment="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="btnHYM" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTRI" alignment="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnISO" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="checkOnlyByOne" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="btnLEP" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnORT" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="btnDIP" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnBLA" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="btnHEM" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTHY" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="btnHYM" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTRI" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnISO" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -226,7 +231,9 @@
                           <Component id="btnTHY" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTRI" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="checkOnlyByOne" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -236,55 +243,94 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="COL"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOLActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLEP">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LEP"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLEPActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDIP">
               <Properties>
                 <Property name="text" type="java.lang.String" value="DIP"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDIPActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHEM">
               <Properties>
                 <Property name="text" type="java.lang.String" value="HEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHEMActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHYM">
               <Properties>
                 <Property name="text" type="java.lang.String" value="HYM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHYMActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnISO">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ISO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnISOActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnNEU">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NEU"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNEUActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnORT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ORT"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnORTActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBLA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BLA"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBLAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTHY">
               <Properties>
                 <Property name="text" type="java.lang.String" value="THY"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTHYActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTRI">
               <Properties>
                 <Property name="text" type="java.lang.String" value="TRI"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTRIActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkOnlyByOne">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Select Toxins Affected Only by the Selected Order"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -306,14 +352,17 @@
                       <Component id="radioCompleteProtein" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="radioByDomain" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="radioByDomain" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="checkBoundaries" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="checkD2" min="-2" max="-2" attributes="0"/>
                                   <Component id="checkD1" min="-2" max="-2" attributes="0"/>
                                   <Component id="checkD3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoundaries" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -324,22 +373,18 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="radioByDomain" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="checkD1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="checkD2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="checkD3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="radioCompleteProtein" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="radioByDomain" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBoundaries" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="checkD1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="checkBoundaries" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkD2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="checkD3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="radioCompleteProtein" min="-2" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

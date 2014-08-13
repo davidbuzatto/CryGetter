@@ -5,8 +5,9 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>CryGetter</name>
             <source-roots>
-                <root id="src.view.dir" name="Alignment View"/>
                 <root id="src.dir"/>
+                <root id="src.cryData.dir" name="Cry Data"/>
+                <root id="src.view.dir" name="Alignment View"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

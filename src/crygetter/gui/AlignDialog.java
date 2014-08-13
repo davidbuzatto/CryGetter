@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,10 +39,10 @@ public class AlignDialog extends javax.swing.JDialog {
         this.configs = configs;
         
         proteinTableModel = new CryToxinTableModel(
-                new String[]{ "Protein", "Order(s)", "Align" }, 0 );
+                new String[]{ "Protein", "Affected Order(s)", "Align" }, 0 );
         
         for ( CryToxin ct : ctList ) {
-            proteinTableModel.addRow( new Object[]{ ct, ct.proteinClass, false } );
+            proteinTableModel.addRow( new Object[]{ ct, ct.getOrdersAffectedDescription(), false } );
         }
         
         tableProteins.setModel( proteinTableModel );
@@ -78,6 +79,7 @@ public class AlignDialog extends javax.swing.JDialog {
         btnBLA = new javax.swing.JButton();
         btnTHY = new javax.swing.JButton();
         btnTRI = new javax.swing.JButton();
+        checkOnlyByOne = new javax.swing.JCheckBox();
         painelAlignment = new javax.swing.JPanel();
         radioCompleteProtein = new javax.swing.JRadioButton();
         radioByDomain = new javax.swing.JRadioButton();
@@ -122,7 +124,7 @@ public class AlignDialog extends javax.swing.JDialog {
         });
 
         btnCleanSelection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/delete.png"))); // NOI18N
-        btnCleanSelection.setText("Clean Selection");
+        btnCleanSelection.setText("Clear Selection");
         btnCleanSelection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCleanSelectionActionPerformed(evt);
@@ -132,26 +134,84 @@ public class AlignDialog extends javax.swing.JDialog {
         panelSelections.setBorder(javax.swing.BorderFactory.createTitledBorder("Selection by Order"));
 
         btnCOL.setText("COL");
+        btnCOL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCOLActionPerformed(evt);
+            }
+        });
 
         btnLEP.setText("LEP");
+        btnLEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLEPActionPerformed(evt);
+            }
+        });
 
         btnDIP.setText("DIP");
+        btnDIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDIPActionPerformed(evt);
+            }
+        });
 
         btnHEM.setText("HEM");
+        btnHEM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHEMActionPerformed(evt);
+            }
+        });
 
         btnHYM.setText("HYM");
+        btnHYM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHYMActionPerformed(evt);
+            }
+        });
 
         btnISO.setText("ISO");
+        btnISO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnISOActionPerformed(evt);
+            }
+        });
 
         btnNEU.setText("NEU");
+        btnNEU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNEUActionPerformed(evt);
+            }
+        });
 
         btnORT.setText("ORT");
+        btnORT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnORTActionPerformed(evt);
+            }
+        });
 
         btnBLA.setText("BLA");
+        btnBLA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBLAActionPerformed(evt);
+            }
+        });
 
         btnTHY.setText("THY");
+        btnTHY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTHYActionPerformed(evt);
+            }
+        });
 
         btnTRI.setText("TRI");
+        btnTRI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTRIActionPerformed(evt);
+            }
+        });
+
+        checkOnlyByOne.setSelected(true);
+        checkOnlyByOne.setText("Select Toxins Affected Only by the Selected Order");
 
         javax.swing.GroupLayout panelSelectionsLayout = new javax.swing.GroupLayout(panelSelections);
         panelSelections.setLayout(panelSelectionsLayout);
@@ -159,27 +219,30 @@ public class AlignDialog extends javax.swing.JDialog {
             panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSelectionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnCOL)
-                    .addComponent(btnNEU))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnLEP)
-                    .addComponent(btnORT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnDIP)
-                    .addComponent(btnBLA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnHEM)
-                    .addComponent(btnTHY))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnHYM)
-                    .addComponent(btnTRI))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnISO)
+                .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelSelectionsLayout.createSequentialGroup()
+                        .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnCOL)
+                            .addComponent(btnNEU))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnLEP)
+                            .addComponent(btnORT))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnDIP)
+                            .addComponent(btnBLA))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnHEM)
+                            .addComponent(btnTHY))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelSelectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnHYM)
+                            .addComponent(btnTRI))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnISO))
+                    .addComponent(checkOnlyByOne))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSelectionsLayout.setVerticalGroup(
@@ -200,7 +263,9 @@ public class AlignDialog extends javax.swing.JDialog {
                     .addComponent(btnBLA)
                     .addComponent(btnTHY)
                     .addComponent(btnTRI))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(checkOnlyByOne)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         painelAlignment.setBorder(javax.swing.BorderFactory.createTitledBorder("What do you want to align?"));
@@ -243,32 +308,31 @@ public class AlignDialog extends javax.swing.JDialog {
                 .addComponent(radioCompleteProtein)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelAlignmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioByDomain)
+                    .addGroup(painelAlignmentLayout.createSequentialGroup()
+                        .addComponent(radioByDomain)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkBoundaries))
                     .addGroup(painelAlignmentLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(painelAlignmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkD2)
                             .addComponent(checkD1)
-                            .addComponent(checkD3)
-                            .addComponent(checkBoundaries))))
+                            .addComponent(checkD3))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelAlignmentLayout.setVerticalGroup(
             painelAlignmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAlignmentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelAlignmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAlignmentLayout.createSequentialGroup()
-                        .addComponent(radioByDomain)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(checkD1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkD2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkD3))
-                    .addComponent(radioCompleteProtein))
+                .addGroup(painelAlignmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioByDomain)
+                    .addComponent(checkBoundaries))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(checkD1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBoundaries))
+                .addComponent(checkD2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkD3))
+            .addComponent(radioCompleteProtein)
         );
 
         painelAlgorithms.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Alignment Algorithms (MSA)"));
@@ -454,22 +518,24 @@ public class AlignDialog extends javax.swing.JDialog {
     private void btnAlignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlignActionPerformed
         
         try {
-            
+
             areaOutput.setText( "" );
             Utils.appendToPane( areaOutput, "", Color.BLACK, Color.WHITE );
 
             CryToxinTableModel tm = (CryToxinTableModel) tableProteins.getModel();
-
-            try ( FileWriter fwCry = new FileWriter( "temp/cry.fasta" ) ) {
+            File cryFasta = new File( "temp/cry.fasta" );
+            
+            try ( FileWriter fwCry = new FileWriter( cryFasta ) ) {
 
                 for ( int i = 0; i < tm.getRowCount(); i++ ) {
+                    
                     if ( (Boolean) tm.getValueAt( i, 2 ) ) {
 
                         CryToxin ct = (CryToxin) tm.getValueAt( i, 0 );
 
                         if ( radioCompleteProtein.isSelected() ) {
                             fwCry.write( Utils.formatAsFasta( ct.name, ct.proteinSequence, 60 ) );
-                        } else {
+                        } else if ( checkD1.isSelected() || checkD2.isSelected() || checkD3.isSelected() ) {
 
                             StringBuilder sb = new StringBuilder();
 
@@ -517,11 +583,18 @@ public class AlignDialog extends javax.swing.JDialog {
 
                             fwCry.write( Utils.formatAsFasta( ct.name, sb.toString(), 60 ) );
 
+                        } else {
+                            JOptionPane.showMessageDialog( this, "You need to select at least one domain to align!",
+                                    "ERROR", JOptionPane.ERROR_MESSAGE );
+                            fwCry.close();
+                            cryFasta.delete();
+                            return;
                         }
 
                         fwCry.write( "\n" );
 
                     }
+                    
                 }
 
             }
@@ -532,22 +605,22 @@ public class AlignDialog extends javax.swing.JDialog {
             String fileDescription = "";
             String command = "";
             String params = "";
-            
+
             if ( radioClustalO.isSelected() ) {
-                
+
                 // true/false
                 if ( Boolean.valueOf( configs.getProperty( "coDIS" ) ) ) {
                     params += "--dealign ";
                 }
-                
+
                 if ( !Boolean.valueOf( configs.getProperty( "coMbedCGT" ) ) ) {
                     params += "--full ";
                 }
-                
+
                 if ( !Boolean.valueOf( configs.getProperty( "coMbedCI" ) ) ) {
                     params += "--full-iter  ";
                 }
-                
+
                 // indices default(0), 1, 2, 3, 4, 5
                 switch ( configs.getProperty( "coNCI" ) ) {
                     case "0":
@@ -569,7 +642,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "--iter=5 ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "coMGTI" ) ) {
                     // -1 values are discarted, since then denote to not use this parameter
                     /*case "0":
@@ -593,7 +666,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "--max-guidetree-iterations=5 ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "coMHMMI" ) ) {
                     // same as above
                     /*case "0":
@@ -617,7 +690,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "--max-hmm-iterations=5 ";
                         break;
                 }
-                                
+
                 switch ( configs.getProperty( "coO" ) ) {
                     case "0":
                         params += "--output-order=tree-order ";
@@ -626,7 +699,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "--output-order=input-order ";
                         break;
                 }
-                        
+
                 switch ( configs.getProperty( "coOF" ) ) {
                     case "0":
                         params += "--outfmt=clustal ";
@@ -669,9 +742,9 @@ public class AlignDialog extends javax.swing.JDialog {
                         fileDescription = "VIENNA Alignment File";
                         break;
                 }
-                
+
                 command = "clustal/clustalo.exe --infmt=fasta -i " + readFrom + " -o " + fileNameBase + "." + fileExtension + " -t Protein --force -v " + params;
-                
+
                 Utils.runAlignmentProgram( 
                         readFrom, 
                         fileNameBase, 
@@ -684,12 +757,12 @@ public class AlignDialog extends javax.swing.JDialog {
                         new Color( 32, 160, 47 ), Color.RED,
                         areaOutput, btnAlign, lblWait,
                         new File( readFrom ) );
-                
+
             } else if ( radioClustalW.isSelected() ) {
-                
+
                 // slow PW
                 if ( configs.getProperty( "cwPWT" ).equals( "slow" ) ) {
-                    
+
                     switch ( configs.getProperty( "cwPWSPWM" ) ) {
                         case "0":
                             params += "-PWMATRIX=BLOSUM ";
@@ -704,7 +777,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-PWMATRIX=ID ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWSGO" ) ) {
                         case "0":
                             params += "-PWGAPOPEN=100 ";
@@ -728,7 +801,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-PWGAPOPEN=1 ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWSGE" ) ) {
                         case "0":
                             params += "-PWGAPEXT=0.05 ";
@@ -755,9 +828,9 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-PWGAPEXT=10.0 ";
                             break;
                     }
-                       
+
                 } else { // fast PW
-                    
+
                     switch ( configs.getProperty( "cwPWFKTUP" ) ) {
                         case "0":
                             params += "-KTUPLE=1 ";
@@ -775,7 +848,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-KTUPLE=5 ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWFWL" ) ) {
                         case "0":
                             params += "-WINDOW=10 ";
@@ -811,7 +884,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-WINDOW=0 ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWFST" ) ) {
                         case "0":
                             params += "-SCORE=PERCENT ";
@@ -820,7 +893,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-SCORE=ABSOLUT ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWFTD" ) ) {
                         case "0":
                             params += "-TOPDIAGS=10 ";
@@ -853,7 +926,7 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-TOPDIAGS=1 ";
                             break;
                     }
-                    
+
                     switch ( configs.getProperty( "cwPWFPG" ) ) {
                         case "0":
                             params += "-PAIRGAP=1 ";
@@ -889,9 +962,9 @@ public class AlignDialog extends javax.swing.JDialog {
                             params += "-PAIRGAP=500 ";
                             break;
                     }
-                    
+
                 }
-                
+
 
                 // multi alignment
                 switch ( configs.getProperty( "cwMPWM" ) ) {
@@ -908,7 +981,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-MATRIX=ID ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMGO" ) ) {
                     case "0":
                         params += "-GAPOPEN=100 ";
@@ -932,7 +1005,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-GAPOPEN=1 ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMGE" ) ) {
                     case "0":
                         params += "-GAPEXT=0.05 ";
@@ -959,7 +1032,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-GAPEXT=10.0 ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMGD" ) ) {
                     case "0":
                         params += "-GAPDIST=10 ";
@@ -992,11 +1065,11 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-GAPDIST=1 ";
                         break;
                 }
-                                
+
                 if ( Boolean.valueOf( configs.getProperty( "cwMNEG" ) ) ) {
                     params += "-ENDGAPS ";
                 }
-                
+
                 switch ( configs.getProperty( "cwMI" ) ) {
                     case "0":
                         params += "-ITERATION=NONE ";
@@ -1008,7 +1081,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-ITERATION=ALIGNMENT ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMNI" ) ) {
                     case "0":
                         params += "-NUMITER=1 ";
@@ -1041,7 +1114,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-NUMITER=10 ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMC" ) ) {
                     case "0":
                         params += "-CLUSTERING=NJ ";
@@ -1050,7 +1123,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-CLUSTERING=UPGMA ";
                         break;
                 }
-                                
+
                 switch ( configs.getProperty( "cwMO" ) ) {
                     case "0":
                         params += "-OUTORDER=ALIGNED ";
@@ -1059,7 +1132,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         params += "-OUTORDER=INPUT ";
                         break;
                 }
-                
+
                 switch ( configs.getProperty( "cwMOF" ) ) {
                     case "0":
                         params += "-OUTPUT=CLUSTAL ";
@@ -1102,9 +1175,9 @@ public class AlignDialog extends javax.swing.JDialog {
                         fileDescription = "GDE Alignment File";
                         break;
                 }
-                
+
                 command = "clustal/clustalw2.exe -INFILE=" + readFrom + " -OUTFILE=" + fileNameBase + "." + fileExtension + " -ALIGN -TREE -TYPE=PROTEIN " + params;
-                
+
                 Utils.runAlignmentProgram( 
                         readFrom, 
                         fileNameBase, 
@@ -1118,13 +1191,13 @@ public class AlignDialog extends javax.swing.JDialog {
                         areaOutput, btnAlign, lblWait,
                         new File( readFrom ),
                         new File( readFrom.replace( ".fasta", ".dnd" ) ) );
-                
+
             } else {
-                
+
                 if ( Boolean.valueOf( configs.getProperty( "mMFD" ) ) ) {
                     params += "-diags ";
                 }
-                
+
                 switch ( configs.getProperty( "mMOF" ) ) {
                     case "0":
                         // there is not parameter for fasta format output,
@@ -1153,9 +1226,9 @@ public class AlignDialog extends javax.swing.JDialog {
                         fileDescription = "MSF Alignment File";
                         break;
                 }
-                
+
                 command = "muscle/muscle3.8.31_i86win32.exe -in " + readFrom + " -out " + fileNameBase + "." + fileExtension + " " + params;
-                
+
                 Utils.runAlignmentProgram( 
                         readFrom, 
                         fileNameBase, 
@@ -1168,7 +1241,7 @@ public class AlignDialog extends javax.swing.JDialog {
                         new Color( 32, 160, 47 ), Color.RED,
                         areaOutput, btnAlign, lblWait,
                         new File( readFrom ) );
-                
+
             }
 
         } catch ( IOException | InterruptedException exc ) {
@@ -1201,6 +1274,89 @@ public class AlignDialog extends javax.swing.JDialog {
         ad.setVisible( true );
         
     }//GEN-LAST:event_btnConfActionPerformed
+
+    private void btnCOLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOLActionPerformed
+        selectedAffectedToxins( "COL" );
+    }//GEN-LAST:event_btnCOLActionPerformed
+
+    private void btnLEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLEPActionPerformed
+        selectedAffectedToxins( "LEP" );
+    }//GEN-LAST:event_btnLEPActionPerformed
+
+    private void btnDIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDIPActionPerformed
+        selectedAffectedToxins( "DIP" );
+    }//GEN-LAST:event_btnDIPActionPerformed
+
+    private void btnHEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHEMActionPerformed
+        selectedAffectedToxins( "HEM" );
+    }//GEN-LAST:event_btnHEMActionPerformed
+
+    private void btnHYMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHYMActionPerformed
+        selectedAffectedToxins( "HYM" );
+    }//GEN-LAST:event_btnHYMActionPerformed
+
+    private void btnISOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnISOActionPerformed
+        selectedAffectedToxins( "ISO" );
+    }//GEN-LAST:event_btnISOActionPerformed
+
+    private void btnNEUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNEUActionPerformed
+        selectedAffectedToxins( "NEU" );
+    }//GEN-LAST:event_btnNEUActionPerformed
+
+    private void btnORTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnORTActionPerformed
+        selectedAffectedToxins( "ORT" );
+    }//GEN-LAST:event_btnORTActionPerformed
+
+    private void btnBLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBLAActionPerformed
+        selectedAffectedToxins( "BLA" );
+    }//GEN-LAST:event_btnBLAActionPerformed
+
+    private void btnTHYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTHYActionPerformed
+        selectedAffectedToxins( "THY" );
+    }//GEN-LAST:event_btnTHYActionPerformed
+
+    private void btnTRIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTRIActionPerformed
+        selectedAffectedToxins( "TRI" );
+    }//GEN-LAST:event_btnTRIActionPerformed
+    
+    private void selectedAffectedToxins( String order ) {
+        
+        boolean found = false;
+        
+        for ( int i = 0; i < proteinTableModel.getRowCount(); i++ ) {
+            
+            CryToxin ct = (CryToxin) proteinTableModel.getValueAt( i, 0 );
+            
+            if ( checkOnlyByOne.isSelected() ) {
+                if ( ct.affectsOnly( order ) ) {
+                    proteinTableModel.setValueAt( true, i, 2 );
+                    found = true;
+                }
+            } else {
+                if ( ct.affects( order ) ) {
+                    proteinTableModel.setValueAt( true, i, 2 );
+                    found = true;
+                }
+            }
+            
+        }
+        
+        tableProteins.updateUI();
+        
+        if ( !found ) {
+            
+            String message = "There isn't Cry Toxin(s) that affects ";
+            
+            if ( checkOnlyByOne.isSelected() ) {
+                message += "only";
+            }
+            
+            message += " the \"" + order + "\" order.";
+            
+            JOptionPane.showMessageDialog( this, message, "Warning", JOptionPane.WARNING_MESSAGE );
+        }
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane areaOutput;
@@ -1226,6 +1382,7 @@ public class AlignDialog extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
+    private javax.swing.JCheckBox checkOnlyByOne;
     private javax.swing.JLabel lblWait;
     private javax.swing.JPanel painel;
     private javax.swing.JPanel painelAlgorithms;

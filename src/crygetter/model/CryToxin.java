@@ -58,7 +58,9 @@ public class CryToxin {
     
     //public transient Color classColor = new Color( 172, 204, 234 );
     public transient Color classColor = Color.WHITE;
-    public transient String proteinClass = "";
+    
+    // orders that are affected by this cry toxin
+    public transient List<String> ordersAffected = new ArrayList<>();
     
     public CryToxinDomain getDomain( int domainNumber ) {
         return domains.get( domainNumber - 1 );
@@ -86,6 +88,42 @@ public class CryToxin {
                 ncbiNucleotide + ", authors=" + authors + ", year=" + 
                 year + ", sourceStrain=" + sourceStrain + ", comment=" + 
                 comment + ", ncbiURL=" + ncbiURL + ", ncbiURL2=" + ncbiURL2 + '}';
+    }
+
+    public List<String> getOrdersAffected() {
+        return ordersAffected;
+    }
+    
+    public void addAffectedOrder( String order ) {
+        ordersAffected.add( order );
+    }
+    
+    public String getOrdersAffectedDescription() {
+        if ( ordersAffected.isEmpty() ) {
+            return "not known";
+        } else {
+            return ordersAffected.toString().replaceAll( "[\\[\\]]", "" );
+        }
+    }
+    
+    /**
+     * Is the order passed affected by this cry toxin?
+     * 
+     * @param order Order to test
+     * @return If the toxin is affected by the order
+     */
+    public boolean affects( String order ) {
+        return ordersAffected.contains( order );
+    }
+    
+    /**
+     * Is the order passed the only affected order by this cry toxin?
+     * 
+     * @param order Order to test
+     * @return If the toxin is affected only by the order
+     */
+    public boolean affectsOnly( String order ) {
+        return ordersAffected.size() == 1 && ordersAffected.contains( order );
     }
 
     @Override

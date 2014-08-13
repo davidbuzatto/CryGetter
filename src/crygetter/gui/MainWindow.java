@@ -48,6 +48,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -88,6 +94,9 @@ public class MainWindow extends javax.swing.JFrame {
     // protein list
     private Color baseProteinColor = new Color( 172, 187, 234 );
     
+    // Cry order data
+    private Map<String, List<String>> cryOrderData;
+    
     // application configurations
     private Properties configs;
     private Properties defaultConfigs;
@@ -114,6 +123,7 @@ public class MainWindow extends javax.swing.JFrame {
         checkD3.setOpaque( true );
         
         prepareConfiguration();
+        loadCryData();
         
     }
 
@@ -2088,17 +2098,33 @@ public class MainWindow extends javax.swing.JFrame {
                     
                 }
                 
-                // removind toxins with domain count different from 3
+                // removing toxins with domain count different from 3
                 for ( CryToxin ct : toxinsToRemove ) {
                     correspondenceTable.remove( ct );
                 }
                 
-                // populating the lists of cry toxins and gbseqs
-                // and setting the proteinSequence from gbseq to cry toxin
+                // 1 - populating the lists of cry toxins and gbseqs,
+                // 2 - setting the proteinSequence from gbseq to cry toxin and
+                // 3 - adding the affected orders
                 for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
+                    
+                    CryToxin ct = e.getKey();
+                    
                     e.getKey().proteinSequence = e.getValue().getGBSeqSequence().toUpperCase();
-                    ctList.add( e.getKey() );
-                    gbSeqList.add( e.getValue() );
+                    ctList.add( ct );                // 1
+                    gbSeqList.add( e.getValue() );   // 2
+                    
+                    // 3
+                    for ( Entry<String, List<String>> eo : cryOrderData.entrySet() ) {
+                        
+                        for ( String affectedToxinName : eo.getValue() ) {
+                            if ( ct.name.startsWith( affectedToxinName ) ) {
+                                ct.addAffectedOrder( eo.getKey() );
+                            }
+                        }                        
+                        
+                    }
+                    
                 }
                 
                 updateProteinColors();
@@ -2114,6 +2140,68 @@ public class MainWindow extends javax.swing.JFrame {
                 lblWait.setText( " " );
             }
             
+        }
+        
+    }
+    
+    /**
+     * Loads Cry Data (order affect)
+     */
+    private void loadCryData() {
+        
+        try {
+            
+            Workbook wb = WorkbookFactory.create( getClass().getResourceAsStream( "/cryData.xlsx" ) );
+            Sheet sheet = wb.getSheetAt( 0 );
+            
+            Row orderNameRow = sheet.getRow( 1 );
+            cryOrderData = new LinkedHashMap<>();
+            
+            for ( int i = 2; ; i++ ) {    
+                
+                Cell orderNameCell = orderNameRow.getCell( i );
+
+                if ( orderNameCell != null ) {
+                    
+                    List<String> affectList = new ArrayList<>();
+                    
+                    for ( int j = 2; ; j++ ) {
+                        
+                        Row orderValueRow = sheet.getRow( j );
+                        
+                        if ( orderValueRow != null ) {
+                            
+                            Cell cryValueCell = orderValueRow.getCell( 1 );
+                            Cell orderValueCell = orderValueRow.getCell( i );
+
+                            if ( orderValueCell != null && !orderValueCell.getStringCellValue().equals( "" ) ) {
+                                
+                                String value = orderValueCell.getStringCellValue();
+                                
+                                if ( value.equals( "A" ) || value.equals( "P" ) ) {
+                                    affectList.add( "Cry" + cryValueCell.getStringCellValue() );
+                                }
+                                
+                            }
+                            
+                        } else {
+                            break;
+                        }
+                        
+                    }
+                    
+                    if ( !affectList.isEmpty() ) {
+                        cryOrderData.put( orderNameCell.getStringCellValue(), affectList );
+                    }
+                    
+                } else {
+                    break;
+                }
+                
+            }
+            
+        } catch ( IOException | InvalidFormatException exc ) {
+            exc.printStackTrace();
         }
         
     }
