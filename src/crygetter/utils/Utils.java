@@ -1111,13 +1111,13 @@ public class Utils {
         data.put( "aln", "" );
         
         boolean start = false;
-        int maxId = 0;
-        int maxSpc = 0;
+        int sizeId = 0;
+        int sizeSpc = 0;
         
         while ( s.hasNextLine() ) {
             
             String line = s.nextLine();
-            
+        
             if ( start == false && line.startsWith( "Cry" ) ) {
                 start = true;
             }
@@ -1132,16 +1132,8 @@ public class Utils {
                         
                         String cId = m.group( 1 );
                         String aln = m.group( 3 );
-                        int sizeId = cId.length();
-                        int sizeSpc = m.group( 2 ).length();
-                        
-                        if ( maxId < sizeId ) {
-                            maxId = sizeId;
-                        }
-                        
-                        if ( maxSpc < sizeSpc ) {
-                            maxSpc = sizeSpc;
-                        }
+                        sizeId = cId.length();
+                        sizeSpc = m.group( 2 ).length();
                         
                         if ( data.containsKey( cId ) ) {
                             data.replace( cId, data.get( cId ) + aln );
@@ -1150,7 +1142,7 @@ public class Utils {
                         }
                         
                     } else {
-                        data.replace( "aln", data.get( "aln" ) + line.substring( maxId + maxSpc ) );
+                        data.replace( "aln", data.get( "aln" ) + line.substring( sizeId + sizeSpc ) );
                     }
                     
                 }
@@ -1159,6 +1151,7 @@ public class Utils {
             
         }
         
+        // size correction
         int max = 0;
         
         for ( Map.Entry<String, String> e : data.entrySet() ) {
