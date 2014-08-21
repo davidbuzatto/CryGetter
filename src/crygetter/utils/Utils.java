@@ -80,6 +80,35 @@ public class Utils {
     private static final Color codeOK = new Color( 32, 160, 47 );
     private static final Color codeError = Color.RED;
     
+    private static final String whitespaceChars =  ""       /* dummy empty string for homogeneity */
+                + "\\u0009" // CHARACTER TABULATION
+                + "\\u000A" // LINE FEED (LF)
+                + "\\u000B" // LINE TABULATION
+                + "\\u000C" // FORM FEED (FF)
+                + "\\u000D" // CARRIAGE RETURN (CR)
+                + "\\u0020" // SPACE
+                + "\\u0085" // NEXT LINE (NEL) 
+                + "\\u00A0" // NO-BREAK SPACE
+                + "\\u1680" // OGHAM SPACE MARK
+                + "\\u180E" // MONGOLIAN VOWEL SEPARATOR
+                + "\\u2000" // EN QUAD 
+                + "\\u2001" // EM QUAD 
+                + "\\u2002" // EN SPACE
+                + "\\u2003" // EM SPACE
+                + "\\u2004" // THREE-PER-EM SPACE
+                + "\\u2005" // FOUR-PER-EM SPACE
+                + "\\u2006" // SIX-PER-EM SPACE
+                + "\\u2007" // FIGURE SPACE
+                + "\\u2008" // PUNCTUATION SPACE
+                + "\\u2009" // THIN SPACE
+                + "\\u200A" // HAIR SPACE
+                + "\\u2028" // LINE SEPARATOR
+                + "\\u2029" // PARAGRAPH SEPARATOR
+                + "\\u202F" // NARROW NO-BREAK SPACE
+                + "\\u205F" // MEDIUM MATHEMATICAL SPACE
+                + "\\u3000" // IDEOGRAPHIC SPACE
+                ;
+    
     /**
      * Gets data using HTTP POST method.
      * 
@@ -1065,48 +1094,20 @@ public class Utils {
     }
     
     /**
-     * Generates alignment data to be showed.
+     * Extracts alignment data from a .aln (clustal format) file..
      * 
      * @param fileToRead Alignment file, in Clutal Format, to read.
-     * @param fileToWrite File to write the processed alignment data.
-     * @param lineLength Line length.
+     * @param lineLength Length of the line to generate.
+     * @return A map with the data extracted data.
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public static void generateAlignmentData( File fileToRead, File fileToWrite, int lineLength ) 
+    public static Map<String, List<String>> extractAlignmentData( File fileToRead, int lineLength ) 
             throws FileNotFoundException, IOException {
         
-        String whitespace_chars =  ""       /* dummy empty string for homogeneity */
-                + "\\u0009" // CHARACTER TABULATION
-                + "\\u000A" // LINE FEED (LF)
-                + "\\u000B" // LINE TABULATION
-                + "\\u000C" // FORM FEED (FF)
-                + "\\u000D" // CARRIAGE RETURN (CR)
-                + "\\u0020" // SPACE
-                + "\\u0085" // NEXT LINE (NEL) 
-                + "\\u00A0" // NO-BREAK SPACE
-                + "\\u1680" // OGHAM SPACE MARK
-                + "\\u180E" // MONGOLIAN VOWEL SEPARATOR
-                + "\\u2000" // EN QUAD 
-                + "\\u2001" // EM QUAD 
-                + "\\u2002" // EN SPACE
-                + "\\u2003" // EM SPACE
-                + "\\u2004" // THREE-PER-EM SPACE
-                + "\\u2005" // FOUR-PER-EM SPACE
-                + "\\u2006" // SIX-PER-EM SPACE
-                + "\\u2007" // FIGURE SPACE
-                + "\\u2008" // PUNCTUATION SPACE
-                + "\\u2009" // THIN SPACE
-                + "\\u200A" // HAIR SPACE
-                + "\\u2028" // LINE SEPARATOR
-                + "\\u2029" // PARAGRAPH SEPARATOR
-                + "\\u202F" // NARROW NO-BREAK SPACE
-                + "\\u205F" // MEDIUM MATHEMATICAL SPACE
-                + "\\u3000" // IDEOGRAPHIC SPACE
-                ;   
-        
+           
         Scanner s = new Scanner( fileToRead );
-        Pattern p = Pattern.compile( "(\\w+)(["+ whitespace_chars + "]+)([\\w[-]]+)["+ whitespace_chars + "]*\\d*" );
+        Pattern p = Pattern.compile( "(\\w+)(["+ whitespaceChars + "]+)([\\w[-]]+)["+ whitespaceChars + "]*\\d*" );
         Map<String, String> data = new LinkedHashMap<>();
         data.put( "aln", "" );
         
@@ -1191,6 +1192,24 @@ public class Utils {
             export.put( id, sequences );
             
         }
+        
+        return export;
+        
+    }
+    
+    /**
+     * Generates alignment data to be showed.
+     * 
+     * @param fileToRead Alignment file, in Clutal Format, to read.
+     * @param fileToWrite File to write the processed alignment data.
+     * @param lineLength Line length.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public static void generateAlignmentData( File fileToRead, File fileToWrite, int lineLength ) 
+            throws FileNotFoundException, IOException {
+        
+        Map<String, List<String>> export = extractAlignmentData( fileToRead, lineLength );
         
         boolean hasData = true;
         

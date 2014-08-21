@@ -1251,8 +1251,8 @@ public class MainWindow extends javax.swing.JFrame {
             
             CryToxin selectedNow = (CryToxin) listProteins.getSelectedValue();
 
-            if ( selectedNow != null && !selectedNow.equals( evt ) ) {
-                selectedCt = (CryToxin) listProteins.getSelectedValue();
+            if ( selectedNow != null ) {
+                selectedCt = selectedNow;
                 updateDetails();
             }
             
@@ -1354,7 +1354,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         if ( ctList != null ) {
             
-            AlignDialog ad = new AlignDialog( this, true, ctList, defaultConfigs, configs );
+            AlignmentDialog ad = new AlignmentDialog( this, true, ctList, defaultConfigs, configs );
             ad.setVisible( true );
             
         } else {

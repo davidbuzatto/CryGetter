@@ -19,7 +19,7 @@ import javax.swing.JDialog;
  *
  * @author David
  */
-public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
+public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
 
     private Properties defaultConfigs;
     private Properties configs;
@@ -27,7 +27,7 @@ public class AlignAlgorithmsConfigDialog extends javax.swing.JDialog {
     /**
      * Creates new form ClustalConfigDialog
      */
-    public AlignAlgorithmsConfigDialog( JDialog parent, boolean modal, Properties defaultConfigs, Properties configs ) {
+    public AlignmentAlgorithmsConfigDialog( JDialog parent, boolean modal, Properties defaultConfigs, Properties configs ) {
         
         super( parent, modal );
         initComponents();

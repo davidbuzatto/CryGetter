@@ -13,28 +13,34 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author David
  */
-public class AlignDialog extends javax.swing.JDialog {
+public class AlignmentDialog extends javax.swing.JDialog {
 
     private DefaultTableModel proteinTableModel;
     private Properties defaultConfigs;
     private Properties configs;
+    private List<CryToxin> ctList;
     
     /**
      * Creates new form AlignDialog
      */
-    public AlignDialog( java.awt.Frame parent, boolean modal, List<CryToxin> ctList, Properties defaultConfigs, Properties configs ) {
+    public AlignmentDialog( java.awt.Frame parent, boolean modal, List<CryToxin> ctList, Properties defaultConfigs, Properties configs ) {
         
         super( parent, modal );
         initComponents();
         
+        this.ctList = ctList;
         this.defaultConfigs = defaultConfigs;
         this.configs = configs;
         
@@ -391,6 +397,11 @@ public class AlignDialog extends javax.swing.JDialog {
 
         btnAlignmentAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
         btnAlignmentAnalysis.setText("Analysis");
+        btnAlignmentAnalysis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlignmentAnalysisActionPerformed(evt);
+            }
+        });
 
         lblWait.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblWait.setForeground(new java.awt.Color(0, 102, 255));
@@ -1270,7 +1281,7 @@ public class AlignDialog extends javax.swing.JDialog {
 
     private void btnConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfActionPerformed
         
-        AlignAlgorithmsConfigDialog ad = new AlignAlgorithmsConfigDialog( this, true, defaultConfigs, configs );
+        AlignmentAlgorithmsConfigDialog ad = new AlignmentAlgorithmsConfigDialog( this, true, defaultConfigs, configs );
         ad.setVisible( true );
         
     }//GEN-LAST:event_btnConfActionPerformed
@@ -1318,6 +1329,33 @@ public class AlignDialog extends javax.swing.JDialog {
     private void btnTRIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTRIActionPerformed
         selectedAffectedToxins( "TRI" );
     }//GEN-LAST:event_btnTRIActionPerformed
+
+    private void btnAlignmentAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlignmentAnalysisActionPerformed
+        
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                "Clustal Alignment File (*.aln)", "aln" );
+
+        for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+            jfc.removeChoosableFileFilter( f );
+        }
+
+        jfc.setFileFilter( fnef );
+        jfc.setDialogTitle( "Load Alignment Data" );
+        jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+        jfc.setMultiSelectionEnabled( false );
+        
+        if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+            try {
+                Map<String, List<String>> extractedData = Utils.extractAlignmentData( jfc.getSelectedFile(), 60 );
+                AlignmentAnalysis aa = new AlignmentAnalysis( this, true, ctList, extractedData );
+                aa.setVisible( true );
+            } catch ( IOException exc ) {
+                Utils.showExceptionMessage( this, exc );
+            }
+        }
+        
+    }//GEN-LAST:event_btnAlignmentAnalysisActionPerformed
     
     private void selectedAffectedToxins( String order ) {
         
