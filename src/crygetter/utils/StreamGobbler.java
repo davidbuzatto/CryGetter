@@ -56,7 +56,7 @@ public class StreamGobbler extends Thread {
             }
             
         } catch ( IOException ioe ) {
-            ioe.printStackTrace();
+            Utils.showExceptionMessage( null, ioe );
         }
         
     }

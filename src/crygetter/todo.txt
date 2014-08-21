@@ -1,2 +1,4 @@
 - Melhorar configurações dos algoritmos de alinhamento (caixas de texto, validação, armazenamento de configurações).
 - Análise de pares - botão na tela de apresentação gráfica, escolhendo duas proteínas para verificar as diferenças.
+- Exportação dos fasta.
+- Correção de visualização de alinhamento.

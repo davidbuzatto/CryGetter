@@ -47,7 +47,7 @@ public class StreamGobblerUI extends Thread {
             }
             
         } catch ( IOException ioe ) {
-            ioe.printStackTrace();
+            Utils.showExceptionMessage( null, ioe );
         }
         
     }

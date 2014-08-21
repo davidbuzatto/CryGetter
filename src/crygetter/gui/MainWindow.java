@@ -2201,7 +2201,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
         } catch ( IOException | InvalidFormatException exc ) {
-            exc.printStackTrace();
+            Utils.showExceptionMessage( this, exc );
         }
         
     }

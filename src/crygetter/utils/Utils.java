@@ -693,7 +693,7 @@ public class Utils {
                             new File( "temp/" + readFrom.replace( ".fasta", ".dnd" ) )));
                 
                 } catch ( IOException | InterruptedException exc ) {
-                    exc.printStackTrace();
+                    Utils.showExceptionMessage( null, exc );
                 } finally {
                     btnAlign.setEnabled( true );
                     lblWait.setText( " " );
@@ -754,7 +754,7 @@ public class Utils {
                             new File( "temp/" + readFrom )));
                 
                 } catch ( IOException | InterruptedException exc ) {
-                    exc.printStackTrace();
+                    Utils.showExceptionMessage( null, exc );
                 } finally {
                     btnAlign.setEnabled( true );
                     lblWait.setText( " " );
@@ -816,7 +816,7 @@ public class Utils {
                             new File( "temp/" + readFrom ) ));
                 
                 } catch ( IOException | InterruptedException exc ) {
-                    exc.printStackTrace();
+                    Utils.showExceptionMessage( null, exc );
                 } finally {
                     btnAlign.setEnabled( true );
                     lblWait.setText( " " );
@@ -906,7 +906,7 @@ public class Utils {
                     }
                 
                 } catch ( IOException | InterruptedException exc ) {
-                    exc.printStackTrace();
+                    Utils.showExceptionMessage( null, exc );
                 } finally {
                     btnAlign.setEnabled( true );
                     lblWait.setText( " " );
