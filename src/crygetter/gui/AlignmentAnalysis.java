@@ -6,6 +6,7 @@
 
 package crygetter.gui;
 
+import crygetter.model.AminoacidDifference;
 import crygetter.model.CryToxin;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
 
     private DefaultListModel<CryToxin> proteinListModel1;
     private DefaultListModel<CryToxin> proteinListModel2;
+    private DefaultListModel<AminoacidDifference> aaDiffListModel;
     
     private CryToxin selectedCt1;
     private CryToxin selectedCt2;
@@ -43,9 +45,11 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         
         proteinListModel1 = new DefaultListModel<>();
         proteinListModel2 = new DefaultListModel<>();
+        aaDiffListModel = new DefaultListModel<>();
         
         listProteins1.setModel( proteinListModel1 );
         listProteins2.setModel( proteinListModel2 );
+        listDiff.setModel( aaDiffListModel );
         
         listProteins1.setCellRenderer( new CryToxinListCellRenderer() );
         listProteins2.setCellRenderer( new CryToxinListCellRenderer() );
@@ -72,6 +76,10 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         listProteins2 = new javax.swing.JList<CryToxin>();
         btnAnalyse = new javax.swing.JButton();
         checkDoNotIncludeGaps = new javax.swing.JCheckBox();
+        panelResults = new javax.swing.JPanel();
+        panelDiff = new javax.swing.JPanel();
+        spDiff = new javax.swing.JScrollPane();
+        listDiff = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Protein Analysis");
@@ -175,6 +183,48 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelResults.setBorder(javax.swing.BorderFactory.createTitledBorder("Results"));
+
+        panelDiff.setBorder(javax.swing.BorderFactory.createTitledBorder("Differences"));
+
+        listDiff.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        listDiff.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        spDiff.setViewportView(listDiff);
+
+        javax.swing.GroupLayout panelDiffLayout = new javax.swing.GroupLayout(panelDiff);
+        panelDiff.setLayout(panelDiffLayout);
+        panelDiffLayout.setHorizontalGroup(
+            panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiffLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spDiff, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelDiffLayout.setVerticalGroup(
+            panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDiffLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spDiff)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelResultsLayout = new javax.swing.GroupLayout(panelResults);
+        panelResults.setLayout(panelResultsLayout);
+        panelResultsLayout.setHorizontalGroup(
+            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelDiff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+        panelResultsLayout.setVerticalGroup(
+            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelDiff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,17 +232,21 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(475, 477));
+        setSize(new java.awt.Dimension(773, 477));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,8 +309,10 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             
             if ( !aaDiffs.isEmpty() ) {
                 
+                aaDiffListModel.clear();
+                
                 for ( AminoacidDifference aad : aaDiffs ) {
-                    System.out.println( aad );
+                    aaDiffListModel.addElement( aad );
                 }
                 
             } else {
@@ -301,12 +357,16 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalyse;
     private javax.swing.JCheckBox checkDoNotIncludeGaps;
+    private javax.swing.JList listDiff;
     private javax.swing.JList<CryToxin> listProteins1;
     private javax.swing.JList<CryToxin> listProteins2;
+    private javax.swing.JPanel panelDiff;
     private javax.swing.JPanel panelProtein1;
     private javax.swing.JPanel panelProtein2;
     private javax.swing.JPanel panelProteins;
+    private javax.swing.JPanel panelResults;
     private javax.swing.JScrollPane scrollProteins1;
     private javax.swing.JScrollPane scrollProteins2;
+    private javax.swing.JScrollPane spDiff;
     // End of variables declaration//GEN-END:variables
 }

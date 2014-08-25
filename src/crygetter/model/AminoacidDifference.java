@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package crygetter.gui;
+package crygetter.model;
 
 /**
  * A class to represent a difference between two aminoacids.
@@ -25,7 +25,7 @@ public class AminoacidDifference {
 
     @Override
     public String toString() {
-        return "AminoacidDifference{" + "aa1=" + aa1 + ", aa2=" + aa2 + ", position=" + position + '}';
+        return String.format( "%4d: %c %c", position, aa1, aa2 );
     }
     
 }

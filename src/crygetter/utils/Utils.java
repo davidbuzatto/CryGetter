@@ -1247,4 +1247,17 @@ public class Utils {
         
     }
     
+    public static void recursiveDelete( File f ) {
+        
+        if ( f.isFile() ) {
+            f.delete();
+        } else {
+            for ( File fr : f.listFiles() ) {
+                recursiveDelete( fr );
+            }
+            f.delete();
+        }
+        
+    }
+    
 }

@@ -267,8 +267,9 @@ public class MainWindow extends javax.swing.JFrame {
         fieldGrossAmount = new javax.swing.JTextField();
         fieldProcessAmount = new javax.swing.JTextField();
         btnAboutProc = new javax.swing.JButton();
-        painelConf = new javax.swing.JPanel();
+        painelMisc = new javax.swing.JPanel();
         btnColor = new javax.swing.JButton();
+        btnFASTA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
@@ -1126,29 +1127,42 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(btnAboutProc)))
         );
 
-        painelConf.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurations"));
+        painelMisc.setBorder(javax.swing.BorderFactory.createTitledBorder("Miscellaneous"));
 
         btnColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/color_wheel.png"))); // NOI18N
+        btnColor.setText("Color");
         btnColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColorActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout painelConfLayout = new javax.swing.GroupLayout(painelConf);
-        painelConf.setLayout(painelConfLayout);
-        painelConfLayout.setHorizontalGroup(
-            painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConfLayout.createSequentialGroup()
+        btnFASTA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        btnFASTA.setText("FASTA Gen.");
+        btnFASTA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFASTAActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelMiscLayout = new javax.swing.GroupLayout(painelMisc);
+        painelMisc.setLayout(painelMiscLayout);
+        painelMiscLayout.setHorizontalGroup(
+            painelMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelMiscLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnColor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFASTA)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        painelConfLayout.setVerticalGroup(
-            painelConfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConfLayout.createSequentialGroup()
+        painelMiscLayout.setVerticalGroup(
+            painelMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelMiscLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnColor))
+                .addGroup(painelMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnColor)
+                    .addComponent(btnFASTA)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1174,7 +1188,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelExtractionDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -1191,7 +1205,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAligment)
                             .addComponent(lblWait)))
-                    .addComponent(painelConf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1204,7 +1218,7 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtractActionPerformed
-        new Thread( new ExtractionTask( ( this ) ) ).start();
+        new Thread( new ExtractionTask( this ) ).start();
     }//GEN-LAST:event_btnExtractActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
@@ -1392,6 +1406,33 @@ public class MainWindow extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnColorActionPerformed
+
+    private void btnFASTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFASTAActionPerformed
+        
+        if ( ctList != null ) {
+            
+            JFileChooser jfc = new JFileChooser();
+            jfc.setDialogTitle( "Generate FASTA files" );
+            jfc.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY );
+            jfc.setMultiSelectionEnabled( false );
+
+            if ( jfc.showSaveDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+
+                File f = jfc.getSelectedFile();
+                File fastaDir = new File( f.getPath() + "/CryGetterFastaOutput" );
+                
+                new Thread( new GenerateFASTATask( this, fastaDir ) ).start();
+
+            }
+            
+        } else {
+            
+            JOptionPane.showMessageDialog( this, "First you need to load an extraction file!", 
+                    "Warning", JOptionPane.WARNING_MESSAGE );
+            
+        }
+        
+    }//GEN-LAST:event_btnFASTAActionPerformed
 
     private void prepareConfiguration() {
         
@@ -1846,7 +1887,9 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExtract.setEnabled( false );
                 btnLoad.setEnabled( false );
                 btnAligment.setEnabled( false );
-                lblWait.setText( "Aguarde..." );
+                btnColor.setEnabled( false );
+                btnFASTA.setEnabled( false );
+                lblWait.setText( "Wait..." );
                 
                 Date d = new Date();
 
@@ -1938,6 +1981,8 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExtract.setEnabled( true );
                 btnLoad.setEnabled( true );
                 btnAligment.setEnabled( true );
+                btnColor.setEnabled( true );
+                btnFASTA.setEnabled( true );
                 lblWait.setText( " " );
             }
 
@@ -1966,6 +2011,8 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExtract.setEnabled( false );
                 btnLoad.setEnabled( false );
                 btnAligment.setEnabled( false );
+                btnColor.setEnabled( false );
+                btnFASTA.setEnabled( false );
                 lblWait.setText( "Wait..." );
                 
                 selectedCt = null;
@@ -2137,6 +2184,80 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExtract.setEnabled( true );
                 btnLoad.setEnabled( true );
                 btnAligment.setEnabled( true );
+                btnColor.setEnabled( true );
+                btnFASTA.setEnabled( true );
+                lblWait.setText( " " );
+            }
+            
+        }
+        
+    }
+    
+    /**
+     * Task to perform FASTA file generation from protein data.
+     */
+    private class GenerateFASTATask implements Runnable {
+
+        JFrame frame;
+        File whereToWrite;
+        
+        GenerateFASTATask( JFrame frame, File whereToWrite ) {
+            this.frame = frame;
+            this.whereToWrite = whereToWrite;
+        }
+        
+        @Override
+        public void run() {
+            
+            try {
+                
+                btnExtract.setEnabled( false );
+                btnLoad.setEnabled( false );
+                btnAligment.setEnabled( false );
+                btnColor.setEnabled( false );
+                btnFASTA.setEnabled( false );
+                lblWait.setText( "Wait..." );
+                
+                if ( whereToWrite.exists() ) {
+                    Utils.recursiveDelete( whereToWrite );
+                }
+                
+                whereToWrite.mkdir();
+                
+                for ( CryToxin ct : ctList ) {
+                    
+                    File ctDir = new File( whereToWrite.getPath() + "/" + ct.name );
+                    ctDir.mkdir();
+                    
+                    FileWriter fwComplete = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-Complete.fasta") );
+                    fwComplete.write( Utils.formatAsFasta( ct.name + " - Complete", ct.proteinSequence, 60 ) );
+                    fwComplete.close();
+                    
+                    FileWriter fwD1 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D1.fasta") );
+                    fwD1.write( Utils.formatAsFasta( ct.name + " - Domain 1", ct.getDomainSequence( 1 ), 60 ) );
+                    fwD1.close();
+                    
+                    FileWriter fwD2 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D2.fasta") );
+                    fwD2.write( Utils.formatAsFasta( ct.name + " - Domain 2", ct.getDomainSequence( 2 ), 60 ) );
+                    fwD2.close();
+                    
+                    FileWriter fwD3 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D3.fasta") );
+                    fwD3.write( Utils.formatAsFasta( ct.name + " - Domain 3", ct.getDomainSequence( 3 ), 60 ) );
+                    fwD3.close();
+                    
+                }
+                
+                JOptionPane.showMessageDialog( frame, "FASTA files generated successfully at\n" +
+                        whereToWrite.getPath(), "Information", JOptionPane.INFORMATION_MESSAGE );
+                
+            } catch ( IOException exc ) {
+                Utils.showExceptionMessage( frame, exc );
+            } finally {
+                btnExtract.setEnabled( true );
+                btnLoad.setEnabled( true );
+                btnAligment.setEnabled( true );
+                btnColor.setEnabled( true );
+                btnFASTA.setEnabled( true );
                 lblWait.setText( " " );
             }
             
@@ -2252,6 +2373,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnAligment;
     private javax.swing.JButton btnColor;
     private javax.swing.JButton btnExtract;
+    private javax.swing.JButton btnFASTA;
     private javax.swing.JButton btnLoad;
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
@@ -2347,7 +2469,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel linkXrefD3;
     private javax.swing.JList<CryToxin> listProteins;
     private javax.swing.JList listRef;
-    private javax.swing.JPanel painelConf;
+    private javax.swing.JPanel painelMisc;
     private javax.swing.JPanel painelNCBI;
     private javax.swing.JPanel panelBtData;
     private javax.swing.JPanel panelCompleteSequence;
