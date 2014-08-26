@@ -16,14 +16,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author David
+ * Alignment dialog.
+ * 
+ * @author David Buzatto
  */
 public class AlignmentDialog extends javax.swing.JDialog {
 
@@ -31,15 +33,17 @@ public class AlignmentDialog extends javax.swing.JDialog {
     private Properties defaultConfigs;
     private Properties configs;
     private List<CryToxin> ctList;
+    private JFrame parent;
     
     /**
      * Creates new form AlignDialog
      */
-    public AlignmentDialog( java.awt.Frame parent, boolean modal, List<CryToxin> ctList, Properties defaultConfigs, Properties configs ) {
+    public AlignmentDialog( JFrame parent, boolean modal, List<CryToxin> ctList, Properties defaultConfigs, Properties configs ) {
         
         super( parent, modal );
         initComponents();
         
+        this.parent = parent;
         this.ctList = ctList;
         this.defaultConfigs = defaultConfigs;
         this.configs = configs;
@@ -1348,7 +1352,8 @@ public class AlignmentDialog extends javax.swing.JDialog {
         if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
             try {
                 Map<String, List<String>> extractedData = Utils.extractAlignmentData( jfc.getSelectedFile(), 60 );
-                AlignmentAnalysis aa = new AlignmentAnalysis( this, true, ctList, extractedData );
+                AlignmentAnalysis aa = new AlignmentAnalysis( this, true, ctList, 
+                        extractedData, ((MainWindow) parent).getAAData() );
                 aa.setVisible( true );
             } catch ( IOException exc ) {
                 Utils.showExceptionMessage( this, exc );

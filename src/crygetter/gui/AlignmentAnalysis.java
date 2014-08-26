@@ -6,8 +6,11 @@
 
 package crygetter.gui;
 
-import crygetter.model.AminoacidDifference;
+import crygetter.model.AminoAcid;
+import crygetter.model.AminoAcidDifference;
 import crygetter.model.CryToxin;
+import crygetter.utils.Utils;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,33 +18,46 @@ import java.util.Map.Entry;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.biojava.bio.structure.Structure;
+import org.biojava.bio.structure.align.gui.jmol.JmolPanel;
+import org.biojava.bio.structure.io.PDBFileReader;
 
 /**
- *
- * @author David
+ * Alignment analysis dialog.
+ * 
+ * @author David Buzatto
  */
 public class AlignmentAnalysis extends javax.swing.JDialog {
 
     private DefaultListModel<CryToxin> proteinListModel1;
     private DefaultListModel<CryToxin> proteinListModel2;
-    private DefaultListModel<AminoacidDifference> aaDiffListModel;
+    private DefaultListModel<AminoAcidDifference> aaDiffListModel;
     
     private CryToxin selectedCt1;
     private CryToxin selectedCt2;
     
+    private JmolPanel jmolPanelAA1;
+    private JmolPanel jmolPanelAA2;
+    
     private List<CryToxin> ctList;
-    Map<String, List<String>> extractedData;
+    private Map<String, List<String>> extractedData;
+    private Map<String, AminoAcid> aaData;
+    
+    private AminoAcidDifference aaDiff;
+    private AminoAcid aa1;
+    private AminoAcid aa2;
     
     /**
      * Creates new form AlignmentAnalysis
      */
-    public AlignmentAnalysis( JDialog parent, boolean modal, List<CryToxin> ctList, Map<String, List<String>> extractedData ) {
+    public AlignmentAnalysis( JDialog parent, boolean modal, List<CryToxin> ctList, Map<String, List<String>> extractedData, Map<String, AminoAcid> aaData ) {
         
         super( parent, modal );
         initComponents();
         
         this.ctList = ctList;
         this.extractedData = extractedData;
+        this.aaData = aaData;
         
         proteinListModel1 = new DefaultListModel<>();
         proteinListModel2 = new DefaultListModel<>();
@@ -54,7 +70,14 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         listProteins1.setCellRenderer( new CryToxinListCellRenderer() );
         listProteins2.setCellRenderer( new CryToxinListCellRenderer() );
         
+        jmolPanelAA1 = (JmolPanel) panelViewAA1;
+        jmolPanelAA2 = (JmolPanel) panelViewAA2;
+        
+        jmolPanelAA1.getViewer().runScript( "save STRUCTURE aa1Default" );
+        jmolPanelAA2.getViewer().runScript( "save STRUCTURE aa2Default" );
+        
         loadProteinLists();
+        updateUI();
         
     }
 
@@ -80,6 +103,20 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         panelDiff = new javax.swing.JPanel();
         spDiff = new javax.swing.JScrollPane();
         listDiff = new javax.swing.JList();
+        lblPos = new javax.swing.JLabel();
+        lblAA1 = new javax.swing.JLabel();
+        lblAA2 = new javax.swing.JLabel();
+        lblBS = new javax.swing.JLabel();
+        lblPosVal = new javax.swing.JLabel();
+        lblAA1Val = new javax.swing.JLabel();
+        lblAA2Val = new javax.swing.JLabel();
+        lblBSVal = new javax.swing.JLabel();
+        panelContAA1 = new javax.swing.JPanel();
+        panelViewAA1 = new JmolPanel();
+        btnDetailsAA1 = new javax.swing.JButton();
+        panelContAA2 = new javax.swing.JPanel();
+        panelViewAA2 = new JmolPanel();
+        btnDetailsAA2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Protein Analysis");
@@ -110,7 +147,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             panelProtein1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProtein1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollProteins1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(scrollProteins1)
                 .addContainerGap())
         );
 
@@ -137,7 +174,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             panelProtein2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProtein2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollProteins2, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(scrollProteins2)
                 .addContainerGap())
         );
 
@@ -173,14 +210,14 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProteinsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelProtein2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelProtein1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelProtein2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProtein1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAnalyse)
                     .addComponent(checkDoNotIncludeGaps))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelResults.setBorder(javax.swing.BorderFactory.createTitledBorder("Results"));
@@ -189,7 +226,28 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
 
         listDiff.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         listDiff.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listDiff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listDiffMouseClicked(evt);
+            }
+        });
         spDiff.setViewportView(listDiff);
+
+        lblPos.setText("Position:");
+
+        lblAA1.setText("AA 1:");
+
+        lblAA2.setText("AA 2:");
+
+        lblBS.setText("Blossum62 Score:");
+
+        lblPosVal.setText(" ");
+
+        lblAA1Val.setText(" ");
+
+        lblAA2Val.setText(" ");
+
+        lblBSVal.setText(" ");
 
         javax.swing.GroupLayout panelDiffLayout = new javax.swing.GroupLayout(panelDiff);
         panelDiff.setLayout(panelDiffLayout);
@@ -197,7 +255,21 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDiffLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spDiff, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spDiff, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(panelDiffLayout.createSequentialGroup()
+                        .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPos, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAA1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAA2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblBS, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPosVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAA1Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAA2Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblBSVal, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelDiffLayout.setVerticalGroup(
@@ -205,7 +277,111 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             .addGroup(panelDiffLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(spDiff)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPos)
+                    .addComponent(lblPosVal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAA1)
+                    .addComponent(lblAA1Val))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAA2)
+                    .addComponent(lblAA2Val))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBS)
+                    .addComponent(lblBSVal))
                 .addContainerGap())
+        );
+
+        panelContAA1.setBorder(javax.swing.BorderFactory.createTitledBorder("Protein 1 AA"));
+
+        panelViewAA1.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout panelViewAA1Layout = new javax.swing.GroupLayout(panelViewAA1);
+        panelViewAA1.setLayout(panelViewAA1Layout);
+        panelViewAA1Layout.setHorizontalGroup(
+            panelViewAA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        panelViewAA1Layout.setVerticalGroup(
+            panelViewAA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+
+        btnDetailsAA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/information.png"))); // NOI18N
+        btnDetailsAA1.setText("Details");
+        btnDetailsAA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailsAA1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContAA1Layout = new javax.swing.GroupLayout(panelContAA1);
+        panelContAA1.setLayout(panelContAA1Layout);
+        panelContAA1Layout.setHorizontalGroup(
+            panelContAA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAA1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelViewAA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDetailsAA1)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        panelContAA1Layout.setVerticalGroup(
+            panelContAA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAA1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelContAA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDetailsAA1)
+                    .addComponent(panelViewAA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelContAA2.setBorder(javax.swing.BorderFactory.createTitledBorder("Protein 2 AA"));
+
+        panelViewAA2.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout panelViewAA2Layout = new javax.swing.GroupLayout(panelViewAA2);
+        panelViewAA2.setLayout(panelViewAA2Layout);
+        panelViewAA2Layout.setHorizontalGroup(
+            panelViewAA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        panelViewAA2Layout.setVerticalGroup(
+            panelViewAA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+
+        btnDetailsAA2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/information.png"))); // NOI18N
+        btnDetailsAA2.setText("Details");
+        btnDetailsAA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailsAA2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContAA2Layout = new javax.swing.GroupLayout(panelContAA2);
+        panelContAA2.setLayout(panelContAA2Layout);
+        panelContAA2Layout.setHorizontalGroup(
+            panelContAA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAA2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelViewAA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDetailsAA2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelContAA2Layout.setVerticalGroup(
+            panelContAA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAA2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelContAA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDetailsAA2)
+                    .addComponent(panelViewAA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelResultsLayout = new javax.swing.GroupLayout(panelResults);
@@ -215,14 +391,23 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             .addGroup(panelResultsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelDiff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelContAA2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelContAA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelResultsLayout.setVerticalGroup(
             panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelResultsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelDiff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelDiff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultsLayout.createSequentialGroup()
+                        .addComponent(panelContAA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelContAA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,8 +418,8 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,10 +428,10 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(773, 477));
+        setSize(new java.awt.Dimension(1076, 611));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -284,7 +469,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             
             List<String> proteinData1 = extractedData.get( selectedCt1.name );
             List<String> proteinData2 = extractedData.get( selectedCt2.name );
-            List<AminoacidDifference> aaDiffs = new ArrayList<>();
+            List<AminoAcidDifference> aaDiffs = new ArrayList<>();
             
             for ( int i = 0; i < proteinData1.size(); i++ ) {
                 
@@ -295,11 +480,11 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                     
                     if ( checkDoNotIncludeGaps.isSelected() ) {
                         if ( seq1[j] != seq2[j] && seq1[j] != '-' && seq2[j] != '-' ) {
-                            aaDiffs.add( new AminoacidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
+                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
                         }
                     } else {
                         if ( seq1[j] != seq2[j] ) {
-                            aaDiffs.add( new AminoacidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
+                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
                         }
                     }
                     
@@ -311,7 +496,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 
                 aaDiffListModel.clear();
                 
-                for ( AminoacidDifference aad : aaDiffs ) {
+                for ( AminoAcidDifference aad : aaDiffs ) {
                     aaDiffListModel.addElement( aad );
                 }
                 
@@ -326,7 +511,45 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                     "Warning", JOptionPane.WARNING_MESSAGE );
         }
         
+        aaDiff = null;
+        aa1 = null;
+        aa2 = null;
+        
+        updateUI();
+        
     }//GEN-LAST:event_btnAnalyseActionPerformed
+
+    private void listDiffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listDiffMouseClicked
+        
+        if ( listDiff.getSelectedValue() != null ) {
+            
+            aaDiff = (AminoAcidDifference) listDiff.getSelectedValue();
+            aa1 = aaData.get( String.valueOf( aaDiff.aa1 ) );
+            aa2 = aaData.get( String.valueOf( aaDiff.aa2 ) );
+            
+            updateUI();
+            
+        }
+        
+    }//GEN-LAST:event_listDiffMouseClicked
+
+    private void btnDetailsAA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsAA1ActionPerformed
+        
+        if ( aa1 != null ) {
+            AminoAcidDetails aad = new AminoAcidDetails( this, true, aa1 );
+            aad.setVisible( true );
+        }
+        
+    }//GEN-LAST:event_btnDetailsAA1ActionPerformed
+
+    private void btnDetailsAA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsAA2ActionPerformed
+        
+        if ( aa2 != null ) {
+            AminoAcidDetails aad = new AminoAcidDetails( this, true, aa2 );
+            aad.setVisible( true );
+        }
+        
+    }//GEN-LAST:event_btnDetailsAA2ActionPerformed
 
     private void loadProteinLists() {
         
@@ -354,17 +577,79 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         
     }
     
+    private void updateUI() {
+        
+        PDBFileReader pdbr = new PDBFileReader();
+        
+        try {
+            
+            if ( aaDiff == null ) {
+
+                lblPosVal.setText( " " );
+                lblAA1Val.setText( " " );
+                lblAA2Val.setText( " " );
+                lblBSVal.setText( " " );
+
+                jmolPanelAA1.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
+                jmolPanelAA2.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
+
+            } else {
+
+                lblPosVal.setText( String.valueOf( aaDiff.position ) );
+                lblAA1Val.setText( String.valueOf( aaDiff.aa1 ) );
+                lblAA2Val.setText( String.valueOf( aaDiff.aa2 ) );
+                lblBSVal.setText( "TODO" );
+
+                Structure strucAA1;
+                Structure strucAA2;
+
+                if ( aa1 != null ) {
+                    strucAA1 = pdbr.getStructure( getClass().getResource( aa1.pdbFile ) );
+                } else {
+                    strucAA1 = pdbr.getStructure( getClass().getResource( "/clean.pdb" ) );
+                }
+                jmolPanelAA1.setStructure( strucAA1 );
+
+                if ( aa2 != null ) {
+                    strucAA2 = pdbr.getStructure( getClass().getResource( aa2.pdbFile ) );
+                } else {
+                    strucAA2 = pdbr.getStructure( getClass().getResource( "/clean.pdb" ) );
+                }
+                jmolPanelAA2.setStructure( strucAA2 );
+
+            }
+            
+        } catch ( IOException exc ) {
+            Utils.showExceptionMessage( this, exc );
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalyse;
+    private javax.swing.JButton btnDetailsAA1;
+    private javax.swing.JButton btnDetailsAA2;
     private javax.swing.JCheckBox checkDoNotIncludeGaps;
+    private javax.swing.JLabel lblAA1;
+    private javax.swing.JLabel lblAA1Val;
+    private javax.swing.JLabel lblAA2;
+    private javax.swing.JLabel lblAA2Val;
+    private javax.swing.JLabel lblBS;
+    private javax.swing.JLabel lblBSVal;
+    private javax.swing.JLabel lblPos;
+    private javax.swing.JLabel lblPosVal;
     private javax.swing.JList listDiff;
     private javax.swing.JList<CryToxin> listProteins1;
     private javax.swing.JList<CryToxin> listProteins2;
+    private javax.swing.JPanel panelContAA1;
+    private javax.swing.JPanel panelContAA2;
     private javax.swing.JPanel panelDiff;
     private javax.swing.JPanel panelProtein1;
     private javax.swing.JPanel panelProtein2;
     private javax.swing.JPanel panelProteins;
     private javax.swing.JPanel panelResults;
+    private javax.swing.JPanel panelViewAA1;
+    private javax.swing.JPanel panelViewAA2;
     private javax.swing.JScrollPane scrollProteins1;
     private javax.swing.JScrollPane scrollProteins2;
     private javax.swing.JScrollPane spDiff;

@@ -6,6 +6,7 @@
 
 package crygetter.gui;
 
+import crygetter.model.AminoAcid;
 import crygetter.model.CryToxin;
 import crygetter.model.CryToxinDomain;
 import crygetter.model.CryToxinSet;
@@ -97,6 +98,9 @@ public class MainWindow extends javax.swing.JFrame {
     // Cry order data
     private Map<String, List<String>> cryOrderData;
     
+    // AA data
+    private Map<String, AminoAcid> aaData;
+    
     // application configurations
     private Properties configs;
     private Properties defaultConfigs;
@@ -124,6 +128,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         prepareConfiguration();
         loadCryData();
+        loadAAData();
         
     }
 
@@ -2325,6 +2330,60 @@ public class MainWindow extends javax.swing.JFrame {
             Utils.showExceptionMessage( this, exc );
         }
         
+    }
+    
+    /**
+     * Loads Amino Acid Data
+     */
+    private void loadAAData() {
+        
+        try {
+            
+            Workbook wb = WorkbookFactory.create( getClass().getResourceAsStream( "/aaData.xlsx" ) );
+            Sheet sheet = wb.getSheetAt( 0 );
+            
+            
+            aaData = new LinkedHashMap<>();
+            
+            for ( int i = 1; ; i++ ) {    
+                
+                Row aaDataRow = sheet.getRow( i );
+                
+                if ( aaDataRow != null ) {
+                    
+                    String name = aaDataRow.getCell( 0 ).getStringCellValue();
+                    String threeLetter = aaDataRow.getCell( 1 ).getStringCellValue();
+                    String oneLetter = aaDataRow.getCell( 2 ).getStringCellValue();
+                    String sideChainPolarity = aaDataRow.getCell( 3 ).getStringCellValue();
+                    String sideChainCharge = aaDataRow.getCell( 4 ).getStringCellValue();
+                    String hydropathyIndex = aaDataRow.getCell( 5 ).getStringCellValue();
+
+                    AminoAcid aa = new AminoAcid();
+                    aa.name = name;
+                    aa.threeLetter = threeLetter;
+                    aa.oneLetter = oneLetter;
+                    aa.sideChainPolarity = sideChainPolarity;
+                    aa.sideChainCharge = sideChainCharge;
+                    aa.hydropathyIndex = hydropathyIndex;
+                    aa.pdbFile = "/" + threeLetter.toLowerCase() + ".pdb";
+                    aa.pngFile = "/" + threeLetter.toLowerCase() + ".png";
+
+                    aaData.put( oneLetter, aa );
+                    
+                } else {
+                    break;
+                }
+                
+            }
+            
+        } catch ( IOException | InvalidFormatException exc ) {
+            Utils.showExceptionMessage( this, exc );
+        }
+        
+    }
+
+    public Map<String, AminoAcid> getAAData() {
+        return aaData;
     }
     
     /**

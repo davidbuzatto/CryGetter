@@ -7,6 +7,7 @@
             <source-roots>
                 <root id="src.dir"/>
                 <root id="src.cryData.dir" name="Cry Data"/>
+                <root id="src.aaData.dir" name="AA Data"/>
                 <root id="src.view.dir" name="Alignment View"/>
             </source-roots>
             <test-roots>
