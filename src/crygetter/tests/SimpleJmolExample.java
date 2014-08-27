@@ -27,7 +27,7 @@ public class SimpleJmolExample {
         f.add( jp );
         
         PDBFileReader pdbr = new PDBFileReader();
-        Structure struc = pdbr.getStructure( new Object().getClass().getResource( "/his.pdb.gz" ) );
+        Structure struc = pdbr.getStructure( new Object().getClass().getResource( "/valine.pdb" ) );
         
         jp.setStructure( struc );
         

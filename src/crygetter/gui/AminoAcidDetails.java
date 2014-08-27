@@ -29,12 +29,22 @@ public class AminoAcidDetails extends javax.swing.JDialog {
         super( parent, modal );
         initComponents();
         
-        lblNameVal.setText( aa.name );
-        lbl3Val.setText( aa.threeLetter );
-        lbl1Val.setText( aa.oneLetter );
-        lblSCPVal.setText( aa.sideChainPolarity );
-        lblSCCVal.setText( aa.sideChainCharge );
-        lblHIVal.setText( aa.hydropathyIndex );
+        lblNameV.setText( aa.name );
+        lbl3V.setText( aa.threeLetter );
+        lbl1V.setText( aa.oneLetter );
+        lblGroupV.setText( aa.group );
+        lblSCGV.setText( aa.sideChainGroup );
+        lblSCPV.setText( aa.sideChainPolarity );
+        lblSCCV.setText( aa.sideChainCharge );
+        lblHIV.setText( aa.hydropathyIndex );
+        lblMMV.setText( aa.molecularMass );
+        lblVDWV.setText( aa.vanderWaalsVolume + " \u212b\u00b3" );
+        lblFPV.setText( aa.frequencyInProteins + "%" );
+        lblSAV.setText( aa.surfaceArea + " \u212b\u00b2" );
+        
+        for ( String obs : aa.observations ) {
+            areaObs.append( "- " + obs + "\n" );
+        }
         
         try {
             
@@ -62,20 +72,35 @@ public class AminoAcidDetails extends javax.swing.JDialog {
         lblName = new javax.swing.JLabel();
         lbl3 = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
+        lblGroup = new javax.swing.JLabel();
+        lblSCG = new javax.swing.JLabel();
         lblSCP = new javax.swing.JLabel();
         lblSCC = new javax.swing.JLabel();
         lblHI = new javax.swing.JLabel();
-        lblNameVal = new javax.swing.JLabel();
-        lbl3Val = new javax.swing.JLabel();
-        lbl1Val = new javax.swing.JLabel();
-        lblSCPVal = new javax.swing.JLabel();
-        lblSCCVal = new javax.swing.JLabel();
-        lblHIVal = new javax.swing.JLabel();
-        btnOk = new javax.swing.JButton();
+        lblMM = new javax.swing.JLabel();
+        lblVDW = new javax.swing.JLabel();
+        lblFP = new javax.swing.JLabel();
+        lblSA = new javax.swing.JLabel();
+        lblObs = new javax.swing.JLabel();
+        lblNameV = new javax.swing.JLabel();
+        lbl3V = new javax.swing.JLabel();
+        lbl1V = new javax.swing.JLabel();
+        lblGroupV = new javax.swing.JLabel();
+        lblSCGV = new javax.swing.JLabel();
+        lblSCPV = new javax.swing.JLabel();
+        lblSCCV = new javax.swing.JLabel();
+        lblHIV = new javax.swing.JLabel();
+        lblMMV = new javax.swing.JLabel();
+        lblVDWV = new javax.swing.JLabel();
+        lblFPV = new javax.swing.JLabel();
+        lblSAV = new javax.swing.JLabel();
+        spObs = new javax.swing.JScrollPane();
+        areaObs = new javax.swing.JTextArea();
         panelSF = new javax.swing.JPanel();
         panelSFPaint = new ImagePanel();
         panel3D = new javax.swing.JPanel();
         panel3DPaint = new JmolPanel();
+        btnOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Amino Acid Details");
@@ -89,31 +114,53 @@ public class AminoAcidDetails extends javax.swing.JDialog {
 
         lbl1.setText("1-Letter:");
 
-        lblSCP.setText("Side-chain polarity:");
+        lblGroup.setText("Group:");
+
+        lblSCG.setText("Side-chain group:");
+
+        lblSCP.setText("Side-chain polatiry:");
 
         lblSCC.setText("Side-chain charge (pH 7.4):");
 
         lblHI.setText("Hydropathy index:");
 
-        lblNameVal.setText(" ");
+        lblMM.setText("Molecular Mass:");
 
-        lbl3Val.setText(" ");
+        lblVDW.setText("Van der Waals Volume:");
 
-        lbl1Val.setText(" ");
+        lblFP.setText("Frequency in Proteins:");
 
-        lblSCPVal.setText(" ");
+        lblSA.setText("Surface Area:");
 
-        lblSCCVal.setText(" ");
+        lblObs.setText("Observations:");
 
-        lblHIVal.setText(" ");
+        lblNameV.setText(" ");
 
-        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/accept.png"))); // NOI18N
-        btnOk.setText("OK");
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOkActionPerformed(evt);
-            }
-        });
+        lbl3V.setText(" ");
+
+        lbl1V.setText(" ");
+
+        lblGroupV.setText(" ");
+
+        lblSCGV.setText(" ");
+
+        lblSCPV.setText(" ");
+
+        lblSCCV.setText(" ");
+
+        lblHIV.setText(" ");
+
+        lblMMV.setText(" ");
+
+        lblVDWV.setText(" ");
+
+        lblFPV.setText(" ");
+
+        lblSAV.setText(" ");
+
+        areaObs.setColumns(20);
+        areaObs.setRows(5);
+        spObs.setViewportView(areaObs);
 
         javax.swing.GroupLayout panelDetailsLayout = new javax.swing.GroupLayout(panelDetails);
         panelDetails.setLayout(panelDetailsLayout);
@@ -127,20 +174,33 @@ public class AminoAcidDetails extends javax.swing.JDialog {
                             .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblGroup, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSCG, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblSCP, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblSCC, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblHI, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblHI, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblMM, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblVDW, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFP, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSA, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNameVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl3Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl1Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSCPVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSCCVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblHIVal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetailsLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnOk)))
+                            .addComponent(lblNameV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl3V, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl1V, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblGroupV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSCGV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSCPV, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(lblSCCV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblHIV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMMV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblVDWV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSAV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(spObs)
+                    .addGroup(panelDetailsLayout.createSequentialGroup()
+                        .addComponent(lblObs)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelDetailsLayout.setVerticalGroup(
@@ -149,33 +209,61 @@ public class AminoAcidDetails extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(lblNameVal))
+                    .addComponent(lblNameV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl3)
-                    .addComponent(lbl3Val))
+                    .addComponent(lbl3V))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl1)
-                    .addComponent(lbl1Val))
+                    .addComponent(lbl1V))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGroup)
+                    .addComponent(lblGroupV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSCG)
+                    .addComponent(lblSCGV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSCP)
-                    .addComponent(lblSCPVal))
+                    .addComponent(lblSCPV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSCC)
-                    .addComponent(lblSCCVal))
+                    .addComponent(lblSCCV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHI)
-                    .addComponent(lblHIVal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnOk)
+                    .addComponent(lblHIV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMM)
+                    .addComponent(lblMMV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVDW)
+                    .addComponent(lblVDWV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFP)
+                    .addComponent(lblFPV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSA)
+                    .addComponent(lblSAV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblObs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spObs)
                 .addContainerGap())
         );
 
         panelSF.setBorder(javax.swing.BorderFactory.createTitledBorder("Structural Formula"));
+
+        panelSFPaint.setPreferredSize(new java.awt.Dimension(154, 300));
 
         javax.swing.GroupLayout panelSFPaintLayout = new javax.swing.GroupLayout(panelSFPaint);
         panelSFPaint.setLayout(panelSFPaintLayout);
@@ -185,7 +273,7 @@ public class AminoAcidDetails extends javax.swing.JDialog {
         );
         panelSFPaintLayout.setVerticalGroup(
             panelSFPaintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelSFLayout = new javax.swing.GroupLayout(panelSF);
@@ -201,24 +289,24 @@ public class AminoAcidDetails extends javax.swing.JDialog {
             panelSFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSFLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelSFPaint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelSFPaint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel3D.setBorder(javax.swing.BorderFactory.createTitledBorder("3D Structure"));
         panel3D.setToolTipText("");
 
-        panel3DPaint.setPreferredSize(new java.awt.Dimension(300, 300));
+        panel3DPaint.setPreferredSize(new java.awt.Dimension(400, 400));
 
         javax.swing.GroupLayout panel3DPaintLayout = new javax.swing.GroupLayout(panel3DPaint);
         panel3DPaint.setLayout(panel3DPaintLayout);
         panel3DPaintLayout.setHorizontalGroup(
             panel3DPaintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         panel3DPaintLayout.setVerticalGroup(
             panel3DPaintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel3DLayout = new javax.swing.GroupLayout(panel3D);
@@ -238,31 +326,44 @@ public class AminoAcidDetails extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/accept.png"))); // NOI18N
+        btnOk.setText("OK");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnOk)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel3D, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelSF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel3D, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(panelSF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOk)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(952, 405));
+        setSize(new java.awt.Dimension(1030, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,23 +372,38 @@ public class AminoAcidDetails extends javax.swing.JDialog {
     }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaObs;
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel lbl1;
-    private javax.swing.JLabel lbl1Val;
+    private javax.swing.JLabel lbl1V;
     private javax.swing.JLabel lbl3;
-    private javax.swing.JLabel lbl3Val;
+    private javax.swing.JLabel lbl3V;
+    private javax.swing.JLabel lblFP;
+    private javax.swing.JLabel lblFPV;
+    private javax.swing.JLabel lblGroup;
+    private javax.swing.JLabel lblGroupV;
     private javax.swing.JLabel lblHI;
-    private javax.swing.JLabel lblHIVal;
+    private javax.swing.JLabel lblHIV;
+    private javax.swing.JLabel lblMM;
+    private javax.swing.JLabel lblMMV;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblNameVal;
+    private javax.swing.JLabel lblNameV;
+    private javax.swing.JLabel lblObs;
+    private javax.swing.JLabel lblSA;
+    private javax.swing.JLabel lblSAV;
     private javax.swing.JLabel lblSCC;
-    private javax.swing.JLabel lblSCCVal;
+    private javax.swing.JLabel lblSCCV;
+    private javax.swing.JLabel lblSCG;
+    private javax.swing.JLabel lblSCGV;
     private javax.swing.JLabel lblSCP;
-    private javax.swing.JLabel lblSCPVal;
+    private javax.swing.JLabel lblSCPV;
+    private javax.swing.JLabel lblVDW;
+    private javax.swing.JLabel lblVDWV;
     private javax.swing.JPanel panel3D;
     private javax.swing.JPanel panel3DPaint;
     private javax.swing.JPanel panelDetails;
     private javax.swing.JPanel panelSF;
     private javax.swing.JPanel panelSFPaint;
+    private javax.swing.JScrollPane spObs;
     // End of variables declaration//GEN-END:variables
 }
