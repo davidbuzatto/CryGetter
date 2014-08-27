@@ -2381,7 +2381,7 @@ public class MainWindow extends javax.swing.JFrame {
                     aa.frequencyInProteins = frequencyInProteins;
                     aa.surfaceArea = surfaceArea;
                     aa.observations.addAll( Arrays.asList( observations ) );
-                    aa.pdbFile = "/" + name.toLowerCase() + ".pdb";
+                    aa.pdbFile = "/" + threeLetter.toLowerCase() + ".pdb";
                     aa.pngFile = "/" + threeLetter.toLowerCase() + ".png";
 
                     aaData.put( oneLetter, aa );

@@ -39,7 +39,7 @@
                       <Component id="panel3D" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -211,22 +211,22 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblSCG">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Side-chain group:"/>
+            <Property name="text" type="java.lang.String" value="Side-chain Group:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSCP">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Side-chain polatiry:"/>
+            <Property name="text" type="java.lang.String" value="Side-chain Polarity:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSCC">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Side-chain charge (pH 7.4):"/>
+            <Property name="text" type="java.lang.String" value="Side-chain Charge (pH 7.4):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblHI">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hydropathy index:"/>
+            <Property name="text" type="java.lang.String" value="Hydropathy Index:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMM">

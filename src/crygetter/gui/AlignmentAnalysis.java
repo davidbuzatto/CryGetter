@@ -73,9 +73,6 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         jmolPanelAA1 = (JmolPanel) panelViewAA1;
         jmolPanelAA2 = (JmolPanel) panelViewAA2;
         
-        jmolPanelAA1.getViewer().runScript( "save STRUCTURE aa1Default" );
-        jmolPanelAA2.getViewer().runScript( "save STRUCTURE aa2Default" );
-        
         loadProteinLists();
         updateUI();
         
@@ -229,6 +226,11 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         listDiff.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listDiffMouseClicked(evt);
+            }
+        });
+        listDiff.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listDiffValueChanged(evt);
             }
         });
         spDiff.setViewportView(listDiff);
@@ -521,7 +523,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
 
     private void listDiffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listDiffMouseClicked
         
-        if ( listDiff.getSelectedValue() != null ) {
+        /*if ( listDiff.getSelectedValue() != null ) {
             
             aaDiff = (AminoAcidDifference) listDiff.getSelectedValue();
             aa1 = aaData.get( String.valueOf( aaDiff.aa1 ) );
@@ -529,7 +531,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             
             updateUI();
             
-        }
+        }*/
         
     }//GEN-LAST:event_listDiffMouseClicked
 
@@ -550,6 +552,20 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_btnDetailsAA2ActionPerformed
+
+    private void listDiffValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listDiffValueChanged
+        
+        if ( listDiff.getSelectedValue() != null ) {
+            
+            aaDiff = (AminoAcidDifference) listDiff.getSelectedValue();
+            aa1 = aaData.get( String.valueOf( aaDiff.aa1 ) );
+            aa2 = aaData.get( String.valueOf( aaDiff.aa2 ) );
+            
+            updateUI();
+            
+        }
+        
+    }//GEN-LAST:event_listDiffValueChanged
 
     private void loadProteinLists() {
         
@@ -592,6 +608,8 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
 
                 jmolPanelAA1.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
                 jmolPanelAA2.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
+                jmolPanelAA1.getViewer().runScript( "zoom 1" );
+                jmolPanelAA2.getViewer().runScript( "zoom 1" );
 
             } else {
 
@@ -609,14 +627,22 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                     strucAA1 = pdbr.getStructure( getClass().getResource( "/clean.pdb" ) );
                 }
                 jmolPanelAA1.setStructure( strucAA1 );
-
+                
                 if ( aa2 != null ) {
                     strucAA2 = pdbr.getStructure( getClass().getResource( aa2.pdbFile ) );
                 } else {
                     strucAA2 = pdbr.getStructure( getClass().getResource( "/clean.pdb" ) );
                 }
                 jmolPanelAA2.setStructure( strucAA2 );
-
+                
+                if ( aa1 == null ) {
+                    jmolPanelAA1.getViewer().runScript( "zoom 1" );
+                }
+                
+                if ( aa2 == null ) {
+                    jmolPanelAA2.getViewer().runScript( "zoom 1" );
+                }
+                
             }
             
         } catch ( IOException exc ) {

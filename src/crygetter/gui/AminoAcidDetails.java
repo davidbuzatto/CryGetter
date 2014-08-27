@@ -116,13 +116,13 @@ public class AminoAcidDetails extends javax.swing.JDialog {
 
         lblGroup.setText("Group:");
 
-        lblSCG.setText("Side-chain group:");
+        lblSCG.setText("Side-chain Group:");
 
-        lblSCP.setText("Side-chain polatiry:");
+        lblSCP.setText("Side-chain Polarity:");
 
-        lblSCC.setText("Side-chain charge (pH 7.4):");
+        lblSCC.setText("Side-chain Charge (pH 7.4):");
 
-        lblHI.setText("Hydropathy index:");
+        lblHI.setText("Hydropathy Index:");
 
         lblMM.setText("Molecular Mass:");
 
@@ -348,7 +348,7 @@ public class AminoAcidDetails extends javax.swing.JDialog {
                         .addComponent(panelSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
