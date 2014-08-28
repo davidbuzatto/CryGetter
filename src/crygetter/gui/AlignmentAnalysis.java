@@ -103,11 +103,9 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         lblPos = new javax.swing.JLabel();
         lblAA1 = new javax.swing.JLabel();
         lblAA2 = new javax.swing.JLabel();
-        lblBS = new javax.swing.JLabel();
         lblPosVal = new javax.swing.JLabel();
         lblAA1Val = new javax.swing.JLabel();
         lblAA2Val = new javax.swing.JLabel();
-        lblBSVal = new javax.swing.JLabel();
         panelContAA1 = new javax.swing.JPanel();
         panelViewAA1 = new JmolPanel();
         btnDetailsAA1 = new javax.swing.JButton();
@@ -241,15 +239,11 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
 
         lblAA2.setText("AA 2:");
 
-        lblBS.setText("Blossum62 Score:");
-
         lblPosVal.setText(" ");
 
         lblAA1Val.setText(" ");
 
         lblAA2Val.setText(" ");
-
-        lblBSVal.setText(" ");
 
         javax.swing.GroupLayout panelDiffLayout = new javax.swing.GroupLayout(panelDiff);
         panelDiff.setLayout(panelDiffLayout);
@@ -260,17 +254,16 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(spDiff, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(panelDiffLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
                         .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPos, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAA1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAA2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBS, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblAA2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPosVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPosVal, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                             .addComponent(lblAA1Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblAA2Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblBSVal, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                            .addComponent(lblAA2Val, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -291,11 +284,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAA2)
                     .addComponent(lblAA2Val))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBS)
-                    .addComponent(lblBSVal))
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
 
         panelContAA1.setBorder(javax.swing.BorderFactory.createTitledBorder("Protein 1 AA"));
@@ -604,7 +593,6 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 lblPosVal.setText( " " );
                 lblAA1Val.setText( " " );
                 lblAA2Val.setText( " " );
-                lblBSVal.setText( " " );
 
                 jmolPanelAA1.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
                 jmolPanelAA2.setStructure( pdbr.getStructure( getClass().getResource( "/clean.pdb" ) ) );
@@ -616,7 +604,6 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 lblPosVal.setText( String.valueOf( aaDiff.position ) );
                 lblAA1Val.setText( String.valueOf( aaDiff.aa1 ) );
                 lblAA2Val.setText( String.valueOf( aaDiff.aa2 ) );
-                lblBSVal.setText( "TODO" );
 
                 Structure strucAA1;
                 Structure strucAA2;
@@ -660,8 +647,6 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
     private javax.swing.JLabel lblAA1Val;
     private javax.swing.JLabel lblAA2;
     private javax.swing.JLabel lblAA2Val;
-    private javax.swing.JLabel lblBS;
-    private javax.swing.JLabel lblBSVal;
     private javax.swing.JLabel lblPos;
     private javax.swing.JLabel lblPosVal;
     private javax.swing.JList listDiff;

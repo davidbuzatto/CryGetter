@@ -8,6 +8,7 @@ package crygetter.tests;
 import java.io.IOException;
 import javax.swing.JFrame;
 import org.biojava.bio.structure.Structure;
+import org.biojava.bio.structure.align.gui.aligpanel.AligPanel;
 import org.biojava.bio.structure.align.gui.jmol.JmolPanel;
 import org.biojava.bio.structure.io.PDBFileReader;
 
@@ -27,7 +28,7 @@ public class SimpleJmolExample {
         f.add( jp );
         
         PDBFileReader pdbr = new PDBFileReader();
-        Structure struc = pdbr.getStructure( new Object().getClass().getResource( "/valine.pdb" ) );
+        Structure struc = pdbr.getStructure( new Object().getClass().getResource( "/val.pdb" ) );
         
         jp.setStructure( struc );
         
