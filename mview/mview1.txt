@@ -1,0 +1,116 @@
+usage: mview [options] [file...]
+
+Some of these options take multiple arguments which must be supplied
+as a comma separated list. Integral subranges therein are allowed, eg.,
+'1,2,5..10,20'. The list must be quoted if it contains whitespace or a
+wildcard that might be expanded by the shell. Optional parameter values are
+given between braces {}; defaults are given in square brackets [].
+
+Input/output formats:
+  -in string            Input format {blast,clustal,fasta,hssp,jnetz,mips,msf,multas,pearson,pir,plain} [no default].
+  -out string           Output format {msf,new,pearson,pir,plain,rdb} [new].
+
+Main formatting options:
+  -ruler on|off         Show ruler [off].
+  -alignment on|off     Show alignment [on].
+  -consensus on|off     Show consensus [off].
+  -pcid string          Compute percent identities with respect to {aligned,hit,reference} [aligned].
+  -dna                  Use nucleotide colormaps and/or consensus groups [unset].
+
+Alignment options:
+  -coloring string      Basic style of coloring {any,consensus,group,identity,none} [none].
+  -colormap string      Name of colormap to use [no default].
+  -groupmap string      Name of groupmap to use if coloring by consensus [no default].
+  -threshold float      Threshold percentage for consensus coloring [70].
+  -ignore string        Ignore singleton or class groups {class,none,singleton} [none].
+
+Consensus options:
+  -con_coloring string  Basic style of coloring {any,identity,none} [none].
+  -con_colormap string  Name of colormap to use [no default].
+  -con_groupmap string  Name of groupmap to use if coloring by consensus [no default].
+  -con_threshold flo[,flo] Consensus line thresholds [100,90,80,70].
+  -con_ignore string    Ignore singleton or class groups {class,none,singleton} [none].
+
+Hybrid alignment and consensus options:
+  -con_gaps on|off      Count gaps during consensus computations if set to 'on' [on].
+
+User defined colormap and consensus group definition:
+  -colorfile            Load more colormaps from file [no default].
+  -groupfile            Load more groupmaps from file [no default].
+
+General row/column filters:
+  -top string           Report top N hits [all].
+  -range string         Display column range M..N as numbered by ruler [all].
+  -maxident float       Only report sequences with percent identity <= N [100].
+  -minident float       Only report sequences with percent identity >= N [0].
+  -ref string           Use row N or row identifier as %identity reference [query].
+  -keep str[,str]       Keep rows 1..N or row identifiers [no default].
+  -disc str[,str]       Discard rows 1..N or row identifiers [no default].
+  -nops str[,str]       Display rows 1..N or row identifiers unprocessed [no default].
+
+General formatting options:
+  -width string         Paginate in N columns of alignment [flat].
+  -gap string           Use this gap character [-].
+  -label0               Switch off label {0= row number} [unset].
+  -label1               Switch off label {1= identifier} [unset].
+  -label2               Switch off label {2= description} [unset].
+  -label3               Switch off label {3= scores} [unset].
+  -label4               Switch off label {4= percent identity} [unset].
+  -label5               Switch off label {5= first sequence positions: query} [unset].
+  -label6               Switch off label {6= second sequence positions: hit} [unset].
+  -register on|off      Output multi-pass alignments with columns in register [on].
+
+HTML markup options:
+  -html string          Controls amount of HTML markup {head,body,data,full,off} [off].
+  -title string         Page title string [''].
+  -pagecolor string     Page backgound color [white].
+  -textcolor string     Page text color [black].
+  -linkcolor string     Link color [blue].
+  -alinkcolor string    Active link color [red].
+  -vlinkcolor string    Visited link color [purple].
+  -alncolor string      Alignment background color [white].
+  -labcolor string      Alignment label color [black].
+  -symcolor string      Alignment symbol default color [#666666].
+  -gapcolor string      Alignment gap color [#666666].
+  -css string           Use Cascading Style Sheets {off,on,URL} [off].
+  -bold                 Use bold emphasis for coloring sequence symbols [unset].
+  -srs string           Try to use SRS links {off,on} [off].
+  -find string          Find and highlight exact string or simple regular expression [''].
+
+BLAST (series 1):
+  -hsp string           HSP tiling method {all,discrete,ranked} [ranked].
+  -maxpval string       Ignore hits with p-value greater than N [unlimited].
+  -minscore string      Ignore hits with score less than N [unlimited].
+  -strand str[,str]     Report only these query strand orientations {p,m,*} [*].
+
+BLAST (series 2):
+  -hsp string           HSP tiling method {all,discrete,ranked} [ranked].
+  -maxeval string       Ignore hits with e-value greater than N [unlimited].
+  -minbits string       Ignore hits with bits less than N [unlimited].
+  -strand str[,str]     Report only these query strand orientations {p,m,*} [*].
+
+PSI-BLAST:
+  -hsp string           HSP tiling method {all,discrete,ranked} [ranked].
+  -maxeval string       Ignore hits with e-value greater than N [unlimited].
+  -minbits string       Ignore hits with bits less than N [unlimited].
+  -cycle str[,str]      Process the N'th cycle of a multipass search {1..N,last} [last].
+
+FASTA:
+  -minopt string        Ignore hits with opt score less than N [unlimited].
+  -strand str[,str]     Report only these query strand orientations {p,m,*} [*].
+
+HSSP/Maxhom:
+  -chain str[,str]      Report only these chainnames/numbers {A,B,...,*} [*].
+
+MULTAL/MULTAS:
+  -block str[,str]      Report only these blocks {1..N,first,*} [first].
+
+More information and help:
+  -help                 This help [no default].
+  -listcolors           Print listing of known colormaps [no default].
+  -listgroups           Print listing of known consensus groups [no default].
+  -listcss              Print style sheet [no default].
+
+
+MView 1.56, Copyright (C) 1997-2013 Nigel P. Brown
+
