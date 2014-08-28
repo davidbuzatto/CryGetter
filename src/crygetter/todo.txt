@@ -1,4 +1,2 @@
 - Melhorar configurações dos algoritmos de alinhamento (caixas de texto, validação, armazenamento de configurações).
-- Análise de pares:
-    características dos aminoácidos -> combinação e blossum
 - Correção de visualização de alinhamento?
