@@ -9,12 +9,14 @@ package crygetter.gui;
 import crygetter.model.CryToxin;
 import crygetter.utils.Utils;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -72,6 +74,11 @@ public class AlignmentDialog extends javax.swing.JDialog {
 
         btnGrpAlgoritmoAlinhamento = new javax.swing.ButtonGroup();
         btnGrpTipoAlinhamento = new javax.swing.ButtonGroup();
+        menuPopView = new javax.swing.JPopupMenu();
+        itemCGView = new javax.swing.JMenuItem();
+        sepCGView = new javax.swing.JPopupMenu.Separator();
+        itemMView = new javax.swing.JMenuItem();
+        itemConfMView = new javax.swing.JMenuItem();
         painel = new javax.swing.JPanel();
         spProteinas = new javax.swing.JScrollPane();
         tableProteins = new javax.swing.JTable();
@@ -103,11 +110,40 @@ public class AlignmentDialog extends javax.swing.JDialog {
         radioMUSCLE = new javax.swing.JRadioButton();
         btnConf = new javax.swing.JButton();
         btnAlign = new javax.swing.JButton();
-        btnAlignmentAnalysis = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        btnAnalysis = new javax.swing.JButton();
         lblWait = new javax.swing.JLabel();
         panelOutput = new javax.swing.JPanel();
         spOutput = new javax.swing.JScrollPane();
         areaOutput = new javax.swing.JTextPane();
+
+        itemCGView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        itemCGView.setText("CryGetter Visualization");
+        itemCGView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCGViewActionPerformed(evt);
+            }
+        });
+        menuPopView.add(itemCGView);
+        menuPopView.add(sepCGView);
+
+        itemMView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        itemMView.setText("MView Visualization");
+        itemMView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMViewActionPerformed(evt);
+            }
+        });
+        menuPopView.add(itemMView);
+
+        itemConfMView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/wrench.png"))); // NOI18N
+        itemConfMView.setText("MView Configuration");
+        itemConfMView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConfMViewActionPerformed(evt);
+            }
+        });
+        menuPopView.add(itemConfMView);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Protein Alignment");
@@ -399,11 +435,19 @@ public class AlignmentDialog extends javax.swing.JDialog {
             }
         });
 
-        btnAlignmentAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
-        btnAlignmentAnalysis.setText("Analysis");
-        btnAlignmentAnalysis.addActionListener(new java.awt.event.ActionListener() {
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/report.png"))); // NOI18N
+        btnView.setText("View");
+        btnView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnViewMouseClicked(evt);
+            }
+        });
+
+        btnAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/shape_align_center.png"))); // NOI18N
+        btnAnalysis.setText("Analysis");
+        btnAnalysis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlignmentAnalysisActionPerformed(evt);
+                btnAnalysisActionPerformed(evt);
             }
         });
 
@@ -429,7 +473,9 @@ public class AlignmentDialog extends javax.swing.JDialog {
                     .addGroup(painelLayout.createSequentialGroup()
                         .addComponent(btnAlign)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlignmentAnalysis)
+                        .addComponent(btnView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAnalysis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelSelections, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -455,11 +501,12 @@ public class AlignmentDialog extends javax.swing.JDialog {
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAlign)
                             .addComponent(lblWait)
-                            .addComponent(btnAlignmentAnalysis))))
+                            .addComponent(btnAnalysis)
+                            .addComponent(btnView))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelOutput.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Alignment Algorithm Process Output"));
+        panelOutput.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Alignment Algorithms and MView Process Output"));
 
         areaOutput.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         spOutput.setViewportView(areaOutput);
@@ -770,7 +817,8 @@ public class AlignmentDialog extends javax.swing.JDialog {
                         "Clustal Omega - ERROR", 
                         new Color( 22, 142, 170 ), Color.RED,
                         new Color( 32, 160, 47 ), Color.RED,
-                        areaOutput, btnAlign, lblWait,
+                        areaOutput, lblWait,
+                        new JButton[]{ btnAlign, btnView, btnAnalysis },
                         new File( readFrom ) );
 
             } else if ( radioClustalW.isSelected() ) {
@@ -1203,7 +1251,8 @@ public class AlignmentDialog extends javax.swing.JDialog {
                         "ClustalW - ERROR", 
                         new Color( 22, 142, 170 ), Color.RED,
                         new Color( 32, 160, 47 ), Color.RED,
-                        areaOutput, btnAlign, lblWait,
+                        areaOutput, lblWait,
+                        new JButton[]{ btnAlign, btnView, btnAnalysis },
                         new File( readFrom ),
                         new File( readFrom.replace( ".fasta", ".dnd" ) ) );
 
@@ -1254,7 +1303,8 @@ public class AlignmentDialog extends javax.swing.JDialog {
                         "MUSCLE - OUTPUT", 
                         new Color( 22, 142, 170 ), new Color( 22, 142, 170 ),
                         new Color( 32, 160, 47 ), Color.RED,
-                        areaOutput, btnAlign, lblWait,
+                        areaOutput, lblWait,
+                        new JButton[]{ btnAlign, btnView, btnAnalysis },
                         new File( readFrom ) );
 
             }
@@ -1334,7 +1384,7 @@ public class AlignmentDialog extends javax.swing.JDialog {
         selectedAffectedToxins( "TRI" );
     }//GEN-LAST:event_btnTRIActionPerformed
 
-    private void btnAlignmentAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlignmentAnalysisActionPerformed
+    private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
         
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
@@ -1360,7 +1410,264 @@ public class AlignmentDialog extends javax.swing.JDialog {
             }
         }
         
-    }//GEN-LAST:event_btnAlignmentAnalysisActionPerformed
+    }//GEN-LAST:event_btnAnalysisActionPerformed
+
+    private void btnViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewMouseClicked
+        menuPopView.show( btnView, evt.getX(), evt.getY());
+    }//GEN-LAST:event_btnViewMouseClicked
+
+    private void itemCGViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCGViewActionPerformed
+                
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                "Clustal Alignment File (*.aln)", "aln" );
+
+        for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+            jfc.removeChoosableFileFilter( f );
+        }
+
+        jfc.setFileFilter( fnef );
+        jfc.setDialogTitle( "Load Alignment Data" );
+        jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+        jfc.setMultiSelectionEnabled( false );
+        
+        if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+            
+            try {
+                
+                Utils.generateAlignmentData( jfc.getSelectedFile(), new File( "view/data.js" ), 60 );
+                
+                if ( Desktop.isDesktopSupported() ) {
+                    try {
+                        Desktop.getDesktop().browse( new File( "view/view.html" ).toURI() );
+                    } catch ( IOException exc ) {
+                        Utils.showExceptionMessage( null, exc );
+                    }
+                }
+                
+            } catch ( IOException exc ) {
+                Utils.showExceptionMessage( this, exc );
+            }
+            
+        }
+            
+    }//GEN-LAST:event_itemCGViewActionPerformed
+
+    private void itemMViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMViewActionPerformed
+        
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                "Clustal Alignment File (*.aln)", "aln" );
+
+        for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+            jfc.removeChoosableFileFilter( f );
+        }
+
+        jfc.setFileFilter( fnef );
+        jfc.setDialogTitle( "Load Alignment Data" );
+        jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+        jfc.setMultiSelectionEnabled( false );
+        
+        if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+            
+            try {
+                
+                areaOutput.setText( "" );
+                Utils.appendToPane( areaOutput, "", Color.BLACK, Color.WHITE );
+            
+                // NONE, identity, any, consensus, group
+                String alignmentColoring = "NONE";
+                switch ( configs.getProperty( "mwAC" ) ) {
+                    case "0":
+                        alignmentColoring = "NONE";
+                        break;
+                    case "1":
+                        alignmentColoring = "identity";
+                        break;
+                    case "2":
+                        alignmentColoring = "any";
+                        break;
+                    case "3":
+                        alignmentColoring = "consensus";
+                        break;
+                    case "4":
+                        alignmentColoring = "group";
+                        break;
+                }
+                
+                
+                // NONE, CCLUSTAL, CLUSTAL, CHARGE, CYS, DC1, GPCR, HXLIN, NARDI, P1, PC1, POLAR1
+                String alignmentColorMap = "NONE";
+                switch ( configs.getProperty( "mwACM" ) ) {
+                    case "0":
+                        alignmentColorMap = "NONE";
+                        break;
+                    case "1":
+                        alignmentColorMap = "CCLUSTAL";
+                        break;
+                    case "2":
+                        alignmentColorMap = "CLUSTAL";
+                        break;
+                    case "3":
+                        alignmentColorMap = "CHARGE";
+                        break;
+                    case "4":
+                        alignmentColorMap = "CYS";
+                        break;
+                    case "5":
+                        alignmentColorMap = "GPCR";
+                        break;
+                    case "6":
+                        alignmentColorMap = "HXLIN";
+                        break;
+                    case "7":
+                        alignmentColorMap = "NARDI";
+                        break;
+                    case "8":
+                        alignmentColorMap = "P1";
+                        break;
+                    case "9":
+                        alignmentColorMap = "PC1";
+                        break;
+                    case "10":
+                        alignmentColorMap = "POLAR1";
+                        break;
+                }
+                
+                // NONE, CYS, P1
+                String alignmentGroupMap = "NONE";
+                switch ( configs.getProperty( "mwAGM" ) ) {
+                    case "0":
+                        alignmentGroupMap = "NONE";
+                        break;
+                    case "1":
+                        alignmentGroupMap = "CYS";
+                        break;
+                    case "2":
+                        alignmentGroupMap = "P1";
+                        break;
+                }
+                
+                // NONE, identity, any
+                String consensusColoring = "NONE";
+                switch ( configs.getProperty( "mwCC" ) ) {
+                    case "0":
+                        consensusColoring = "NONE";
+                        break;
+                    case "1":
+                        consensusColoring = "identity";
+                        break;
+                    case "2":
+                        consensusColoring = "any";
+                        break;
+                }
+                
+                // NONE, CCLUSTAL, CLUSTAL, CHARGE, CYS, DC1, GPCR, HXLIN, NARDI, P1, PC1, POLAR1
+                String consensusColorMap = "NONE";
+                switch ( configs.getProperty( "mwCCM" ) ) {
+                    case "0":
+                        consensusColorMap = "NONE";
+                        break;
+                    case "1":
+                        consensusColorMap = "CCLUSTAL";
+                        break;
+                    case "2":
+                        consensusColorMap = "CLUSTAL";
+                        break;
+                    case "3":
+                        consensusColorMap = "CHARGE";
+                        break;
+                    case "4":
+                        consensusColorMap = "CYS";
+                        break;
+                    case "5":
+                        consensusColorMap = "GPCR";
+                        break;
+                    case "6":
+                        consensusColorMap = "HXLIN";
+                        break;
+                    case "7":
+                        consensusColorMap = "NARDI";
+                        break;
+                    case "8":
+                        consensusColorMap = "P1";
+                        break;
+                    case "9":
+                        consensusColorMap = "PC1";
+                        break;
+                    case "10":
+                        consensusColorMap = "POLAR1";
+                        break;
+                }
+                
+                // NONE, CYS, P1
+                String consensusGroupMap = "NONE";
+                switch ( configs.getProperty( "mwCGM" ) ) {
+                    case "0":
+                        consensusGroupMap = "NONE";
+                        break;
+                    case "1":
+                        consensusGroupMap = "CYS";
+                        break;
+                    case "2":
+                        consensusGroupMap = "P1";
+                        break;
+                }
+
+                String perlExe = configs.getProperty( "mwPP" );
+                String baseCommand = "mview -in clustal -ruler on -html head -bold -consensus on -css on -width 60";
+                String input = jfc.getSelectedFile().getAbsolutePath().replace( "\\", "/" );
+
+                String otherParameters = "";
+
+                if ( !alignmentColoring.equals( "NONE" ) ) {
+                    otherParameters += " -coloring " + alignmentColoring;
+                }
+
+                if ( !alignmentColorMap.equals( "NONE" ) ) {
+                    otherParameters += " -colormap " + alignmentColorMap;
+                }
+
+                if ( !alignmentGroupMap.equals( "NONE" ) ) {
+                    otherParameters += " -groupmap " + alignmentGroupMap;
+                }
+
+                if ( !consensusColoring.equals( "NONE" ) ) {
+                    otherParameters += " -con_coloring " + consensusColoring;
+                }
+
+                if ( !consensusColorMap.equals( "NONE" ) ) {
+                    otherParameters += " -con_colormap " + consensusColorMap;
+                }
+
+                if ( !consensusGroupMap.equals( "NONE" ) ) {
+                    otherParameters += " -con_groupmap " + consensusGroupMap;
+                }
+
+                Utils.runMView( 
+                        perlExe, 
+                        String.format( "\"%s\" %s %s \"%s\"", perlExe, baseCommand, otherParameters, input ), 
+                        "view/mview.html", 
+                        "MView - OUTPUT", 
+                        "MView - ERROR", 
+                        new Color( 22, 142, 170 ), Color.RED,
+                        new Color( 32, 160, 47 ), Color.RED,
+                        areaOutput, 
+                        lblWait,
+                        btnAlign, btnView, btnAnalysis );
+                
+            } catch ( IOException | InterruptedException exc ) {
+                Utils.showExceptionMessage( this, exc );
+            }
+            
+        }
+        
+    }//GEN-LAST:event_itemMViewActionPerformed
+
+    private void itemConfMViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfMViewActionPerformed
+        MViewConfiguration mc = new MViewConfiguration( this, true, defaultConfigs, configs );
+        mc.setVisible( true );
+    }//GEN-LAST:event_itemConfMViewActionPerformed
     
     private void selectedAffectedToxins( String order ) {
         
@@ -1404,7 +1711,7 @@ public class AlignmentDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane areaOutput;
     private javax.swing.JButton btnAlign;
-    private javax.swing.JButton btnAlignmentAnalysis;
+    private javax.swing.JButton btnAnalysis;
     private javax.swing.JButton btnBLA;
     private javax.swing.JButton btnCOL;
     private javax.swing.JButton btnCleanSelection;
@@ -1421,12 +1728,17 @@ public class AlignmentDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnSelectAll;
     private javax.swing.JButton btnTHY;
     private javax.swing.JButton btnTRI;
+    private javax.swing.JButton btnView;
     private javax.swing.JCheckBox checkBoundaries;
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
     private javax.swing.JCheckBox checkOnlyByOne;
+    private javax.swing.JMenuItem itemCGView;
+    private javax.swing.JMenuItem itemConfMView;
+    private javax.swing.JMenuItem itemMView;
     private javax.swing.JLabel lblWait;
+    private javax.swing.JPopupMenu menuPopView;
     private javax.swing.JPanel painel;
     private javax.swing.JPanel painelAlgorithms;
     private javax.swing.JPanel painelAlignment;
@@ -1437,6 +1749,7 @@ public class AlignmentDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton radioClustalW;
     private javax.swing.JRadioButton radioCompleteProtein;
     private javax.swing.JRadioButton radioMUSCLE;
+    private javax.swing.JPopupMenu.Separator sepCGView;
     private javax.swing.JScrollPane spOutput;
     private javax.swing.JScrollPane spProteinas;
     private javax.swing.JTable tableProteins;

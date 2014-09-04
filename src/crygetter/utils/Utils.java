@@ -872,8 +872,8 @@ public class Utils {
      * @param codeOKColor Color to use for no error code
      * @param codeErrorColor Color to use for error code
      * @param textArea JTextPane to log the process output
-     * @param btnAlign Button used to start the alignment process
      * @param lblWait Label to show the progress
+     * @param btns Buttons to change state
      * @param filesToDelete Files that need to be deleted after the process execution.
      * @throws IOException
      * @throws InterruptedException 
@@ -891,8 +891,8 @@ public class Utils {
             final Color codeOKColor,
             final Color codeErrorColor, 
             final JTextPane textArea,
-            final JButton btnAlign,
             final JLabel lblWait,
+            final JButton[] btns,
             final File... filesToDelete ) 
             throws IOException, InterruptedException {
         
@@ -903,8 +903,10 @@ public class Utils {
                 
                 try {
                     
-                    btnAlign.setEnabled( false );
-                    lblWait.setText( "Wait, processing the alignment..." );
+                    for ( JButton b : btns ) {
+                        b.setEnabled( false );
+                    }
+                    lblWait.setText( "Wait..." );
                     
                     SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
                                 "Command: " + command + "\n\n", Color.BLACK, Color.WHITE ) );
@@ -937,7 +939,9 @@ public class Utils {
                 } catch ( IOException | InterruptedException exc ) {
                     Utils.showExceptionMessage( null, exc );
                 } finally {
-                    btnAlign.setEnabled( true );
+                    for ( JButton b : btns ) {
+                        b.setEnabled( true );
+                    }
                     lblWait.setText( " " );
                 }
             }
@@ -1054,7 +1058,7 @@ public class Utils {
                     f.delete();
                     fileToMove.renameTo( f );
                     
-                    if ( fileExtension.equals( "aln" ) ) {
+                    /*if ( fileExtension.equals( "aln" ) ) {
                         
                         try {
                             
@@ -1077,7 +1081,7 @@ public class Utils {
                             Utils.showExceptionMessage( null, exc );
                         }
                         
-                    }
+                    }*/
                     
                 }
 
@@ -1247,15 +1251,108 @@ public class Utils {
         
     }
     
-    public static void recursiveDelete( File f ) {
+    /**
+     * Runs MView program to generate alignment visualization.
+     * 
+     * @param perlExe Path to Perl executable.
+     * @param command Command to execute.
+     * @param writeIn Path of the file to write htmk output.
+     * @param errorPrefix Error prefix for output (stderr)
+     * @param outPrefix Standard prefix for output (stdout)
+     * @param outOKColor Color to use for standard output
+     * @param outErrorColor Color to use for error output
+     * @param codeOKColor Color to use for no error code
+     * @param codeErrorColor Color to use for error code
+     * @param textArea JTextPane to log the process output
+     * @param lblWait Label to show the progress
+     * @param btns Buttons to change state.
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public static void runMView( 
+            final String perlExe,
+            final String command,
+            final String writeIn, 
+            final String outPrefix, 
+            final String errorPrefix, 
+            final Color outOKColor,
+            final Color outErrorColor, 
+            final Color codeOKColor,
+            final Color codeErrorColor, 
+            final JTextPane textArea,
+            final JLabel lblWait,
+            final JButton... btns ) 
+            throws IOException, InterruptedException {
         
-        if ( f.isFile() ) {
-            f.delete();
+        new Thread( new Runnable() {
+
+            @Override
+            public void run() {
+                
+                try {
+                    
+                    for ( JButton b : btns ) {
+                        b.setEnabled( false );
+                    }
+                    lblWait.setText( "Wait..." );
+                    
+                    SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "Command: " + command + "\n\n", Color.BLACK, Color.WHITE ) );
+                    
+                    ProcessBuilder pb = new ProcessBuilder( command );
+                    pb.directory( new File( "mview/bin" ) );
+                    Process proc = pb.start();
+
+                    StreamGobblerUI outputGobbler = new StreamGobblerUI( proc.getInputStream(), outPrefix, textArea, outOKColor, Color.WHITE, new FileOutputStream( new File( writeIn ) ) );
+                    StreamGobblerUI errorGobbler = new StreamGobblerUI( proc.getErrorStream(), errorPrefix, textArea, outErrorColor, Color.WHITE );
+
+                    errorGobbler.start();
+                    outputGobbler.start();
+
+                    int exitVal = proc.waitFor();
+                    if ( exitVal == 0 ) {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "\nOutput Value: " + exitVal + " - Process Finished Successfully!", codeOKColor, Color.WHITE ) );
+                        if ( Desktop.isDesktopSupported() ) {
+                            try {
+                                Desktop.getDesktop().browse( new File( writeIn ).toURI() );
+                            } catch ( IOException exc ) {
+                                Utils.showExceptionMessage( null, exc );
+                            }
+                        }
+                    } else {
+                        SwingUtilities.invokeLater( new JTextAreaUpdater( textArea,
+                                "\nOutput Value: " + exitVal + " - Process Finished With Error!", codeErrorColor, Color.WHITE ) );
+                    }
+                
+                } catch ( IOException | InterruptedException exc ) {
+                    Utils.showExceptionMessage( null, exc );
+                } finally {
+                    for ( JButton b : btns ) {
+                        b.setEnabled( true );
+                    }
+                    lblWait.setText( " " );
+                }
+            }
+            
+        }).start();
+        
+    }
+    
+    /**
+     * Recursively deletes a directory.
+     * 
+     * @param dir  Directory to delete.
+     */
+    public static void recursiveDelete( File dir ) {
+        
+        if ( dir.isFile() ) {
+            dir.delete();
         } else {
-            for ( File fr : f.listFiles() ) {
+            for ( File fr : dir.listFiles() ) {
                 recursiveDelete( fr );
             }
-            f.delete();
+            dir.delete();
         }
         
     }

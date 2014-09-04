@@ -162,7 +162,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
         setTitle("Multiple Sequence Aligment Algorithms Configuration");
         setResizable(false);
 
-        panelConfCO.setBackground(new java.awt.Color(153, 204, 255));
         panelConfCO.setBorder(javax.swing.BorderFactory.createTitledBorder("Clustal Omega"));
 
         checkCODealign.setText("Dealign Input Sequences");
@@ -291,10 +290,8 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        panelConfCW.setBackground(new java.awt.Color(255, 204, 204));
         panelConfCW.setBorder(javax.swing.BorderFactory.createTitledBorder("ClustalW"));
 
-        panelCWPW.setBackground(new java.awt.Color(255, 204, 204));
         panelCWPW.setBorder(javax.swing.BorderFactory.createTitledBorder("Pairwise Alignment"));
 
         lblCWType.setText("Type:");
@@ -307,7 +304,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
         buttonGroup1.add(radioCWFast);
         radioCWFast.setText("Fast");
 
-        painelCWPWSlow.setBackground(new java.awt.Color(255, 204, 204));
         painelCWPWSlow.setBorder(javax.swing.BorderFactory.createTitledBorder("Slow Pairwise Options"));
 
         lblCWPWProtW.setText("Protein Weight Matrix:");
@@ -360,7 +356,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        painelCWPWFast.setBackground(new java.awt.Color(255, 204, 204));
         painelCWPWFast.setBorder(javax.swing.BorderFactory.createTitledBorder("Fast Pairwise Options"));
 
         lblCWPWKTUP.setText("KTUP (Word Size):");
@@ -467,7 +462,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        panelCWM.setBackground(new java.awt.Color(255, 204, 204));
         panelCWM.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiple Sequence Aligment"));
 
         lblCWMProtW.setText("Protein Weight Matrix:");
@@ -643,7 +637,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        panelConfM.setBackground(new java.awt.Color(204, 255, 204));
         panelConfM.setBorder(javax.swing.BorderFactory.createTitledBorder("MUSCLE"));
 
         checkMFindD.setText("Find Diagonals");
@@ -913,7 +906,6 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
             dispose();
         } catch ( IOException ex ) {
             Utils.showExceptionMessage( this, ex );
-            System.exit( 1 );
         }
         
     }//GEN-LAST:event_btnOKActionPerformed

@@ -8,7 +8,6 @@ package crygetter.tests;
 import java.io.IOException;
 import javax.swing.JFrame;
 import org.biojava.bio.structure.Structure;
-import org.biojava.bio.structure.align.gui.aligpanel.AligPanel;
 import org.biojava.bio.structure.align.gui.jmol.JmolPanel;
 import org.biojava.bio.structure.io.PDBFileReader;
 

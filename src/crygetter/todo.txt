@@ -1,2 +1,0 @@
-- Melhorar configurações dos algoritmos de alinhamento (caixas de texto, validação, armazenamento de configurações).
-- Correção de visualização de alinhamento?

@@ -31,7 +31,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -277,6 +276,7 @@ public class MainWindow extends javax.swing.JFrame {
         painelMisc = new javax.swing.JPanel();
         btnColor = new javax.swing.JButton();
         btnFASTA = new javax.swing.JButton();
+        btnAbout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
@@ -1152,6 +1152,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
+        btnAbout.setText("About");
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelMiscLayout = new javax.swing.GroupLayout(painelMisc);
         painelMisc.setLayout(painelMiscLayout);
         painelMiscLayout.setHorizontalGroup(
@@ -1161,6 +1169,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(btnColor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFASTA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAbout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelMiscLayout.setVerticalGroup(
@@ -1169,7 +1179,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(painelMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnColor)
-                    .addComponent(btnFASTA)))
+                    .addComponent(btnFASTA)
+                    .addComponent(btnAbout)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1184,7 +1195,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(btnExtract)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLoad)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 20, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAligment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1220,7 +1231,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1160, 624));
+        setSize(new java.awt.Dimension(1162, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1441,6 +1452,21 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnFASTAActionPerformed
 
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        
+        JOptionPane.showMessageDialog( this,
+                          "CryGetter is an application that aims to support\n"
+                        + "Cry proteins study and analisys.\n\n"
+                        + "It is being developed as a part of the Ph.D.\n"
+                        + "project of David Buzatto under the advisement\n"
+                        + "of Professor Sônia Marli Zingaretti at UNAERP.\n"
+                        + "(Universidade de Ribeirão Preto - University of\n"
+                        + "Ribeirão Preto).\n\n"
+                        + "Version 1.1 - 09/03/2014",
+                "About", JOptionPane.INFORMATION_MESSAGE );
+        
+    }//GEN-LAST:event_btnAboutActionPerformed
+
     private void prepareConfiguration() {
         
         configs = new Properties();
@@ -1484,6 +1510,14 @@ public class MainWindow extends javax.swing.JFrame {
         
         defaultConfigs.setProperty( "mMFD", "false" );
         defaultConfigs.setProperty( "mMOF", "1" );
+        
+        defaultConfigs.setProperty( "mwPP", "/" );
+        defaultConfigs.setProperty( "mwAC", "2" );
+        defaultConfigs.setProperty( "mwACM", "0" );
+        defaultConfigs.setProperty( "mwAGM", "0" );
+        defaultConfigs.setProperty( "mwCC", "2" );
+        defaultConfigs.setProperty( "mwCCM", "0" );
+        defaultConfigs.setProperty( "mwCGM", "0" );
         
         try {
             
@@ -2444,6 +2478,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea areaD1;
     private javax.swing.JTextArea areaD2;
     private javax.swing.JTextArea areaD3;
+    private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnAboutProc;
     private javax.swing.JButton btnAligment;
     private javax.swing.JButton btnColor;

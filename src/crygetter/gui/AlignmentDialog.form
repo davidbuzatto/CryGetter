@@ -6,6 +6,49 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="btnGrpTipoAlinhamento">
     </Component>
+    <Container class="javax.swing.JPopupMenu" name="menuPopView">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="itemCGView">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="CryGetter Visualization"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCGViewActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <Component class="javax.swing.JPopupMenu$Separator" name="sepCGView">
+        </Component>
+        <MenuItem class="javax.swing.JMenuItem" name="itemMView">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="MView Visualization"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMViewActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="itemConfMView">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/wrench.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="MView Configuration"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemConfMViewActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -83,7 +126,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnAlign" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnAlignmentAnalysis" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnView" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnAnalysis" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblWait" max="32767" attributes="0"/>
                       </Group>
@@ -114,7 +159,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnAlign" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblWait" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAlignmentAnalysis" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAnalysis" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnView" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -527,7 +573,18 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlignActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAlignmentAnalysis">
+        <Component class="javax.swing.JButton" name="btnView">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/crygetter/gui/icons/report.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="View"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnViewMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAnalysis">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/crygetter/gui/icons/shape_align_center.png"/>
@@ -535,7 +592,7 @@
             <Property name="text" type="java.lang.String" value="Analysis"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlignmentAnalysisActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnalysisActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblWait">
@@ -555,7 +612,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Multiple Sequence Alignment Algorithm Process Output"/>
+            <TitledBorder title="Multiple Sequence Alignment Algorithms and MView Process Output"/>
           </Border>
         </Property>
       </Properties>
