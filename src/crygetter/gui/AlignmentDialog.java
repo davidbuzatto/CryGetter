@@ -159,6 +159,11 @@ public class AlignmentDialog extends javax.swing.JDialog {
 
             }
         ));
+        tableProteins.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProteinsMouseClicked(evt);
+            }
+        });
         spProteinas.setViewportView(tableProteins);
 
         btnSelectAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/add.png"))); // NOI18N
@@ -1668,6 +1673,32 @@ public class AlignmentDialog extends javax.swing.JDialog {
         MViewConfiguration mc = new MViewConfiguration( this, true, defaultConfigs, configs );
         mc.setVisible( true );
     }//GEN-LAST:event_itemConfMViewActionPerformed
+
+    private void tableProteinsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProteinsMouseClicked
+        
+        CryToxinTableModel tm = (CryToxinTableModel) tableProteins.getModel();
+        boolean threeDomainAvailable = true;
+        
+        for ( int i = 0; i < tm.getRowCount(); i++ ) {
+
+            if ( (Boolean) tm.getValueAt( i, 2 ) ) {
+                CryToxin ct = (CryToxin) tm.getValueAt( i, 0 );
+                threeDomainAvailable = ct.domains.size() == 3;
+                if ( !threeDomainAvailable ) {
+                    break;
+                }
+            }
+            
+        }
+        
+        if ( threeDomainAvailable ) {
+            radioByDomain.setEnabled( true );
+        } else {
+            radioCompleteProtein.doClick();
+            radioByDomain.setEnabled( false );
+        }
+        
+    }//GEN-LAST:event_tableProteinsMouseClicked
     
     private void selectedAffectedToxins( String order ) {
         

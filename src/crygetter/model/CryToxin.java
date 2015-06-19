@@ -86,8 +86,13 @@ public class CryToxin {
         return "CryToxin{" + "name=" + name + ", accessionNo=" + accessionNo + 
                 ", ncbiProtein=" + ncbiProtein + ", ncbiNucleotide=" + 
                 ncbiNucleotide + ", authors=" + authors + ", year=" + 
-                year + ", sourceStrain=" + sourceStrain + ", comment=" + 
-                comment + ", ncbiURL=" + ncbiURL + ", ncbiURL2=" + ncbiURL2 + '}';
+                year + ", sourceStrain=" + sourceStrain + ", comment=" 
+                + comment + ", ncbiURL=" + ncbiURL + ", ncbiURL2=" + 
+                ncbiURL2 + ", proteinSequence=" + proteinSequence + 
+                ", proteinSequenceInterval=" + proteinSequenceInterval + 
+                ", proteinSequenceName=" + proteinSequenceName + 
+                ", domains=" + domains + ", classColor=" + classColor + 
+                ", ordersAffected=" + ordersAffected + '}';
     }
 
     public List<String> getOrdersAffected() {
@@ -151,6 +156,6 @@ public class CryToxin {
     @Override
     public String toString() {
         return name;
-    }
+    }    
     
 }

@@ -56,6 +56,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.biojava.bio.structure.Structure;
+import org.biojava.bio.structure.align.gui.jmol.JmolPanel;
+import org.biojava.bio.structure.io.PDBFileReader;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -105,6 +108,13 @@ public class MainWindow extends javax.swing.JFrame {
     // application configurations
     private Properties configs;
     private Properties defaultConfigs;
+    
+    // flag to define 3 domain constraint
+    private boolean loadNon3Domain;
+    
+    // models
+    private DefaultListModel<String> model3dListModel;
+    private String selectedPDBModel;
             
     /**
      * Creates new form JanelaPrincipal
@@ -115,10 +125,13 @@ public class MainWindow extends javax.swing.JFrame {
         
         proteinListModel = new DefaultListModel<>();
         referencesListModel = new DefaultListModel<>();
+        model3dListModel = new DefaultListModel<>();
         
         listProteins.setModel( proteinListModel );
         listProteins.setCellRenderer( new CryToxinListCellRenderer() );
         listRef.setModel( referencesListModel );
+        
+        list3DModels.setModel( model3dListModel );
         
         checkD1.setBackground( cD1 );
         checkD1.setOpaque( true );
@@ -265,6 +278,13 @@ public class MainWindow extends javax.swing.JFrame {
         fieldNameD3 = new javax.swing.JTextField();
         fieldComD3 = new javax.swing.JTextField();
         linkXrefD3 = new javax.swing.JLabel();
+        painel3D = new javax.swing.JPanel();
+        painelAvailable3DModels = new javax.swing.JPanel();
+        scrollList3DModels = new javax.swing.JScrollPane();
+        list3DModels = new javax.swing.JList();
+        lblPDBId = new javax.swing.JLabel();
+        fieldPDBId = new javax.swing.JTextField();
+        btnSavePDB = new javax.swing.JButton();
         panelExtractionDetails = new javax.swing.JPanel();
         labelDateExtr = new javax.swing.JLabel();
         labelGrossAmount = new javax.swing.JLabel();
@@ -398,7 +418,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         panelBtDataLayout.setVerticalGroup(
             panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,7 +745,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(panelRefList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRefDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         panelNCBIRefLayout.setVerticalGroup(
             panelNCBIRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -857,7 +877,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         panelD1Layout.setVerticalGroup(
             panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -928,7 +948,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         panelD2Layout.setVerticalGroup(
             panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -999,7 +1019,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         panelD3Layout.setVerticalGroup(
             panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,7 +1074,7 @@ public class MainWindow extends javax.swing.JFrame {
             painelNCBILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelNCBILayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabsNCBIDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 867, Short.MAX_VALUE)
+                .addComponent(tabsNCBIDetails)
                 .addContainerGap())
         );
         painelNCBILayout.setVerticalGroup(
@@ -1066,6 +1086,75 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         tabsDetails.addTab("NCBI", painelNCBI);
+
+        painelAvailable3DModels.setBorder(javax.swing.BorderFactory.createTitledBorder("Available Model(s)"));
+
+        list3DModels.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                list3DModelsMouseClicked(evt);
+            }
+        });
+        scrollList3DModels.setViewportView(list3DModels);
+
+        lblPDBId.setText("PDB Id:");
+
+        btnSavePDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/disk.png"))); // NOI18N
+        btnSavePDB.setText("Save");
+        btnSavePDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSavePDBActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelAvailable3DModelsLayout = new javax.swing.GroupLayout(painelAvailable3DModels);
+        painelAvailable3DModels.setLayout(painelAvailable3DModelsLayout);
+        painelAvailable3DModelsLayout.setHorizontalGroup(
+            painelAvailable3DModelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAvailable3DModelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAvailable3DModelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollList3DModels, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(painelAvailable3DModelsLayout.createSequentialGroup()
+                        .addComponent(lblPDBId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldPDBId))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAvailable3DModelsLayout.createSequentialGroup()
+                        .addGap(0, 84, Short.MAX_VALUE)
+                        .addComponent(btnSavePDB)))
+                .addContainerGap())
+        );
+        painelAvailable3DModelsLayout.setVerticalGroup(
+            painelAvailable3DModelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAvailable3DModelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollList3DModels, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelAvailable3DModelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPDBId)
+                    .addComponent(fieldPDBId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSavePDB)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout painel3DLayout = new javax.swing.GroupLayout(painel3D);
+        painel3D.setLayout(painel3DLayout);
+        painel3DLayout.setHorizontalGroup(
+            painel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painel3DLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelAvailable3DModels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(738, Short.MAX_VALUE))
+        );
+        painel3DLayout.setVerticalGroup(
+            painel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painel3DLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelAvailable3DModels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabsDetails.addTab("3D Model", painel3D);
 
         javax.swing.GroupLayout panelDetailsLayout = new javax.swing.GroupLayout(panelDetails);
         panelDetails.setLayout(panelDetailsLayout);
@@ -1195,19 +1284,19 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(btnExtract)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLoad)
-                        .addGap(0, 20, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAligment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelExtractionDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                        .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1231,7 +1320,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1162, 624));
+        setSize(new java.awt.Dimension(1168, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1255,7 +1344,14 @@ public class MainWindow extends javax.swing.JFrame {
         jfc.setMultiSelectionEnabled( false );
         
         if ( jfc.showOpenDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+            
+            loadNon3Domain = JOptionPane.showConfirmDialog( this, 
+                    "Do you want to load proteins without 3 domain specification?", 
+                    "Three Domain Confirm", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE ) == JOptionPane.YES_OPTION;
+            
             new Thread( new LoadTask( this, jfc.getSelectedFile()) ).start();
+            
         }
         
     }//GEN-LAST:event_btnLoadActionPerformed
@@ -1352,7 +1448,7 @@ public class MainWindow extends javax.swing.JFrame {
                 "      2: A required uppercase letter;\n" +
                 "      3: A required lowercase letter;\n" +
                 "      4: An optional integer number.\n\n" +
-                "- The protein must have three domains.",
+                "- The protein must have three domains (if selected during loading).",
                 "Processing Details", 
                 JOptionPane.INFORMATION_MESSAGE );
         
@@ -1456,16 +1552,95 @@ public class MainWindow extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog( this,
                           "CryGetter is an application that aims to support\n"
-                        + "Cry proteins study and analisys.\n\n"
+                        + "Cry proteins data retrieval, study and analisys.\n\n"
                         + "It is being developed as a part of the Ph.D.\n"
                         + "project of David Buzatto under the advisement\n"
                         + "of Professor Sônia Marli Zingaretti at UNAERP.\n"
                         + "(Universidade de Ribeirão Preto - University of\n"
                         + "Ribeirão Preto).\n\n"
-                        + "Version 1.1 - 09/03/2014",
+                        + "Version 1.2 - 06/19/2015",
                 "About", JOptionPane.INFORMATION_MESSAGE );
         
     }//GEN-LAST:event_btnAboutActionPerformed
+
+    private void list3DModelsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_list3DModelsMouseClicked
+        
+        if ( list3DModels.getSelectedValue() != null ) {
+
+            selectedPDBModel = list3DModels.getSelectedValue().toString();
+            fieldPDBId.setText( selectedPDBModel.split( " " )[2].replace( ".pdb" , "" ) );
+
+        } else {
+
+            selectedPDBModel = null;
+            fieldPDBId.setText( "" );
+
+        }
+        
+    }//GEN-LAST:event_list3DModelsMouseClicked
+
+    private void btnSavePDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePDBActionPerformed
+        
+        if ( selectedPDBModel != null ) {
+            
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter fnef = new FileNameExtensionFilter( 
+                    "PDB Model (*.pdb)", "pdb" );
+
+            for ( FileFilter f : jfc.getChoosableFileFilters() ) {
+                jfc.removeChoosableFileFilter( f );
+            }
+
+            jfc.setFileFilter( fnef );
+            jfc.setDialogTitle( "Save PDB" );
+            jfc.setFileSelectionMode( JFileChooser.FILES_ONLY );
+            jfc.setMultiSelectionEnabled( false );
+            jfc.setSelectedFile( new File( selectedPDBModel ) );
+
+            if ( jfc.showSaveDialog( this ) == JFileChooser.APPROVE_OPTION ) {
+
+                File f = jfc.getSelectedFile();
+
+                if ( f.getName().lastIndexOf( ".pdb" ) == -1 ) {
+                    f = new File( f.getAbsolutePath() + ".pdb" );
+                }
+
+                if ( !f.exists() || 
+                        ( f.exists() && JOptionPane.showConfirmDialog( 
+                          this, "The file already exists. Do you want to overwrite it?", "Warning", 
+                          JOptionPane.OK_CANCEL_OPTION ) == JOptionPane.OK_OPTION ) ) {
+
+                    try {
+
+                        File loadedFile = new File( getClass().getResource( "/" + selectedPDBModel ).toURI() );
+                        FileInputStream fis = new FileInputStream( loadedFile );
+                        FileOutputStream fos = new FileOutputStream( f );
+
+                        int data = 0;
+
+                        while ( ( data = fis.read() ) != -1 ) {
+                            fos.write( data );
+                        }
+
+                        fis.close();
+                        fos.close();
+
+                    } catch ( URISyntaxException | IOException exc ) {
+                        Utils.showExceptionMessage( this, exc );
+                    }
+
+                }
+
+            }
+        
+        } else {
+            
+            JOptionPane.showMessageDialog( this, "You must select a model to save!",
+                    "Warning", JOptionPane.WARNING_MESSAGE );
+            
+        }
+        
+    }//GEN-LAST:event_btnSavePDBActionPerformed
 
     private void prepareConfiguration() {
         
@@ -1809,6 +1984,32 @@ public class MainWindow extends javax.swing.JFrame {
             
             fillSequenceData();
             
+            
+            // 3D model
+            fieldPDBId.setText( "" );
+            selectedPDBModel = null;
+            
+            try {
+                
+                model3dListModel.clear();
+                
+                File dirModel = new File( getClass().getResource( "/" ).toURI() );
+                List<String> models = new ArrayList<>();
+                
+                for ( File f : dirModel.listFiles() ) {
+                    if ( f.getName().startsWith( selectedCt.name ) ) {
+                        models.add( f.getName() );
+                    }
+                }
+                
+                for ( String s : models ) {
+                    model3dListModel.addElement( s );
+                }
+                
+            } catch ( URISyntaxException exc ) {
+                exc.printStackTrace();
+            }
+            
         } else {
             
             fieldName.setText( "" );
@@ -1868,6 +2069,12 @@ public class MainWindow extends javax.swing.JFrame {
             checkD2.setSelected( false );
             checkD3.setSelected( false );
             
+            
+            // 3D models
+            model3dListModel.clear();
+            fieldPDBId.setText( "" );
+            selectedPDBModel = null;
+            
         }
         
     }
@@ -1883,23 +2090,55 @@ public class MainWindow extends javax.swing.JFrame {
             fieldIntCompSeq.setText( selectedCt.proteinSequenceInterval );
             fieldNameCompSeq.setText( selectedCt.proteinSequenceName );
             
-            areaD1.setText( Utils.formatProtein( selectedCt.getDomainSequence( 1 ) ) );
-            fieldIntD1.setText( selectedCt.getDomainInterval( 1 ) );
-            fieldNameD1.setText( selectedCt.getDomain( 1 ).name );
-            fieldComD1.setText( selectedCt.getDomain( 1 ).note );
-            linkXrefD1.setText( selectedCt.getDomain( 1 ).xref );
-            
-            areaD2.setText( Utils.formatProtein( selectedCt.getDomainSequence( 2 ) ) );
-            fieldIntD2.setText( selectedCt.getDomainInterval( 2 ) );
-            fieldNameD2.setText( selectedCt.getDomain( 2 ).name );
-            fieldComD2.setText( selectedCt.getDomain( 2 ).note );
-            linkXrefD2.setText( selectedCt.getDomain( 2 ).xref );
-            
-            areaD3.setText( Utils.formatProtein( selectedCt.getDomainSequence( 3 ) ) );
-            fieldIntD3.setText( selectedCt.getDomainInterval( 3 ) );
-            fieldNameD3.setText( selectedCt.getDomain( 3 ).name );
-            fieldComD3.setText( selectedCt.getDomain( 3 ).note );
-            linkXrefD3.setText( selectedCt.getDomain( 3 ).xref );
+            if ( selectedCt.domains.size() == 3 ) {
+                
+                areaD1.setText( Utils.formatProtein( selectedCt.getDomainSequence( 1 ) ) );
+                fieldIntD1.setText( selectedCt.getDomainInterval( 1 ) );
+                fieldNameD1.setText( selectedCt.getDomain( 1 ).name );
+                fieldComD1.setText( selectedCt.getDomain( 1 ).note );
+                linkXrefD1.setText( selectedCt.getDomain( 1 ).xref );
+
+                areaD2.setText( Utils.formatProtein( selectedCt.getDomainSequence( 2 ) ) );
+                fieldIntD2.setText( selectedCt.getDomainInterval( 2 ) );
+                fieldNameD2.setText( selectedCt.getDomain( 2 ).name );
+                fieldComD2.setText( selectedCt.getDomain( 2 ).note );
+                linkXrefD2.setText( selectedCt.getDomain( 2 ).xref );
+
+                areaD3.setText( Utils.formatProtein( selectedCt.getDomainSequence( 3 ) ) );
+                fieldIntD3.setText( selectedCt.getDomainInterval( 3 ) );
+                fieldNameD3.setText( selectedCt.getDomain( 3 ).name );
+                fieldComD3.setText( selectedCt.getDomain( 3 ).note );
+                linkXrefD3.setText( selectedCt.getDomain( 3 ).xref );
+                
+                checkD1.setEnabled( true );
+                checkD2.setEnabled( true );
+                checkD3.setEnabled( true );
+                
+            } else {
+                
+                areaD1.setText( "" );
+                fieldIntD1.setText( "" );
+                fieldNameD1.setText( "" );
+                fieldComD1.setText( "" );
+                linkXrefD1.setText( "" );
+
+                areaD2.setText( "" );
+                fieldIntD2.setText( "" );
+                fieldNameD2.setText( "" );
+                fieldComD2.setText( "" );
+                linkXrefD2.setText( "" );
+
+                areaD3.setText( "" );
+                fieldIntD3.setText( "" );
+                fieldNameD3.setText( "" );
+                fieldComD3.setText( "" );
+                linkXrefD3.setText( "" );
+                
+                checkD1.setEnabled( false );
+                checkD2.setEnabled( false );
+                checkD3.setEnabled( false );
+                
+            }
             
             if ( checkD1.isSelected() || checkD2.isSelected() || checkD3.isSelected() ) {
                 fillCompleteSequenceTextPane();
@@ -2186,9 +2425,11 @@ public class MainWindow extends javax.swing.JFrame {
                     
                 }
                 
-                // removing toxins with domain count different from 3
-                for ( CryToxin ct : toxinsToRemove ) {
-                    correspondenceTable.remove( ct );
+                // removing toxins with domain count different from 3 if specified
+                if ( !loadNon3Domain ) {
+                    for ( CryToxin ct : toxinsToRemove ) {
+                        correspondenceTable.remove( ct );
+                    }
                 }
                 
                 // 1 - populating the lists of cry toxins and gbseqs,
@@ -2274,17 +2515,21 @@ public class MainWindow extends javax.swing.JFrame {
                     fwComplete.write( Utils.formatAsFasta( ct.name + " - Complete", ct.proteinSequence, 60 ) );
                     fwComplete.close();
                     
-                    FileWriter fwD1 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D1.fasta") );
-                    fwD1.write( Utils.formatAsFasta( ct.name + " - Domain 1", ct.getDomainSequence( 1 ), 60 ) );
-                    fwD1.close();
-                    
-                    FileWriter fwD2 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D2.fasta") );
-                    fwD2.write( Utils.formatAsFasta( ct.name + " - Domain 2", ct.getDomainSequence( 2 ), 60 ) );
-                    fwD2.close();
-                    
-                    FileWriter fwD3 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D3.fasta") );
-                    fwD3.write( Utils.formatAsFasta( ct.name + " - Domain 3", ct.getDomainSequence( 3 ), 60 ) );
-                    fwD3.close();
+                    if ( ct.domains.size() == 3 ) { 
+                        
+                        FileWriter fwD1 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D1.fasta") );
+                        fwD1.write( Utils.formatAsFasta( ct.name + " - Domain 1", ct.getDomainSequence( 1 ), 60 ) );
+                        fwD1.close();
+
+                        FileWriter fwD2 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D2.fasta") );
+                        fwD2.write( Utils.formatAsFasta( ct.name + " - Domain 2", ct.getDomainSequence( 2 ), 60 ) );
+                        fwD2.close();
+
+                        FileWriter fwD3 = new FileWriter( new File( ctDir.getPath() + "/" + ct.name + "-D3.fasta") );
+                        fwD3.write( Utils.formatAsFasta( ct.name + " - Domain 3", ct.getDomainSequence( 3 ), 60 ) );
+                        fwD3.close();
+                        
+                    }
                     
                 }
                 
@@ -2485,6 +2730,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnExtract;
     private javax.swing.JButton btnFASTA;
     private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnSavePDB;
     private javax.swing.JCheckBox checkD1;
     private javax.swing.JCheckBox checkD2;
     private javax.swing.JCheckBox checkD3;
@@ -2516,6 +2762,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField fieldNameD2;
     private javax.swing.JTextField fieldNameD3;
     private javax.swing.JTextField fieldOrg;
+    private javax.swing.JTextField fieldPDBId;
     private javax.swing.JTextField fieldPriAccess;
     private javax.swing.JTextField fieldProcessAmount;
     private javax.swing.JTextField fieldSDB;
@@ -2557,6 +2804,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lblNameD1;
     private javax.swing.JLabel lblNameD2;
     private javax.swing.JLabel lblOrg;
+    private javax.swing.JLabel lblPDBId;
     private javax.swing.JLabel lblPriAccess;
     private javax.swing.JLabel lblSDB;
     private javax.swing.JLabel lblSource;
@@ -2577,8 +2825,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel linkXrefD1;
     private javax.swing.JLabel linkXrefD2;
     private javax.swing.JLabel linkXrefD3;
+    private javax.swing.JList list3DModels;
     private javax.swing.JList<CryToxin> listProteins;
     private javax.swing.JList listRef;
+    private javax.swing.JPanel painel3D;
+    private javax.swing.JPanel painelAvailable3DModels;
     private javax.swing.JPanel painelMisc;
     private javax.swing.JPanel painelNCBI;
     private javax.swing.JPanel panelBtData;
@@ -2596,6 +2847,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel panelProteins;
     private javax.swing.JPanel panelRefDetails;
     private javax.swing.JPanel panelRefList;
+    private javax.swing.JScrollPane scrollList3DModels;
     private javax.swing.JScrollPane scrollProteins;
     private javax.swing.JScrollPane spCom;
     private javax.swing.JScrollPane spComment;
