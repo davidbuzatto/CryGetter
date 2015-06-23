@@ -54,6 +54,7 @@ public class CryToxin {
     public transient String proteinSequence;
     public transient String proteinSequenceInterval;
     public transient String proteinSequenceName;
+    public transient List<String> proteinModels;
     public transient List<CryToxinDomain> domains = new ArrayList<>();
     
     //public transient Color classColor = new Color( 172, 204, 234 );
