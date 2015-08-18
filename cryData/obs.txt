@@ -1,0 +1,2 @@
+cryData.xlsx => sempre contém a última versão dos dados
+cruDataOldXX => contém dados antigos
