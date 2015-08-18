@@ -84,6 +84,9 @@
         <copy todir="${dist.dir}/view">
             <fileset dir="view" excludes="data.js, script.js"/>
         </copy>
+        <copy todir="${dist.dir}/cryModels">
+            <fileset dir="cryModels"/>
+        </copy>
         
         <mkdir dir="${dist.dir}/temp"/>
         <mkdir dir="${dist.dir}/conf"/>

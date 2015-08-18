@@ -1711,7 +1711,7 @@ public class MainWindow extends javax.swing.JFrame {
 
                     try {
 
-                        File loadedFile = new File( getClass().getResource( "/" + selectedPDBModel ).toURI() );
+                        File loadedFile = new File( "./cryModels/" + selectedPDBModel );
                         FileInputStream fis = new FileInputStream( loadedFile );
                         FileOutputStream fos = new FileOutputStream( f );
 
@@ -1724,7 +1724,7 @@ public class MainWindow extends javax.swing.JFrame {
                         fis.close();
                         fos.close();
 
-                    } catch ( URISyntaxException | IOException exc ) {
+                    } catch ( IOException exc ) {
                         Utils.showExceptionMessage( this, exc );
                     }
 
@@ -2554,7 +2554,8 @@ public class MainWindow extends javax.swing.JFrame {
                 // 2 - setting the proteinSequence from gbseq to cry toxin and
                 // 3 - adding the affected orders
                 // 4 - adding models
-                File[] files = new File( getClass().getResource( "/" ).toURI() ).listFiles();
+                //File[] files = new File( getClass().getResource( "/" ).toURI() ).listFiles();
+                File[] files = new File( "./cryModels" ).listFiles();
                 
                 for ( Entry<CryToxin, GBSeq> e : correspondenceTable.entrySet() ) {
                     
