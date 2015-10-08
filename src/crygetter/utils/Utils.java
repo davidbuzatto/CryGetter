@@ -11,9 +11,16 @@ import crygetter.ncbi.prot.GBSet;
 import iubio.readseq.BioseqFormats;
 import iubio.readseq.BioseqWriterIface;
 import iubio.readseq.Readseq;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
@@ -24,6 +31,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -59,6 +68,11 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.sax.SAXSource;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -108,6 +122,11 @@ public class Utils {
                 + "\\u205F" // MEDIUM MATHEMATICAL SPACE
                 + "\\u3000" // IDEOGRAPHIC SPACE
                 ;
+    
+    public static Color cBase = new Color( 200, 200, 200 );
+    public static Color cD1 = new Color( 172, 204, 234 );
+    public static Color cD2 = new Color( 175, 234, 170 );
+    public static Color cD3 = new Color( 247, 195, 159 );
     
     /**
      * Gets data using HTTP POST method.
@@ -1354,6 +1373,262 @@ public class Utils {
             }
             dir.delete();
         }
+        
+    }
+    
+    public static void exportReport(
+            InputStream inputStream,
+            Map params,
+            JRDataSource dataSource,
+            File exportFile ) throws JRException, IOException {
+        
+        JasperPrint print = JasperFillManager.fillReport(
+                inputStream, params, dataSource );
+
+        OutputStream out = new FileOutputStream( exportFile );
+        JasperExportManager.exportReportToPdfStream( print, out );
+        out.flush();
+        out.close();
+ 
+    }
+    
+    public static BufferedImage generateAlignmentImage( String protein1Name, String protein2Name, 
+            List<String> proteinData1, List<String> proteinData2, List<String> alnResult, AlignmentColorScheme.ResultColorScheme colorScheme ) {
+        
+        Map<Character, Color> colorMap = AlignmentColorScheme.colorMap.get( colorScheme );
+        int width = 880;
+        int height = 84 * proteinData1.size() - 18;
+        
+        BufferedImage img = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );
+        Graphics2D g2d = img.createGraphics();
+        
+        g2d.setColor( Color.WHITE );
+        g2d.fillRect( 0, 0, width, height );
+        g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON );
+        
+        Font bold = new Font( Font.MONOSPACED, Font.BOLD, 14 );
+        Font italic = new Font( Font.MONOSPACED, Font.ITALIC, 14 );
+        Font plainEnd = new Font( Font.MONOSPACED, Font.PLAIN, 12 );
+        Font plainTiny = new Font( Font.MONOSPACED, Font.PLAIN, 10 );
+        
+        g2d.setFont( italic );
+        FontMetrics fm = g2d.getFontMetrics();
+        
+        int labelSize1 = fm.stringWidth( protein1Name );
+        int labelSize2 = fm.stringWidth( protein2Name );
+        int labelSize = labelSize1 > labelSize2 ? labelSize1 : labelSize2;
+        labelSize += 30;
+        
+        int baseVerticalGap = 70;
+        int verticalGap = 22;
+        int count = 0;
+        int countP1 = 0;
+        int countP2 = 0;
+        
+        for ( int i = 0; i < proteinData1.size(); i++ ) {
+
+            char[] seq1 = proteinData1.get( i ).toCharArray();
+            char[] seq2 = proteinData2.get( i ).toCharArray();
+            char[] res = alnResult.get( i ).toCharArray();
+            int j;
+            
+            g2d.setFont( italic );
+            g2d.setColor( Color.BLACK );
+            g2d.drawString( protein1Name, 0, i * 12 + 12 + verticalGap );
+            g2d.drawString( protein2Name, 0, i * 12 + 28 + verticalGap );
+            
+            for ( j = 0; j < seq1.length; j++ ) {
+                
+                g2d.setColor( colorMap.get( seq1[j] ) );
+                g2d.fillRect( j * 12 + labelSize - 2, i * 12 + verticalGap, 12, 16 );
+                g2d.setColor( colorMap.get( seq2[j] ) );
+                g2d.fillRect( j * 12 + labelSize - 2, i * 12 + verticalGap + 20 - 4, 12, 16 );
+                
+                g2d.setFont( bold );
+                g2d.setColor( Color.BLACK );
+                g2d.drawString( String.valueOf( seq1[j] ), j * 12 + labelSize, i * 12 + 12 + verticalGap );
+                g2d.drawString( String.valueOf( seq2[j] ), j * 12 + labelSize, i * 12 + 28 + verticalGap  );
+                g2d.drawString( String.valueOf( res[j] ), j * 12 + labelSize, i * 12 + 44 + verticalGap );
+                
+                count++;
+                
+                if ( j == 0 || (j+1) % 10 == 0 ) {
+                    g2d.drawLine( j * 12 + labelSize - 2 + 6, i * 12 + verticalGap - 4,
+                            j * 12 + labelSize - 2 + 6, i * 12 + verticalGap - 14 );
+                    g2d.setFont( plainTiny );
+                    g2d.drawString( String.valueOf( count ), j * 12 + labelSize - 2 + 8, i * 12 + verticalGap - 14 );
+                }
+                
+                if ( seq1[j] != '-' ) {
+                    countP1++;
+                }
+                
+                if ( seq2[j] != '-' ) {
+                    countP2++;
+                }
+                
+            }
+            
+            g2d.setFont( plainEnd );
+            g2d.drawString( String.valueOf( countP1 ), j * 12 + 30 + labelSize, i * 12 + 12 + verticalGap );
+            g2d.drawString( String.valueOf( countP2 ), j * 12 + 30 + labelSize, i * 12 + 28 + verticalGap );
+            
+            verticalGap += baseVerticalGap;
+
+        }
+        
+        g2d.dispose();
+        
+        return img;
+        
+    }
+    
+    public static BufferedImage generateProteinSchemeImage( CryToxin toxin, boolean drawBorder ) {
+        
+        int width = 250;
+        int height = 140;
+        
+        double proteinBarSize = 210;
+        double marginLeft = 10;
+        double marginTop = 10;
+        int seqLen = toxin.proteinSequence.length();
+        
+        BufferedImage img = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );
+        Graphics2D g2d = img.createGraphics();
+        
+        g2d.setColor( Color.WHITE );
+        g2d.fillRect( 0, 0, width, height );
+        
+        if ( drawBorder ) {
+            g2d.setColor( Color.GRAY.darker() );
+            g2d.drawRect( 0, 0, width - 1, height - 1 );
+        }
+        
+        g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON );
+        
+        Font bold = new Font( Font.DIALOG, Font.BOLD, 12 );
+        Font tinyBold = new Font( Font.DIALOG, Font.BOLD, 8 );
+        g2d.setFont( bold );
+        FontMetrics fmTinyBold = g2d.getFontMetrics( tinyBold );
+        
+        BasicStroke lineStroke = new BasicStroke( 1 );
+        BasicStroke dottedStroke = new BasicStroke(1.0f,
+                        BasicStroke.CAP_BUTT,
+                        BasicStroke.JOIN_MITER,
+                        10.0f, new float[]{2.0f}, 0.0f);
+        
+        g2d.setColor( cBase );
+        g2d.fill( new Rectangle2D.Double( marginLeft, marginTop, proteinBarSize, 20 ) );
+        g2d.setColor( cBase.darker() );
+        g2d.draw( new Rectangle2D.Double( marginLeft, marginTop, proteinBarSize, 20 ) );
+        g2d.drawString( toxin.name, (int) (marginLeft + 5), (int) (marginTop + 15) );
+        g2d.setFont( tinyBold );
+        g2d.drawString( "1", (int) marginLeft, (int) (marginTop + 30) );
+        g2d.drawString( String.valueOf( seqLen ), (int) (marginLeft + proteinBarSize - fmTinyBold.stringWidth( String.valueOf( seqLen ) ) ), (int) (marginTop + 30) );
+            
+        if ( toxin.domains.size() == 3 ) {
+            
+            int d1StartSeq = toxin.domains.get( 0 ).interval.start;
+            int d1EndSeq = toxin.domains.get( 0 ).interval.end;
+            String d1Name = toxin.domains.get( 0 ).name;
+            double d1Start = toxin.domains.get( 0 ).interval.start * proteinBarSize / seqLen;
+            double d1Len = ( toxin.domains.get( 0 ).interval.end - toxin.domains.get( 0 ).interval.start )
+                    * proteinBarSize / seqLen;
+            
+            int d2StartSeq = toxin.domains.get( 1 ).interval.start;
+            int d2EndSeq = toxin.domains.get( 1 ).interval.end;
+            String d2Name = toxin.domains.get( 1 ).name;
+            double d2Start = toxin.domains.get( 1 ).interval.start * proteinBarSize / seqLen;
+            double d2Len = ( toxin.domains.get( 1 ).interval.end - toxin.domains.get( 1 ).interval.start )
+                    * proteinBarSize / seqLen;
+            
+            int d3StartSeq = toxin.domains.get( 2 ).interval.start;
+            int d3EndSeq = toxin.domains.get( 2 ).interval.end;
+            String d3Name = toxin.domains.get( 2 ).name;
+            double d3Start = toxin.domains.get( 2 ).interval.start * proteinBarSize / seqLen;
+            double d3Len = ( toxin.domains.get( 2 ).interval.end - toxin.domains.get( 2 ).interval.start )
+                    * proteinBarSize / seqLen;
+
+            g2d.setColor( cD1 );
+            g2d.fill( new Rectangle2D.Double( marginLeft + d1Start, marginTop + 35, d1Len, 20 ) );
+            g2d.setColor( cD1.darker() );
+            g2d.setStroke( lineStroke );
+            g2d.draw( new Rectangle2D.Double( marginLeft + d1Start, marginTop + 35, d1Len, 20 ) );
+            g2d.setStroke( dottedStroke );
+            g2d.drawLine( (int) (marginLeft + d1Start), (int) (marginTop + 35), (int) (marginLeft + d1Start), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d1Start + d1Len), (int) (marginTop + 35), (int) (marginLeft + d1Start + d1Len), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d1Start), (int) (marginTop + 55), (int) (marginLeft + d1Start), (int) (marginTop + 60) );
+            g2d.drawLine( (int) (marginLeft + d1Start + d1Len), (int) (marginTop + 55), (int) (marginLeft + d1Start + d1Len), (int) (marginTop + 60) );
+            g2d.setFont( bold );
+            g2d.drawString( "D1", (int) (marginLeft + d1Start) + 5, (int) (marginTop + 50) );
+            g2d.setFont( tinyBold );
+            g2d.drawString( String.valueOf( d1StartSeq ), (int) (marginLeft + d1Start), (int) (marginTop + 70) );
+            g2d.drawString( String.valueOf( d1EndSeq ), (int) (marginLeft + d1Start + d1Len - fmTinyBold.stringWidth( String.valueOf( d1EndSeq ) ) ), (int) (marginTop + 70) );
+            g2d.drawString( d1Name, (int) (marginLeft + d1Start), (int) (marginTop + 80) );
+            
+            g2d.setColor( cD2 );
+            g2d.fill( new Rectangle2D.Double( marginLeft + d2Start, marginTop + 35, d2Len, 20 ) );
+            g2d.setColor( cD2.darker() );
+            g2d.setStroke( lineStroke );
+            g2d.draw( new Rectangle2D.Double( marginLeft + d2Start, marginTop + 35, d2Len, 20 ) );
+            g2d.setStroke( dottedStroke );
+            g2d.drawLine( (int) (marginLeft + d2Start), (int) (marginTop + 35), (int) (marginLeft + d2Start), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d2Start + d2Len), (int) (marginTop + 35), (int) (marginLeft + d2Start + d2Len), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d2Start), (int) (marginTop + 55), (int) (marginLeft + d2Start), (int) (marginTop + 80) );
+            g2d.drawLine( (int) (marginLeft + d2Start + d2Len), (int) (marginTop + 55), (int) (marginLeft + d2Start + d2Len), (int) (marginTop + 80) );
+            g2d.setFont( bold );
+            g2d.drawString( "D2", (int) (marginLeft + d2Start) + 5, (int) (marginTop + 50) );
+            g2d.setFont( tinyBold );
+            g2d.drawString( String.valueOf( d2StartSeq ), (int) (marginLeft + d2Start), (int) (marginTop + 90) );
+            g2d.drawString( String.valueOf( d2EndSeq ), (int) (marginLeft + d2Start + d2Len - fmTinyBold.stringWidth( String.valueOf( d2EndSeq ) ) ), (int) (marginTop + 90) );
+            g2d.drawString( d2Name, (int) (marginLeft + d2Start), (int) (marginTop + 100) );
+            
+            g2d.setColor( cD3 );
+            g2d.fill( new Rectangle2D.Double( marginLeft + d3Start, marginTop + 35, d3Len, 20 ) );
+            g2d.setColor( cD3.darker() );
+            g2d.setStroke( lineStroke );
+            g2d.draw( new Rectangle2D.Double( marginLeft + d3Start, marginTop + 35, d3Len, 20 ) );
+            g2d.setStroke( dottedStroke );
+            g2d.drawLine( (int) (marginLeft + d3Start), (int) (marginTop + 35), (int) (marginLeft + d3Start), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d3Start + d3Len), (int) (marginTop + 35), (int) (marginLeft + d3Start + d3Len), (int) (marginTop + 20) );
+            g2d.drawLine( (int) (marginLeft + d3Start), (int) (marginTop + 55), (int) (marginLeft + d3Start), (int) (marginTop + 100) );
+            g2d.drawLine( (int) (marginLeft + d3Start + d3Len), (int) (marginTop + 55), (int) (marginLeft + d3Start + d3Len), (int) (marginTop + 100) );
+            g2d.setFont( bold );
+            g2d.drawString( "D3", (int) (marginLeft + d3Start) + 5, (int) (marginTop + 50) );
+            g2d.setFont( tinyBold );
+            g2d.drawString( String.valueOf( d3StartSeq ), (int) (marginLeft + d3Start), (int) (marginTop + 110) );
+            g2d.drawString( String.valueOf( d3EndSeq ), (int) (marginLeft + d3Start + d3Len - fmTinyBold.stringWidth( String.valueOf( d3EndSeq ) ) ), (int) (marginTop + 110) );
+            g2d.drawString( d3Name, (int) (marginLeft + d3Start), (int) (marginTop + 120) );
+            
+        } else {
+            
+            g2d.setFont( bold );
+            g2d.setColor( new Color( 164, 0, 0 ) );
+            String message = "No domain data available.";
+            g2d.drawString( message, width / 2 - g2d.getFontMetrics( bold ).stringWidth( message ) / 2, 82);
+            
+        }
+        
+        g2d.dispose();
+        
+        return img;
+        
+    }
+    
+    public static Color hexToColor( String hex ) {
+        
+        hex = hex.replace( "#", "" );
+        
+        if ( hex.length() == 6 ) {
+            int r = Integer.valueOf( hex.substring( 0, 2 ), 16 );
+            int g = Integer.valueOf( hex.substring( 2, 4 ), 16 );
+            int b = Integer.valueOf( hex.substring( 4, 6 ), 16 );
+            return new Color( r, g, b );
+        }
+        
+        return Color.BLACK;
         
     }
     

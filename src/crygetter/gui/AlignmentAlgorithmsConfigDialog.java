@@ -502,6 +502,7 @@ public class AlignmentAlgorithmsConfigDialog extends javax.swing.JDialog {
         comboCWMIter.setToolTipText("Multiple alignment improvement iteration type. Default value is: none");
 
         comboCWMNumIter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        comboCWMNumIter.setSelectedIndex(2);
         comboCWMNumIter.setToolTipText("Maximum number of iterations to perform. Default value is: 1");
 
         comboCWMClust.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NJ", "UPGMA" }));

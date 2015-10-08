@@ -16,16 +16,18 @@ public class AminoAcidDifference {
     public char aa1;
     public char aa2;
     public int position;
+    public char conservativeStatus;
     
-    public AminoAcidDifference( char aa1, char aa2, int position ) {
+    public AminoAcidDifference( char aa1, char aa2, int position, char conservativeStatus ) {
         this.aa1 = aa1;
         this.aa2 = aa2;
         this.position = position;
+        this.conservativeStatus = conservativeStatus;
     }
 
     @Override
     public String toString() {
-        return String.format( "%4d: %c %c", position, aa1, aa2 );
+        return String.format( "%4d: %c %c   (%c)", position, aa1, aa2, conservativeStatus );
     }
     
 }

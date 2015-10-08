@@ -10,6 +10,7 @@
                 <root id="src.cryModels.dir" name="Cry Models"/>
                 <root id="src.aaData.dir" name="AA Data"/>
                 <root id="src.view.dir" name="Alignment View"/>
+                <root id="src.reports.dir" name="Reports"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

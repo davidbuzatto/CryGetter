@@ -7,7 +7,7 @@
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,112,0,0,4,-112"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,112,0,0,4,-70"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -28,19 +28,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelProteins" max="32767" attributes="0"/>
+                  <Component id="btnAligment" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelProteins" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="btnExtract" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnAligment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblWait" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -52,7 +47,9 @@
                   </Group>
                   <Component id="panelDetails" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="lblWait" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="987" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,7 +149,7 @@
                               <Component id="check3DModels" min="-2" max="-2" attributes="0"/>
                               <Component id="check3Domains" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -243,17 +240,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tabsDetails" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tabsDetails" min="-2" pref="954" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="tabsDetails" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -302,7 +299,7 @@
                               <Component id="fieldIdNuc" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="fieldAut" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="223" max="32767" attributes="0"/>
+                          <EmptySpace pref="231" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -827,7 +824,7 @@
                                   <Component id="panelRefList" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="panelRefDetails" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="214" max="32767" attributes="0"/>
+                                  <EmptySpace pref="222" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1014,7 +1011,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tabsNCBISequences" max="32767" attributes="0"/>
+                                  <Component id="tabsNCBISequences" pref="904" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1059,10 +1056,13 @@
                                               <Component id="fieldIntCompSeq" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="fieldNameCompSeq" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="checkD1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="checkD2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="checkD3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblScheme" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="checkD3" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="checkD2" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                          <EmptySpace pref="12" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1087,6 +1087,8 @@
                                                   <Component id="checkD2" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="checkD3" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lblScheme" min="-2" pref="140" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="spCompSeq" pref="304" max="32767" attributes="0"/>
@@ -1122,6 +1124,8 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Name:"/>
                                   </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="lblScheme">
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="fieldIntCompSeq">
                                 </Component>
@@ -1191,7 +1195,7 @@
                                               <Component id="fieldComD1" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="linkXrefD1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                                          <EmptySpace pref="110" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1319,7 +1323,7 @@
                                               <Component id="fieldComD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="linkXrefD2" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                                          <EmptySpace pref="110" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1447,7 +1451,7 @@
                                               <Component id="fieldComD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                               <Component id="linkXrefD3" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                                          <EmptySpace pref="110" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1569,7 +1573,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="painelAvailable3DModels" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="695" max="32767" attributes="0"/>
+                          <EmptySpace pref="703" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1767,10 +1771,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldDateExtr">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldGrossAmount">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldProcessAmount">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAboutProc">
           <Properties>

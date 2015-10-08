@@ -157,6 +157,7 @@ is divided into following sections:
                 <available file="${src.cryModels.dir}"/>
                 <available file="${src.aaData.dir}"/>
                 <available file="${src.view.dir}"/>
+                <available file="${src.reports.dir}"/>
             </or>
         </condition>
         <condition property="netbeans.home+have.tests">
@@ -257,6 +258,7 @@ is divided into following sections:
         <fail unless="src.cryModels.dir">Must set src.cryModels.dir</fail>
         <fail unless="src.aaData.dir">Must set src.aaData.dir</fail>
         <fail unless="src.view.dir">Must set src.view.dir</fail>
+        <fail unless="src.reports.dir">Must set src.reports.dir</fail>
         <fail unless="test.src.dir">Must set test.src.dir</fail>
         <fail unless="build.dir">Must set build.dir</fail>
         <fail unless="dist.dir">Must set dist.dir</fail>
@@ -278,7 +280,7 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" if="ap.supported.internal" name="-init-macrodef-javac-with-processors">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}" name="srcdir"/>
+            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${src.reports.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -319,7 +321,7 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" name="-init-macrodef-javac-without-processors" unless="ap.supported.internal">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}" name="srcdir"/>
+            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${src.reports.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -352,7 +354,7 @@ is divided into following sections:
     </target>
     <target depends="-init-macrodef-javac-with-processors,-init-macrodef-javac-without-processors" name="-init-macrodef-javac">
         <macrodef name="depend" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}" name="srcdir"/>
+            <attribute default="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${src.reports.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <sequential>
@@ -950,7 +952,7 @@ is divided into following sections:
                 <include name="*"/>
             </dirset>
         </pathconvert>
-        <j2seproject3:depend srcdir="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${build.generated.subdirs}"/>
+        <j2seproject3:depend srcdir="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${src.reports.dir}:${build.generated.subdirs}"/>
     </target>
     <target depends="init,deps-jar,-pre-pre-compile,-pre-compile, -copy-persistence-xml,-compile-depend" if="have.sources" name="-do-compile">
         <j2seproject3:javac gensrcdir="${build.generated.sources.dir}"/>
@@ -960,6 +962,7 @@ is divided into following sections:
             <fileset dir="${src.cryModels.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.aaData.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.view.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
+            <fileset dir="${src.reports.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
         </copy>
     </target>
     <target if="has.persistence.xml" name="-copy-persistence-xml">
@@ -980,7 +983,7 @@ is divided into following sections:
     <target depends="init,deps-jar,-pre-pre-compile" name="-do-compile-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
         <j2seproject3:force-recompile/>
-        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}"/>
+        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.dir}:${src.cryData.dir}:${src.cryModels.dir}:${src.aaData.dir}:${src.view.dir}:${src.reports.dir}"/>
     </target>
     <target name="-post-compile-single">
         <!-- Empty placeholder for easier customization. -->
@@ -1261,6 +1264,9 @@ is divided into following sections:
             <fileset dir="${src.view.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
                 <filename name="**/*.java"/>
             </fileset>
+            <fileset dir="${src.reports.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
+                <filename name="**/*.java"/>
+            </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">
                 <include name="**/*.java"/>
                 <exclude name="*.java"/>
@@ -1281,6 +1287,9 @@ is divided into following sections:
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${src.view.dir}" excludes="${excludes}" includes="${includes}">
+                <filename name="**/doc-files/**"/>
+            </fileset>
+            <fileset dir="${src.reports.dir}" excludes="${excludes}" includes="${includes}">
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">

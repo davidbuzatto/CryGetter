@@ -25,6 +25,7 @@ import java.awt.Desktop;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,6 +48,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -244,6 +246,7 @@ public class MainWindow extends javax.swing.JFrame {
         areaCompSeq = new javax.swing.JTextPane();
         lblIntCompSeq = new javax.swing.JLabel();
         lblNameCompSeq = new javax.swing.JLabel();
+        lblScheme = new javax.swing.JLabel();
         fieldIntCompSeq = new javax.swing.JTextField();
         fieldNameCompSeq = new javax.swing.JTextField();
         checkD1 = new javax.swing.JCheckBox();
@@ -379,7 +382,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(check3DModels)
                             .addComponent(check3Domains))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelProteinsLayout.setVerticalGroup(
@@ -457,7 +460,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldIdProt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldIdNuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAut, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         panelBtDataLayout.setVerticalGroup(
             panelBtDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -784,7 +787,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(panelRefList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRefDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         panelNCBIRefLayout.setVerticalGroup(
             panelNCBIRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -845,9 +848,11 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldIntCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldNameCompSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkD1)
-                    .addComponent(checkD2)
-                    .addComponent(checkD3))
-                .addGap(51, 51, 51))
+                    .addComponent(lblScheme, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(checkD3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(checkD2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         panelCompleteSequenceLayout.setVerticalGroup(
             panelCompleteSequenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -868,6 +873,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(checkD2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkD3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblScheme, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(spCompSeq, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
                 .addContainerGap())
@@ -916,7 +923,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panelD1Layout.setVerticalGroup(
             panelD1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -987,7 +994,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panelD2Layout.setVerticalGroup(
             panelD2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1058,7 +1065,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(fieldNameD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldComD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkXrefD3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panelD3Layout.setVerticalGroup(
             panelD3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1094,7 +1101,7 @@ public class MainWindow extends javax.swing.JFrame {
             panelNCBISeqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNCBISeqLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabsNCBISequences)
+                .addComponent(tabsNCBISequences, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelNCBISeqLayout.setVerticalGroup(
@@ -1198,7 +1205,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(painel3DLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painelAvailable3DModels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(695, Short.MAX_VALUE))
+                .addContainerGap(703, Short.MAX_VALUE))
         );
         painel3DLayout.setVerticalGroup(
             painel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1216,8 +1223,8 @@ public class MainWindow extends javax.swing.JFrame {
             panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabsDetails)
-                .addContainerGap())
+                .addComponent(tabsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDetailsLayout.setVerticalGroup(
             panelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1234,6 +1241,12 @@ public class MainWindow extends javax.swing.JFrame {
         labelGrossAmount.setText("Gross Amount:");
 
         labelProcessAmount.setText("Processed Amount:");
+
+        fieldDateExtr.setEditable(false);
+
+        fieldGrossAmount.setEditable(false);
+
+        fieldProcessAmount.setEditable(false);
 
         btnAboutProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crygetter/gui/icons/help.png"))); // NOI18N
         btnAboutProc.addActionListener(new java.awt.event.ActionListener() {
@@ -1333,16 +1346,12 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAligment)
+                    .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExtract)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLoad)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAligment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnLoad)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -1350,7 +1359,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(987, 987, 987))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1374,7 +1385,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1168, 624));
+        setSize(new java.awt.Dimension(1210, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1428,8 +1439,15 @@ public class MainWindow extends javax.swing.JFrame {
             CryToxin selectedNow = (CryToxin) listProteins.getSelectedValue();
 
             if ( selectedNow != null ) {
+                
                 selectedCt = selectedNow;
                 updateDetails();
+                
+                /*BufferedImage img = Utils.generateProteinSchemeImage( selectedCt, true );
+                JLabel label = new JLabel();
+                label.setIcon( new ImageIcon( img ) );
+                JOptionPane.showMessageDialog( this, label );*/
+                
             }
             
         }
@@ -1785,7 +1803,7 @@ public class MainWindow extends javax.swing.JFrame {
         defaultConfigs.setProperty( "cwMGD", "5" );
         defaultConfigs.setProperty( "cwMNEG", "false" );
         defaultConfigs.setProperty( "cwMI", "0" );
-        defaultConfigs.setProperty( "cwMNI", "0" );
+        defaultConfigs.setProperty( "cwMNI", "2" );
         defaultConfigs.setProperty( "cwMC", "0" );
         defaultConfigs.setProperty( "cwMO", "0" );
         defaultConfigs.setProperty( "cwMOF", "1" );
@@ -2111,6 +2129,8 @@ public class MainWindow extends javax.swing.JFrame {
             linkURLPubmedRef.setText( " " );
             
             fillSequenceData();
+            BufferedImage img = Utils.generateProteinSchemeImage( selectedCt, true );
+            lblScheme.setIcon( new ImageIcon( img ) );
             
             
             // 3D model
@@ -2189,7 +2209,7 @@ public class MainWindow extends javax.swing.JFrame {
             checkD1.setSelected( false );
             checkD2.setSelected( false );
             checkD3.setSelected( false );
-            
+            lblScheme.setIcon( null );
             
             // 3D models
             model3dListModel.clear();
@@ -2951,6 +2971,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lblPriAccess;
     private javax.swing.JLabel lblProteinsFiltered;
     private javax.swing.JLabel lblSDB;
+    private javax.swing.JLabel lblScheme;
     private javax.swing.JLabel lblSource;
     private javax.swing.JLabel lblStrain;
     private javax.swing.JLabel lblTaxo;

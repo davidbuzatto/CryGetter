@@ -71,9 +71,37 @@
 
     -->
     
+    <target name="-post-compile">
+        
+        <echo>Compiling report definitions...</echo>
+    
+        <path id="jrc.classpath">
+            <fileset dir="${build.dir}/../lib/JasperReports-6.1.0"
+                     includes="*.jar"/>
+        </path>
+        
+        <taskdef name="jrc"
+                 classname="net.sf.jasperreports.ant.JRAntCompileTask">
+            <classpath refid="jrc.classpath"/>
+        </taskdef>
+ 
+        <jrc srcdir="reports"
+             destdir="${build.classes.dir}">
+            <classpath refid="jrc.classpath"/>
+            <include name="*.jrxml"/>
+        </jrc>
+        
+        <delete>
+            <fileset dir="${build.classes.dir}" includes="*.jrxml"/>
+        </delete>
+ 
+        <echo>Done!</echo>
+        
+    </target>
+    
     <target name="-post-jar">
         
-        <echo>Copiando dependências e preparando ambiente...</echo>
+        <echo>Copying dependencies and preparing environment...</echo>
         
         <copy todir="${dist.dir}/clustal">
             <fileset dir="clustal"/>
@@ -91,7 +119,7 @@
         <mkdir dir="${dist.dir}/temp"/>
         <mkdir dir="${dist.dir}/conf"/>
 
-        <echo> Iniciando otimização do código JavaScript...</echo>
+        <echo> Optimizing JavaScript code...</echo>
         
         <property name="closureCompiler" value="lib/GoogleClosureCompiler/compiler.jar"/>
         
@@ -100,9 +128,9 @@
                 --js ${build.classes.dir}/script.js
                 --js_output_file ${dist.dir}/view/script.js"/>
 
-        <echo> Otimização do código JavaScript finalizada!</echo>
+        <echo> JavaScript optimization done!</echo>
         
-        <echo>Fim da cópia e da preparação.</echo>
+        <echo>Done!</echo>
         
     </target>
     

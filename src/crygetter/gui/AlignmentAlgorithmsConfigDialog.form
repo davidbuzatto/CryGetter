@@ -973,6 +973,7 @@
                     <StringItem index="9" value="10"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="2"/>
                 <Property name="toolTipText" type="java.lang.String" value="Maximum number of iterations to perform. Default value is: 1"/>
               </Properties>
             </Component>

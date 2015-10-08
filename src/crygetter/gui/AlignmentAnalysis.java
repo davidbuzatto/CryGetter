@@ -9,15 +9,30 @@ package crygetter.gui;
 import crygetter.model.AminoAcid;
 import crygetter.model.AminoAcidDifference;
 import crygetter.model.CryToxin;
+import crygetter.utils.AlignmentColorScheme;
 import crygetter.utils.Utils;
+import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.ListOfArrayDataSource;
+import net.sf.jasperreports.swing.JRViewer;
 import org.biojava.bio.structure.Structure;
 import org.biojava.bio.structure.align.gui.jmol.JmolPanel;
 import org.biojava.bio.structure.io.PDBFileReader;
@@ -46,6 +61,19 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
     private AminoAcidDifference aaDiff;
     private AminoAcid aa1;
     private AminoAcid aa2;
+    
+    private int nonConserved;
+    private int semiConservedMutation;
+    private int conservedMutation;
+    private int conserved;
+    
+    private int lenSeq1;
+    private int lenSeq2;
+    private String reportObs;
+    
+    private BufferedImage imgP1DomainsDiagram;
+    private BufferedImage imgP2DomainsDiagram;
+    private BufferedImage imgAlignmentDiagram;
     
     /**
      * Creates new form AlignmentAnalysis
@@ -96,6 +124,9 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         listProteins2 = new javax.swing.JList<CryToxin>();
         btnAnalyse = new javax.swing.JButton();
         checkDoNotIncludeGaps = new javax.swing.JCheckBox();
+        checkGenerateReport = new javax.swing.JCheckBox();
+        lblColorScheme = new javax.swing.JLabel();
+        comboColorScheme = new javax.swing.JComboBox();
         panelResults = new javax.swing.JPanel();
         panelDiff = new javax.swing.JPanel();
         spDiff = new javax.swing.JScrollPane();
@@ -142,7 +173,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             panelProtein1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProtein1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollProteins1)
+                .addComponent(scrollProteins1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -184,35 +215,61 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         checkDoNotIncludeGaps.setSelected(true);
         checkDoNotIncludeGaps.setText("Do not include gaps");
 
+        checkGenerateReport.setText("Generate report");
+        checkGenerateReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkGenerateReportActionPerformed(evt);
+            }
+        });
+
+        lblColorScheme.setText("Color Scheme:");
+
+        comboColorScheme.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ClustalX", "Zappo", "Taylor", "Hydrophobicity", "Helix Propensity", "Strand Propensity", "Turn Propensity", "Buried Index" }));
+        comboColorScheme.setEnabled(false);
+
         javax.swing.GroupLayout panelProteinsLayout = new javax.swing.GroupLayout(panelProteins);
         panelProteins.setLayout(panelProteinsLayout);
         panelProteinsLayout.setHorizontalGroup(
             panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProteinsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelProtein1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelProtein2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProteinsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelProtein1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelProtein2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProteinsLayout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(btnAnalyse))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProteinsLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblColorScheme)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkGenerateReport)
+                            .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(comboColorScheme, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(checkDoNotIncludeGaps, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProteinsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(checkDoNotIncludeGaps)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAnalyse)
-                .addContainerGap())
         );
         panelProteinsLayout.setVerticalGroup(
             panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProteinsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelProtein2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelProtein1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelProtein1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProtein2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkDoNotIncludeGaps)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkGenerateReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelProteinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAnalyse)
-                    .addComponent(checkDoNotIncludeGaps))
-                .addContainerGap())
+                    .addComponent(lblColorScheme)
+                    .addComponent(comboColorScheme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAnalyse)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelResults.setBorder(javax.swing.BorderFactory.createTitledBorder("Results"));
@@ -284,7 +341,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 .addGroup(panelDiffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAA2)
                     .addComponent(lblAA2Val))
-                .addGap(31, 31, 31))
+                .addGap(42, 42, 42))
         );
 
         panelContAA1.setBorder(javax.swing.BorderFactory.createTitledBorder("Protein 1 AA"));
@@ -398,7 +455,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                         .addComponent(panelContAA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelContAA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -416,13 +473,13 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelProteins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1076, 611));
+        setSize(new java.awt.Dimension(1076, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -460,26 +517,106 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
             
             List<String> proteinData1 = extractedData.get( selectedCt1.name );
             List<String> proteinData2 = extractedData.get( selectedCt2.name );
+            List<String> alnResult = extractedData.get( "aln" );
             List<AminoAcidDifference> aaDiffs = new ArrayList<>();
+            
+            nonConserved = 0;
+            semiConservedMutation = 0;
+            conservedMutation = 0;
+            conserved = 0;
+            
+            lenSeq1 = 0;
+            lenSeq2 = 0;
             
             for ( int i = 0; i < proteinData1.size(); i++ ) {
                 
                 char[] seq1 = proteinData1.get( i ).toCharArray();
                 char[] seq2 = proteinData2.get( i ).toCharArray();
+                char[] res = alnResult.get( i ).toCharArray();
                 
                 for ( int j = 0; j < seq1.length; j++ ) {
                     
+                    if ( seq1[j] != '-' ) {
+                        lenSeq1++;
+                    }
+                    
+                    if ( seq2[j] != '-' ) {
+                        lenSeq2++;
+                    }
+                    
+                    switch ( res[j] ) {
+                        case ' ':
+                            nonConserved++;
+                            break;
+                        case '.':
+                            semiConservedMutation++;
+                            break;
+                        case ':':
+                            conservedMutation++;
+                            break;
+                        case '*':
+                            conserved++;
+                            break;
+                            
+                    }
+                    
                     if ( checkDoNotIncludeGaps.isSelected() ) {
                         if ( seq1[j] != seq2[j] && seq1[j] != '-' && seq2[j] != '-' ) {
-                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
+                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1, res[j] ) );
                         }
                     } else {
                         if ( seq1[j] != seq2[j] ) {
-                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1 ) );
+                            aaDiffs.add( new AminoAcidDifference( seq1[j], seq2[j], (i * 60) + j + 1, res[j] ) );
                         }
                     }
                     
                 }
+                
+            }
+            
+            if ( checkGenerateReport.isSelected() ) {
+                
+                reportObs = JOptionPane.showInputDialog( "Report Observation:" );
+                
+                AlignmentColorScheme.ResultColorScheme colorScheme;
+                
+                switch ( comboColorScheme.getSelectedIndex() ) {
+                    case 0:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.CLUSTALX;
+                        break;
+                    case 1:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.ZAPPO;
+                        break;
+                    case 2:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.TAYLOR;
+                        break;
+                    case 3:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.HYDROPHOBICITY;
+                        break;
+                    case 4:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.HELYX_PROPENSITY;
+                        break;
+                    case 5:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.STRAND_PROPENSITY;
+                        break;
+                    case 6:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.TURN_PROPENSITY;
+                        break;
+                    case 7:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.BURIED_INDEX;
+                        break;
+                    default:
+                        colorScheme = AlignmentColorScheme.ResultColorScheme.CLUSTALX;
+                        break;
+                }
+                
+                imgAlignmentDiagram = Utils.generateAlignmentImage( selectedCt1.name, selectedCt2.name,
+                        proteinData1, proteinData2, alnResult, colorScheme );
+                
+                imgP1DomainsDiagram = Utils.generateProteinSchemeImage( selectedCt1, false );
+                imgP2DomainsDiagram = Utils.generateProteinSchemeImage( selectedCt2, false );
+                
+                generateReport();
                 
             }
             
@@ -556,6 +693,103 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         
     }//GEN-LAST:event_listDiffValueChanged
 
+    private void checkGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGenerateReportActionPerformed
+        
+        if ( checkGenerateReport.isSelected() ) {
+            comboColorScheme.setEnabled( true );
+        } else {
+            comboColorScheme.setEnabled( false );
+        }
+        
+    }//GEN-LAST:event_checkGenerateReportActionPerformed
+
+    private void generateReport() {
+        
+        Map<String, Object> params = new HashMap<>();
+        
+        params.put( "p1Name" , selectedCt1.name );
+        params.put( "p1Acc" , selectedCt1.accessionNo );
+        params.put( "p1ProtId" , selectedCt1.ncbiProtein );
+        params.put( "p1NucId" , selectedCt1.ncbiNucleotide );
+        params.put( "p1Len" , String.valueOf( selectedCt1.proteinSequence.length() ) );
+        
+        if ( selectedCt1.domains.size() == 3 ) {
+            params.put( "p1D1Len" , String.valueOf( selectedCt1.domains.get( 0 ).interval.end - selectedCt1.domains.get( 0 ).interval.start + 1 ) );
+            params.put( "p1D2Len" , String.valueOf( selectedCt1.domains.get( 1 ).interval.end - selectedCt1.domains.get( 1 ).interval.start + 1 ) );
+            params.put( "p1D3Len" , String.valueOf( selectedCt1.domains.get( 2 ).interval.end - selectedCt1.domains.get( 2 ).interval.start + 1 ) );
+        }
+        
+        params.put( "p2Name" , selectedCt2.name );
+        params.put( "p2Acc" , selectedCt2.accessionNo );
+        params.put( "p2ProtId" , selectedCt2.ncbiProtein );
+        params.put( "p2NucId" , selectedCt2.ncbiNucleotide );
+        params.put( "p2Len" , String.valueOf( selectedCt2.proteinSequence.length() ) );
+        
+        if ( selectedCt2.domains.size() == 3 ) {
+            params.put( "p2D1Len" , String.valueOf( selectedCt2.domains.get( 0 ).interval.end - selectedCt2.domains.get( 0 ).interval.start + 1 ) );
+            params.put( "p2D2Len" , String.valueOf( selectedCt2.domains.get( 1 ).interval.end - selectedCt2.domains.get( 1 ).interval.start + 1 ) );
+            params.put( "p2D3Len" , String.valueOf( selectedCt2.domains.get( 2 ).interval.end - selectedCt2.domains.get( 2 ).interval.start + 1 ) );
+        }
+            
+        params.put( "nonConserved", String.valueOf( nonConserved ) );
+        params.put( "semiConservedMutation", String.valueOf( semiConservedMutation ) );
+        params.put( "conservedMutation", String.valueOf( conservedMutation ) );
+        params.put( "conserved", String.valueOf( conserved ) );
+        params.put( "ccm", String.valueOf( conserved + conservedMutation ) );
+        
+        DecimalFormat df = new DecimalFormat( "#.##" );
+        
+        params.put( "p1NonConserved", df.format( (double) nonConserved / (double) lenSeq1 ) + "%" );
+        params.put( "p1SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq1 ) + "%" );
+        params.put( "p1ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq1 ) + "%" );
+        params.put( "p1Conserved", df.format( (double) conserved / (double) lenSeq1 ) + "%" );
+        params.put( "p1CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq1 ) + "%" );
+        
+        params.put( "p2NonConserved", df.format( (double) nonConserved / (double) lenSeq2 ) + "%" );
+        params.put( "p2SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq2 ) + "%" );
+        params.put( "p2ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq2 ) + "%" );
+        params.put( "p2Conserved", df.format( (double) conserved / (double) lenSeq2 ) + "%" );
+        params.put( "p2CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq2 ) + "%" );
+        
+        params.put( "obs", reportObs );
+        
+        params.put( "imgAlignmentDiagram", imgAlignmentDiagram );
+        params.put( "imgP1DomainsDiagram", imgP1DomainsDiagram );
+        params.put( "imgP2DomainsDiagram", imgP2DomainsDiagram );
+        
+        JRDataSource dataSource = null;
+
+        try {
+            
+            final JasperPrint print = JasperFillManager.fillReport(
+                    getClass().getResourceAsStream( "/proteinAnalysis.jasper" ),
+                    params, dataSource );
+
+            final JDialog thisFrame = this;
+            
+            SwingUtilities.invokeLater( new Runnable() {
+
+                @Override
+                public void run() {
+                    
+                    JRViewer viewer = new JRViewer( print );
+                    JDialog reportFrame = new JDialog( thisFrame, "Cry Protein Analysis Results", true );
+                    reportFrame.add( viewer, BorderLayout.CENTER );
+                    reportFrame.setSize( 900, 700 );
+                    reportFrame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+                    reportFrame.setLocationRelativeTo( null );
+                    reportFrame.setVisible( true );
+                    
+                }
+                
+            });
+        
+        } catch ( JRException exc ) {
+            Utils.showExceptionMessage( this, exc );
+        }
+        
+    }
+    
     private void loadProteinLists() {
         
         for ( Entry<String, List<String>> e : extractedData.entrySet() ) {
@@ -643,10 +877,13 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
     private javax.swing.JButton btnDetailsAA1;
     private javax.swing.JButton btnDetailsAA2;
     private javax.swing.JCheckBox checkDoNotIncludeGaps;
+    private javax.swing.JCheckBox checkGenerateReport;
+    private javax.swing.JComboBox comboColorScheme;
     private javax.swing.JLabel lblAA1;
     private javax.swing.JLabel lblAA1Val;
     private javax.swing.JLabel lblAA2;
     private javax.swing.JLabel lblAA2Val;
+    private javax.swing.JLabel lblColorScheme;
     private javax.swing.JLabel lblPos;
     private javax.swing.JLabel lblPosVal;
     private javax.swing.JList listDiff;
