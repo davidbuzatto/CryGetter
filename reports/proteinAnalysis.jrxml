@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-10-08T16:40:51 -->
+<!-- 2015-10-27T18:24:47 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proteinAnalysis" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="1f1e3cb2-1adc-4167-9f3f-309b84ee013a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -43,19 +43,18 @@
 	<parameter name="p2ConservedMutation" class="java.lang.String"/>
 	<parameter name="p2Conserved" class="java.lang.String"/>
 	<parameter name="p2CCM" class="java.lang.String"/>
-	<parameter name="imgAlignmentDiagram" class="java.awt.image.BufferedImage"/>
 	<parameter name="imgP1DomainsDiagram" class="java.awt.image.BufferedImage"/>
 	<parameter name="imgP2DomainsDiagram" class="java.awt.image.BufferedImage"/>
 	<parameter name="obs" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="a" class="java.lang.String"/>
+	<field name="imageSlice" class="java.awt.image.BufferedImage"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="786" splitType="Stretch">
+		<band height="292" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
 				<reportElement x="0" y="1" width="555" height="23" uuid="7c25409b-7203-4421-85a0-771172222f24">
@@ -92,13 +91,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{p1Name}]]></textFieldExpression>
 			</textField>
-			<image scaleImage="RealSize" hAlign="Center" vAlign="Top">
-				<reportElement x="0" y="296" width="555" height="490" uuid="1b0de233-73b1-43ba-bfda-932ec61a5111">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<imageExpression><![CDATA[$P{imgAlignmentDiagram}]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="0" y="148" width="130" height="15" uuid="bb78c961-4ee8-4e52-a4a5-c51c32bdb28c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -664,6 +656,15 @@ SCM: Semi-conserved mutation; NC: Non Conserved]]></text>
 			</line>
 		</band>
 	</title>
+	<detail>
+		<band height="52">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="554" height="52" uuid="9d7e5e2b-cbd9-469e-a4f7-40d121f075b6"/>
+				<imageExpression><![CDATA[$F{imageSlice}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
 	<pageFooter>
 		<band height="12">
 			<textField pattern="M/d/yy h:mm a">

@@ -17,6 +17,7 @@ import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
@@ -1397,7 +1398,7 @@ public class Utils {
         
         Map<Character, Color> colorMap = AlignmentColorScheme.colorMap.get( colorScheme );
         int width = 880;
-        int height = 84 * proteinData1.size() - 18;
+        int height = 82 * proteinData1.size() - 14;
         
         BufferedImage img = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );
         Graphics2D g2d = img.createGraphics();
@@ -1481,6 +1482,32 @@ public class Utils {
         g2d.dispose();
         
         return img;
+        
+    }
+    
+    public static List<Object[]> sliceImage( BufferedImage img, int verticalSize ) {
+        
+        List<Object[]> images = new ArrayList<>();
+        
+        int start = 0;
+        int end = verticalSize;
+        int total = img.getHeight();
+        int slices = total / verticalSize + ( total % verticalSize == 0 ? 0 : 1 );
+        
+        for ( int i = 0; i < slices; i++ ) {
+            
+            start = i * verticalSize;
+            end = start + verticalSize - 1;
+            
+            if ( end > total - 1 ) {
+                end = total - 1;
+            }
+            
+            images.add( new Object[]{ img.getSubimage( 0, start, img.getWidth(), end - start + 1 ) } );
+            
+        }
+        
+        return images;
         
     }
     

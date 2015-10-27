@@ -31,6 +31,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.data.ListOfArrayDataSource;
 import net.sf.jasperreports.swing.JRViewer;
 import org.biojava.bio.structure.Structure;
@@ -74,6 +75,7 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
     private BufferedImage imgP1DomainsDiagram;
     private BufferedImage imgP2DomainsDiagram;
     private BufferedImage imgAlignmentDiagram;
+    private List<Object[]> imagesAlignmentDiagram;
     
     /**
      * Creates new form AlignmentAnalysis
@@ -613,6 +615,8 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
                 imgAlignmentDiagram = Utils.generateAlignmentImage( selectedCt1.name, selectedCt2.name,
                         proteinData1, proteinData2, alnResult, colorScheme );
                 
+                imagesAlignmentDiagram = Utils.sliceImage( imgAlignmentDiagram, 82 );
+                
                 imgP1DomainsDiagram = Utils.generateProteinSchemeImage( selectedCt1, false );
                 imgP2DomainsDiagram = Utils.generateProteinSchemeImage( selectedCt2, false );
                 
@@ -753,11 +757,10 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         
         params.put( "obs", reportObs );
         
-        params.put( "imgAlignmentDiagram", imgAlignmentDiagram );
         params.put( "imgP1DomainsDiagram", imgP1DomainsDiagram );
         params.put( "imgP2DomainsDiagram", imgP2DomainsDiagram );
         
-        JRDataSource dataSource = null;
+        JRDataSource dataSource = new ListOfArrayDataSource( imagesAlignmentDiagram, new String[]{ "imageSlice" } );
 
         try {
             
