@@ -90,10 +90,6 @@ public class MainWindow extends javax.swing.JFrame {
     private CryToxin selectedCt;
     private GBSeq selectedSeq;
     
-    /*private Color cD1 = Color.CYAN;
-    private Color cD2 = Color.YELLOW;
-    private Color cD3 = Color.MAGENTA;*/
-    
     // n-terminus -> blue
     private Color cD1 = new Color( 172, 204, 234 );
     private Color cD2 = new Color( 175, 234, 170 );
