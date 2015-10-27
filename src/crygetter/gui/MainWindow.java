@@ -1623,7 +1623,7 @@ public class MainWindow extends javax.swing.JFrame {
                         + "of Professor Sônia Marli Zingaretti at UNAERP.\n"
                         + "(Universidade de Ribeirão Preto - University of\n"
                         + "Ribeirão Preto).\n\n"
-                        + "Version 1.2 - 06/23/2015",
+                        + "Version 1.0 - 10/27/2015",
                 "About", JOptionPane.INFORMATION_MESSAGE );
         
     }//GEN-LAST:event_btnAboutActionPerformed
