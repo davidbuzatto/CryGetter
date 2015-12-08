@@ -157,10 +157,9 @@ public class MainWindow extends javax.swing.JFrame {
         btnExtract = new javax.swing.JButton();
         btnLoad = new javax.swing.JButton();
         btnAligment = new javax.swing.JButton();
-        lblWait = new javax.swing.JLabel();
         panelProteins = new javax.swing.JPanel();
         scrollProteins = new javax.swing.JScrollPane();
-        listProteins = new javax.swing.JList<CryToxin>();
+        listProteins = new javax.swing.JList<>();
         check3Domains = new javax.swing.JCheckBox();
         check3DModels = new javax.swing.JCheckBox();
         lblProteinsFiltered = new javax.swing.JLabel();
@@ -303,6 +302,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnColor = new javax.swing.JButton();
         btnFASTA = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
+        lblWait = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryGetter");
@@ -331,10 +331,6 @@ public class MainWindow extends javax.swing.JFrame {
                 btnAligmentActionPerformed(evt);
             }
         });
-
-        lblWait.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblWait.setForeground(new java.awt.Color(0, 102, 255));
-        lblWait.setText(" ");
 
         panelProteins.setBorder(javax.swing.BorderFactory.createTitledBorder("Proteins"));
 
@@ -1097,7 +1093,7 @@ public class MainWindow extends javax.swing.JFrame {
             panelNCBISeqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNCBISeqLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabsNCBISequences, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE)
+                .addComponent(tabsNCBISequences)
                 .addContainerGap())
         );
         panelNCBISeqLayout.setVerticalGroup(
@@ -1335,14 +1331,21 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(btnAbout)))
         );
 
+        lblWait.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblWait.setForeground(new java.awt.Color(0, 102, 255));
+        lblWait.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAligment)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAligment)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelProteins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExtract)
@@ -1355,9 +1358,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(painelMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(987, 987, 987))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
