@@ -498,7 +498,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        tabsDetails.addTab("BtNomeclature", panelBtData);
+        tabsDetails.addTab("BtNomenclature", panelBtData);
 
         lblLocus.setText("Locus:");
 
@@ -1225,6 +1225,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(tabsDetails)
                 .addContainerGap())
         );
+
+        tabsDetails.getAccessibleContext().setAccessibleName("BtNomenclature");
 
         panelExtractionDetails.setBorder(javax.swing.BorderFactory.createTitledBorder("Extraction Details"));
 
