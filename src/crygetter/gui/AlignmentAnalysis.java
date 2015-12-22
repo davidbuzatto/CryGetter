@@ -743,17 +743,17 @@ public class AlignmentAnalysis extends javax.swing.JDialog {
         
         DecimalFormat df = new DecimalFormat( "#.##" );
         
-        params.put( "p1NonConserved", df.format( (double) nonConserved / (double) lenSeq1 ) + "%" );
-        params.put( "p1SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq1 ) + "%" );
-        params.put( "p1ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq1 ) + "%" );
-        params.put( "p1Conserved", df.format( (double) conserved / (double) lenSeq1 ) + "%" );
-        params.put( "p1CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq1 ) + "%" );
+        params.put( "p1NonConserved", df.format( (double) nonConserved / (double) lenSeq1 * 100 ) + "%" );
+        params.put( "p1SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq1 * 100 ) + "%" );
+        params.put( "p1ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq1 * 100 ) + "%" );
+        params.put( "p1Conserved", df.format( (double) conserved / (double) lenSeq1 * 100 ) + "%" );
+        params.put( "p1CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq1 * 100 ) + "%" );
         
-        params.put( "p2NonConserved", df.format( (double) nonConserved / (double) lenSeq2 ) + "%" );
-        params.put( "p2SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq2 ) + "%" );
-        params.put( "p2ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq2 ) + "%" );
-        params.put( "p2Conserved", df.format( (double) conserved / (double) lenSeq2 ) + "%" );
-        params.put( "p2CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq2 ) + "%" );
+        params.put( "p2NonConserved", df.format( (double) nonConserved / (double) lenSeq2 * 100 ) + "%" );
+        params.put( "p2SemiConservedMutation", df.format( (double) semiConservedMutation / (double) lenSeq2 * 100 ) + "%" );
+        params.put( "p2ConservedMutation", df.format( (double) conservedMutation / (double) lenSeq2 * 100 ) + "%" );
+        params.put( "p2Conserved", df.format( (double) conserved / (double) lenSeq2 * 100 ) + "%" );
+        params.put( "p2CCM", df.format( ( (double) conserved + (double) conservedMutation ) / (double) lenSeq2 * 100 ) + "%" );
         
         params.put( "obs", reportObs );
         
