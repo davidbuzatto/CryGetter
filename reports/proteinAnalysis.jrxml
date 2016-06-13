@@ -564,7 +564,7 @@ SCM: Semi-conserved mutation; NC: Non Conserved]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Lenghts]]></text>
+				<text><![CDATA[Lengths]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="6" y="238" width="30" height="15" uuid="b516bfea-8f16-4f62-b190-fa4a6ff83283"/>
@@ -578,7 +578,7 @@ SCM: Semi-conserved mutation; NC: Non Conserved]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Lenghts]]></text>
+				<text><![CDATA[Lengths]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="38" y="238" width="26" height="15" uuid="e8099949-e85c-4985-adaf-d12a43e7c7a2"/>
