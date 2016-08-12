@@ -17,4 +17,4 @@ Main developer: David Buzatto
 
 ## License
 
-FreeBSD
+GNU GPLv3
