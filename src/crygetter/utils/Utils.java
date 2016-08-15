@@ -48,6 +48,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+import javax.net.ssl.HttpsURLConnection;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -170,6 +171,46 @@ public class Utils {
     }
     
     /**
+     * Gets data using HTTP POST method through HTTPS.
+     * 
+     * @param request Base URL in HTTPS
+     * @param urlParameters Parameters
+     * @return Data from the request
+     * @throws MalformedURLException
+     * @throws IOException 
+     */
+    public static String getDataFromHttpsRequestViaPost( String request, String urlParameters ) 
+            throws MalformedURLException, IOException {
+        
+        HttpsURLConnection con = (HttpsURLConnection) new URL( request ).openConnection();           
+        con.setDoOutput( true );
+        con.setDoInput( true );
+        con.setInstanceFollowRedirects( false );
+        con.setRequestMethod( "POST" ); 
+        con.setRequestProperty( "charset", "utf-8" );
+        con.setRequestProperty( "Content-Length", Integer.toString( urlParameters.getBytes().length ) );
+        con.setUseCaches( false );
+        
+        try ( DataOutputStream wr = new DataOutputStream( con.getOutputStream() ) ) {
+            wr.writeBytes( urlParameters );
+            wr.flush();
+        }
+
+        StringBuilder data = new StringBuilder();
+        
+        try ( Scanner scan = new Scanner( con.getInputStream() ) ) {
+            while ( scan.hasNextLine() ) {
+                data.append( scan.nextLine() ).append( "\n" );
+            }
+        }
+        
+        con.disconnect();
+        
+        return data.toString();
+        
+    }
+    
+    /**
      * Parse BtNomenclature cry toxin list and generates a CryToxin list.
      * 
      * @return A list containing all CryToxin valid data.
@@ -264,13 +305,13 @@ public class Utils {
 
         String ids = sbIds.toString();
 
-        String completeData = Utils.getDataFromRequestViaPost( 
-                "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
+        String completeData = Utils.getDataFromHttpsRequestViaPost( 
+                "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
                 "tool=crygetter&email=davidbuzatto@ifsp.edu.br&db=protein&retmode=xml&id=" + ids.substring( 0, ids.length() - 1 ) );
         
         // fasta
-        /*String fastaData = Utils.getDataFromRequestViaPost( 
-                "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
+        /*String fastaData = Utils.getDataFromHttpsRequestViaPost( 
+                "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
                 "tool=crygetter&email=davidbuzatto@ifsp.edu.br&db=protein&retmode=text&rettype=fasta&id=" + ids.substring( 0, ids.length() - 1 ) );*/
                         
         try ( FileWriter fw = new FileWriter( filePath ) ) {

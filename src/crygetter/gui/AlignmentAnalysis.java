@@ -31,7 +31,6 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.data.ListOfArrayDataSource;
 import net.sf.jasperreports.swing.JRViewer;
 import org.biojava.bio.structure.Structure;

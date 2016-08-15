@@ -2354,8 +2354,8 @@ public class MainWindow extends javax.swing.JFrame {
 
                 String ids = sbIds.toString();
 
-                String completeData = Utils.getDataFromRequestViaPost( 
-                        "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
+                String completeData = Utils.getDataFromHttpsRequestViaPost( 
+                        "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi", 
                         "tool=crygetter&email=davidbuzatto@ifsp.edu.br&db=protein&retmode=xml&id=" + ids.substring( 0, ids.length() - 1 ) );
 
                 try ( FileWriter fw = new FileWriter( sequenceDataFile ) ) {
