@@ -1,0 +1,8 @@
+title: CryGetter
+description: CryGetter is a software tool that aims to perform automatic retrieval of Cry protein data.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-merlot
+
+gems:
+  - jekyll-mentions
