@@ -11,9 +11,9 @@ We want to thank IFSP (Instituto Federal de Educação, Ciência e Tecnologia de
 
 * [Version 1.03 - Changes related to compatibility issues when running the .jar file in Java 9 and above](https://github.com/davidbuzatto/CryGetter/releases/download/v1.03/CryGetter-1.03-bin.zip)
 * The versions below are just maintened as downloadable for historical purposes. Please, download the latest version above.
-* [Version 1.02 - Changes related to NCBI API access mode. Now its using HTTPS instead of HTTP](https://github.com/davidbuzatto/CryGetter/releases/download/v1.02/CryGetter-1.02-bin.zip)
-* [Version 1.01 - Minor typo corrections and report statistics](https://github.com/davidbuzatto/CryGetter/releases/download/v1.01/CryGetter-1.01-bin.zip)
-* [Version 1.0 - First version of CryGetter](https://github.com/davidbuzatto/CryGetter/releases/download/v1.0/CryGetter-1.0-bin.zip)
+** [Version 1.02 - Changes related to NCBI API access mode. Now its using HTTPS instead of HTTP](https://github.com/davidbuzatto/CryGetter/releases/download/v1.02/CryGetter-1.02-bin.zip)
+** [Version 1.01 - Minor typo corrections and report statistics](https://github.com/davidbuzatto/CryGetter/releases/download/v1.01/CryGetter-1.01-bin.zip)
+** [Version 1.0 - First version of CryGetter](https://github.com/davidbuzatto/CryGetter/releases/download/v1.0/CryGetter-1.0-bin.zip)
 
 
 ## Softwares and Resources Used by CryGetter
