@@ -1617,12 +1617,12 @@ public class MainWindow extends javax.swing.JFrame {
         JOptionPane.showMessageDialog( this,
                           "CryGetter is an application that aims to support\n"
                         + "Cry proteins data retrieval, study and analisys.\n\n"
-                        + "It is being developed as a part of the Ph.D.\n"
+                        + "It was developed as a part of the Ph.D.\n"
                         + "project of David Buzatto under the advisement\n"
                         + "of Professor Sônia Marli Zingaretti at UNAERP.\n"
                         + "(Universidade de Ribeirão Preto - University of\n"
                         + "Ribeirão Preto).\n\n"
-                        + "Version 1.0 - 10/27/2015",
+                        + "Version 1.03 - 07/06/2018",
                 "About", JOptionPane.INFORMATION_MESSAGE );
         
     }//GEN-LAST:event_btnAboutActionPerformed
